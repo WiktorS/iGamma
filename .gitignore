@@ -5,6 +5,7 @@
 !.gitignore
 
 # Ignore Play! working directory #
+modules
 db
 eclipse
 log
@@ -18,3 +19,4 @@ server.pid
 # Ignore IDEA Project files #
 iGamma.iml
 iGamma.ipr
+iGamma.iws
