@@ -5,14 +5,13 @@
 <script type="text/javascript" src="@{'/public/javascripts/thirdparty/handlebars-1.0.0.beta.6.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/thirdparty/ember.js'}"></script>
 
-
-
 <script type="text/javascript" src="@{'/public/javascripts/app/App.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/router.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/Router.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/AppBootstrap.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationView.coffee'}"></script>
 
+#{get 'moreScripts' /}
+
 #{handlebars.Application /}
 
-#{get 'moreScripts' /}
