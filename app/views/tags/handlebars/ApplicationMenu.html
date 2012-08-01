@@ -3,9 +3,9 @@
   <div class="navbar-inner">
     <div class="container">
       <ul class="nav">
-        <li class="active"><a {{action showEgbilPage href=true}}>EGBiL</a></li>
-        <li class="active"><a {{action showZmianyPage href=true}}>Zmiany</a></li>
-        <li class="active"><a {{action showWydrukiPage href=true}}>Wydruki</a></li>
+        {{view App.ApplicationMenuItemView stateName="egbil" displayName="EGBiL" action="showEgbilPage"}}
+        {{view App.ApplicationMenuItemView stateName="zmiany" displayName="Zmiany" action="showZmianyPage"}}
+        {{view App.ApplicationMenuItemView stateName="wydruki" displayName="Wydruki" action="showWydrukiPage"}}
       </ul>
     </div>
   </div>

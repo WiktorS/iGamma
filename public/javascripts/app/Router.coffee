@@ -1,40 +1,34 @@
 App.Router = Em.Router.extend
   location: "hash"
-  enableLogging: false
-  root: Ember.Route.extend
+  enableLogging: true
+  root: Em.Route.extend
 
-    index: Ember.Route.extend
+    showEgbilPage: Em.Router.transitionTo "app.egbil.wyszukaj.jrgib"
+    showZmianyPage: Em.Router.transitionTo "app.zmiany"
+    showWydrukiPage: Em.Router.transitionTo "app.wydruki"
+
+
+    index: Em.Route.extend
       route: "/"
-      redirectsTo: "egbil.wyszukaj.jrgib"
+      redirectsTo: "app.egbil.wyszukaj.jrgib"
 
-    egbil: Ember.Route.extend
-      route: "/egbil"
-
-      wyszukaj: Ember.Route.extend
-        route: "/wyszukaj"
-
-        jrgib: Ember.Route.extend
-          route: "/jrgib"
-          showEgbilPage: Ember.Router.transitionTo "egbil.wyszukaj.jrgib"
-          showZmianyPage: Ember.Router.transitionTo "zmiany"
-          showWydrukiPage: Ember.Router.transitionTo "wydruki"
-          connectOutlets: (router) ->
-            controller = router.get "applicationController"
-            controller.currentState = "egbil"
-            controller.connectOutlet({outletName: "applicationMenu", name: "applicationMenu"})
-
-    zmiany: Ember.Route.extend
-      route: "/zmiany"
-      showEgbilPage: Ember.Router.transitionTo "egbil.wyszukaj.jrgib"
-      showZmianyPage: Ember.Router.transitionTo "zmiany"
-      showWydrukiPage: Ember.Router.transitionTo "wydruki"
+    app: Em.Route.extend
+      route: "/app"
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationMenu", name: "applicationMenu"})
 
-    wydruki: Ember.Route.extend
-      route: "/wydruki"
-      showEgbilPage: Ember.Router.transitionTo "egbil.wyszukaj.jrgib"
-      showZmianyPage: Ember.Router.transitionTo "zmiany"
-      showWydrukiPage: Ember.Router.transitionTo "wydruki"
-      connectOutlets: (router) ->
-        router.get("applicationController").connectOutlet({outletName: "applicationMenu", name: "applicationMenu"})
+
+      egbil: Em.Route.extend
+        route: "/egbil"
+
+        wyszukaj: Em.Route.extend
+            route: "/wyszukaj"
+
+            jrgib: Em.Route.extend
+              route: "/jrgib"
+
+      zmiany: Em.Route.extend
+        route: "/zmiany"
+
+      wydruki: Em.Route.extend
+        route: "/wydruki"
