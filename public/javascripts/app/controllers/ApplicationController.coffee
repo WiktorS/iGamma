@@ -1,2 +1,2 @@
 App.ApplicationController = Em.Controller.extend
-  currentState: null
+  egbilState: "jrgib"
