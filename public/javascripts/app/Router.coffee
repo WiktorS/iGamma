@@ -10,7 +10,7 @@ App.Router = Em.Router.extend
 
     index: Em.Route.extend
       route: "/"
-      redirectsTo: "app.egbil.wyszukaj.jrgib"
+      redirectsTo: "app.egbil.search.jrgib"
 
     app: Em.Route.extend
       route: "/app"
@@ -23,7 +23,7 @@ App.Router = Em.Router.extend
         connectOutlets: (router) ->
           router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
 
-        wyszukaj: Em.Route.extend
+        search: Em.Route.extend
             route: "/wyszukaj"
 
             jrgib: Em.Route.extend

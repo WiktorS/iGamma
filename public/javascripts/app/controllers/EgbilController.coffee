@@ -1,2 +1,2 @@
 App.EgbilController = Em.Controller.extend
-  currentState: "wyszukaj.jrgib"
+  currentState: "search.jrgib"
