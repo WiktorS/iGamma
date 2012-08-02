@@ -3,32 +3,25 @@ App.Router = Em.Router.extend
   enableLogging: true
   root: Em.Route.extend
 
-    showEgbilPage: Em.Router.transitionTo "app.egbil.wyszukaj.jrgib"
-    showZmianyPage: Em.Router.transitionTo "app.zmiany"
-    showWydrukiPage: Em.Router.transitionTo "app.wydruki"
-
+    showEgbilPage: Em.Router.transitionTo "egbil.wyszukaj.jrgib"
+    showZmianyPage: Em.Router.transitionTo "zmiany"
+    showWydrukiPage: Em.Router.transitionTo "wydruki"
 
     index: Em.Route.extend
       route: "/"
-      redirectsTo: "app.egbil.wyszukaj.jrgib"
+      redirectsTo: "egbil.wyszukaj.jrgib"
 
-    app: Em.Route.extend
-      route: "/app"
-      connectOutlets: (router) ->
-        router.get("applicationController").connectOutlet({outletName: "applicationMenu", name: "applicationMenu"})
+    egbil: Em.Route.extend
+      route: "/egbil"
 
+      wyszukaj: Em.Route.extend
+          route: "/wyszukaj"
 
-      egbil: Em.Route.extend
-        route: "/egbil"
+          jrgib: Em.Route.extend
+            route: "/jrgib"
 
-        wyszukaj: Em.Route.extend
-            route: "/wyszukaj"
+    zmiany: Em.Route.extend
+      route: "/zmiany"
 
-            jrgib: Em.Route.extend
-              route: "/jrgib"
-
-      zmiany: Em.Route.extend
-        route: "/zmiany"
-
-      wydruki: Em.Route.extend
-        route: "/wydruki"
+    wydruki: Em.Route.extend
+      route: "/wydruki"
