@@ -3,13 +3,9 @@ App.Router = Em.Router.extend
   enableLogging: true
   root: Em.Route.extend
 
-    showEgbilPage: (router) ->
-      v = router.get("applicationController").get("egbilState")
-#      v = "app.egbil.wyszukaj." + v
-      console.log v
-      router.transitionTo ("app.egbil.wyszukaj."+v)
-    showZmianyPage: Em.Router.transitionTo "app.zmiany"
-    showWydrukiPage: (router) -> router.transitionTo "app.wydruki"
+    showEgbilPage: (router) -> router.transitionTo "app.egbil."+router.get("egbilController").get("currentState")
+    showChangesPage: (router) -> router.transitionTo "app.changes"
+    showPrintsPage: (router) -> router.transitionTo "app.prints"
 
 
     index: Em.Route.extend
@@ -26,21 +22,26 @@ App.Router = Em.Router.extend
         route: "/egbil"
         connectOutlets: (router) ->
           router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
-#          router.get("egbilController")
 
         wyszukaj: Em.Route.extend
             route: "/wyszukaj"
 
             jrgib: Em.Route.extend
               route: "/jrgib"
-              enter: (router) -> router.get("applicationController").set "egbilState", "jrgib"
+              enter: (router) -> router.get("egbilController").set "currentState", this.parentState.name+"."+this.name
 
             jrl: Em.Route.extend
               route: "/jrl"
-              enter: (router) -> router.get("applicationController").set "egbilState", "jrl"
+              enter: (router) -> router.get("egbilController").set "currentState", this.parentState.name+"."+this.name
 
-      zmiany: Em.Route.extend
+
+      changes: Em.Route.extend
         route: "/zmiany"
+        connectOutlets: (router) ->
+          router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "changes"})
 
-      wydruki: Em.Route.extend
+
+      prints: Em.Route.extend
         route: "/wydruki"
+        connectOutlets: (router) ->
+          router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "prints"})

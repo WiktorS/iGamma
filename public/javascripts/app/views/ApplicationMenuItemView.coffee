@@ -7,4 +7,4 @@ App.ApplicationMenuItemView = Em.View.extend
   classNameBindings: ["active"]
   stateName: null
   currentStateNameBinding: "App.router.currentState.path"
-  active: ( -> this.get("currentStateName").match(this.get("stateName"))!=null ).property("currentStateName", "stateName")
+  active: ( -> this.get("currentStateName").match(this.get "stateName")!=null ).property("currentStateName", "stateName")

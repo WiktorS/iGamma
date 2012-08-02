@@ -1,2 +1,1 @@
-App.ApplicationController = Em.Controller.extend
-  egbilState: "jrgib"
+App.ApplicationController = Em.Controller.extend()
