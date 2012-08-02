@@ -1,2 +1,1 @@
-App.ApplicationController = Em.Controller.extend
-  currentState: null
+App.ApplicationController = Em.Controller.extend()
