@@ -1,0 +1,9 @@
+<script type="text/x-handlebars" data-template-name="egbilSearch">
+<ul class="nav nav-tabs nav-stacked">
+  {{view App.StateTabItemView stateName="egbil.wyszukaj.jrgib" displayName="Jednoski Rejestrowe Gruntów i Budynków"}}
+  {{view App.StateTabItemView stateName="egbil.wyszukaj.jrb" displayName="Jednoski Rejestrowe Budynków"}}
+  {{view App.StateTabItemView stateName="egbil.wyszukaj.jrl" displayName="Jednoski Rejestrowe Lokali"}}
+  {{view App.StateTabItemView stateName="egbil.wyszukaj.jrg" displayName="Stare Jednoski Rejestrowe Gruntów"}}
+</ul>
+{{outlet egbilSearchContent}}
+</script>
