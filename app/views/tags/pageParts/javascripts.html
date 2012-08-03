@@ -8,22 +8,24 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/App.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/Router.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/AppBootstrap.coffee'}"></script>
+
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationMenuController.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilContentController.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilController.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchController.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationMenuView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilContentView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/StateTabItemView.coffee'}"></script>
-
 
 #{get 'moreScripts' /}
 
 #{handlebars.Application /}
 #{handlebars.ApplicationMenu /}
-#{handlebars.EgbilContent /}
+#{handlebars.Egbil /}
 #{handlebars.EgbilSearch /}
-
+#{handlebars.Changes /}
+#{handlebars.Prints /}

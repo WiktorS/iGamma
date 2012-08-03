@@ -1,0 +1,10 @@
+<script type="text/x-handlebars" data-template-name="egbil">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      {{view App.StateTabItemView stateName="egbil.mapa" displayName="Pokaż mapę"}}
+      {{view App.StateTabItemView stateName="egbil.wyszukaj" displayName="Wybór obiektów"}}
+      {{view App.StateTabItemView stateName="egbil.test" displayName="Test"}}
+    </ul>
+    {{outlet egbil}}
+  </div>
+</script>
