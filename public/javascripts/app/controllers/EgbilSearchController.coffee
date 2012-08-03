@@ -1,2 +1,1 @@
-App.EgbilSearchController = Em.Controller.extend
-  lastState: null
+App.EgbilSearchController = Em.Controller.extend()
