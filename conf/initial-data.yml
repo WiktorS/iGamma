@@ -1,0 +1,11 @@
+RegisterUnitMock(B1):
+    jrb: 'B1'
+    jrg: 'G150'
+
+RegisterUnitMock(B2):
+    jrb: 'B2'
+    jrg: 'G100'
+
+RegisterUnitMock(X1):
+    jrb: 'X1'
+    jrg: 'G150'
