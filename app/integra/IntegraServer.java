@@ -7,8 +7,7 @@ public class IntegraServer {
     public static Integra createServer() {
         if (Play.configuration.get("integra.db").equals("mock")) {
             return new IntegraMock();
-        }
-        else {
+        } else {
             return new IntegraImplementation();
         }
     }
