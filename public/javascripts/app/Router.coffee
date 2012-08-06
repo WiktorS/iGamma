@@ -1,47 +1,63 @@
+App.Route = Em.Route.extend
+  enter: (router) -> @parentState.set 'initialState', @name
+
 App.Router = Em.Router.extend
   location: "hash"
   enableLogging: true
   root: Em.Route.extend
 
-    showEgbilPage: (router) -> router.transitionTo "app.egbil."+router.get("egbilController").get("currentState")
-    showChangesPage: (router) -> router.transitionTo "app.changes"
-    showPrintsPage: (router) -> router.transitionTo "app.prints"
-
-
-    index: Em.Route.extend
+    index: App.Route.extend
       route: "/"
-      redirectsTo: "app.egbil.search.jrgib"
+      redirectsTo: "egbil.wyszukaj.jrgib"
 
-    app: Em.Route.extend
-      route: "/app"
+    egbil: App.Route.extend
+      route: "/egbil"
+      initialState: "wyszukaj"
       connectOutlets: (router) ->
-        router.get("applicationController").connectOutlet({outletName: "applicationMenu", name: "applicationMenu"})
+        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
 
-
-      egbil: Em.Route.extend
-        route: "/egbil"
+      wyszukaj: App.Route.extend
+        route: "/wyszukaj"
+        initialState: "jrgib"
         connectOutlets: (router) ->
-          router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
+          router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilSearch"})
 
-        search: Em.Route.extend
-            route: "/wyszukaj"
+        jrgib: App.Route.extend
+          route: "/jrgib"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrgib"})
 
-            jrgib: Em.Route.extend
-              route: "/jrgib"
-              enter: (router) -> router.get("egbilController").set "currentState", this.parentState.name+"."+this.name
+        jrb: App.Route.extend
+          route: "/jrb"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrb"})
 
-            jrl: Em.Route.extend
-              route: "/jrl"
-              enter: (router) -> router.get("egbilController").set "currentState", this.parentState.name+"."+this.name
+        jrl: App.Route.extend
+          route: "/jrl"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrl"})
 
+        jrg: App.Route.extend
+          route: "/jrg"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrg"})
 
-      changes: Em.Route.extend
-        route: "/zmiany"
+      mapa: App.Route.extend
+        route: "/mapa"
         connectOutlets: (router) ->
-          router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "changes"})
+          router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilMap"})
 
-
-      prints: Em.Route.extend
-        route: "/wydruki"
+      lista: App.Route.extend
+        route: "/lista"
         connectOutlets: (router) ->
-          router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "prints"})
+          router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
+
+    changes: App.Route.extend
+      route: "/zmiany"
+      connectOutlets: (router) ->
+        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "changes"})
+
+    prints: App.Route.extend
+      route: "/wydruki"
+      connectOutlets: (router) ->
+        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "prints"})

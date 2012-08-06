@@ -10,21 +10,42 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/AppBootstrap.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilController.coffee'}"></script>
-
+  <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilMapController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchJrgibController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchJrbController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchJrlController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchJrgController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilListController.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationMenuView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationMenuItemView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilView.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilMapView.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchView.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchJrgibView.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchJrbView.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchJrlView.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchJrgView.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
 
+<script type="text/javascript" src="@{'/public/javascripts/app/views/StateTabItemView.coffee'}"></script>
 
 #{get 'moreScripts' /}
 
 #{handlebars.Application /}
 #{handlebars.ApplicationMenu /}
-#{handlebars.Egbil /}
-#{handlebars.Changes /}
-#{handlebars.Prints /}
-
+  #{handlebars.Egbil /}
+    #{handlebars.EgbilMap /}
+    #{handlebars.EgbilSearch /}
+      #{handlebars.EgbilSearchJrgib /}
+      #{handlebars.EgbilSearchJrb /}
+      #{handlebars.EgbilSearchJrl /}
+      #{handlebars.EgbilSearchJrg /}
+    #{handlebars.EgbilList /}
+  #{handlebars.Changes /}
+  #{handlebars.Prints /}

@@ -1,6 +1,11 @@
 package controllers;
 
+import integra.Integra;
+import integra.IntegraServer;
+import integra.models.RegisterUnit;
 import play.mvc.*;
+
+import java.util.List;
 
 public class Application extends Controller {
 
@@ -8,4 +13,9 @@ public class Application extends Controller {
         render();
     }
 
+    public static void getRegisterUnits() {
+        Integra integra = IntegraServer.GetInterface();
+        List<RegisterUnit> result = integra.getRegisterUnits();
+        renderJSON(result);
+    }
 }
