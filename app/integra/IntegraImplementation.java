@@ -4,7 +4,7 @@ import integra.models.RegisterUnit;
 
 import java.util.List;
 
-public class IntegraReal implements Integra {
+public class IntegraImplementation implements Integra {
 
     @Override
     public List<RegisterUnit> getRegisterUnits() {
