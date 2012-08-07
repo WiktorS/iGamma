@@ -14,7 +14,7 @@ public class Application extends Controller {
     }
 
     public static void getRegisterUnits() {
-        Integra integra = IntegraServer.GetInterface();
+        Integra integra = IntegraServer.createServer();
         List<RegisterUnit> result = integra.getRegisterUnits();
         renderJSON(result);
     }
