@@ -3,16 +3,20 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+GET     /                                         Application.index
 
 #Integra json interface
-GET     /getRegisterUnits.json                  IntegraJson.getRegisterUnits
+GET     /getRegisterUnits.json                    IntegraJson.getRegisterUnits
+GET     /getRegisterUnitsByJrg.json               IntegraJson.getRegisterUnitsByJrg
+GET     /getRegisterUnitsByJrb.json               IntegraJson.getRegisterUnitsByJrb
+
+#Integra mock
+GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits
+GET     /integraMock/getRegisterUnitsByJrb.json   IntegraMockJson.getRegisterUnitsByJrb
+GET     /integraMock/getRegisterUnitsByJrg.json   IntegraMockJson.getRegisterUnitsByJrg
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET     /favicon.ico                              404
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
-
-# Catch all
-*       /{controller}/{action}                  {controller}.{action}
+GET     /public/                                  staticDir:public
