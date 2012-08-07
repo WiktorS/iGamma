@@ -1,17 +1,16 @@
 package controllers;
 
 import integra.Integra;
+import integra.IntegraServer;
 import integra.models.RegisterUnit;
-import play.Play;
-import play.libs.F;
 import play.mvc.Controller;
 
 import java.util.List;
 
 public class IntegraJson extends Controller {
-    private static Integra integra = new Integra(Play.configuration.getProperty("integra.url"));
+    private static Integra integra = IntegraServer.createServer();
 
-    public static void getRegisterUnits() throws InterruptedException {
+    public static void getRegisterUnits(){
         List<RegisterUnit> result = integra.getRegisterUnits();
         renderJSON(result);
     }
