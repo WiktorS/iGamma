@@ -12,12 +12,12 @@ App.Router = Em.Router.extend
 
     egbil: Em.Route.extend
       route: "/egbil"
-      initialState: "wyszukaj"
+      initialState: "search"
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
 
       search: RouteWithParentMemory.extend
-        route: "/wyszukaj"
+        route: "/search"
         initialState: "jrgib"
         connectOutlets: (router) ->
           router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilSearch"})
@@ -43,21 +43,21 @@ App.Router = Em.Router.extend
             router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrg"})
 
       map: RouteWithParentMemory.extend
-        route: "/mapa"
+        route: "/map"
         connectOutlets: (router) ->
           router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilMap"})
 
       list: RouteWithParentMemory.extend
-        route: "/lista"
+        route: "/list"
         connectOutlets: (router) ->
           router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
 
     changes: Em.Route.extend
-      route: "/zmiany"
+      route: "/changes"
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "changes"})
 
     prints: Em.Route.extend
-      route: "/wydruki"
+      route: "/prints"
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "prints"})

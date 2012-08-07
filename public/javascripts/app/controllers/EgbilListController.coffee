@@ -5,4 +5,4 @@ App.EgbilListController = Em.Controller.extend
     $.getJSON('/getRegisterUnits.json', (data) =>
       @set 'content',data
     )
-    App.router.transitionTo 'lista'
+    App.router.transitionTo 'list'
