@@ -15,13 +15,13 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
-    public static void getRegisterUnitsByJrg(String jrg) {
-        List<RegisterUnit> result = integra.getRegisterUnitsByJrg(jrg);
+    public static void getRegisterUnitsByJrb(String jrb) {
+        List<RegisterUnit> result = integra.getRegisterUnitsByJrg(jrb);
         renderJSON(result);
     }
 
-    public static void getRegisterUnitsByJrb(String jrb) {
-        List<RegisterUnit> result = integra.getRegisterUnitsByJrg(jrb);
+    public static void getRegisterUnitsByJrg(String jrg) {
+        List<RegisterUnit> result = integra.getRegisterUnitsByJrg(jrg);
         renderJSON(result);
     }
 }
