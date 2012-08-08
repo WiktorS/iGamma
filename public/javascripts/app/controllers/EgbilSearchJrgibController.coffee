@@ -1,1 +1,2 @@
-App.EgbilSearchJrgibController = Em.ObjectController.extend()
+App.EgbilSearchJrgibController = Em.ObjectController.extend
+  content: App.EgbilSearchJrgibModel.create()

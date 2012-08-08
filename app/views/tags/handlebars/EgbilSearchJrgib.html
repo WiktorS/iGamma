@@ -14,27 +14,27 @@
       <input type="text" />
       <a href="#" class="btn"><i class="icon-upload"></i></a>
 
-      {{view App.LabeledClearableInputView inputId="a" label="Numer JRG"}}
-      {{view App.LabeledClearableInputView inputId="b" label="Numer JRB"}}
-      {{view App.LabeledClearableInputView inputId="c" label="Numer dzuałki"}}
-      {{view App.LabeledClearableInputView inputId="d" label="Numer budynku"}}
+      {{view App.LabeledClearableInputView element=content.jrgNumber}}
+      {{view App.LabeledClearableInputView element=content.jrbNumber}}
+      {{view App.LabeledClearableInputView element=content.lotNumber}}
+      {{view App.LabeledClearableInputView element=content.buildingNumber}}
 
       <fieldset>
         <legend>Adres działki</legend>
-        {{view App.LabeledClearableInputView inputId="e" label="Miejscowość"}}
-        {{view App.LabeledClearableInputView inputId="f" label="Ulica"}}
-        {{view App.LabeledClearableInputView inputId="g" label="Numer porządkowy"}}
+        {{view App.LabeledClearableInputView element=content.town}}
+        {{view App.LabeledClearableInputView element=content.street}}
+        {{view App.LabeledClearableInputView element=content.houseNumber}}
       </fieldset>
 
 
       <fieldset>
         <legend>Sygnatura dokumentu</legend>
-        {{view App.LabeledClearableInputView inputId="h" label="Dokument działki"}}
-        {{view App.LabeledClearableInputView inputId="i" label="Dokument budynku"}}
-        {{view App.LabeledClearableInputView inputId="j" label="Dokument lokalu"}}
+        {{view App.LabeledClearableInputView element=content.lotSignature}}
+        {{view App.LabeledClearableInputView element=content.buildingSignature}}
+        {{view App.LabeledClearableInputView element=content.localSignature}}
       </fieldset>
 
-      {{view App.LabeledClearableInputView inputId="k" label="Uwzględnij wpisy historyczne" inputType="checkbox" clearable=false}}
+      {{view App.LabeledClearableInputView element=content.historicalEntries asTextField=false}}
       <button>Wyczyść</button>
       <button>Wybierz</button>
 
