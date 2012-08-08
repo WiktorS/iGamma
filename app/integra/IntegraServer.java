@@ -11,5 +11,4 @@ public class IntegraServer {
             return new IntegraImplementation();
         }
     }
-
 }
