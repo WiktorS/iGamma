@@ -1,1 +1,1 @@
-App.EgbilSearchJrgibController = Em.Controller.extend()
+App.EgbilSearchJrgibController = Em.ObjectController.extend()

@@ -26,6 +26,7 @@ App.Router = Em.Router.extend
           route: "/jrgib"
           connectOutlets: (router) ->
             router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrgib"})
+            router.get("egbilSearchJgribController").set("content", App.MojModel.create())
 
         jrb: RouteWithParentMemory.extend
           route: "/jrb"

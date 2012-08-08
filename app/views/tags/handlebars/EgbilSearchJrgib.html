@@ -14,55 +14,27 @@
       <input type="text" />
       <a href="#" class="btn"><i class="icon-upload"></i></a>
 
-      <label for="a">Numer JRG</label>
-      <input id="a" type="text" />
-      <a href="#" class="btn"><i class="icon-upload"></i></a>
-
-      <label for="b">Numer JRB</label>
-      <input id="b" type="text" />
-      <a href="#" class="btn"><i class="icon-upload"></i></a>
-
-      <label for="c">Numer działki</label>
-      <input id="c" type="text" />
-      <a href="#" class="btn"><i class="icon-upload"></i></a>
-
-      <label for="d">Numer budynku</label>
-      <input id="d" type="text" />
-      <a href="#" class="btn"><i class="icon-upload"></i></a>
-
+      {{view App.LabeledClearableInputView inputId="a" label="Numer JRG"}}
+      {{view App.LabeledClearableInputView inputId="b" label="Numer JRB"}}
+      {{view App.LabeledClearableInputView inputId="c" label="Numer dzuałki"}}
+      {{view App.LabeledClearableInputView inputId="d" label="Numer budynku"}}
 
       <fieldset>
         <legend>Adres działki</legend>
-
-        <label for="e">Miejscowość</label>
-        <input id="e" type="text" />
-        <a href="#" class="btn"><i class="icon-upload"></i></a>
-        <label for="f">Ulica</label>
-        <input id="f" type="text" />
-        <a href="#" class="btn"><i class="icon-upload"></i></a>
-        <label for="g">Numer porządkowy</label>
-        <input id="g" type="text" />
-        <a href="#" class="btn"><i class="icon-upload"></i></a>
+        {{view App.LabeledClearableInputView inputId="e" label="Miejscowość"}}
+        {{view App.LabeledClearableInputView inputId="f" label="Ulica"}}
+        {{view App.LabeledClearableInputView inputId="g" label="Numer porządkowy"}}
       </fieldset>
 
 
       <fieldset>
         <legend>Sygnatura dokumentu</legend>
-
-        <label for="h">Dokument działki</label>
-        <input id="h" type="text" />
-        <a href="#" class="btn"><i class="icon-upload"></i></a>
-        <label for="i">Dokument budynku</label>
-        <input id="i" type="text" />
-        <a href="#" class="btn"><i class="icon-upload"></i></a>
-        <label for="j">Dokument lokalu</label>
-        <input id="j" type="text" />
-        <a href="#" class="btn"><i class="icon-upload"></i></a>
+        {{view App.LabeledClearableInputView inputId="h" label="Dokument działki"}}
+        {{view App.LabeledClearableInputView inputId="i" label="Dokument budynku"}}
+        {{view App.LabeledClearableInputView inputId="j" label="Dokument lokalu"}}
       </fieldset>
 
-      <label for="k">Uwzględnij wpisy historyczne</label>
-      <input id="k" type="checkbox" />
-
+      {{view App.LabeledClearableInputView inputId="k" label="Uwzględnij wpisy historyczne" inputType="checkbox" clearable=false}}
       <button>Wyczyść</button>
       <button>Wybierz</button>
 
