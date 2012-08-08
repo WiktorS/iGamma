@@ -1,3 +1,72 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrgib">
-  JRGIB
+  <div class="btn-group">
+    {{view App.StateButtonItemView icon="icon-paper-clip" class="btn"}}
+    {{view App.StateButtonItemView icon="icon-user" class="btn"}}
+    {{view App.StateButtonItemView icon="icon-group" class="btn"}}
+    {{view App.StateButtonItemView icon="icon-legal" class="btn"}}
+    {{view App.StateButtonItemView icon="icon-tasks" class="btn"}}
+  </div>
+
+  <div class="">
+    <form action="">
+
+      <button>Systematyka</button>
+      <input type="text" />
+      <a href="#" class="btn"><i class="icon-upload"></i></a>
+
+      <label for="a">Numer JRG</label>
+      <input id="a" type="text" />
+      <a href="#" class="btn"><i class="icon-upload"></i></a>
+
+      <label for="b">Numer JRB</label>
+      <input id="b" type="text" />
+      <a href="#" class="btn"><i class="icon-upload"></i></a>
+
+      <label for="c">Numer działki</label>
+      <input id="c" type="text" />
+      <a href="#" class="btn"><i class="icon-upload"></i></a>
+
+      <label for="d">Numer budynku</label>
+      <input id="d" type="text" />
+      <a href="#" class="btn"><i class="icon-upload"></i></a>
+
+
+      <fieldset>
+        <legend>Adres działki</legend>
+
+        <label for="e">Miejscowość</label>
+        <input id="e" type="text" />
+        <a href="#" class="btn"><i class="icon-upload"></i></a>
+        <label for="f">Ulica</label>
+        <input id="f" type="text" />
+        <a href="#" class="btn"><i class="icon-upload"></i></a>
+        <label for="g">Numer porządkowy</label>
+        <input id="g" type="text" />
+        <a href="#" class="btn"><i class="icon-upload"></i></a>
+      </fieldset>
+
+
+      <fieldset>
+        <legend>Sygnatura dokumentu</legend>
+
+        <label for="h">Dokument działki</label>
+        <input id="h" type="text" />
+        <a href="#" class="btn"><i class="icon-upload"></i></a>
+        <label for="i">Dokument budynku</label>
+        <input id="i" type="text" />
+        <a href="#" class="btn"><i class="icon-upload"></i></a>
+        <label for="j">Dokument lokalu</label>
+        <input id="j" type="text" />
+        <a href="#" class="btn"><i class="icon-upload"></i></a>
+      </fieldset>
+
+      <label for="k">Uwzględnij wpisy historyczne</label>
+      <input id="k" type="checkbox" />
+
+      <button>Wyczyść</button>
+      <button>Wybierz</button>
+
+    </form>
+
+  </div>
 </script>
