@@ -1,9 +1,12 @@
 <script type="text/x-handlebars" data-template-name="labeledClearableInput">
   <label>
     {{view.element.label}}
+    {{#if view.element.help}}
+      <span class="help-inline">{{view.element.help}}</span>
+    {{/if}}
     {{#if view.asTextField}}
       {{view Em.TextField valueBinding="view.element.value"}}
-      <a href="#" class="btn"><i class="icon-upload"></i></a>
+      <a href="#" class="btn"><i class="icon-remove-sign"></i></a>
     {{else}}
       {{view Em.Checkbox checkedBinding="view.element.value"}}
     {{/if}}

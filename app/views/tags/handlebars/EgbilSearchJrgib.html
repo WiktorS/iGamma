@@ -1,44 +1,61 @@
-<script type="text/x-handlebars" data-template-name="egbilSearchJrgib">
-  <div class="btn-group">
-    {{view App.StateButtonItemView icon="icon-paper-clip" class="btn"}}
-    {{view App.StateButtonItemView icon="icon-user" class="btn"}}
-    {{view App.StateButtonItemView icon="icon-group" class="btn"}}
-    {{view App.StateButtonItemView icon="icon-legal" class="btn"}}
-    {{view App.StateButtonItemView icon="icon-tasks" class="btn"}}
+<script type="text/x-handlebars" xmlns="http://www.w3.org/1999/html" data-template-name="egbilSearchJrgib">
+<div class="row">
+  <div class="btn-group span11">
+    {{view App.StateButtonItemView icon="icon-paper-clip" class="btn btn-primary"}}
+    {{view App.StateButtonItemView icon="icon-user" class="btn btn-primary"}}
+    {{view App.StateButtonItemView icon="icon-group" class="btn btn-primary"}}
+    {{view App.StateButtonItemView icon="icon-legal" class="btn btn-primary"}}
+    {{view App.StateButtonItemView icon="icon-tasks" class="btn btn-primary"}}
+  </div>
+</div>
+
+<form class="well">
+
+  <div class="control-group">
+    <div class="controls">
+      <div class="input-append">
+        <button class="btn btn-primary" type="button">Systematyka</button>
+        <input class="span8" type="text" />
+        <a href="#" class="btn"><i class="icon-remove-sign"></i></a>
+      </div>
+    </div>
   </div>
 
-  <div class="">
-    <form action="">
+  <div class="row">
+    <fieldset class="span5">
+      <legend>Parametry</legend>
 
-      <button>Systematyka</button>
-      <input type="text" />
-      <a href="#" class="btn"><i class="icon-upload"></i></a>
+
 
       {{view App.LabeledClearableInputView element=content.jrgNumber}}
       {{view App.LabeledClearableInputView element=content.jrbNumber}}
       {{view App.LabeledClearableInputView element=content.lotNumber}}
       {{view App.LabeledClearableInputView element=content.buildingNumber}}
-
-      <fieldset>
-        <legend>Adres działki</legend>
-        {{view App.LabeledClearableInputView element=content.town}}
-        {{view App.LabeledClearableInputView element=content.street}}
-        {{view App.LabeledClearableInputView element=content.houseNumber}}
-      </fieldset>
+    </fieldset>
 
 
-      <fieldset>
-        <legend>Sygnatura dokumentu</legend>
-        {{view App.LabeledClearableInputView element=content.lotSignature}}
-        {{view App.LabeledClearableInputView element=content.buildingSignature}}
-        {{view App.LabeledClearableInputView element=content.localSignature}}
-      </fieldset>
 
-      {{view App.LabeledClearableInputView element=content.historicalEntries asTextField=false}}
-      <button>Wyczyść</button>
-      <button>Wybierz</button>
 
-    </form>
-
+    <fieldset class="span5">
+      <legend>Adres działki</legend>
+      {{view App.LabeledClearableInputView element=content.town}}
+      {{view App.LabeledClearableInputView element=content.street}}
+      {{view App.LabeledClearableInputView element=content.houseNumber}}
+    </fieldset>
   </div>
+
+  <div class="row">
+    <fieldset class="span5">
+      <legend>Sygnatura dokumentu</legend>
+      {{view App.LabeledClearableInputView element=content.lotSignature}}
+      {{view App.LabeledClearableInputView element=content.buildingSignature}}
+      {{view App.LabeledClearableInputView element=content.localSignature}}
+    </fieldset>
+    <div class="span5">
+      {{view App.LabeledClearableInputView element=content.historicalEntries asTextField=false}}
+      <button class="btn btn-danger" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+      <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
+    </div>
+  </div>
+</form>
 </script>
