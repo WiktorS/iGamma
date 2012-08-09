@@ -1,4 +1,44 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrgib">
-  JRGIB
-  <button {{action "loadData" target="controller.controllers.egbilListController"}}>Load</button>
+  <div class="btn-group">
+    {{view App.StateButtonItemView icon="icon-paper-clip" class="btn"}}
+    {{view App.StateButtonItemView icon="icon-user" class="btn"}}
+    {{view App.StateButtonItemView icon="icon-group" class="btn"}}
+    {{view App.StateButtonItemView icon="icon-legal" class="btn"}}
+    {{view App.StateButtonItemView icon="icon-tasks" class="btn"}}
+  </div>
+
+  <div class="">
+    <form action="">
+
+      <button>Systematyka</button>
+      <input type="text" />
+      <a href="#" class="btn"><i class="icon-upload"></i></a>
+
+      {{view App.LabeledClearableInputView element=content.jrgNumber}}
+      {{view App.LabeledClearableInputView element=content.jrbNumber}}
+      {{view App.LabeledClearableInputView element=content.lotNumber}}
+      {{view App.LabeledClearableInputView element=content.buildingNumber}}
+
+      <fieldset>
+        <legend>Adres działki</legend>
+        {{view App.LabeledClearableInputView element=content.town}}
+        {{view App.LabeledClearableInputView element=content.street}}
+        {{view App.LabeledClearableInputView element=content.houseNumber}}
+      </fieldset>
+
+
+      <fieldset>
+        <legend>Sygnatura dokumentu</legend>
+        {{view App.LabeledClearableInputView element=content.lotSignature}}
+        {{view App.LabeledClearableInputView element=content.buildingSignature}}
+        {{view App.LabeledClearableInputView element=content.localSignature}}
+      </fieldset>
+
+      {{view App.LabeledClearableInputView element=content.historicalEntries asTextField=false}}
+      <button>Wyczyść</button>
+      <button {{action "loadData" target="controller.controllers.egbilListController"}}>Wybierz</button>
+
+    </form>
+
+  </div>
 </script>

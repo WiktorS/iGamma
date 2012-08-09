@@ -9,6 +9,9 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/Router.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/AppBootstrap.coffee'}"></script>
 
+<script type="text/javascript" src="@{'/public/javascripts/app/models/StandardFilterElementModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilSearchJrgibModel.coffee'}"></script>
+
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilMapController.coffee'}"></script>
@@ -21,6 +24,7 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilListController.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationView.coffee'}"></script>
+
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationMenuView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilMapView.coffee'}"></script>
@@ -32,8 +36,10 @@
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/LabeledClearableInputView.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/StateTabItemView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/StateButtonItemView.coffee'}"></script>
 
 #{get 'moreScripts' /}
 
@@ -49,3 +55,5 @@
     #{handlebars.EgbilList /}
   #{handlebars.Changes /}
   #{handlebars.Prints /}
+
+#{handlebars.widgets.LabeledClearableInput /}

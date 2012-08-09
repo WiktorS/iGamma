@@ -1,9 +1,11 @@
 <script type="text/x-handlebars" data-template-name="egbilSearch">
-<ul class="nav nav-tabs nav-stacked">
+<div class="row">
+  <ul class="span4 nav nav-tabs nav-stacked">
   {{view App.StateTabItemView stateName="jrgib" displayName="Jednostki Rejestrowe Gruntów i Budynków"}}
   {{view App.StateTabItemView stateName="jrb" displayName="Jednostki Rejestrowe Budynków"}}
   {{view App.StateTabItemView stateName="jrl" displayName="Jednostki Rejestrowe Lokali"}}
   {{view App.StateTabItemView stateName="jrg" displayName="Stare Jednostki Rejestrowe Gruntów"}}
-</ul>
-{{outlet egbilSearch}}
+  </ul>
+  <div class="span8">{{outlet egbilSearch}}</div>
+</div>
 </script>
