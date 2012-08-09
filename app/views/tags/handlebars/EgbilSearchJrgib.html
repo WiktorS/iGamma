@@ -8,9 +8,7 @@
     {{view App.StateButtonItemView icon="icon-tasks" class="btn btn-primary"}}
   </div>
 </div>
-
 <form class="well">
-
   <div class="control-group">
     <div class="controls">
       <div class="input-append">
@@ -20,22 +18,14 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <fieldset class="span5">
       <legend>Parametry</legend>
-
-
-
       {{view App.LabeledClearableInputView element=content.jrgNumber}}
       {{view App.LabeledClearableInputView element=content.jrbNumber}}
       {{view App.LabeledClearableInputView element=content.lotNumber}}
       {{view App.LabeledClearableInputView element=content.buildingNumber}}
     </fieldset>
-
-
-
-
     <fieldset class="span5">
       <legend>Adres działki</legend>
       {{view App.LabeledClearableInputView element=content.town}}
@@ -45,17 +35,17 @@
   </div>
 
   <div class="row">
-    <fieldset class="span5">
+    <fieldset class="span6">
       <legend>Sygnatura dokumentu</legend>
       {{view App.LabeledClearableInputView element=content.lotSignature}}
       {{view App.LabeledClearableInputView element=content.buildingSignature}}
       {{view App.LabeledClearableInputView element=content.localSignature}}
     </fieldset>
-    <div class="span5">
-      {{view App.LabeledClearableInputView element=content.historicalEntries asTextField=false}}
-      <button class="btn btn-danger" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
-      <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
-    </div>
+  </div>
+  <div class="row form-actions">
+    {{view App.LabeledClearableInputView element=content.historicalEntries asTextField=false}}
+    <button class="btn btn-danger" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+    <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
   </div>
 </form>
 </script>
