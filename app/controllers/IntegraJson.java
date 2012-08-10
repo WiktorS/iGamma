@@ -16,7 +16,7 @@ public class IntegraJson extends Controller {
     }
 
     public static void getRegisterUnitsByJrb(String jrb) {
-        List<RegisterUnit> result = integra.getRegisterUnitsByJrg(jrb);
+        List<RegisterUnit> result = integra.getRegisterUnitsByJrb(jrb);
         renderJSON(result);
     }
 
