@@ -1,7 +1,9 @@
 App.StateButtonItemView = Em.View.extend
   template: Em.Handlebars.compile ('<i {{bindAttr class="view.icon"}}></i>')
   tagName: "a"
+  attributeBindings: ["href", "rel", "title"]
+  href: "#"
+  rel: "tooltip"
+  title: "first tooltip"
   icon: null
-#  click: (e) -> App.router.transitionTo this.get("stateName")
-#  classNameBindings: ["active"]
-#  active: ( -> this.get("currentStateName").match("\\."+this.get("stateName")+"(\\.|$)")!=null ).property("currentStateName", "stateName")
+  classNames: ["btn", "btn-primary"]
