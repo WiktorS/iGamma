@@ -42,6 +42,41 @@ App.Router = Em.Router.extend
           connectOutlets: (router) ->
             router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrg"})
 
+        lots: RouteWithParentMemory.extend
+          route: "/dzialki"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLots"})
+
+        buildings: RouteWithParentMemory.extend
+          route: "/budynki"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchBuildings"})
+
+        locals: RouteWithParentMemory.extend
+          route: "/lokale"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLocals"})
+
+        individuals: RouteWithParentMemory.extend
+          route: "/osoby_fizyczne"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchIndividuals"})
+
+        institutions: RouteWithParentMemory.extend
+          route: "/instytucje"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchInstitutions"})
+
+        communityLands: RouteWithParentMemory.extend
+          route: "/zarzady_wspolnot_gruntowych"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchCommunityLands"})
+
+        documents: RouteWithParentMemory.extend
+          route: "/dokumenty"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchDocuments"})
+
       map: RouteWithParentMemory.extend
         route: "/mapa"
         connectOutlets: (router) ->
