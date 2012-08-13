@@ -17,24 +17,23 @@
       <a href="#" class="btn"><i class="icon-remove-sign"></i></a>
     </div>
   </div>
-  <div class="row">
-    <div class="span5">
-      {{view App.LabeledClearableInputView element=content.jrgNumber}}
-      {{view App.LabeledClearableInputView element=content.jrbNumber}}
+    <div class="row">
+      <fieldset class="span5">
+        <legend>Kryterium wyboru</legend>
+        {{view App.LabeledClearableInputView element=content.jrgNumber}}
+        {{view App.LabeledClearableInputView element=content.jrbNumber}}
+        {{view App.LabeledClearableInputView element=content.lotNumber}}
+        {{view App.LabeledClearableInputView element=content.buildingNumber}}
+      </fieldset>
+      <fieldset class="span5">
+        <legend>Adres działki</legend>
+        {{view App.LabeledClearableInputView element=content.town}}
+        {{view App.LabeledClearableInputView element=content.street}}
+        {{view App.LabeledClearableInputView element=content.houseNumber}}
+      </fieldset>
     </div>
-    <div class="span5">
-      {{view App.LabeledClearableInputView element=content.lotNumber}}
-      {{view App.LabeledClearableInputView element=content.buildingNumber}}
-    </div>
-  </div>
 
   <div class="row">
-    <fieldset class="span5">
-      <legend>Adres działki</legend>
-      {{view App.LabeledClearableInputView element=content.town}}
-      {{view App.LabeledClearableInputView element=content.street}}
-      {{view App.LabeledClearableInputView element=content.houseNumber}}
-    </fieldset>
     <fieldset class="span5">
       <legend>Sygnatura dokumentu</legend>
       {{view App.LabeledClearableInputView element=content.lotSignature}}

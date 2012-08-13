@@ -1,3 +1,57 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchLots">
-  Działki
+<div class="row">
+  <div class="btn-group span6">
+    {{view App.StateButtonItemView icon="icon-paper-clip" title="wyszukiwanie przedmiotu" class="active"}}
+    {{view App.StateButtonItemView icon="icon-user" title="wyszukiwanie osoby"}}
+    {{view App.StateButtonItemView icon="icon-group" title="wyszukiwanie instytucji"}}
+    {{view App.StateButtonItemView icon="icon-tasks" title="wyszukiwanie szczegółowe"}}
+  </div>
+</div>
+
+<form class="well">
+  <div class="control-group span11">
+    <div class="input-prepend input-append">
+      <button class="btn btn-primary" type="button">Systematyka</button>
+      <input class="span8" type="text" />
+      <a href="#" class="btn"><i class="icon-remove-sign"></i></a>
+    </div>
+  </div>
+  <div class="row">
+    <fieldset class="span5">
+      <legend>Kryterium wyboru</legend>
+      {{view App.LabeledClearableInputView element=content.jrgNumber}}
+      {{view App.LabeledClearableInputView element=content.lotNumber}}
+      {{view App.LabeledClearableInputView element=content.area}}
+    </fieldset>
+    <fieldset class="span5">
+      <legend>Adres działki</legend>
+      {{view App.LabeledClearableInputView element=content.town}}
+      {{view App.LabeledClearableInputView element=content.street}}
+      {{view App.LabeledClearableInputView element=content.houseNumber}}
+    </fieldset>
+  </div>
+
+  <div class="row">
+    <fieldset class="span5">
+      <legend>Sygnatura dokumentu</legend>
+      {{view App.LabeledClearableInputView element=content.lotSignature}}
+    </fieldset>
+    <fieldset class="span5">
+      <legend>Klasoużytki</legend>
+      {{view App.LabeledClearableInputView element=content.terrainCategoryIdentifier}}
+      {{view App.LabeledClearableInputView element=content.terrainCategoryArea}}
+    </fieldset>
+  </div>
+
+  <div class="row form-choice-buttons">
+    <div class="control-group span11">
+      <button class="btn btn-primary" type="button" data-toggle="button"><i class="icon-book"></i> Uwzględnij wpisy historyczne</button>
+    </div>
+  </div>
+
+  <div class="row form-actions">
+    <button class="btn btn-danger" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+    <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
+  </div>
+</form>
 </script>
