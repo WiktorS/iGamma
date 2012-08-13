@@ -71,9 +71,8 @@ public class IntegraMock implements Integra {
 
     @Override
     public List<RegisterUnit> getRegisterUnitsByJrb(String jrb) {
-        List<RegisterUnitMock> registerUnitMocks = RegisterUnitMock.find("jrb = ?", jrb).fetch();
         TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return gson.fromJson(gson.toJsonTree(registerUnitMocks), typeToken.getType());
+        return getMockJsonData("getRegisterUnitsByJrb", typeToken, jrb);
     }
 
     @Override

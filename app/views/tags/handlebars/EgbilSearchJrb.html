@@ -1,3 +1,12 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrb">
-  JRB
+  <div class="row">
+    <fieldset class="span5">
+      <legend>Parametry</legend>
+      {{#with content}}
+        {{view App.LabeledClearableInputView element=jrbNumber}}
+        {{view App.LabeledClearableInputView element=buildingNumber}}
+      {{/with}}
+    </fieldset>
+  </div>
+  <button class="btn btn-primary" type="button" {{action "fetch" target="controller"}}><i class="icon-ok-sign"></i> Wybierz</button>
 </script>

@@ -1,6 +1,6 @@
 <script type="text/x-handlebars" data-template-name="egbilList">
-  LISTA
-  <button {{action "clearData" target="controller.controllers.egbilListController"}}>Clear</button>
+  <button {{action "clearData" target="controller"}}>Clear</button>
+  {{#if content.length}}
   <table class="table table-striped">
     <thead>
       <tr>
@@ -17,4 +17,7 @@
       {{/each}}
     </tbody>
   </table>
+  {{else}}
+    Brak obiektów do pokazania
+  {{/if}}
 </script>
