@@ -4,6 +4,7 @@ App.StateButtonItemView = Em.View.extend
   attributeBindings: ["href", "rel", "title"]
   href: "#"
   rel: "tooltip"
-  title: "first tooltip"
+  title: null
   icon: null
   classNames: ["btn", "btn-primary"]
+  didInsertElement: -> @$().tooltip()
