@@ -12,12 +12,12 @@ App.Router = Em.Router.extend
 
     egbil: Em.Route.extend
       route: "/egbil"
-      initialState: "wyszukaj"
+      initialState: "search"
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
 
       search: RouteWithParentMemory.extend
-        route: "/wyszukaj"
+        route: "/szukaj"
         initialState: "jrgib"
         connectOutlets: (router) ->
           router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilSearch"})
