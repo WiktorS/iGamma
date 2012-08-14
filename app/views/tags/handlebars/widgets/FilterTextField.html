@@ -4,7 +4,7 @@
     <span class="help-inline">{{#if view.element.help}}{{view.element.help}}{{/if}}</span>
     <span class="input-append">
       {{view Em.TextField valueBinding="view.element.value" class="span2"}}
-      <a href="#" class="btn"><i class="icon-remove-sign"></i></a>
+      <a {{action "clearField" target="view"}} class="btn"><i class="icon-remove-sign"></i></a>
     </span>
   </label>
 </script>
