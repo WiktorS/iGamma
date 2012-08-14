@@ -3,8 +3,8 @@
     <fieldset class="span5">
       <legend>Parametry</legend>
       {{#with content}}
-        {{view App.LabeledClearableInputView element=jrbNumber}}
-        {{view App.LabeledClearableInputView element=buildingNumber}}
+        {{view App.FilterTextFieldView element=jrbNumber}}
+        {{view App.FilterTextFieldView element=buildingNumber}}
       {{/with}}
     </fieldset>
   </div>
