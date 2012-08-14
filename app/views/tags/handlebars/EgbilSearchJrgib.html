@@ -20,25 +20,25 @@
     <div class="row">
       <fieldset class="span5">
         <legend>Kryterium wyboru</legend>
-        {{view App.LabeledClearableInputView element=content.jrgNumber}}
-        {{view App.LabeledClearableInputView element=content.jrbNumber}}
-        {{view App.LabeledClearableInputView element=content.lotNumber}}
-        {{view App.LabeledClearableInputView element=content.buildingNumber}}
+        {{view App.FilterTextFieldView element=content.jrgNumber}}
+        {{view App.FilterTextFieldView element=content.jrbNumber}}
+        {{view App.FilterTextFieldView element=content.lotNumber}}
+        {{view App.FilterTextFieldView element=content.buildingNumber}}
       </fieldset>
       <fieldset class="span5">
         <legend>Adres działki</legend>
-        {{view App.LabeledClearableInputView element=content.town}}
-        {{view App.LabeledClearableInputView element=content.street}}
-        {{view App.LabeledClearableInputView element=content.houseNumber}}
+        {{view App.FilterTextFieldView element=content.town}}
+        {{view App.FilterTextFieldView element=content.street}}
+        {{view App.FilterTextFieldView element=content.houseNumber}}
       </fieldset>
     </div>
 
   <div class="row">
     <fieldset class="span5">
       <legend>Sygnatura dokumentu</legend>
-      {{view App.LabeledClearableInputView element=content.lotSignature}}
-      {{view App.LabeledClearableInputView element=content.buildingSignature}}
-      {{view App.LabeledClearableInputView element=content.localSignature}}
+      {{view App.FilterTextFieldView element=content.lotSignature}}
+      {{view App.FilterTextFieldView element=content.buildingSignature}}
+      {{view App.FilterTextFieldView element=content.localSignature}}
     </fieldset>
   </div>
 
