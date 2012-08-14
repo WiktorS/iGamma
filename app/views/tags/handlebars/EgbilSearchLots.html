@@ -1,57 +1,64 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchLots">
-<div class="row">
-  <div class="btn-group span6">
-    {{view App.IconButtonView type="subject" class="active"}}
-    {{view App.IconButtonView type="individual"}}
-    {{view App.IconButtonView type="institution"}}
-    {{view App.IconButtonView type="advanced"}}
-  </div>
-</div>
-
-<form class="well">
-  <div class="control-group span11">
-    <div class="input-prepend input-append">
-      <button class="btn btn-primary" type="button">Systematyka</button>
-      <input class="span8" type="text" />
-      <a href="#" class="btn"><i class="icon-remove-sign"></i></a>
+  <div class="row">
+    <div class="btn-group span6">
+      {{view App.IconButtonView type="subject" class="active"}}
+      {{view App.IconButtonView type="individual"}}
+      {{view App.IconButtonView type="institution"}}
+      {{view App.IconButtonView type="advanced"}}
     </div>
   </div>
-  <div class="row">
-    <fieldset class="span5">
-      <legend>Kryterium wyboru</legend>
-      {{view App.FilterTextFieldView element=content.jrgNumber}}
-      {{view App.FilterTextFieldView element=content.lotNumber}}
-      {{view App.FilterTextFieldView element=content.area}}
-    </fieldset>
-    <fieldset class="span5">
-      <legend>Adres działki</legend>
-      {{view App.FilterTextFieldView element=content.town}}
-      {{view App.FilterTextFieldView element=content.street}}
-      {{view App.FilterTextFieldView element=content.houseNumber}}
-    </fieldset>
-  </div>
+  <div class="tab-content">
 
-  <div class="row">
-    <fieldset class="span5">
-      <legend>Sygnatura dokumentu</legend>
-      {{view App.FilterTextFieldView element=content.lotSignature}}
-    </fieldset>
-    <fieldset class="span5">
-      <legend>Klasoużytki</legend>
-      {{view App.FilterTextFieldView element=content.terrainCategoryIdentifier}}
-      {{view App.FilterTextFieldView element=content.terrainCategoryArea}}
-    </fieldset>
-  </div>
+    <form id="filter-subject" class="well tab-pane active">
+      <div class="control-group span11">
+        <div class="input-prepend input-append">
+          <button class="btn btn-primary" type="button">Systematyka</button>
+          <input class="span8" type="text" />
+          <a href="#" class="btn"><i class="icon-remove-sign"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <fieldset class="span5">
+          <legend>Kryterium wyboru</legend>
+          {{view App.FilterTextFieldView element=content.jrgNumber}}
+          {{view App.FilterTextFieldView element=content.lotNumber}}
+          {{view App.FilterTextFieldView element=content.area}}
+        </fieldset>
+        <fieldset class="span5">
+          <legend>Adres działki</legend>
+          {{view App.FilterTextFieldView element=content.town}}
+          {{view App.FilterTextFieldView element=content.street}}
+          {{view App.FilterTextFieldView element=content.houseNumber}}
+        </fieldset>
+      </div>
 
-  <div class="row form-choice-buttons">
-    <div class="control-group span11">
-      <button class="btn btn-primary" type="button" data-toggle="button"><i class="icon-book"></i> Uwzględnij wpisy historyczne</button>
-    </div>
-  </div>
+      <div class="row">
+        <fieldset class="span5">
+          <legend>Sygnatura dokumentu</legend>
+          {{view App.FilterTextFieldView element=content.lotSignature}}
+        </fieldset>
+        <fieldset class="span5">
+          <legend>Klasoużytki</legend>
+          {{view App.FilterTextFieldView element=content.terrainCategoryIdentifier}}
+          {{view App.FilterTextFieldView element=content.terrainCategoryArea}}
+        </fieldset>
+      </div>
 
-  <div class="row form-actions">
-    <button class="btn btn-danger" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
-    <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
+      <div class="row form-choice-buttons">
+        <div class="control-group span11">
+          <button class="btn btn-primary" type="button" data-toggle="button"><i class="icon-book"></i> Uwzględnij wpisy historyczne</button>
+        </div>
+      </div>
+
+      <div class="row form-actions">
+        <button class="btn btn-danger" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+        <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
+      </div>
+    </form>
+
+    <form id="filter-individual" class="well tab-pane active">
+      Filtry dla osoby w ramach poszukiwania działek
+    </form>
+
   </div>
-</form>
 </script>
