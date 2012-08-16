@@ -1,2 +1,2 @@
 App.EgbilSearchBuildingsController = Em.ObjectController.extend
-  content: App.EgbilSearchBuildingsModel.create()
+  content: App.EgbilSearchModel.create()

@@ -1,2 +1,2 @@
 App.EgbilSearchLocalsController = Em.ObjectController.extend
-  content: App.EgbilSearchLocalsModel.create()
+  content: App.EgbilSearchModel.create()

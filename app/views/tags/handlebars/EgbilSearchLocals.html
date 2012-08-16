@@ -15,25 +15,25 @@
         <fieldset class="span5">
           <legend>Kryterium wyboru</legend>
           {{view App.FilterTextFieldView element=content.jrlNumber}}
-          {{view App.FilterTextFieldView element=content.registrationNumber}}
+          {{view App.FilterTextFieldView element=content.localNumber}}
           {{view App.FilterTextFieldView element=content.lotNumber}}
-          {{view App.FilterTextFieldView element=content.usefulArea}}
+          {{view App.FilterTextFieldView element=content.localArea}}
           {{view App.FilterTextFieldView element=content.localType}}
-          {{view App.FilterTextFieldView element=content.roomsCount}}
+          {{view App.FilterTextFieldView element=content.localRoomsCount}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres lokalu</legend>
           {{view App.FilterTextFieldView element=content.town}}
           {{view App.FilterTextFieldView element=content.street}}
           {{view App.FilterTextFieldView element=content.houseNumber}}
-          {{view App.FilterTextFieldView element=content.localNumber}}
+          {{view App.FilterTextFieldView element=content.flatNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterTextFieldView element=content.localSignature}}
+          {{view App.FilterTextFieldView element=content.signatureLocal}}
         </fieldset>
       </div>
 
