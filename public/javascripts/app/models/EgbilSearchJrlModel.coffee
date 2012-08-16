@@ -1,8 +1,8 @@
-App.EgbilSearchJrbModel = Em.Object.extend
-  jrbNumber: App.StandardFilterElementModel.create
-    label: "Numer JRB"
-  buildingNumber: App.StandardFilterElementModel.create
-    label: "Numer budynku"
+App.EgbilSearchJrlModel = Em.Object.extend
+  jrlNumber: App.StandardFilterElementModel.create
+    label: "Numer JRL"
+  localNumber: App.StandardFilterElementModel.create
+    label: "Numer ewidencyjny lokalu"
     help: "[%]"
   town: App.StandardFilterElementModel.create
     label: "Miejscowość"
@@ -13,8 +13,8 @@ App.EgbilSearchJrbModel = Em.Object.extend
   houseNumber: App.StandardFilterElementModel.create
     label: "Numer porządkowy"
     help: "[%]"
-  buildingSignature: App.StandardFilterElementModel.create
-    label: "Dokument budynku"
+  localSignature: App.StandardFilterElementModel.create
+    label: "Dokument lokalu"
     help: "[%]"
   historicalEntries: App.StandardFilterElementModel.create
     label: "Uwzględnij wpisy historyczne"
