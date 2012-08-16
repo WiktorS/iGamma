@@ -1,3 +1,57 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchBuildings">
-  Budynki
+  <div class="row">
+    <div class="btn-group span6">
+      {{view App.IconButtonView type="subject" class="active"}}
+      {{view App.IconButtonView type="individual"}}
+      {{view App.IconButtonView type="institution"}}
+      {{view App.IconButtonView type="advanced"}}
+    </div>
+  </div>
+  <div class="tab-content">
+
+    <form id="filter-subject" class="well tab-pane active">
+      {{view App.FilterSystematicsView}}
+      <div class="row">
+        <fieldset class="span5">
+          <legend>Kryterium wyboru</legend>
+          {{view App.FilterTextFieldView element=content.lotNumber}}
+          {{view App.FilterTextFieldView element=content.buildingNumber}}
+          {{view App.FilterTextFieldView element=content.buildArea}}
+          {{view App.FilterTextFieldView element=content.usefulArea}}
+          {{view App.FilterTextFieldView element=content.buildingType}}
+          {{view App.FilterTextFieldView element=content.highestLevel}}
+          {{view App.FilterTextFieldView element=content.lowestLevel}}
+        </fieldset>
+        <fieldset class="span5">
+          <legend>Adres budynku</legend>
+          {{view App.FilterTextFieldView element=content.town}}
+          {{view App.FilterTextFieldView element=content.street}}
+          {{view App.FilterTextFieldView element=content.houseNumber}}
+        </fieldset>
+      </div>
+
+      <div class="row">
+        <fieldset class="span5">
+          <legend>Sygnatura dokumentu</legend>
+          {{view App.FilterTextFieldView element=content.lotSignature}}
+        </fieldset>
+      </div>
+
+      <div class="row form-choice-buttons">
+        <div class="control-group span11">
+          <button class="btn btn-primary" type="button" data-toggle="button"><i class="icon-book"></i> Uwzględnij wpisy historyczne</button>
+        </div>
+      </div>
+
+      <div class="row form-actions">
+        <button class="btn btn-danger" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+        <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
+      </div>
+    </form>
+
+    <form id="filter-individual" class="well tab-pane">
+      Filtry dla osoby w ramach poszukiwania działek
+    </form>
+
+  </div>
 </script>
