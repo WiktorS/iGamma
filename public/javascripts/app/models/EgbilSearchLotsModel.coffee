@@ -4,7 +4,7 @@ App.EgbilSearchLotsModel = Em.Object.extend
   lotNumber: App.StandardFilterElementModel.create
     label: "Numer działki"
     help: "[%][,]"
-  area: App.StandardFilterElementModel.create
+  registrationArea: App.StandardFilterElementModel.create
     label: "Powierzchnia ewidencyjna"
   terrainCategoryIdentifier: App.StandardFilterElementModel.create
     label: "Oznaczenie"
