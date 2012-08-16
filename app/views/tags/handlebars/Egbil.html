@@ -1,9 +1,9 @@
 <script type="text/x-handlebars" data-template-name="egbil">
   <div class="tabbable">
     <ul class="nav nav-pills">
-      {{view App.StateTabItemView stateName="map" displayName="Pokaż mapę"}}
-      {{view App.StateTabItemView stateName="search" displayName="Wybór obiektów"}}
-      {{view App.StateTabItemView stateName="list" displayName="Lista obiektów"}}
+      {{view App.TabItemView stateName="map" displayName="Pokaż mapę"}}
+      {{view App.TabItemView stateName="search" displayName="Wybór obiektów"}}
+      {{view App.TabItemView stateName="list" displayName="Lista obiektów"}}
     </ul>
     {{outlet egbil}}
   </div>
