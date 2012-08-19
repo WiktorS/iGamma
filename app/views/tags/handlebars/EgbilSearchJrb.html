@@ -3,10 +3,11 @@
   <div class="tab-content">
 
     <form id="filter-subject" class="well tab-pane active">
+      <legend>Kryterium wyboru</legend>
       {{view App.FilterSystematicsView}}
       <div class="row">
         <fieldset class="span5">
-          <legend>Kryterium wyboru</legend>
+          <legend>&nbsp;</legend>
           {{view App.FilterTextFieldView element=content.jrbNumber}}
           {{view App.FilterTextFieldView element=content.buildingNumber}}
         </fieldset>

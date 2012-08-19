@@ -1,12 +1,14 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrl">
   {{view App.FilterTypesView}}
-  <div class="tab-content">
+  <div class="tab-content well">
 
-    <form id="filter-subject" class="well tab-pane active">
+    <form id="filter-subject" class="tab-pane active">
+      <legend>Kryterium wyboru</legend>
       {{view App.FilterSystematicsView}}
+
       <div class="row">
         <fieldset class="span5">
-          <legend>Kryterium wyboru</legend>
+          <legend>&nbsp;</legend>
           {{view App.FilterTextFieldView element=content.jrlNumber}}
           {{view App.FilterTextFieldView element=content.localNumber}}
         </fieldset>
@@ -37,7 +39,7 @@
       </div>
     </form>
 
-    <form id="filter-individual" class="well tab-pane">
+    <form id="filter-individual" class="tab-pane">
       Filtry dla osoby w ramach poszukiwania JRLów
     </form>
 
