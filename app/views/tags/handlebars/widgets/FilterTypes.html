@@ -1,0 +1,15 @@
+<script type="text/x-handlebars" data-template-name="filterTypes">
+  <div class="row">
+    <div class="btn-group span11">
+      <button class="btn dropdown-toggle" data-toggle="dropdown">{{view.currentSelection}} <i class="icon-caret-down"></i></button>
+      <ul class="dropdown-menu">
+        {{#each view.enabledFilters}}
+          {{#if prependWithDivider}}
+          <li class="divider"></li>
+          {{/if}}
+          <li {{bindAttr href="url"}} data-toggle="tab"><a {{action "selectFilter" target="view"}}>{{unbound title}}</a></li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</script>

@@ -1,12 +1,5 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchLocals">
-  <div class="row">
-    <div class="btn-group span6">
-      {{view App.IconButtonView type="subject" class="active"}}
-      {{view App.IconButtonView type="individual"}}
-      {{view App.IconButtonView type="institution"}}
-      {{view App.IconButtonView type="advanced"}}
-    </div>
-  </div>
+  {{view App.FilterTypesView}}
   <div class="tab-content">
 
     <form id="filter-subject" class="well tab-pane active">
