@@ -11,7 +11,7 @@ App.EgbilSearchModel = Em.Object.extend
     label: "Numer działki"
     help: "[%][,]"
   lotArea: App.StandardFilterElementModel.create
-    label: "Powierzchnia ewidencyjna"
+    label: "Pow. ewidencyjna"
 
   terrainCategoryIdentifier: App.StandardFilterElementModel.create
     label: "Oznaczenie"
@@ -26,12 +26,12 @@ App.EgbilSearchModel = Em.Object.extend
   buildingType: App.StandardFilterElementModel.create
     label: "Rodzaj"
   buildingHighestLevel: App.StandardFilterElementModel.create
-    label: "Numer najwyższej kondygnacji"
+    label: "Nr najwyższej kondygn."
   buildingLowestLevel: App.StandardFilterElementModel.create
-    label: "Numer najniższej kondygnacji"
+    label: "Nr najniższej kondygn."
 
   localNumber: App.StandardFilterElementModel.create
-    label: "Numer ewidencyjny lokalu"
+    label: "Numer ewid. lokalu"
     help: "[%]"
   localArea: App.StandardFilterElementModel.create
     label: "Powierzchnia użytkowa"

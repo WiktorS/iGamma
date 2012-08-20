@@ -1,9 +1,8 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrl">
   {{view App.FilterTypesView}}
-  <div class="tab-content well">
+  <div class="tab-content">
 
     <form id="filter-subject" class="tab-pane active">
-      <legend>Kryterium wyboru</legend>
       {{view App.FilterSystematicsView}}
 
       <div class="row">
@@ -27,14 +26,9 @@
         </fieldset>
       </div>
 
-      <div class="row form-choice-buttons">
-        <div class="control-group span11">
-          <button class="btn btn-primary" type="button" data-toggle="button"><i class="icon-book"></i> Uwzględnij wpisy historyczne</button>
-        </div>
-      </div>
-
       <div class="row form-actions">
-        <button class="btn btn-danger" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+        <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
+        <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
         <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
       </div>
     </form>
