@@ -3,6 +3,7 @@ App.FilterTypesView = Em.View.extend
   currentSelection: null
   enabledFilters: null
   defaultEnabledFilters: ["subject", "individual", "institution", "advanced"]
+  classNames: ["row", "filter-types"]
   init: ->
     @_super()
     if @enabledFilters==null
