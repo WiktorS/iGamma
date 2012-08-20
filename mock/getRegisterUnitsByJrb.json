@@ -1,27 +1,29 @@
 [
   {
     "id"  : 1,
-    "jrg" : "G151",
-    "jrb" : "X1"
+    "marker" : "",
+    "jrbNumber" : "B1",
+    "precinct" : "0001 - QWERTY",
+    "cadastralUnit" : "Miasto XYZ",
+    "creationProof" : "założ. ewid. gruntów",
+    "creationDate" : ""
   },
   {
     "id"  : 2,
-    "jrg" : "G152",
-    "jrb" : "X2"
+    "marker" : "X",
+    "jrbNumber" : "B2",
+    "creationDate" : "2001-01-01"
   },
   {
     "id"  : 3,
-    "jrg" : "G153",
-    "jrb" : "X3"
+    "jrbNumber" : "B3"
   },
   {
     "id"  : 4,
-    "jrg" : "G154",
-    "jrb" : "X4"
+    "jrbNumber" : "B4"
   },
   {
     "id"  : 5,
-    "jrg" : "G155",
-    "jrb" : "X5"
+    "jrbNumber" : "B5"
   }
 ]
