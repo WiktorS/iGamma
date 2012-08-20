@@ -1,15 +1,20 @@
 App.FilterTypesView = Em.View.extend
   templateName: "filterTypes"
   currentSelection: null
+  filterType: null
   enabledFilters: null
-  defaultEnabledFilters: ["subject", "individual", "institution", "advanced"]
+  defaultEnabledFilters: ["subject", "individual", "institution"]
   classNames: ["row", "filter-types"]
   init: ->
     @_super()
-    if @enabledFilters==null
-      @set "enabledFilters", @defaultEnabledFilters
-    @set "enabledFilters", (filterDescriptions[title] for title in @enabledFilters)
-    @set "currentSelection", @enabledFilters[0].title
+    filterTypes = []
+    if @filterType==null
+      filterTypes = @defaultEnabledFilters.slice()
+    else
+      filterTypes = [@filterType]
+    filterTypes.push("advanced")
+    @enabledFilters = (filterDescriptions[title] for title in filterTypes)
+    @currentSelection = @enabledFilters[0].title
   selectFilter: (event) ->
     @set "currentSelection", event.target.innerHTML
 
