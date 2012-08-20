@@ -1,22 +1,9 @@
 <script type="text/x-handlebars" data-template-name="egbilList">
   <button {{action "clearData" target="controller"}}>Clear</button>
   {{#if content.length}}
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>JRB</th>
-        <th>JRG</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each content}}
-      <tr>
-        <td>{{jrb}}</td>
-        <td>{{jrg}}</td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
+  {{view App.TableView contentBinding="content" columns="marker,jrbNumber,precinct,cadastralUnit,creationProof,creationDate"}}
+  <button {{action "choose"}}>Wybierz &gt;&gt;</button>
+  <button {{action "close" target="controller"}}>Zamknij</button>
   {{else}}
     Brak obiektów do pokazania
   {{/if}}
