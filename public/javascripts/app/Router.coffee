@@ -67,6 +67,11 @@ App.Router = Em.Router.extend
           connectOutlets: (router) ->
             router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchInstitutions"})
 
+        groups: RouteWithParentMemory.extend
+          route: "/podmioty_grupowe"
+          connectOutlets: (router) ->
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchGroups"})
+
         communityLands: RouteWithParentMemory.extend
           route: "/zarzady_wspolnot_gruntowych"
           connectOutlets: (router) ->

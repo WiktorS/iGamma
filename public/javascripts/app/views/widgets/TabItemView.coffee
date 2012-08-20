@@ -1,4 +1,4 @@
-App.StateTabItemView = Em.View.extend
+App.TabItemView = Em.View.extend
   template: Em.Handlebars.compile ("<a>{{view.displayName}}</a>")
   tagName: "li"
   displayName: null

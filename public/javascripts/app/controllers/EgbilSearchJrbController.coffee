@@ -1,5 +1,5 @@
 App.EgbilSearchJrbController = Em.Controller.extend
-  content: App.EgbilSearchJrbModel.create()
+  content: App.EgbilSearchModel.create()
   fetch: (event) ->
     $.ajax
       url: "/getRegisterUnitsByJrb.json"

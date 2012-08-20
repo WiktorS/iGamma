@@ -10,9 +10,7 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/AppBootstrap.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/models/StandardFilterElementModel.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilSearchJrgibModel.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilSearchJrbModel.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilSearchLotsModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilSearchModel.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilController.coffee'}"></script>
@@ -23,6 +21,8 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchJrlController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchJrgController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchLotsController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchBuildingsController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchLocalsController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilListController.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationView.coffee'}"></script>
 
@@ -39,15 +39,17 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLocalsView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchIndividualsView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchInstitutionsView.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchGroupsView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchCommunityLandsView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchDocumentsView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/LabeledClearableInputView.coffee'}"></script>
 
-<script type="text/javascript" src="@{'/public/javascripts/app/views/StateTabItemView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/StateButtonItemView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/TabItemView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/IconButtonView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTextFieldView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterSystematicsView.coffee'}"></script>
 
 #{get 'moreScripts' /}
 
@@ -65,10 +67,12 @@
       #{handlebars.EgbilSearchLocals /}
       #{handlebars.EgbilSearchIndividuals /}
       #{handlebars.EgbilSearchInstitutions /}
+      #{handlebars.EgbilSearchGroups /}
       #{handlebars.EgbilSearchCommunityLands /}
       #{handlebars.EgbilSearchDocuments /}
     #{handlebars.EgbilList /}
   #{handlebars.Changes /}
   #{handlebars.Prints /}
 
-#{handlebars.widgets.LabeledClearableInput /}
+#{handlebars.widgets.FilterTextField /}
+#{handlebars.widgets.FilterSystematics /}
