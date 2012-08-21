@@ -7,7 +7,7 @@ App.EgbilListJrModel = Em.Object.extend
   cadastralUnit: null
   creationProof: null
   creationDate: null
-  regin: null
+  regon: null
 
   init: ->
     @_super()
@@ -27,5 +27,5 @@ App.EgbilListJrModel = Em.Object.extend
       label: "Dowód założenia"
     @creationDate = App.StandardFilterElementModel.create
       label: "Data założenia"
-    @regin = App.StandardFilterElementModel.create
+    @regon = App.StandardFilterElementModel.create
       label: "REGON"
