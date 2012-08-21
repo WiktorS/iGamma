@@ -1,3 +1,3 @@
 App.FilterSystematicsView = Em.View.extend
   templateName: "filterSystematics"
-  classNames: ["control-group", "span11"]
+  classNames: ["row"]

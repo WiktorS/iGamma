@@ -1,19 +1,12 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrgib">
-  <div class="row">
-    <div class="btn-group span6">
-      {{view App.IconButtonView type="subject" class="active"}}
-      {{view App.IconButtonView type="individual"}}
-      {{view App.IconButtonView type="institution"}}
-      {{view App.IconButtonView type="advanced"}}
-    </div>
-  </div>
+  {{view App.FilterTypesView}}
   <div class="tab-content">
 
-    <form id="filter-subject" class="well tab-pane active">
+    <form id="filter-subject" class="tab-pane active">
       {{view App.FilterSystematicsView}}
       <div class="row">
         <fieldset class="span5">
-          <legend>Kryterium wyboru</legend>
+          <legend>&nbsp;</legend>
           {{view App.FilterTextFieldView element=content.jrgNumber}}
           {{view App.FilterTextFieldView element=content.jrbNumber}}
           {{view App.FilterTextFieldView element=content.lotNumber}}
@@ -36,20 +29,48 @@
         </fieldset>
       </div>
 
-      <div class="row form-choice-buttons">
-        <div class="control-group span11">
-          <button class="btn btn-primary" type="button" data-toggle="button"><i class="icon-book"></i> Uwzględnij wpisy historyczne</button>
-        </div>
-      </div>
-
       <div class="row form-actions">
-        <button class="btn btn-danger" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+        <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
+        <button class="btn" type="button"><i class="icon-ban-circle"></i> Wyczyść</button>
         <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
       </div>
     </form>
 
-    <form id="filter-individual" class="well tab-pane">
-      Filtry dla osoby w ramach poszukiwania JRGiBów
+    <form id="filter-individual" class="tab-pane">
+      <div class="row">
+        <fieldset class="span5">
+          <legend>&nbsp;</legend>
+          {{view App.FilterTextFieldView element=content.personSex}}
+          {{view App.FilterTextFieldView element=content.personLastName}}
+          {{view App.FilterTextFieldView element=content.personFirstName}}
+          {{view App.FilterTextFieldView element=content.personPesel}}
+          {{view App.FilterTextFieldView element=content.personDocument}}
+          {{view App.FilterTextFieldView element=content.personStatus}}
+        </fieldset>
+        <fieldset class="span5">
+          <legend>Adres zamieszkania</legend>
+          {{view App.FilterTextFieldView element=content.postalCode}}
+          {{view App.FilterTextFieldView element=content.town}}
+          {{view App.FilterTextFieldView element=content.street}}
+          {{view App.FilterTextFieldView element=content.houseNumber}}
+          {{view App.FilterTextFieldView element=content.flatNumber}}
+        </fieldset>
+      </div>
+
+      <div class="row">
+        <fieldset class="span5">
+          <legend>Dane udziałowe</legend>
+          {{view App.FilterTextFieldView element=content.shareCharacter}}
+          {{view App.FilterTextFieldView element=content.shareRegisterGroup}}
+          {{view App.FilterTextFieldView element=content.shareValue}}
+        </fieldset>
+      </div>
+
+      <div class="row form-actions">
+        <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
+        <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+        <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
+      </div>
     </form>
 
   </div>

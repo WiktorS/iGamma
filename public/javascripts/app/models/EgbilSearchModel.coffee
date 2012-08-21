@@ -11,7 +11,7 @@ App.EgbilSearchModel = Em.Object.extend
     label: "Numer działki"
     help: "[%][,]"
   lotArea: App.StandardFilterElementModel.create
-    label: "Powierzchnia ewidencyjna"
+    label: "Pow. ewidencyjna"
 
   terrainCategoryIdentifier: App.StandardFilterElementModel.create
     label: "Oznaczenie"
@@ -26,12 +26,12 @@ App.EgbilSearchModel = Em.Object.extend
   buildingType: App.StandardFilterElementModel.create
     label: "Rodzaj"
   buildingHighestLevel: App.StandardFilterElementModel.create
-    label: "Numer najwyższej kondygnacji"
+    label: "Nr najwyższej kondygn."
   buildingLowestLevel: App.StandardFilterElementModel.create
-    label: "Numer najniższej kondygnacji"
+    label: "Nr najniższej kondygn."
 
   localNumber: App.StandardFilterElementModel.create
-    label: "Numer ewidencyjny lokalu"
+    label: "Numer ewid. lokalu"
     help: "[%]"
   localArea: App.StandardFilterElementModel.create
     label: "Powierzchnia użytkowa"
@@ -40,6 +40,9 @@ App.EgbilSearchModel = Em.Object.extend
   localRoomsCount: App.StandardFilterElementModel.create
     label: "Liczba izb"
 
+  postalCode: App.StandardFilterElementModel.create
+    label: "Kod pocztowy"
+    help: "[%]"
   town: App.StandardFilterElementModel.create
     label: "Miejscowość"
     help: "[%]"
@@ -62,6 +65,41 @@ App.EgbilSearchModel = Em.Object.extend
   signatureLocal: App.StandardFilterElementModel.create
     label: "Dokument lokalu"
     help: "[%]"
+
+  personSex: App.StandardFilterElementModel.create
+    label: "Płeć"
+  personFirstName: App.StandardFilterElementModel.create
+    label: "Imię"
+    help: "[%]"
+  personMiddleName: App.StandardFilterElementModel.create
+    label: "Drugie imię"
+    help: "[%]"
+  personLastName: App.StandardFilterElementModel.create
+    label: "Nazwisko"
+    help: "[%]"
+  personFatherName: App.StandardFilterElementModel.create
+    label: "Imię ojca"
+    help: "[%]"
+  personMotherName: App.StandardFilterElementModel.create
+    label: "Imię matki"
+    help: "[%]"
+  personPesel: App.StandardFilterElementModel.create
+    label: "PESEL"
+    help: "[%]"
+  personDocument: App.StandardFilterElementModel.create
+    label: "Ozn. dok. tożsamości"
+    help: "[%]"
+  personStatus: App.StandardFilterElementModel.create
+    label: "Status podmiotu"
+  personNationality: App.StandardFilterElementModel.create
+    label: "Obywatelstwo"
+
+  shareCharacter: App.StandardFilterElementModel.create
+    label: "Charakter władania"
+  shareRegisterGroup: App.StandardFilterElementModel.create
+    label: "Grupa rejestrowa"
+  shareValue: App.StandardFilterElementModel.create
+    label: "Udział"
 
   historicalEntries: App.StandardFilterElementModel.create
     label: "Uwzględnij wpisy historyczne"
