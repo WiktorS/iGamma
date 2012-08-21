@@ -7,21 +7,21 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.jrbNumber}}
-          {{view App.FilterTextFieldView element=content.buildingNumber}}
+          {{view App.FilterTextFieldView element=content.registerUnit.jrb}}
+          {{view App.FilterTextFieldView element=content.building.number}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres budynku</legend>
-          {{view App.FilterTextFieldView element=content.town}}
-          {{view App.FilterTextFieldView element=content.street}}
-          {{view App.FilterTextFieldView element=content.houseNumber}}
+          {{view App.FilterTextFieldView element=content.address.town}}
+          {{view App.FilterTextFieldView element=content.address.street}}
+          {{view App.FilterTextFieldView element=content.address.houseNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterTextFieldView element=content.signatureBuilding}}
+          {{view App.FilterTextFieldView element=content.signature.building}}
         </fieldset>
       </div>
 
