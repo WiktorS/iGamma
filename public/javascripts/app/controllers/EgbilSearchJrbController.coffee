@@ -1,20 +1,24 @@
 App.EgbilSearchJrbController = Em.Controller.extend
   content: App.EgbilSearchModel.create()
+  columns: [
+    "check"
+    "show"
+    "marker"
+    "jrbNumber"
+    "precinct"
+    "cadastralUnit"
+    "creationProof"
+    "creationDate"
+  ]
+
   fetch: (event) ->
     $.ajax
       url: "/getRegisterUnitsByJrb.json"
       dataType: "json"
       data: {"jrb": @content.jrbNumber.value}
-      success: (data) ->
-        list = []
-        $.each(data, (i, item) ->
-          model = App.EgbilListJrModel.create {}
-          $.each(item, (key, value) =>
-            model.get(key)?.value = value
-          )
-          list.push model
-        )
-        App.router.egbilListController.set "content", list
+      success: (data) =>
+        App.router.egbilListController.set "columns", @columns
+        App.router.egbilListController.set "content", data.map(App.Common.toModel, App.EgbilListModel)
         App.router.transitionTo "list"
       error: (jqXHR, textStatus, errorThrown) ->
         alert errorThrown

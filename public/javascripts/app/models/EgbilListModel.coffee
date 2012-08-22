@@ -1,4 +1,6 @@
-App.EgbilListJrModel = Em.Object.extend
+App.EgbilListModel = Em.Object.extend
+  check: null
+  show: null
   marker: null
   jrgNumber: null
   jrbNumber: null
@@ -11,6 +13,12 @@ App.EgbilListJrModel = Em.Object.extend
 
   init: ->
     @_super()
+    @check = App.StandardFilterElementModel.create
+      label: ""
+      viewClass: App.EgbilListTableCellCheckBoxView
+    @show = App.StandardFilterElementModel.create
+      label: "Pokaż"
+      viewClass: App.EgbilListTableCellShowView
     @marker = App.StandardFilterElementModel.create
       label: "Oznaczenie"
     @jrgNumber = App.StandardFilterElementModel.create

@@ -1,7 +1,10 @@
 App.EgbilListController = Em.ArrayController.extend
+  columns: null
+
   init: ->
     @_super()
     @clearData()
 
-  clearData: -> @set "content", []
-  close: -> App.router.transitionTo "egbil.search"
+  clearData: ->
+    @set "content", Em.A()
+    @set "columns", Em.A()

@@ -1,10 +1,3 @@
 <script type="text/x-handlebars" data-template-name="egbilList">
-  <button {{action "clearData" target="controller"}}>Clear</button>
-  {{#if content.length}}
-  {{view App.TableView contentBinding="content" columns="marker,jrbNumber,precinct,cadastralUnit,creationProof,creationDate"}}
-  <button {{action "choose"}}>Wybierz &gt;&gt;</button>
-  <button {{action "close" target="controller"}}>Zamknij</button>
-  {{else}}
-    Brak obiektów do pokazania
-  {{/if}}
+  {{view App.EgbilListTableView contentBinding="content" columnsBinding="columns"}}
 </script>
