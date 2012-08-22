@@ -126,6 +126,11 @@ App.EgbilSearchModel = Em.Object.extend
       label: "Nazwa sądu rej."
       help: "[%]"
 
+  landCommunity:
+    name: App.StandardFilterElementModel.create
+      label: "Nazwa spółki"
+      help: "[%]"
+
   share:
     character: App.StandardFilterElementModel.create
       label: "Charakter władania"

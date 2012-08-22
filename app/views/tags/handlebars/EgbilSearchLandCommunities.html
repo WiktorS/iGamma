@@ -1,19 +1,12 @@
-<script type="text/x-handlebars" data-template-name="egbilSearchInstitutionsOrGroups">
-  {{view App.FilterTypesView filterType="institution"}}
+<script type="text/x-handlebars" data-template-name="egbilSearchLandCommunities">
+  {{view App.FilterTypesView filterType="landCommunity"}}
   <div class="tab-content">
 
     <form id="filter-individual" class="tab-pane active">
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.institution.shortName}}
-          {{view App.FilterTextFieldView element=content.institution.fullName}}
-          {{view App.FilterTextFieldView element=content.institution.status}}
-          {{view App.FilterTextFieldView element=content.institution.regon}}
-          {{view App.FilterTextFieldView element=content.institution.nip}}
-          {{view App.FilterTextFieldView element=content.institution.registerName}}
-          {{view App.FilterTextFieldView element=content.institution.registerNumber}}
-          {{view App.FilterTextFieldView element=content.institution.registerCourt}}
+          {{view App.FilterTextFieldView element=content.landCommunity.name}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres</legend>
@@ -22,6 +15,15 @@
           {{view App.FilterTextFieldView element=content.address.street}}
           {{view App.FilterTextFieldView element=content.address.houseNumber}}
           {{view App.FilterTextFieldView element=content.address.flatNumber}}
+        </fieldset>
+      </div>
+      <div class="row">
+        <fieldset class="span5">
+          <legend>Wspólnota gruntowa</legend>
+          {{view App.FilterTextFieldView element=content.institution.shortName}}
+          {{view App.FilterTextFieldView element=content.institution.fullName}}
+          {{view App.FilterTextFieldView element=content.institution.regon}}
+          {{view App.FilterTextFieldView element=content.institution.nip}}
         </fieldset>
       </div>
 

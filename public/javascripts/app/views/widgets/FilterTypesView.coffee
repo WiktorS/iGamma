@@ -31,9 +31,9 @@ filterDescriptions["institution"] = {
   title: "Wybór według instytucji / podmiotu grupowego"
   url: "#filter-institution"
 }
-filterDescriptions["communityLand"] = {
+filterDescriptions["landCommunity"] = {
   title: "Wybór według zarządu wspólnoty gruntowej"
-  url: "#filter-communityLand"
+  url: "#filter-landCommunity"
 }
 filterDescriptions["advanced"] = {
   prependWithDivider: true
