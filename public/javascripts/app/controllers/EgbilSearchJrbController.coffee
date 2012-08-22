@@ -15,7 +15,7 @@ App.EgbilSearchJrbController = Em.Controller.extend
     $.ajax
       url: "/getRegisterUnitsByJrb.json"
       dataType: "json"
-      data: {"jrb": @content.jrbNumber.value}
+      data: {"jrb": @content.registerUnit.jrb.value}
       success: (data) =>
         App.router.egbilListController.set "columns", @columns
         App.router.egbilListController.set "content", data.map(App.Common.toModel, App.EgbilListModel)
