@@ -90,7 +90,10 @@ App.Router = Em.Router.extend
       list: RouteWithParentMemory.extend
         route: "/lista"
         connectOutlets: (router) ->
-          router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
+          if Em.empty(router.get("egbilListController").content)
+            App.router.transitionTo "egbil.search"
+          else
+            router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
 
     changes: Em.Route.extend
       route: "/zmiany"
