@@ -7,26 +7,26 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.lotNumber}}
-          {{view App.FilterTextFieldView element=content.buildingNumber}}
-          {{view App.FilterTextFieldView element=content.buildingArea}}
-          {{view App.FilterTextFieldView element=content.localArea}}
-          {{view App.FilterTextFieldView element=content.buildingType}}
-          {{view App.FilterTextFieldView element=content.buildingHighestLevel}}
-          {{view App.FilterTextFieldView element=content.buildingLowestLevel}}
+          {{view App.FilterTextFieldView element=content.lot.number}}
+          {{view App.FilterTextFieldView element=content.building.number}}
+          {{view App.FilterTextFieldView element=content.building.area}}
+          {{view App.FilterTextFieldView element=content.local.area}}
+          {{view App.FilterTextFieldView element=content.building.type}}
+          {{view App.FilterTextFieldView element=content.building.highestLevel}}
+          {{view App.FilterTextFieldView element=content.building.lowestLevel}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres budynku</legend>
-          {{view App.FilterTextFieldView element=content.town}}
-          {{view App.FilterTextFieldView element=content.street}}
-          {{view App.FilterTextFieldView element=content.houseNumber}}
+          {{view App.FilterTextFieldView element=content.address.town}}
+          {{view App.FilterTextFieldView element=content.address.street}}
+          {{view App.FilterTextFieldView element=content.address.houseNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterTextFieldView element=content.signatureBuilding}}
+          {{view App.FilterTextFieldView element=content.signature.building}}
         </fieldset>
       </div>
 

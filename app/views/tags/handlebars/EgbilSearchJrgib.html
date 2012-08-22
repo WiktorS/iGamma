@@ -7,32 +7,26 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.jrgNumber}}
-          {{view App.FilterTextFieldView element=content.jrbNumber}}
-          {{view App.FilterTextFieldView element=content.lotNumber}}
-          {{view App.FilterTextFieldView element=content.buildingNumber}}
+          {{view App.FilterTextFieldView element=content.registerUnit.jrg}}
+          {{view App.FilterTextFieldView element=content.registerUnit.jrb}}
+          {{view App.FilterTextFieldView element=content.lot.number}}
+          {{view App.FilterTextFieldView element=content.building.number}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres działki</legend>
-          {{view App.FilterTextFieldView element=content.town}}
-          {{view App.FilterTextFieldView element=content.street}}
-          {{view App.FilterTextFieldView element=content.houseNumber}}
+          {{view App.FilterTextFieldView element=content.address.town}}
+          {{view App.FilterTextFieldView element=content.address.street}}
+          {{view App.FilterTextFieldView element=content.address.houseNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterTextFieldView element=content.signatureLot}}
-          {{view App.FilterTextFieldView element=content.signatureBuilding}}
-          {{view App.FilterTextFieldView element=content.signatureLocal}}
+          {{view App.FilterTextFieldView element=content.signature.lot}}
+          {{view App.FilterTextFieldView element=content.signature.building}}
+          {{view App.FilterTextFieldView element=content.signature.local}}
         </fieldset>
-      </div>
-
-      <div class="row form-actions">
-        <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
-        <button class="btn" type="button"><i class="icon-ban-circle"></i> Wyczyść</button>
-        <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
       </div>
     </form>
 
@@ -40,38 +34,37 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.personSex}}
-          {{view App.FilterTextFieldView element=content.personLastName}}
-          {{view App.FilterTextFieldView element=content.personFirstName}}
-          {{view App.FilterTextFieldView element=content.personPesel}}
-          {{view App.FilterTextFieldView element=content.personDocument}}
-          {{view App.FilterTextFieldView element=content.personStatus}}
+          {{view App.FilterTextFieldView element=content.person.sex}}
+          {{view App.FilterTextFieldView element=content.person.lastName}}
+          {{view App.FilterTextFieldView element=content.person.firstName}}
+          {{view App.FilterTextFieldView element=content.person.pesel}}
+          {{view App.FilterTextFieldView element=content.person.document}}
+          {{view App.FilterTextFieldView element=content.person.status}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres zamieszkania</legend>
-          {{view App.FilterTextFieldView element=content.postalCode}}
-          {{view App.FilterTextFieldView element=content.town}}
-          {{view App.FilterTextFieldView element=content.street}}
-          {{view App.FilterTextFieldView element=content.houseNumber}}
-          {{view App.FilterTextFieldView element=content.flatNumber}}
+          {{view App.FilterTextFieldView element=content.address.postalCode}}
+          {{view App.FilterTextFieldView element=content.address.town}}
+          {{view App.FilterTextFieldView element=content.address.street}}
+          {{view App.FilterTextFieldView element=content.address.houseNumber}}
+          {{view App.FilterTextFieldView element=content.address.flatNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Dane udziałowe</legend>
-          {{view App.FilterTextFieldView element=content.shareCharacter}}
-          {{view App.FilterTextFieldView element=content.shareRegisterGroup}}
-          {{view App.FilterTextFieldView element=content.shareValue}}
+          {{view App.FilterTextFieldView element=content.share.character}}
+          {{view App.FilterTextFieldView element=content.share.registerGroup}}
+          {{view App.FilterTextFieldView element=content.share.value}}
         </fieldset>
-      </div>
-
-      <div class="row form-actions">
-        <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
-        <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
-        <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
       </div>
     </form>
 
+    <div class="row form-actions">
+      <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
+      <button class="btn" type="button"><i class="icon-ban-circle"></i> Wyczyść</button>
+      <button class="btn btn-primary" type="button"><i class="icon-ok-sign"></i> Wybierz</button>
+    </div>
   </div>
 </script>

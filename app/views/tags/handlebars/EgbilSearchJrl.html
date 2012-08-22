@@ -8,21 +8,21 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.jrlNumber}}
-          {{view App.FilterTextFieldView element=content.localNumber}}
+          {{view App.FilterTextFieldView element=content.registerUnit.jrl}}
+          {{view App.FilterTextFieldView element=content.local.number}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres lokalu</legend>
-          {{view App.FilterTextFieldView element=content.town}}
-          {{view App.FilterTextFieldView element=content.street}}
-          {{view App.FilterTextFieldView element=content.houseNumber}}
+          {{view App.FilterTextFieldView element=content.address.town}}
+          {{view App.FilterTextFieldView element=content.address.street}}
+          {{view App.FilterTextFieldView element=content.address.houseNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterTextFieldView element=content.signatureLocal}}
+          {{view App.FilterTextFieldView element=content.signature.local}}
         </fieldset>
       </div>
 

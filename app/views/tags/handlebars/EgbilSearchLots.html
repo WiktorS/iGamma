@@ -8,27 +8,27 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.jrgNumber}}
-          {{view App.FilterTextFieldView element=content.lotNumber}}
-          {{view App.FilterTextFieldView element=content.lotArea}}
+          {{view App.FilterTextFieldView element=content.registerUnit.jrg}}
+          {{view App.FilterTextFieldView element=content.lot.number}}
+          {{view App.FilterTextFieldView element=content.lot.area}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres działki</legend>
-          {{view App.FilterTextFieldView element=content.town}}
-          {{view App.FilterTextFieldView element=content.street}}
-          {{view App.FilterTextFieldView element=content.houseNumber}}
+          {{view App.FilterTextFieldView element=content.address.town}}
+          {{view App.FilterTextFieldView element=content.address.street}}
+          {{view App.FilterTextFieldView element=content.address.houseNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterTextFieldView element=content.signatureLot}}
+          {{view App.FilterTextFieldView element=content.signature.lot}}
         </fieldset>
         <fieldset class="span5">
           <legend>Klasoużytki</legend>
-          {{view App.FilterTextFieldView element=content.terrainCategoryIdentifier}}
-          {{view App.FilterTextFieldView element=content.terrainCategoryArea}}
+          {{view App.FilterTextFieldView element=content.terrainCategory.identifier}}
+          {{view App.FilterTextFieldView element=content.terrainCategory.area}}
         </fieldset>
       </div>
 
