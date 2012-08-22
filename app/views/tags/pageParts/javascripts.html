@@ -8,9 +8,11 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/App.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/Router.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/AppBootstrap.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/AppCommon.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/models/StandardFilterElementModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilSearchModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilListModel.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilController.coffee'}"></script>
@@ -48,6 +50,10 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLandCommunitiesView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchDocumentsView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListView.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableHeaderView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableRowView.coffee'}"></script>
+          <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableCellView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
 
@@ -55,6 +61,7 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTypesView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTextFieldView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterSystematicsView.coffee'}"></script>
+
 
 #{get 'moreScripts' /}
 
@@ -75,6 +82,7 @@
       #{handlebars.EgbilSearchLandCommunities /}
       #{handlebars.EgbilSearchDocuments /}
     #{handlebars.EgbilList /}
+      #{handlebars.EgbilListTable /}
   #{handlebars.Changes /}
   #{handlebars.Prints /}
 

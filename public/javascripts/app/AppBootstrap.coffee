@@ -7,5 +7,3 @@ $ ->
       spacing_open: false
 
   do App.initialize
-
-

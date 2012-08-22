@@ -3,7 +3,9 @@
     <ul class="nav nav-pills">
       {{view App.TabItemView stateName="map" displayName="Pokaż mapę"}}
       {{view App.TabItemView stateName="search" displayName="Wybór obiektów"}}
+      {{#if App.router.egbilListController.content}}
       {{view App.TabItemView stateName="list" displayName="Lista obiektów"}}
+      {{/if}}
     </ul>
     {{outlet egbil}}
   </div>
