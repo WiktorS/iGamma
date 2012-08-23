@@ -6,24 +6,24 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.landCommunity.name}}
+          {{view App.FilterEntryFieldView element=content.landCommunity.name}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres</legend>
-          {{view App.FilterTextFieldView element=content.address.postalCode}}
-          {{view App.FilterTextFieldView element=content.address.town}}
-          {{view App.FilterTextFieldView element=content.address.street}}
-          {{view App.FilterTextFieldView element=content.address.houseNumber}}
-          {{view App.FilterTextFieldView element=content.address.flatNumber}}
+          {{view App.FilterEntryFieldView element=content.address.postalCode}}
+          {{view App.FilterEntryFieldView element=content.address.town}}
+          {{view App.FilterEntryFieldView element=content.address.street}}
+          {{view App.FilterEntryFieldView element=content.address.houseNumber}}
+          {{view App.FilterEntryFieldView element=content.address.flatNumber}}
         </fieldset>
       </div>
       <div class="row">
         <fieldset class="span5">
           <legend>Wspólnota gruntowa</legend>
-          {{view App.FilterTextFieldView element=content.institution.shortName}}
-          {{view App.FilterTextFieldView element=content.institution.fullName}}
-          {{view App.FilterTextFieldView element=content.institution.regon}}
-          {{view App.FilterTextFieldView element=content.institution.nip}}
+          {{view App.FilterEntryFieldView element=content.institution.shortName}}
+          {{view App.FilterEntryFieldView element=content.institution.fullName}}
+          {{view App.FilterEntryFieldView element=content.institution.regon}}
+          {{view App.FilterEntryFieldView element=content.institution.nip}}
         </fieldset>
       </div>
 

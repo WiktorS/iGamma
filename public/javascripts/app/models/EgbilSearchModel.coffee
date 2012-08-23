@@ -51,6 +51,7 @@ App.EgbilSearchModel = Em.Object.extend
     town: App.StandardFilterElementModel.create
       label: "Miejscowość"
       help: "[%]"
+      type: "select"
     street: App.StandardFilterElementModel.create
       label: "Ulica"
       help: "[%]"
