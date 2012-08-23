@@ -52,6 +52,7 @@ App.EgbilSearchModel = Em.Object.extend
       label: "Miejscowość"
       help: "[%]"
       type: "select"
+      choices: [{id: 1, value: "Koszalin"}, {id: 2, value: "Poznań"}, {id: 3, value: "Wrocław"}]
     street: App.StandardFilterElementModel.create
       label: "Ulica"
       help: "[%]"
