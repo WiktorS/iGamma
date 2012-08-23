@@ -16,9 +16,11 @@ App.EgbilListModel = Em.Object.extend
     @check = App.StandardFilterElementModel.create
       label: ""
       viewClass: App.EgbilListTableCellCheckBoxView
+      sortable: false
     @show = App.StandardFilterElementModel.create
       label: "Pokaż"
       viewClass: App.EgbilListTableCellShowView
+      sortable: false
     @marker = App.StandardFilterElementModel.create
       label: "Oznaczenie"
     @jrgNumber = App.StandardFilterElementModel.create
