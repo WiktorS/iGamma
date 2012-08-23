@@ -19,7 +19,6 @@
           {{view App.FilterTextFieldView element=content.address.houseNumber}}
         </fieldset>
       </div>
-
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
@@ -50,7 +49,35 @@
           {{view App.FilterTextFieldView element=content.address.flatNumber}}
         </fieldset>
       </div>
+      <div class="row">
+        <fieldset class="span5">
+          <legend>Dane udziałowe</legend>
+          {{view App.FilterTextFieldView element=content.share.character}}
+          {{view App.FilterTextFieldView element=content.share.registerGroup}}
+          {{view App.FilterTextFieldView element=content.share.value}}
+        </fieldset>
+      </div>
+    </form>
 
+    <form id="filter-institution" class="tab-pane">
+      <div class="row">
+        <fieldset class="span5">
+          <legend>&nbsp;</legend>
+          {{view App.FilterTextFieldView element=content.institution.shortName}}
+          {{view App.FilterTextFieldView element=content.institution.fullName}}
+          {{view App.FilterTextFieldView element=content.institution.status}}
+          {{view App.FilterTextFieldView element=content.institution.regon}}
+          {{view App.FilterTextFieldView element=content.institution.nip}}
+        </fieldset>
+        <fieldset class="span5">
+          <legend>Adres</legend>
+          {{view App.FilterTextFieldView element=content.address.postalCode}}
+          {{view App.FilterTextFieldView element=content.address.town}}
+          {{view App.FilterTextFieldView element=content.address.street}}
+          {{view App.FilterTextFieldView element=content.address.houseNumber}}
+          {{view App.FilterTextFieldView element=content.address.flatNumber}}
+        </fieldset>
+      </div>
       <div class="row">
         <fieldset class="span5">
           <legend>Dane udziałowe</legend>

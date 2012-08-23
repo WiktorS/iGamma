@@ -101,6 +101,68 @@ App.EgbilSearchModel = Em.Object.extend
     nationality: App.StandardFilterElementModel.create
       label: "Obywatelstwo"
 
+  institution:
+    shortName: App.StandardFilterElementModel.create
+      label: "Nazwa skrócona"
+      help: "[%]"
+    fullName: App.StandardFilterElementModel.create
+      label: "Nazwa pełna"
+      help: "[%]"
+    status: App.StandardFilterElementModel.create
+      label: "Status podmiotu"
+    regon: App.StandardFilterElementModel.create
+      label: "REGON"
+      help: "[%]"
+    nip: App.StandardFilterElementModel.create
+      label: "NIP"
+      help: "[%]"
+    registerName: App.StandardFilterElementModel.create
+      label: "Nazwa rej. o. prawnych"
+      help: "[%]"
+    registerNumber: App.StandardFilterElementModel.create
+      label: "Numer rej. o. prawnych"
+      help: "[%]"
+    registerCourt: App.StandardFilterElementModel.create
+      label: "Nazwa sądu rej."
+      help: "[%]"
+
+  landCommunity:
+    name: App.StandardFilterElementModel.create
+      label: "Nazwa spółki"
+      help: "[%]"
+
+  document:
+    type: App.StandardFilterElementModel.create
+      label: "Rodzaj"
+    signature: App.StandardFilterElementModel.create
+      label: "Sygnatura"
+      help: "[%]"
+    source: App.StandardFilterElementModel.create
+      label: "Źródło"
+      help: "[%]"
+    creationDate: App.StandardFilterElementModel.create
+      label: "Data utworzenia"
+    receiptDate: App.StandardFilterElementModel.create
+      label: "Data wpływu"
+    designation: App.StandardFilterElementModel.create
+      label: "Oznaczenie"
+      help: "[%]"
+    description: App.StandardFilterElementModel.create
+      label: "Opis"
+      help: "[%]"
+
+  relations:
+    scan: App.StandardFilterElementModel.create
+      label: "Skan"
+    lots: App.StandardFilterElementModel.create
+      label: "Działki"
+    buildings: App.StandardFilterElementModel.create
+      label: "Budynki"
+    locals: App.StandardFilterElementModel.create
+      label: "Lokale"
+    changes: App.StandardFilterElementModel.create
+      label: "Zmiany"
+
   share:
     character: App.StandardFilterElementModel.create
       label: "Charakter władania"
