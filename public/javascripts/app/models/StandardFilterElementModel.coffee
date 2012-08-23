@@ -3,4 +3,5 @@ App.StandardFilterElementModel = Em.Object.extend
   label: null
   help: null
   choices: null
+  alternateValue: null
   type: "input"

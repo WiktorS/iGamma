@@ -5,5 +5,10 @@ App.FilterEntryFieldView = Em.View.extend
     @_super()
     if @element.type=="select"
       @templateName = "filterSelect"
+    if @element.type=="range"
+      @templateName = "filterRange"
+    if @element.type=="calendar"
+      @templateName = "filterCalendar"
   clearField: (event) ->
     @element.set "value", ""
+    @element.set "alternateValue", ""

@@ -3,7 +3,7 @@
     <span class="field-label span2">{{view.element.label}}</span>
     <span class="help-inline">{{#if view.element.help}}{{view.element.help}}{{/if}}</span>
     <span class="input-append">
-      {{view Em.Select viewName="select" contentBinding="view.element.choices" optionLabelPath="content.value" optionValuePath="content.id" prompt="- wybierz -" selectionBinding="view.element.value" class="span2"}}<a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
+      {{view Em.TextField valueBinding="view.element.value" class="asSelect"}}<a class="btn"><i class="icon-external-link"></i></a><a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
     </span>
   </label>
 </script>

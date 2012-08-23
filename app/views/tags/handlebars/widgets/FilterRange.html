@@ -1,0 +1,9 @@
+<script type="text/x-handlebars" data-template-name="filterRange">
+  <div class="control-group">
+    <span class="field-label span2">{{view.element.label}}</span>
+    <span class="help-inline">{{#if view.element.help}}{{view.element.help}}{{/if}}</span>
+    <span class="input-append">
+      od {{view Em.TextField valueBinding="view.element.value" class="asRange allRound"}} do {{view Em.TextField valueBinding="view.element.alternateValue" class="asRange"}}<a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
+    </span>
+  </div>
+</script>
