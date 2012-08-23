@@ -23,6 +23,7 @@ App.EgbilListModel = Em.Object.extend
       sortable: false
     @marker = App.StandardFilterElementModel.create
       label: "Oznaczenie"
+      viewClass: App.EgbilListTableCellMarkerView
     @jrgNumber = App.StandardFilterElementModel.create
       label: "Numer JRG"
     @jrbNumber = App.StandardFilterElementModel.create

@@ -18,3 +18,17 @@ App.EgbilListTableCellShowView = App.EgbilListTableCellView.extend
         show: 3000
         hide: 300
   map: -> App.router.transitionTo "egbil.map"
+
+App.EgbilListTableCellMarkerView = App.EgbilListTableCellView.extend
+  tooltip: null
+  template: (->
+    value = @get("value") ? ""
+    tooltip = @get("tooltip") ? ""
+    Em.Handlebars.compile "<span title=\"%@\">%@</span>".fmt(tooltip,value)
+  ).property()
+  didInsertElement: ->
+    this.$("span").tooltip
+      placement: "bottom"
+      delay:
+        show: 3000
+        hide: 300
