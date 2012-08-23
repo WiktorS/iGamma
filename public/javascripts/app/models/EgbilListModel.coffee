@@ -26,10 +26,13 @@ App.EgbilListModel = Em.Object.extend
       viewClass: App.EgbilListTableCellMarkerView
     @jrgNumber = App.StandardFilterElementModel.create
       label: "Numer JRG"
+      viewClass: App.EgbilListTableCellButtonView
     @jrbNumber = App.StandardFilterElementModel.create
       label: "Numer JRB"
+      viewClass: App.EgbilListTableCellButtonView
     @jrlNumber = App.StandardFilterElementModel.create
       label: "Numer JRL"
+      viewClass: App.EgbilListTableCellButtonView
     @precinct = App.StandardFilterElementModel.create
       label: "Obręb"
     @cadastralUnit = App.StandardFilterElementModel.create

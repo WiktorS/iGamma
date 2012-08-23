@@ -32,3 +32,9 @@ App.EgbilListTableCellMarkerView = App.EgbilListTableCellView.extend
       delay:
         show: 3000
         hide: 300
+
+App.EgbilListTableCellButtonView = App.EgbilListTableCellView.extend
+  templateName: "egbilListTableCellButton"
+  didInsertElement: ->
+    this.$("button").on "click", ->
+      App.router.transitionTo "changes" #TODO: transition to clicked object
