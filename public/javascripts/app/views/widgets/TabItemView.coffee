@@ -1,11 +1,11 @@
 App.TabItemView = Em.View.extend
   template: Em.Handlebars.compile ("<a>{{view.displayName}}</a>")
   tagName: "li"
-  displayName: null
-  click: (e) -> App.router.transitionTo this.get("stateName")
   classNameBindings: ["active"]
+  displayName: null
   stateName: null
   currentStateNameBinding: "App.router.currentState.path"
+  click: (e) -> App.router.transitionTo this.get("stateName")
   active: ( ->
     @get("currentStateName").match("\\." + @get("stateName")+"(\\.|$)") != null
   ).property("currentStateName", "stateName")
