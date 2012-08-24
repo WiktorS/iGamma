@@ -31,6 +31,7 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchLandCommunitiesController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchDocumentsController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilListController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectController.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationView.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationMenuView.coffee'}"></script>
@@ -54,6 +55,7 @@
         <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableHeaderView.coffee'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableRowView.coffee'}"></script>
           <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableCellView.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
 
@@ -85,6 +87,7 @@
       #{handlebars.EgbilListTable /}
         #{handlebars.EgbilListTableCellShow /}
         #{handlebars.EgbilListTableCellButton /}
+    #{handlebars.EgbilObject /}
   #{handlebars.Changes /}
   #{handlebars.Prints /}
 

@@ -95,6 +95,21 @@ App.Router = Em.Router.extend
           else
             router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
 
+      goToObject: Em.Router.transitionTo "object"
+      object: RouteWithParentMemory.extend
+        route: "/obiekt/:objectName"
+        objectName: null
+
+        connectOutlets: (router, context) ->
+          @set "objectName", Em.Object.create(context).get("objectName") ? ""
+          router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilObject"})
+        deserialize: (router, params) ->
+          objectName = Em.Object.create(params).get("objectName") ? ""
+          Em.Object.create {objectName: objectName}
+        serialize: (router, context) ->
+          objectName = Em.Object.create(context).get("objectName") ? ""
+          Em.Object.create {objectName: objectName}
+
     changes: Em.Route.extend
       route: "/zmiany"
       connectOutlets: (router) ->

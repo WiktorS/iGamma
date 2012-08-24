@@ -1,1 +1,5 @@
-App.EgbilController = Em.Controller.extend()
+App.EgbilController = Em.Controller.extend
+  objects: Em.A()
+
+  appendObject: (object) ->
+    @objects.pushObject(object)
