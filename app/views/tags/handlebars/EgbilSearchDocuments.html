@@ -6,21 +6,23 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.document.type}}
-          {{view App.FilterTextFieldView element=content.document.signature}}
-          {{view App.FilterTextFieldView element=content.document.source}}
-          {{view App.FilterTextFieldView element=content.document.creationDate}}
-          {{view App.FilterTextFieldView element=content.document.receiptDate}}
-          {{view App.FilterTextFieldView element=content.document.designation}}
-          {{view App.FilterTextFieldView element=content.document.description}}
+          {{view App.FilterEntryFieldView element=content.document.type}}
+          {{view App.FilterEntryFieldView element=content.document.signature}}
+          {{view App.FilterEntryFieldView element=content.document.source}}
+          {{view App.FilterEntryFieldView element=content.document.creationFromDate}}
+          {{view App.FilterEntryFieldView element=content.document.creationToDate}}
+          {{view App.FilterEntryFieldView element=content.document.receiptFromDate}}
+          {{view App.FilterEntryFieldView element=content.document.receiptToDate}}
+          {{view App.FilterEntryFieldView element=content.document.designation}}
+          {{view App.FilterEntryFieldView element=content.document.description}}
         </fieldset>
         <fieldset class="span5">
           <legend>Powiązania</legend>
-          {{view App.FilterTextFieldView element=content.relations.scan}}
-          {{view App.FilterTextFieldView element=content.relations.lots}}
-          {{view App.FilterTextFieldView element=content.relations.buildings}}
-          {{view App.FilterTextFieldView element=content.relations.locals}}
-          {{view App.FilterTextFieldView element=content.relations.changes}}
+          {{view App.FilterEntryFieldView element=content.relations.scan}}
+          {{view App.FilterEntryFieldView element=content.relations.lots}}
+          {{view App.FilterEntryFieldView element=content.relations.buildings}}
+          {{view App.FilterEntryFieldView element=content.relations.locals}}
+          {{view App.FilterEntryFieldView element=content.relations.changes}}
         </fieldset>
       </div>
 

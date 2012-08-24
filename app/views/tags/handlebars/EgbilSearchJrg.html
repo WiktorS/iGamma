@@ -7,21 +7,21 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.registerUnit.jrg}}
-          {{view App.FilterTextFieldView element=content.lot.number}}
+          {{view App.FilterEntryFieldView element=content.registerUnit.jrg}}
+          {{view App.FilterEntryFieldView element=content.lot.number}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres działki</legend>
-          {{view App.FilterTextFieldView element=content.address.town}}
-          {{view App.FilterTextFieldView element=content.address.street}}
-          {{view App.FilterTextFieldView element=content.address.houseNumber}}
+          {{view App.FilterEntryFieldView element=content.address.town}}
+          {{view App.FilterEntryFieldView element=content.address.street}}
+          {{view App.FilterEntryFieldView element=content.address.houseNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterTextFieldView element=content.signature.lot}}
+          {{view App.FilterEntryFieldView element=content.signature.lot}}
         </fieldset>
       </div>
 

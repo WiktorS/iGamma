@@ -1,0 +1,9 @@
+<script type="text/x-handlebars" data-template-name="filterCalendar">
+  <label class="control-group">
+    <span class="field-label span2">{{view.element.label}}</span>
+    <span class="help-inline">{{#if view.element.help}}{{view.element.help}}{{/if}}</span>
+    <span class="input-append">
+      {{view Em.TextField valueBinding="view.element.value" class="asCalendar"}}<a class="btn"><i class="icon-calendar"></i></a><a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
+    </span>
+  </label>
+</script>

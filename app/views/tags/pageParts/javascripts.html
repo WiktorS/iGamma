@@ -59,7 +59,7 @@
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/TabItemView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTypesView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTextFieldView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterEntryFieldView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterSystematicsView.coffee'}"></script>
 
 
@@ -89,5 +89,8 @@
   #{handlebars.Prints /}
 
 #{handlebars.widgets.FilterTextField /}
+#{handlebars.widgets.FilterSelect /}
+#{handlebars.widgets.FilterRange /}
+#{handlebars.widgets.FilterCalendar /}
 #{handlebars.widgets.FilterSystematics /}
 #{handlebars.widgets.FilterTypes /}

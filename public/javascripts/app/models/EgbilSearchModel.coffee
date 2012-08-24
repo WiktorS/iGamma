@@ -26,12 +26,17 @@ App.EgbilSearchModel = Em.Object.extend
       help: "[%]"
     area: App.StandardFilterElementModel.create
       label: "Powierzchnia zabudowy"
+      help: "[m2]"
+      type: "range"
     type: App.StandardFilterElementModel.create
       label: "Rodzaj"
+      type: "select"
     highestLevel: App.StandardFilterElementModel.create
       label: "Nr najwyższej kondygn."
+      type: "range"
     lowestLevel: App.StandardFilterElementModel.create
       label: "Nr najniższej kondygn."
+      type: "range"
 
   local:
     number: App.StandardFilterElementModel.create
@@ -39,6 +44,8 @@ App.EgbilSearchModel = Em.Object.extend
       help: "[%]"
     area: App.StandardFilterElementModel.create
       label: "Powierzchnia użytkowa"
+      type: "range"
+      help: "[m2]"
     type: App.StandardFilterElementModel.create
       label: "Typ lokalu"
     roomsCount: App.StandardFilterElementModel.create
@@ -51,9 +58,11 @@ App.EgbilSearchModel = Em.Object.extend
     town: App.StandardFilterElementModel.create
       label: "Miejscowość"
       help: "[%]"
+      type: "select"
     street: App.StandardFilterElementModel.create
       label: "Ulica"
       help: "[%]"
+      type: "select"
     houseNumber: App.StandardFilterElementModel.create
       label: "Numer porządkowy"
       help: "[%]"
@@ -140,10 +149,18 @@ App.EgbilSearchModel = Em.Object.extend
     source: App.StandardFilterElementModel.create
       label: "Źródło"
       help: "[%]"
-    creationDate: App.StandardFilterElementModel.create
-      label: "Data utworzenia"
-    receiptDate: App.StandardFilterElementModel.create
-      label: "Data wpływu"
+    creationFromDate: App.StandardFilterElementModel.create
+      label: "Data utworzenia od"
+      type: "calendar"
+    creationToDate: App.StandardFilterElementModel.create
+      label: "Data utworzenia do"
+      type: "calendar"
+    receiptFromDate: App.StandardFilterElementModel.create
+      label: "Data wpływu od"
+      type: "calendar"
+    receiptToDate: App.StandardFilterElementModel.create
+      label: "Data wpływu do"
+      type: "calendar"
     designation: App.StandardFilterElementModel.create
       label: "Oznaczenie"
       help: "[%]"
@@ -154,14 +171,19 @@ App.EgbilSearchModel = Em.Object.extend
   relations:
     scan: App.StandardFilterElementModel.create
       label: "Skan"
+      type: "select"
     lots: App.StandardFilterElementModel.create
       label: "Działki"
+      type: "select"
     buildings: App.StandardFilterElementModel.create
       label: "Budynki"
+      type: "select"
     locals: App.StandardFilterElementModel.create
       label: "Lokale"
+      type: "select"
     changes: App.StandardFilterElementModel.create
       label: "Zmiany"
+      type: "select"
 
   share:
     character: App.StandardFilterElementModel.create

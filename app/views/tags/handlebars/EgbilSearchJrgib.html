@@ -7,24 +7,24 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.registerUnit.jrg}}
-          {{view App.FilterTextFieldView element=content.registerUnit.jrb}}
-          {{view App.FilterTextFieldView element=content.lot.number}}
-          {{view App.FilterTextFieldView element=content.building.number}}
+          {{view App.FilterEntryFieldView element=content.registerUnit.jrg}}
+          {{view App.FilterEntryFieldView element=content.registerUnit.jrb}}
+          {{view App.FilterEntryFieldView element=content.lot.number}}
+          {{view App.FilterEntryFieldView element=content.building.number}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres działki</legend>
-          {{view App.FilterTextFieldView element=content.address.town}}
-          {{view App.FilterTextFieldView element=content.address.street}}
-          {{view App.FilterTextFieldView element=content.address.houseNumber}}
+          {{view App.FilterEntryFieldView element=content.address.town}}
+          {{view App.FilterEntryFieldView element=content.address.street}}
+          {{view App.FilterEntryFieldView element=content.address.houseNumber}}
         </fieldset>
       </div>
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterTextFieldView element=content.signature.lot}}
-          {{view App.FilterTextFieldView element=content.signature.building}}
-          {{view App.FilterTextFieldView element=content.signature.local}}
+          {{view App.FilterEntryFieldView element=content.signature.lot}}
+          {{view App.FilterEntryFieldView element=content.signature.building}}
+          {{view App.FilterEntryFieldView element=content.signature.local}}
         </fieldset>
       </div>
     </form>
@@ -33,28 +33,28 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.person.sex}}
-          {{view App.FilterTextFieldView element=content.person.lastName}}
-          {{view App.FilterTextFieldView element=content.person.firstName}}
-          {{view App.FilterTextFieldView element=content.person.pesel}}
-          {{view App.FilterTextFieldView element=content.person.document}}
-          {{view App.FilterTextFieldView element=content.person.status}}
+          {{view App.FilterEntryFieldView element=content.person.sex}}
+          {{view App.FilterEntryFieldView element=content.person.lastName}}
+          {{view App.FilterEntryFieldView element=content.person.firstName}}
+          {{view App.FilterEntryFieldView element=content.person.pesel}}
+          {{view App.FilterEntryFieldView element=content.person.document}}
+          {{view App.FilterEntryFieldView element=content.person.status}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres zamieszkania</legend>
-          {{view App.FilterTextFieldView element=content.address.postalCode}}
-          {{view App.FilterTextFieldView element=content.address.town}}
-          {{view App.FilterTextFieldView element=content.address.street}}
-          {{view App.FilterTextFieldView element=content.address.houseNumber}}
-          {{view App.FilterTextFieldView element=content.address.flatNumber}}
+          {{view App.FilterEntryFieldView element=content.address.postalCode}}
+          {{view App.FilterEntryFieldView element=content.address.town}}
+          {{view App.FilterEntryFieldView element=content.address.street}}
+          {{view App.FilterEntryFieldView element=content.address.houseNumber}}
+          {{view App.FilterEntryFieldView element=content.address.flatNumber}}
         </fieldset>
       </div>
       <div class="row">
         <fieldset class="span5">
           <legend>Dane udziałowe</legend>
-          {{view App.FilterTextFieldView element=content.share.character}}
-          {{view App.FilterTextFieldView element=content.share.registerGroup}}
-          {{view App.FilterTextFieldView element=content.share.value}}
+          {{view App.FilterEntryFieldView element=content.share.character}}
+          {{view App.FilterEntryFieldView element=content.share.registerGroup}}
+          {{view App.FilterEntryFieldView element=content.share.value}}
         </fieldset>
       </div>
     </form>
@@ -63,27 +63,27 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterTextFieldView element=content.institution.shortName}}
-          {{view App.FilterTextFieldView element=content.institution.fullName}}
-          {{view App.FilterTextFieldView element=content.institution.status}}
-          {{view App.FilterTextFieldView element=content.institution.regon}}
-          {{view App.FilterTextFieldView element=content.institution.nip}}
+          {{view App.FilterEntryFieldView element=content.institution.shortName}}
+          {{view App.FilterEntryFieldView element=content.institution.fullName}}
+          {{view App.FilterEntryFieldView element=content.institution.status}}
+          {{view App.FilterEntryFieldView element=content.institution.regon}}
+          {{view App.FilterEntryFieldView element=content.institution.nip}}
         </fieldset>
         <fieldset class="span5">
-          <legend>Adres</legend>
-          {{view App.FilterTextFieldView element=content.address.postalCode}}
-          {{view App.FilterTextFieldView element=content.address.town}}
-          {{view App.FilterTextFieldView element=content.address.street}}
-          {{view App.FilterTextFieldView element=content.address.houseNumber}}
-          {{view App.FilterTextFieldView element=content.address.flatNumber}}
+          <legend>Adres zamieszkania</legend>
+          {{view App.FilterEntryFieldView element=content.address.postalCode}}
+          {{view App.FilterEntryFieldView element=content.address.town}}
+          {{view App.FilterEntryFieldView element=content.address.street}}
+          {{view App.FilterEntryFieldView element=content.address.houseNumber}}
+          {{view App.FilterEntryFieldView element=content.address.flatNumber}}
         </fieldset>
       </div>
       <div class="row">
         <fieldset class="span5">
           <legend>Dane udziałowe</legend>
-          {{view App.FilterTextFieldView element=content.share.character}}
-          {{view App.FilterTextFieldView element=content.share.registerGroup}}
-          {{view App.FilterTextFieldView element=content.share.value}}
+          {{view App.FilterEntryFieldView element=content.share.character}}
+          {{view App.FilterEntryFieldView element=content.share.registerGroup}}
+          {{view App.FilterEntryFieldView element=content.share.value}}
         </fieldset>
       </div>
     </form>
