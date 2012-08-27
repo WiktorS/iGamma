@@ -1,5 +1,5 @@
 App.TabItemView = Em.View.extend
-  template: Em.Handlebars.compile ("<a>{{view.displayName}}</a>")
+  defaultTemplate: Em.Handlebars.compile ("<a>{{view.displayName}}</a>")
   tagName: "li"
   classNameBindings: ["active"]
   displayName: null
@@ -12,12 +12,14 @@ App.TabItemView = Em.View.extend
 
 
 App.ObjectTabItemView = App.TabItemView.extend
+  templateName: "objectTabItem"
   objectName: null
   currentStateObjectNameBinding: "App.router.currentState.objectName"
-
   click: (e) ->
-    App.router.send "goToObject", Ember.Object.create {objectName: @get("objectName").valueOf()}
+    App.router.egbilController.showObject @get("objectName").valueOf()
   active: ( ->
     @get("currentStateName").match("\\." + @get("stateName")+"(\\.|$)") != null &&
       @get("currentStateObjectName").valueOf() == @get("objectName").valueOf()
   ).property("currentStateName", "currentStateObjectName", "stateName")
+  close: ->
+    App.router.egbilController.closeObject @get("objectName").valueOf()

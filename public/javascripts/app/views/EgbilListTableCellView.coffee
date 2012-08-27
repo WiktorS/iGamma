@@ -37,5 +37,4 @@ App.EgbilListTableCellButtonView = App.EgbilListTableCellView.extend
   templateName: "egbilListTableCellButton"
   didInsertElement: ->
     this.$("button").on "click", =>
-      App.router.egbilController.appendObject(@get "value")
-      App.router.send "goToObject", Ember.Object.create {objectName: @get "value"}
+      App.router.egbilController.showObject(@get "value")
