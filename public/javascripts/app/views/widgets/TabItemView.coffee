@@ -21,5 +21,7 @@ App.ObjectTabItemView = App.TabItemView.extend
     @get("currentStateName").match("\\." + @get("stateName")+"(\\.|$)") != null &&
       @get("currentStateObjectName").valueOf() == @get("objectName").valueOf()
   ).property("currentStateName", "currentStateObjectName", "stateName")
-  close: ->
-    App.router.egbilController.closeObject @get("objectName").valueOf()
+  close: (e) ->
+    e.stopPropagation()
+    this.$().hide "fast", =>
+      App.router.egbilController.closeObject @get("objectName").valueOf()
