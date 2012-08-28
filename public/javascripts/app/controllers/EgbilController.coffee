@@ -6,11 +6,12 @@ App.EgbilController = Em.Controller.extend
     App.router.send "goToObject", Ember.Object.create {objectName: objectName}
 
   closeObject: (objectName) ->
+    currentStateObjectName =  App.router.get("currentState")?.get("objectName")?.valueOf()
     idx = @objects.indexOf objectName
     @objects.removeObject objectName
-    if @objects.length > 0
-      idx-- while idx >= @objects.length
-      selectObjectName = @objects[idx]
-      App.router.send "goToObject", Ember.Object.create {objectName: selectObjectName}
-    else
-      App.router.transitionTo "egbil.list"
+    if currentStateObjectName == objectName
+      if @objects.length > 0
+        idx-- while idx >= @objects.length
+        App.router.send "goToObject", Ember.Object.create {objectName: @objects[idx]}
+      else
+        App.router.transitionTo "egbil.list"
