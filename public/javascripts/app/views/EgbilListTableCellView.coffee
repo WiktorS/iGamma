@@ -1,10 +1,7 @@
 App.EgbilListTableCellView = Em.View.extend
   tagName: "td"
   value: null
-  defaultTemplate: (->
-    value = @get "value"
-    Em.Handlebars.compile value
-  ).property()
+  defaultTemplate: Em.Handlebars.compile "{{value}}"
 
 App.EgbilListTableCellCheckBoxView = App.EgbilListTableCellView.extend
   template: Em.Handlebars.compile "<input type=\"checkbox\"/>"
