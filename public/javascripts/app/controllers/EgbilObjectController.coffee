@@ -1,5 +1,4 @@
-App.EgbilObjectController = Em.ArrayController.extend()
-
+App.EgbilObjectController = Em.Controller.extend {}
 
 App.EgbilObjectInfo = Em.Object.extend
   type: null
