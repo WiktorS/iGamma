@@ -1,16 +1,3 @@
 <script type="text/x-handlebars" data-template-name="egbilList">
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      {{#each columns}}
-      {{view App.EgbilListTableHeaderView contentBinding="controller.content" columnBinding="this"}}
-      {{/each}}
-    </tr>
-    </thead>
-    <tbody>
-    {{#each content}}
-    {{view App.EgbilListTableRowView contentBinding="this" columnsBinding="controller.columns"}}
-    {{/each}}
-    </tbody>
-  </table>
+  {{view App.EgbilListTableView contentBinding="content" columnsBinding="columns"}}
 </script>

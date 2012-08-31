@@ -1,0 +1,14 @@
+<script type="text/x-handlebars" data-template-name="egbilListTable">
+  <thead>
+    <tr>
+    {{#each columns}}
+      {{view App.EgbilListTableHeaderView contentBinding="controller.content" columnBinding="this"}}
+    {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+  {{#each content}}
+    {{view App.EgbilListTableRowView contentBinding="this" columnsBinding="controller.columns"}}
+  {{/each}}
+  </tbody>
+</script>

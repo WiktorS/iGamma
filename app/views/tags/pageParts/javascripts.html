@@ -53,9 +53,10 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLandCommunitiesView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchDocumentsView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListView.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableHeaderView.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableRowView.coffee'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableCellView.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableHeaderView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableRowView.coffee'}"></script>
+          <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListTableCellView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectJrbView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
@@ -86,8 +87,9 @@
       #{handlebars.EgbilSearchLandCommunities /}
       #{handlebars.EgbilSearchDocuments /}
     #{handlebars.EgbilList /}
-      #{handlebars.EgbilListTableCellShow /}
-      #{handlebars.EgbilListTableCellButton /}
+      #{handlebars.EgbilListTable /}
+        #{handlebars.EgbilListTableCellShow /}
+        #{handlebars.EgbilListTableCellButton /}
     #{handlebars.EgbilObject /}
       #{handlebars.EgbilObjectJrb /}
   #{handlebars.Changes /}
