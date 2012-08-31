@@ -1,7 +1,7 @@
-App.EgbilListTableView = Em.View.extend
+App.ModelTableView = Em.View.extend
   tagName: "table"
   classNames: ["table", "table-striped"]
-  templateName: "egbilListTable"
+  templateName: "modelTable"
 
   content: null
   columns: null

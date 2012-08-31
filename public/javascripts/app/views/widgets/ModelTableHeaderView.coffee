@@ -1,4 +1,4 @@
-App.EgbilListTableHeaderView = Em.View.extend
+App.ModelTableHeaderView = Em.View.extend
   tagName: "th"
 
   column: null

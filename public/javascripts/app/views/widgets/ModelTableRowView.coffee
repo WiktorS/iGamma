@@ -1,4 +1,4 @@
-App.EgbilListTableRowView = Em.View.extend
+App.ModelTableRowView = Em.View.extend
   tagName: "tr"
 
   template: (->
@@ -9,7 +9,7 @@ App.EgbilListTableRowView = Em.View.extend
       $.each(columns, (i, field) ->
         cell = content.get field
         if cell instanceof App.StandardTableCellModel
-          cellClass = cell?.viewClass ? "App.EgbilListTableCellView"
+          cellClass = cell?.viewClass ? "App.ModelTableCellView"
           cellValue = cell?.value ? ""
           cellValueType = cell?.valueType
           result += "{{view %@ value=\"%@\" type=\"%@\"}}".fmt(cellClass, cellValue, cellValueType);

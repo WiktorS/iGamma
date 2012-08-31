@@ -19,7 +19,7 @@ App.EgbilListModel = Em.Object.extend
       sortable: false
     @show = App.StandardTableCellModel.create
       label: "Pokaż"
-      viewClass: App.EgbilListTableCellShowView
+      viewClass: App.EgbilListTableCellShowMapView
       sortable: false
     @marker = App.StandardTableCellModel.create
       label: "Oznaczenie"
