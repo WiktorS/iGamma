@@ -5,6 +5,10 @@ RouteWithParentMemory = Em.Route.extend
 RouteWithObjectParam = Em.Route.extend
   objectName: null
   objectType: (-> @get "name").property("name")
+  objectOutletName: null
+  isValidObject: ->
+    object = App.router.get("egbilController").getObject @get("objectType"), @get("objectName")
+    !Em.empty object
   deserialize: (router, params) ->
     App.EgbilObjectInfo.create
       type: @get "objectType"
@@ -16,6 +20,10 @@ RouteWithObjectParam = Em.Route.extend
   connectOutlets: (router, context) ->
     @set "objectName", context.get "name"
     #@set "objectType", context.get "type" #actually we can't do this, because type is bind with state name
+    if @isValidObject()
+      router.get("egbilController").connectOutlet({outletName: "egbil", name: @get("objectOutletName")})
+    else
+      App.router.transitionTo "egbil.search"
 
 
 App.Router = Em.Router.extend
@@ -128,21 +136,15 @@ App.Router = Em.Router.extend
 
         jrb: RouteWithObjectParam.extend
           route: "/jrb/:name"
-          connectOutlets: (router, context) ->
-            @_super(router, context)
-            router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilObject"})
+          objectOutletName: "egbilObject"
 
         jrl: RouteWithObjectParam.extend
           route: "/jrl/:name"
-          connectOutlets: (router, context) ->
-            @_super(router, context)
-            router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilObject"})
+          objectOutletName: "egbilObject"
 
         jrg: RouteWithObjectParam.extend
           route: "/jrg/:name"
-          connectOutlets: (router, context) ->
-            @_super(router, context)
-            router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilObject"})
+          objectOutletName: "egbilObject"
 
     changes: Em.Route.extend
       route: "/zmiany"
