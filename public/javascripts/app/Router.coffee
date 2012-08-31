@@ -136,7 +136,7 @@ App.Router = Em.Router.extend
 
         jrb: RouteWithObjectParam.extend
           route: "/jrb/:name"
-          objectOutletName: "egbilObject"
+          objectOutletName: "egbilObjectJrb"
 
         jrl: RouteWithObjectParam.extend
           route: "/jrl/:name"
