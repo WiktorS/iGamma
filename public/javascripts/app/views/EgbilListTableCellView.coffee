@@ -1,6 +1,7 @@
 App.EgbilListTableCellView = Em.View.extend
   tagName: "td"
   value: null
+  type: null
   defaultTemplate: Em.Handlebars.compile "{{value}}"
 
 App.EgbilListTableCellCheckBoxView = App.EgbilListTableCellView.extend
@@ -18,11 +19,7 @@ App.EgbilListTableCellShowView = App.EgbilListTableCellView.extend
 
 App.EgbilListTableCellMarkerView = App.EgbilListTableCellView.extend
   tooltip: null
-  template: (->
-    value = @get("value") ? ""
-    tooltip = @get("tooltip") ? ""
-    Em.Handlebars.compile "<span title=\"%@\">%@</span>".fmt(tooltip,value)
-  ).property()
+  template: Em.Handlebars.compile "<span title=\"{{tooltip}}\">{{value}}</span>"
   didInsertElement: ->
     this.$("span").tooltip
       placement: "bottom"
@@ -34,4 +31,4 @@ App.EgbilListTableCellButtonView = App.EgbilListTableCellView.extend
   templateName: "egbilListTableCellButton"
   didInsertElement: ->
     this.$("button").on "click", =>
-      App.router.egbilController.showObject(@get "value")
+      App.router.send "showObject", App.EgbilObjectInfo.create {name: @get("value"), type: @get("type")}

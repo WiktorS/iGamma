@@ -13,33 +13,36 @@ App.EgbilListModel = Em.Object.extend
 
   init: ->
     @_super()
-    @check = App.StandardFilterElementModel.create
+    @check = App.StandardTableCellModel.create
       label: ""
       viewClass: App.EgbilListTableCellCheckBoxView
       sortable: false
-    @show = App.StandardFilterElementModel.create
+    @show = App.StandardTableCellModel.create
       label: "Pokaż"
       viewClass: App.EgbilListTableCellShowView
       sortable: false
-    @marker = App.StandardFilterElementModel.create
+    @marker = App.StandardTableCellModel.create
       label: "Oznaczenie"
       viewClass: App.EgbilListTableCellMarkerView
-    @jrgNumber = App.StandardFilterElementModel.create
+    @jrgNumber = App.StandardTableCellModel.create
       label: "Numer JRG"
       viewClass: App.EgbilListTableCellButtonView
-    @jrbNumber = App.StandardFilterElementModel.create
+      valueType: "jrg"
+    @jrbNumber = App.StandardTableCellModel.create
       label: "Numer JRB"
       viewClass: App.EgbilListTableCellButtonView
-    @jrlNumber = App.StandardFilterElementModel.create
+      valueType: "jrb"
+    @jrlNumber = App.StandardTableCellModel.create
       label: "Numer JRL"
       viewClass: App.EgbilListTableCellButtonView
-    @precinct = App.StandardFilterElementModel.create
+      valueType: "jrl"
+    @precinct = App.StandardTableCellModel.create
       label: "Obręb"
-    @cadastralUnit = App.StandardFilterElementModel.create
+    @cadastralUnit = App.StandardTableCellModel.create
       label: "Jednostka ewidencyjna"
-    @creationProof = App.StandardFilterElementModel.create
+    @creationProof = App.StandardTableCellModel.create
       label: "Dowód założenia"
-    @creationDate = App.StandardFilterElementModel.create
+    @creationDate = App.StandardTableCellModel.create
       label: "Data założenia"
-    @regon = App.StandardFilterElementModel.create
+    @regon = App.StandardTableCellModel.create
       label: "REGON"

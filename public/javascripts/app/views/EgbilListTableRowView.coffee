@@ -5,11 +5,14 @@ App.EgbilListTableRowView = Em.View.extend
     columns = @get "columns"
     content = @get "content"
     result = ""
-    $.each(columns, (k,v) ->
-      item = content?.get(v)
-      viewClass = item?.viewClass ? "App.EgbilListTableCellView"
-      viewValue = item?.value ? ""
-      result += "{{view %@ value=\"%@\"}}".fmt(viewClass, viewValue);
-    )
+    if content?
+      $.each(columns, (i, field) ->
+        cell = content.get field
+        if cell instanceof App.StandardTableCellModel
+          cellClass = cell?.viewClass ? "App.EgbilListTableCellView"
+          cellValue = cell?.value ? ""
+          cellValueType = cell?.valueType
+          result += "{{view %@ value=\"%@\" type=\"%@\"}}".fmt(cellClass, cellValue, cellValueType);
+      )
     Em.Handlebars.compile result
   ).property()

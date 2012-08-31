@@ -1,6 +1,23 @@
 RouteWithParentMemory = Em.Route.extend
   enter: (router) -> @parentState.set 'initialState', @name
 
+
+RouteWithObjectParam = Em.Route.extend
+  objectName: null
+  objectType: (-> @get "name").property("name")
+  deserialize: (router, params) ->
+    App.EgbilObjectInfo.create
+      type: @get "objectType"
+      name: params.name
+  serialize: (router, context) ->
+    App.EgbilObjectInfo.create
+      type: context.get "type"
+      name: context.get "name"
+  connectOutlets: (router, context) ->
+    @set "objectName", context.get "name"
+    #@set "objectType", context.get "type" #actually we can't do this, because type is bind with state name
+
+
 App.Router = Em.Router.extend
   location: "hash"
   enableLogging: true
@@ -95,20 +112,37 @@ App.Router = Em.Router.extend
           else
             router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
 
-      goToObject: Em.Router.transitionTo "object"
-      object: RouteWithParentMemory.extend
-        route: "/obiekt/:objectName"
-        objectName: null
+      showObject: (router, context) ->
+        router.get("egbilController").showObject context.get("type"), context.get("name")
+      closeObject: (router, context) ->
+        router.get("egbilController").closeObject context.get("type"), context.get("name")
+      goToObject: (router, context) ->
+        router.transitionTo ["object", context.get "type"].join("."), context
 
-        connectOutlets: (router, context) ->
-          @set "objectName", Em.Object.create(context).get("objectName") ? ""
-          router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilObject"})
-        deserialize: (router, params) ->
-          objectName = Em.Object.create(params).get("objectName") ? ""
-          Em.Object.create {objectName: objectName}
-        serialize: (router, context) ->
-          objectName = Em.Object.create(context).get("objectName") ? ""
-          Em.Object.create {objectName: objectName}
+      object: Em.Route.extend
+        route: "/obiekt"
+
+        index: Em.Route.extend
+          route: "/"
+          redirectsTo: "egbil.search"
+
+        jrb: RouteWithObjectParam.extend
+          route: "/jrb/:name"
+          connectOutlets: (router, context) ->
+            @_super(router, context)
+            router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilObject"})
+
+        jrl: RouteWithObjectParam.extend
+          route: "/jrl/:name"
+          connectOutlets: (router, context) ->
+            @_super(router, context)
+            router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilObject"})
+
+        jrg: RouteWithObjectParam.extend
+          route: "/jrg/:name"
+          connectOutlets: (router, context) ->
+            @_super(router, context)
+            router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilObject"})
 
     changes: Em.Route.extend
       route: "/zmiany"
