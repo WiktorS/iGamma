@@ -11,7 +11,7 @@ App.ModelTableRowView = Em.View.extend
         if cell instanceof App.StandardTableCellModel
           cellClass = cell?.viewClass ? "App.ModelTableCellView"
           cellValue = cell?.value ? ""
-          cellValueType = cell?.valueType
+          cellValueType = cell?.valueType ? ""
           result += "{{view %@ value=\"%@\" type=\"%@\"}}".fmt(cellClass, cellValue, cellValueType);
       )
     Em.Handlebars.compile result
