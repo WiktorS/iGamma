@@ -4,10 +4,6 @@ App.ModelTableHeaderView = Em.View.extend
   column: null
   content: null
 
-  init: ->
-    @_super()
-    content = Em.A()
-
   template: (->
     column = @get "column"
     content = @get "content"

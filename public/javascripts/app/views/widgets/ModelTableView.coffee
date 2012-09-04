@@ -5,8 +5,3 @@ App.ModelTableView = Em.View.extend
 
   content: null
   columns: null
-
-  init: ->
-    @_super()
-    content = Em.A()
-    columns = Em.A()
