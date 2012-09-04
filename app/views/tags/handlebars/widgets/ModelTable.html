@@ -1,14 +1,14 @@
 <script type="text/x-handlebars" data-template-name="modelTable">
   <thead>
     <tr>
-    {{#each columns}}
-      {{view App.ModelTableHeaderView contentBinding="controller.content" columnBinding="this"}}
+    {{#each view.columns}}
+      {{view App.ModelTableHeaderView contentBinding="view.content" columnBinding="this"}}
     {{/each}}
     </tr>
   </thead>
   <tbody>
-  {{#each content}}
-    {{view App.ModelTableRowView contentBinding="this" columnsBinding="controller.columns"}}
+  {{#each view.content}}
+    {{view App.ModelTableRowView contentBinding="this" columnsBinding="view.columns"}}
   {{/each}}
   </tbody>
 </script>
