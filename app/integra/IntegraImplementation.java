@@ -1,19 +1,22 @@
 package integra;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
+import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 import play.Play;
 import play.libs.WS;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 public class IntegraImplementation implements Integra{
 
     private static final String integraUrl = Play.configuration.getProperty("integra.url");
     private static final String timeout = "10s";
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
 
     private String getMethodUrl(String getRegisterUnits) {
         return integraUrl + "/" + getRegisterUnits + ".json";
@@ -45,6 +48,13 @@ public class IntegraImplementation implements Integra{
     @Override
     public List<RegisterUnit> getRegisterUnitsByJrg(String jrg) {
         JsonElement jsonResult = invokeMethodJson("getRegisterUnitsByJrg");
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        return gson.fromJson(jsonResult, typeToken.getType());
+    }
+
+    @Override
+    public EgbilObject getEgbilObjectByJrb(String jrb) {
+        JsonElement jsonResult = invokeMethodJson("getEgbilObjectByJrg");
         TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }

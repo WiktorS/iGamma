@@ -9,6 +9,7 @@ GET     /                                         Application.index
 GET     /getRegisterUnits.json                    IntegraJson.getRegisterUnits
 GET     /getRegisterUnitsByJrg.json               IntegraJson.getRegisterUnitsByJrg
 GET     /getRegisterUnitsByJrb.json               IntegraJson.getRegisterUnitsByJrb
+GET     /getEgbilObjectByJrb.json                 IntegraJson.getEgbilObjectByJrb
 
 #Integra mock
 GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits
