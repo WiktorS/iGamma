@@ -18,7 +18,7 @@ App.EgbilListTableCellShowMapView = App.ModelTableCellView.extend
 
 App.EgbilListTableCellMarkerView = App.ModelTableCellView.extend
   tooltip: null
-  template: Em.Handlebars.compile "<span title=\"{{tooltip}}\">{{value}}</span>"
+  template: Em.Handlebars.compile "<span title=\"{{tooltip}}\">{{view.value}}</span>"
   didInsertElement: ->
     this.$("span").tooltip
       placement: "bottom"
@@ -31,4 +31,4 @@ App.EgbilListTableCellButtonView = App.ModelTableCellView.extend
   templateName: "egbilListTableCellButton"
   didInsertElement: ->
     this.$("button").on "click", =>
-      App.router.send "showObject", App.EgbilObjectInfo.create {name: @get("value"), type: @get("type")}
+      App.router.send "openObject", App.EgbilObjectInfo.create {name: @get("value"), type: @get("type")}

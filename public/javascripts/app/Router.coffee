@@ -6,9 +6,8 @@ RouteWithObjectParam = Em.Route.extend
   objectName: null
   objectType: (-> @get "name").property("name")
   objectOutletName: null
-  isValidObject: ->
-    object = App.router.get("egbilController").getObject @get("objectType"), @get("objectName")
-    !Em.empty object
+  getObject: ->
+    App.router.get("egbilController").getObject @get("objectType"), @get("objectName")
   deserialize: (router, params) ->
     App.EgbilObjectInfo.create
       type: @get "objectType"
@@ -20,10 +19,15 @@ RouteWithObjectParam = Em.Route.extend
   connectOutlets: (router, context) ->
     @set "objectName", context.get "name"
     #@set "objectType", context.get "type" #actually we can't do this, because type is bind with state name
-    if @isValidObject()
-      router.get("egbilController").connectOutlet({outletName: "egbil", name: @get("objectOutletName")})
+    object = @getObject()
+    if !Em.empty object
+      router.get("egbilController").connectOutlet(
+        outletName: "egbil"
+        name: @get("objectOutletName")
+        context: object.content
+      )
     else
-      App.router.transitionTo "egbil.search"
+      router.transitionTo "egbil.search"
 
 
 App.Router = Em.Router.extend
@@ -116,14 +120,16 @@ App.Router = Em.Router.extend
         route: "/lista"
         connectOutlets: (router) ->
           if Em.empty(router.get("egbilListController").content)
-            App.router.transitionTo "egbil.search"
+            router.transitionTo "egbil.search"
           else
             router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
 
-      showObject: (router, context) ->
-        router.get("egbilController").showObject context.get("type"), context.get("name")
+      openObject: (router, context) ->
+        router.get("egbilController").openObject context.get("type"), context.get("name")
       closeObject: (router, context) ->
         router.get("egbilController").closeObject context.get("type"), context.get("name")
+      showObject: (router, context) ->
+        router.get("egbilController").showObject context.get("type"), context.get("name")
       goToObject: (router, context) ->
         router.transitionTo ["object", context.get "type"].join("."), context
 
