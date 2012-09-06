@@ -5,7 +5,5 @@ App.ModelTableHeaderView = Em.View.extend
   content: null
 
   template: (->
-    column = @get "column"
-    content = @get "content"
-    Em.Handlebars.compile(content[0]?.get(column)?.label ? "")
-  ).property()
+    Em.Handlebars.compile( @get("content.0")?.get(@get "column")?.label ? "")
+  ).property("content", "column")
