@@ -1,0 +1,9 @@
+<script type="text/x-handlebars" data-template-name="accordionHeader">
+  <a class="accordion-toggle btn-primary">
+    {{view.label}}
+  </a>
+</script>
+
+<script type="text/x-handlebars" data-template-name="accordionBody">
+  {{view App.ModelTableView contentBinding="view.content" columnsBinding="view.columns"}}
+</script>
