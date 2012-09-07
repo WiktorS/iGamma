@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 import models.RegisterUnitMock;
+import play.Logger;
 import play.Play;
 
 import java.io.BufferedReader;
@@ -60,6 +61,7 @@ public class IntegraMock implements Integra {
                 exitLoop = true;
             }
             result = Play.getFile("mock/" + fileName + ".json");
+            Logger.debug("Trying to load mock '%s'", fileName);
         } while (!exitLoop && !result.exists());
         return result;
     }
