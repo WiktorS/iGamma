@@ -1,2 +1,14 @@
-App.EgbilSearchJrgibController = Em.ObjectController.extend
-  content: App.EgbilSearchModel.create()
+App.EgbilSearchJrgibController = App.EgbilSearchCommonController.extend
+  jsonMethod: "getRegisterUnitsByJrgib"
+  columns: [
+    "check"
+    "show"
+    "marker"
+    "jrgNumber"
+    "jrbNumber"
+    "precinct"
+    "cadastralUnit"
+    "creationProof"
+    "creationDate"
+    "regon"
+  ]
