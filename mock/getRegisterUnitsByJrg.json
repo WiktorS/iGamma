@@ -1,7 +1,11 @@
 [
   {
-    "jrg" : "G150",
-    "jrb" : "X1",
-    "id"  : 3  
+    "id"  : 1,
+    "marker" : "",
+    "jrgNumber" : "G1",
+    "precinct" : "0001 - QWERTY",
+    "cadastralUnit" : "Miasto XYZ",
+    "creationProof" : "założ. ewid. gruntów",
+    "creationDate" : ""
   }
 ]
