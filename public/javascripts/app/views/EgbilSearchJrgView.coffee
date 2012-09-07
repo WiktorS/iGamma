@@ -1,6 +1,2 @@
-App.EgbilSearchJrgView = Em.View.extend
+App.EgbilSearchJrgView = App.EgbilSearchCommonView.extend
   templateName: "egbilSearchJrg"
-
-  formFields: Em.A()
-  pushFormField: (field) ->
-    @formFields.pushObject field
