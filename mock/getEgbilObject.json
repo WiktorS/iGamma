@@ -2,6 +2,8 @@
   "registerUnit":{
     "marker" : "~",
     "jrbNumber" : "B1",
+    "jrlNumber" : "L1",
+    "jrgNumber" : "G1",
     "precinct":"0001 - QWERTY",
     "cadastralUnit":"Miasto XYZ",
     "creationProof" : "założ. ewid. gruntów",

@@ -25,20 +25,25 @@ App.EgbilController = Em.Controller.extend
     object = @getObject objectType, objectName
     if Em.empty object
       $.ajax
-        url: "/getEgbilObjectByJrb.json"
-        data: {jrb: objectName}
+        url: "/getEgbilObject.json"
+        data:
+          type: objectType
+          name: objectName
         success: (data) =>
-          content = App.EgbilObjectModel.create()
-          content.registerUnit = App.Common.toModel.call(App.EgbilObjectRegisterUnitModel, data.registerUnit)
-          content.shares = data.shares.map(App.Common.toModel, App.EgbilObjectShareModel)
-          content.lots = data.lots.map(App.Common.toModel, App.EgbilObjectLotModel)
-          content.buildings = data.buildings.map(App.Common.toModel, App.EgbilObjectBuildingModel)
-          content.locals = data.locals.map(App.Common.toModel, App.EgbilObjectLocalModel)
-          object = App.EgbilObjectInfo.create
-            name: objectName
-            type: objectType
-            content: content
-          @objects.addObject object
-          App.router.send "goToObject", object
+          if !Em.empty data
+            content = App.EgbilObjectModel.create()
+            content.registerUnit = App.Common.toModel.call(App.EgbilObjectRegisterUnitModel, data.registerUnit)
+            content.shares = data.shares.map(App.Common.toModel, App.EgbilObjectShareModel)
+            content.lots = data.lots.map(App.Common.toModel, App.EgbilObjectLotModel)
+            content.buildings = data.buildings.map(App.Common.toModel, App.EgbilObjectBuildingModel)
+            content.locals = data.locals.map(App.Common.toModel, App.EgbilObjectLocalModel)
+            object = App.EgbilObjectInfo.create
+              name: objectName
+              type: objectType
+              content: content
+            @objects.addObject object
+            App.router.send "goToObject", object
+          else
+            alert "Nie znaleziono rekordu"  #TODO: Error handling
     else
       App.router.send "goToObject", object

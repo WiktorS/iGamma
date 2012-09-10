@@ -99,8 +99,8 @@ public class IntegraMock implements Integra {
     }
 
     @Override
-    public EgbilObject getEgbilObjectByJrb(String jrb) {
+    public EgbilObject getEgbilObject(String type, String name) {
         TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
-        return getMockJsonData("getEgbilObjectByJrb", typeToken, jrb);
+        return getMockJsonData("getEgbilObject", typeToken, type, name);
     }
 }

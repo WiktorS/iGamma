@@ -11,5 +11,5 @@ public interface Integra {
     List<RegisterUnit> getRegisterUnitsByJrb(String jrb);
     List<RegisterUnit> getRegisterUnitsByJrl(String jrl);
     List<RegisterUnit> getRegisterUnitsByJrg(String jrg);
-    EgbilObject getEgbilObjectByJrb(String jrb);
+    EgbilObject getEgbilObject(String type, String name);
 }

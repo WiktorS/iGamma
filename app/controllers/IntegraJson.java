@@ -36,8 +36,8 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
-    public static void getEgbilObjectByJrb(String jrb) {
-        EgbilObject result = integra.getEgbilObjectByJrb(jrb);
+    public static void getEgbilObject(String type, String name) {
+        EgbilObject result = integra.getEgbilObject(type, name);
         renderJSON(result);
     }
 }
