@@ -140,10 +140,6 @@ App.Router = Em.Router.extend
           route: "/"
           redirectsTo: "egbil.search"
 
-        jrgib: RouteWithObjectParam.extend
-          route: "/jrgib/:name"
-          objectOutletName: "egbilObjectJrgib"
-
         jrb: RouteWithObjectParam.extend
           route: "/jrb/:name"
           objectOutletName: "egbilObjectJrb"
