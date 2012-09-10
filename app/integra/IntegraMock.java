@@ -75,9 +75,21 @@ public class IntegraMock implements Integra {
     }
 
     @Override
+    public List<RegisterUnit> getRegisterUnitsByJrgib(String jrgib) {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        return getMockJsonData("getRegisterUnitsByJrgib", typeToken, jrgib);
+    }
+
+    @Override
     public List<RegisterUnit> getRegisterUnitsByJrb(String jrb) {
         TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
         return getMockJsonData("getRegisterUnitsByJrb", typeToken, jrb);
+    }
+
+    @Override
+    public List<RegisterUnit> getRegisterUnitsByJrl(String jrl) {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        return getMockJsonData("getRegisterUnitsByJrl", typeToken, jrl);
     }
 
     @Override

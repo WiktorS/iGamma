@@ -39,10 +39,20 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
+    public List<RegisterUnit> getRegisterUnitsByJrgib(String jrgib) {
+        return null;  //TODO
+    }
+
+    @Override
     public List<RegisterUnit> getRegisterUnitsByJrb(String jrb) {
         JsonElement jsonResult = invokeMethodJson("getRegisterUnitsByJrb");
         TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
+    }
+
+    @Override
+    public List<RegisterUnit> getRegisterUnitsByJrl(String jrl) {
+        return null;  //TODO
     }
 
     @Override
