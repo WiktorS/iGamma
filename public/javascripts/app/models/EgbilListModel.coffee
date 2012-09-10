@@ -2,14 +2,30 @@ App.EgbilListModel = Em.Object.extend
   check: null
   show: null
   marker: null
-  jrgNumber: null
   jrbNumber: null
   jrlNumber: null
+  jrgNumber: null
   precinct: null
   cadastralUnit: null
   creationProof: null
   creationDate: null
   regon: null
+  jrgNumberJrgib: ( ->
+    App.StandardTableCellModel.create
+          label: "Numer JRG"
+          viewClass: App.EgbilListTableCellButtonView
+          valueType: "jrgib"
+          displayValueBinding: Ember.Binding.oneWay("value.jrg")
+          value:
+            jrg: @get "jrgNumber.value"
+            jrb: @get "jrbNumber.value"
+    ).property("jrgNumber")
+  jrbNumberJrgib: ( ->
+    App.StandardTableCellModel.create
+          label: "Numer JRB"
+          valueType: "jrb"
+          value: @get "jrbNumber.value"
+    ).property("jrbNumber")
 
   init: ->
     @_super()
@@ -24,10 +40,6 @@ App.EgbilListModel = Em.Object.extend
     @marker = App.StandardTableCellModel.create
       label: "Oznaczenie"
       viewClass: App.EgbilListTableCellMarkerView
-    @jrgNumber = App.StandardTableCellModel.create
-      label: "Numer JRG"
-      viewClass: App.EgbilListTableCellButtonView
-      valueType: "jrg"
     @jrbNumber = App.StandardTableCellModel.create
       label: "Numer JRB"
       viewClass: App.EgbilListTableCellButtonView
@@ -36,6 +48,10 @@ App.EgbilListModel = Em.Object.extend
       label: "Numer JRL"
       viewClass: App.EgbilListTableCellButtonView
       valueType: "jrl"
+    @jrgNumber = App.StandardTableCellModel.create
+      label: "Numer JRG"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "jrg"
     @precinct = App.StandardTableCellModel.create
       label: "Obręb"
     @cadastralUnit = App.StandardTableCellModel.create
