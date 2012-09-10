@@ -1,12 +1,12 @@
-App.EgbilObjectJrbController = Em.Controller.extend
+App.EgbilObjectJrgController = Em.Controller.extend
   content: null
 
   registerUnitContent: (-> Em.makeArray(@get "content.registerUnit")).property("content")
 
   registerUnitColumns:
-    ["show", "jrbNumber", "kw", "creationProof", "creationDate", "remarks", "notes"]
+    ["show", "jrgNumber", "kw", "creationProof", "creationDate", "remarks", "notes"]
   shareColumns:
-    ["marker", "characterB", "value", "registerGroupB", "groupType", "entity", "peselOrRegon", "address", "shareRemarks", "personRemarks"]
+    ["marker", "characterG", "value", "registerGroupG", "groupType", "entity", "peselOrRegon", "address", "shareRemarks", "personRemarks"]
   lotColumns:
     ["show", "marker", "g5", "registeredArea", "geodesicArea", "addresses", "documentsSygnature", "documentsSygnature", "useClassType", "useClassArea", "monumentRegister", "statisticalRegion", "listDistrict", "validFrom", "validTo", "value", "valuationDate", "remarks"]
   buildingColumns:
