@@ -4,7 +4,7 @@ App.EgbilObjectJrgibController = Em.Controller.extend
   registerUnitContent: (-> Em.makeArray(@get "content.registerUnit")).property("content")
 
   registerUnitColumns:
-    ["show", "jrbNumber", "area", "kw", "creationProof", "creationDate", "householdType", "regon", "remarks", "notes"]
+    ["show", "jrgNumber", "jrbNumber", "area", "kw", "creationProof", "creationDate", "householdType", "regon", "remarks", "notes"]
   shareColumns:
     ["marker", "characterG", "characterB", "value", "registerGroupG", "registerGroupB", "groupType", "entity", "peselOrRegon", "address", "shareRemarks", "personRemarks"]
   lotColumns:
