@@ -10,11 +10,15 @@ App.ModelTableRowView = Em.View.extend
         cell = content.get field
         if cell instanceof App.StandardTableCellModel
           cellClass = cell.get("viewClass") ? "App.ModelTableCellView"
-          cellDisplayValue = cell.get("displayValue") ? ""
+          cellDisplayValue = cell.get("displayValue")
+          cellValue = cell.get("value") ? ""
           cellValueType = cell.get("valueType")
           tagParams = ""
+          tagParams += " displayValue=\"#{cellDisplayValue}\"" if cellDisplayValue?
+          tagParams += " value=\"#{cellValue}\"" if cellValue?
           tagParams += " type=\"#{cellValueType}\"" if cellValueType?
-          result += "{{view #{cellClass} value=\"#{cellDisplayValue}\"#{tagParams}}}";
+          tagParams += " param=\"#{cellValueType}\"" if cellValueType?
+          result += "{{view #{cellClass} #{tagParams}}}";
       )
     Em.Handlebars.compile result
   ).property()

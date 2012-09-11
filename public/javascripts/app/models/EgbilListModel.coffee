@@ -15,11 +15,9 @@ App.EgbilListModel = Em.Object.extend
           label: "Numer JRG"
           viewClass: App.EgbilListTableCellButtonView
           valueType: "jrgib"
-          displayValueBinding: Ember.Binding.oneWay("value.jrg")
-          value:
-            jrg: @get "jrgNumber.value"
-            jrb: @get "jrbNumber.value"
-    ).property("jrgNumber")
+          displayValue: @get "jrgNumber.value"
+          value: "#{@get "jrgNumber.value"},#{@get "jrbNumber.value"}"
+    ).property("jrgNumber", "jrbNumber")
   jrbNumberJrgib: ( ->
     App.StandardTableCellModel.create
           label: "Numer JRB"
