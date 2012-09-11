@@ -16,7 +16,9 @@ App.EgbilListModel = Em.Object.extend
           viewClass: App.EgbilListTableCellButtonView
           valueType: "jrgib"
           displayValue: @get "jrgNumber.value"
-          value: "#{@get "jrgNumber.value"},#{@get "jrbNumber.value"}"
+          value: (=>
+            [@get("jrgNumber.value"), @get("jrbNumber.value")].join(",").replace(/^,+|,+$/g, "")
+          ).property()
     ).property("jrgNumber", "jrbNumber")
   jrbNumberJrgib: ( ->
     App.StandardTableCellModel.create
