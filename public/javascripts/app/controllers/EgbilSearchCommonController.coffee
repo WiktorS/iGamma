@@ -9,11 +9,12 @@ App.EgbilSearchCommonController = Em.Controller.extend
       url: "#{@jsonMethod}.json"
       data: searchArgs
       success: (data) =>
-        App.router.set "egbilListController.columns", @columns
-        App.router.set "egbilListController.content", data.map(App.Common.toModel, App.EgbilListModel)
-        App.router.transitionTo "list"
+        context = Em.Object.create
+          columns: @get "columns"
+          content: data.map(App.Common.toModel, App.EgbilListModel)
+        App.router.send "goToList", context
       error: (jqXHR, textStatus, errorThrown) ->
-        alert errorThrown
+        alert errorThrown #TODO: error handling
 
   getSearchArgs: (view) ->
     result = {} 

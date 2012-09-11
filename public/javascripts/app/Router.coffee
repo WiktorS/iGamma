@@ -116,6 +116,12 @@ App.Router = Em.Router.extend
         connectOutlets: (router) ->
           router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilMap"})
 
+      goToList: (router, context) ->
+        if context?
+          controller = router.get "egbilListController"
+          controller.set "content", context.get "content"
+          controller.set "columns", context.get "columns"
+        router.transitionTo "list"
       list: RouteWithParentMemory.extend
         route: "/lista"
         connectOutlets: (router) ->
