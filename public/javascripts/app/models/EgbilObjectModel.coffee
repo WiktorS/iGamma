@@ -43,6 +43,8 @@ App.EgbilObjectRegisterUnitModel = Em.Object.extend
       label: "Pow. ewidencyjna"
     @kw = App.StandardTableCellModel.create
       label: "KW"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "kw"
     @creationProof = App.StandardTableCellModel.create
       label: "Dowód założenia"
     @creationDate = App.StandardTableCellModel.create
@@ -86,8 +88,12 @@ App.EgbilObjectShareModel = Em.Object.extend
       label: "Grupa rejestrowa B"
     @groupType = App.StandardTableCellModel.create
       label: "Wyróżnik grupy"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: ""
     @entity = App.StandardTableCellModel.create
       label: "Podmiot"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "entity"
     @peselOrRegon = App.StandardTableCellModel.create
       label: "PESEL/REGON"
     @address = App.StandardTableCellModel.create
@@ -127,6 +133,8 @@ App.EgbilObjectLotModel = Em.Object.extend
       viewClass: App.EgbilListTableCellMarkerView
     @g5 = App.StandardTableCellModel.create
       label: "Identyfikator G5"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "g5"
     @registeredArea = App.StandardTableCellModel.create
       label: "Pow. ewidencyjna"
       help: "[ha]"
@@ -137,6 +145,8 @@ App.EgbilObjectLotModel = Em.Object.extend
       label: "Adresy"
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "document"
     @useClassType = App.StandardTableCellModel.create
       label: "Klasoużytki/Rodzaj"
     @useClassArea = App.StandardTableCellModel.create
@@ -196,10 +206,14 @@ App.EgbilObjectBuildingModel = Em.Object.extend
       viewClass: App.EgbilListTableCellMarkerView
     @g5 = App.StandardTableCellModel.create
       label: "Identyfikator G5"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "g5"
     @jrbNumber = App.StandardTableCellModel.create
       label: "JRB"
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "document"
     @buildUpArea = App.StandardTableCellModel.create
       label: "Powierzchnia zabudowy"
       help: "[m2]"
@@ -220,6 +234,8 @@ App.EgbilObjectBuildingModel = Em.Object.extend
       label: "Adresy"
     @lotNumber = App.StandardTableCellModel.create
       label: "Działki/Numer"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "lot"
     @lotArea = App.StandardTableCellModel.create
       label: "Działki/Powierzchnia ewidencyjna"
     @constructionFinishDate = App.StandardTableCellModel.create
@@ -276,12 +292,18 @@ App.EgbilObjectLocalModel = Em.Object.extend
       viewClass: App.EgbilListTableCellMarkerView
     @g5 = App.StandardTableCellModel.create
       label: "Identyfikator G5"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "g5"
     @jrlNumber = App.StandardTableCellModel.create
       label: "JRL"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "jrl"
     @address = App.StandardTableCellModel.create
       label: "Adres"
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "document"
     @usableArea = App.StandardTableCellModel.create
       label: "Powierzchnia użytkowa "
       help: "[m2]"
@@ -291,6 +313,8 @@ App.EgbilObjectLocalModel = Em.Object.extend
       label: "Pomieszczenia przynależne/Budynek"
     @associatedPremisesType = App.StandardTableCellModel.create
       label: "Pomieszczenia przynależne/Rodzaj"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "premises"
     @associatedPremisesArea = App.StandardTableCellModel.create
       label: "Pomieszczenia przynależne/Powierzchnia"
       help: "m2"
@@ -302,10 +326,16 @@ App.EgbilObjectLocalModel = Em.Object.extend
       label: "Kondygnacja"
     @commonPropertyShare = App.StandardTableCellModel.create
       label: "Udział w nieruchomości wspólnej"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "propertyShare"
     @lot = App.StandardTableCellModel.create
       label: "Działka"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "lot"
     @building = App.StandardTableCellModel.create
       label: "Budynek"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "building"
     @cadastralValue = App.StandardTableCellModel.create
       label: "Wartość katastralna"
     @valuationDate = App.StandardTableCellModel.create
