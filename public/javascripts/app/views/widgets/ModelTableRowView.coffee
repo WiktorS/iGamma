@@ -21,4 +21,4 @@ App.ModelTableRowView = Em.View.extend
           result += "{{view #{cellClass} #{tagParams}}}";
       )
     Em.Handlebars.compile result
-  ).property()
+  ).property("columns.@each", "content.@each")
