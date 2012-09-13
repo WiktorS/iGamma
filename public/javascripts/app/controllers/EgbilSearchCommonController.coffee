@@ -1,6 +1,7 @@
 App.EgbilSearchCommonController = Em.Controller.extend
   content: App.EgbilSearchModel.create()
   columns: null
+  title: null
   jsonMethod: null
 
   search: (e) ->
@@ -12,6 +13,7 @@ App.EgbilSearchCommonController = Em.Controller.extend
         context = Em.Object.create
           columns: @get "columns"
           content: data.map(App.Common.toModel, App.EgbilListModel)
+          title: @get "title"
         App.router.send "goToList", context
       error: (jqXHR, textStatus, errorThrown) ->
         alert errorThrown #TODO: error handling

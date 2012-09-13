@@ -121,6 +121,7 @@ App.Router = Em.Router.extend
           controller = router.get "egbilListController"
           controller.set "content", context.get "content"
           controller.set "columns", context.get "columns"
+          controller.set "title", context.get "title"
         router.transitionTo "list"
       list: RouteWithParentMemory.extend
         route: "/lista"

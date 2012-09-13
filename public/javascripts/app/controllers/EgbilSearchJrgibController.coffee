@@ -12,3 +12,4 @@ App.EgbilSearchJrgibController = App.EgbilSearchCommonController.extend
     "creationDate"
     "regon"
   ]
+  title: "Jednostki Rejestrowe Gruntów i Budynków"

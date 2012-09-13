@@ -1,5 +1,6 @@
 App.EgbilListController = Em.ArrayController.extend
   columns: null
+  title: null
 
   init: ->
     @_super()
@@ -8,3 +9,4 @@ App.EgbilListController = Em.ArrayController.extend
   clearData: ->
     @set "content", Em.A()
     @set "columns", Em.A()
+    @set "title", ""

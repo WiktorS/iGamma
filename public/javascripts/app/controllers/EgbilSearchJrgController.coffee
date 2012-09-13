@@ -10,3 +10,4 @@ App.EgbilSearchJrgController = App.EgbilSearchCommonController.extend
     "creationProof"
     "creationDate"
   ]
+  title: "Stare Jednostki Rejestrowe Gruntów"
