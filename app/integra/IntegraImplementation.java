@@ -65,7 +65,7 @@ public class IntegraImplementation implements Integra{
     @Override
     public EgbilObject getEgbilObject(String type, String name) {
         JsonElement jsonResult = invokeMethodJson("getEgbilObject");
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }
 }
