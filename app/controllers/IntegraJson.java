@@ -24,4 +24,14 @@ public class IntegraJson extends Controller {
         List<RegisterUnit> result = integra.getRegisterUnitsByJrg(jrg);
         renderJSON(result);
     }
+
+    public static void getRegisterUnitsByJrl(String jrl) {
+        List<RegisterUnit> result = integra.getRegisterUnitsByJrl(jrl);
+        renderJSON(result);
+    }
+
+    public static void getLotsByNumber(String number) {
+        List<RegisterUnit> result = integra.getLotsByNumber(number);
+        renderJSON(result);
+    }
 }

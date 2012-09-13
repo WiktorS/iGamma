@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
-public class IntegraMock implements Integra {
+public class  IntegraMock implements Integra {
 
     private static final Gson gson = new Gson();
 
@@ -79,5 +79,17 @@ public class IntegraMock implements Integra {
     public List<RegisterUnit> getRegisterUnitsByJrg(String jrg) {
         TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
         return getMockJsonData("getRegisterUnitsByJrg", typeToken, jrg);
+    }
+
+    @Override
+    public List<RegisterUnit> getRegisterUnitsByJrl(String jrl) {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        return getMockJsonData("getRegisterUnitsByJrl", typeToken, jrl);
+    }
+
+    @Override
+    public List<RegisterUnit> getLotsByNumber(String number) {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        return getMockJsonData("getLotsByNumber", typeToken, number);
     }
 }

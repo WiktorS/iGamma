@@ -10,6 +10,12 @@ App.EgbilListModel = Em.Object.extend
   creationProof: null
   creationDate: null
   regon: null
+  number: null
+  numberJRG: null
+  cadastralSheet: null
+  address: null
+  document: null
+  cadastralArea: null
 
   init: ->
     @_super()
@@ -37,3 +43,15 @@ App.EgbilListModel = Em.Object.extend
       label: "Data założenia"
     @regon = App.StandardFilterElementModel.create
       label: "REGON"
+    @number= App.StandardFilterElementModel.create
+      label: "Numer"
+    @numberJRG= App.StandardFilterElementModel.create
+      label: "Numer JRG"
+    @cadastralSheet= App.StandardFilterElementModel.create
+      label: "Arkusz ewidecyjny"
+    @address= App.StandardFilterElementModel.create
+      label: "Adres"
+    @document= App.StandardFilterElementModel.create
+      label: "Dokument"
+    @cadastralArea= App.StandardFilterElementModel.create
+      label: "Powierzchnia ewidencyjna"
