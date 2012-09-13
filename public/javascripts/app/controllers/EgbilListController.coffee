@@ -9,4 +9,3 @@ App.EgbilListController = Em.ArrayController.extend
   clearData: ->
     @set "content", Em.A()
     @set "columns", Em.A()
-    @set "title", ""

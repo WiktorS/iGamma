@@ -23,6 +23,11 @@ RouteWithObjectParam = Em.Route.extend
     if !Em.empty object
       router.get("egbilController").connectOutlet(
         outletName: "egbil"
+        name: "egbilObject"
+        context: object.content
+      )
+      router.get("egbilObjectController").connectOutlet(
+        outletName: "egbilObject"
         name: @get("objectOutletName")
         context: object.content
       )
