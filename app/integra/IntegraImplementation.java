@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
+import integra.models.EgbilLot;
 import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 import play.Play;
@@ -65,16 +66,16 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
-    public List<RegisterUnit> getLotsByNumber(String number) {
+    public List<EgbilLot> getLotsByNumber(String number) {
         JsonElement jsonResult = invokeMethodJson("getLotsByNumber");
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        TypeToken<List<EgbilLot>> typeToken = new TypeToken<List<EgbilLot>>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }
 
     @Override
     public EgbilObject getEgbilObject(String type, String name) {
         JsonElement jsonResult = invokeMethodJson("getEgbilObject");
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }
 }

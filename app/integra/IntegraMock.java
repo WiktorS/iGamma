@@ -3,6 +3,7 @@ package integra;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import integra.models.EgbilLot;
 import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 import models.RegisterUnitMock;
@@ -99,8 +100,8 @@ public class  IntegraMock implements Integra {
     }
 
     @Override
-    public List<RegisterUnit> getLotsByNumber(String number) {
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+    public List<EgbilLot> getLotsByNumber(String number) {
+        TypeToken<List<EgbilLot>> typeToken = new TypeToken<List<EgbilLot>>() {};
         return getMockJsonData("getLotsByNumber", typeToken, number);
     }
 

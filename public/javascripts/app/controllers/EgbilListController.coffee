@@ -1,5 +1,6 @@
 App.EgbilListController = Em.ArrayController.extend
   columns: null
+  title: null
 
   init: ->
     @_super()

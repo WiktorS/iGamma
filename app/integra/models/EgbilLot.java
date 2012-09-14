@@ -17,4 +17,14 @@ public class EgbilLot implements IntegraModel {
     public String value;
     public String valuationDate;
     public String remarks;
+
+    public String lotNumber;
+    public String jrgNumber;
+    public String precinct;
+    public String cadastralSheet;
+    public String cadastralUnit;
+    public String cadastralArea;
+    public String address;
+    public String document;
+
 }

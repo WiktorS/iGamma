@@ -1,34 +1,30 @@
 [
   {
     "id"  : 1,
-    "marker" : "",
-    "number" : "B1",
-    "precinct" : "0001 - QWERTY",
-    "cadastralSheet": "arkusz ewidencyjny",
-    "cadastralUnit" : "Miasto XYZ",
-    "address" : "address",
-    "document": "document",
-    "cadastralArea": "123"
+    "lotNumber" : "numer_dzialki",
+    "precinct" : "obreb",
+    "cadastralSheet": "arkusz_ewid",
+    "cadastralUnit" : "jednostka_ewid",
+    "address" : "adres",
+    "document": "dokument",
+    "cadastralArea": "powierzchnia_ewid"
   },
   {
     "id"  : 2,
     "marker" : "X",
-    "number" : "B2",
+    "lotNumber" : "B2",
     "creationDate" : "2001-01-01"
   },
   {
     "id"  : 3,
-    "marker" : "",
-    "number" : "B3"
+    "lotNumber" : "B3"
   },
   {
     "id"  : 4,
-    "marker" : "",
-    "number" : "B4"
+    "lotNumber" : "B4"
   },
   {
     "id"  : 5,
-    "marker" : "",
-    "number" : "B5"
+    "lotNumber" : "B5"
   }
 ]

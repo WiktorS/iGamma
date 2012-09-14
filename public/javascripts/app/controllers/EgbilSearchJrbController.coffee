@@ -10,3 +10,4 @@ App.EgbilSearchJrbController = App.EgbilSearchCommonController.extend
     "creationProof"
     "creationDate"
   ]
+  title: "Jednostki Rejestrowe Budynków"

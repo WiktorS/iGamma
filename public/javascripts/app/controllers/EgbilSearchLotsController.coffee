@@ -1,10 +1,11 @@
 App.EgbilSearchLotsController = App.EgbilSearchCommonController.extend
   jsonMethod: "getLotsByNumber"
+  title: "Działki"
   columns: [
     "check"
     "show"
     "marker"
-    "number"
+    "lotNumber"
     "precinct"
     "cadastralSheet"
     "cadastralUnit"

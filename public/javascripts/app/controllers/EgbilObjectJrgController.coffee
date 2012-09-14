@@ -1,7 +1,7 @@
 App.EgbilObjectJrgController = Em.Controller.extend
   content: null
 
-  registerUnitContent: (-> Em.makeArray(@get "content.registerUnit")).property("content")
+  registerUnitContent: (-> Em.makeArray(@get "content.registerUnit")).property("content.registerUnit")
 
   registerUnitColumns:
     ["show", "jrgNumber", "kw", "creationProof", "creationDate", "remarks", "notes"]

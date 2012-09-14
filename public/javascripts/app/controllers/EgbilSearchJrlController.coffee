@@ -10,3 +10,4 @@ App.EgbilSearchJrlController = App.EgbilSearchCommonController.extend
     "creationProof"
     "creationDate"
   ]
+  title: "Jednostki Rejestrowe Lokali"

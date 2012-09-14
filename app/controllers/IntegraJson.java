@@ -2,6 +2,7 @@ package controllers;
 
 import integra.Integra;
 import integra.IntegraServer;
+import integra.models.EgbilLot;
 import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 import play.mvc.Controller;
@@ -37,7 +38,7 @@ public class IntegraJson extends Controller {
     }
 
     public static void getLotsByNumber(String number) {
-        List<RegisterUnit> result = integra.getLotsByNumber(number);
+        List<EgbilLot> result = integra.getLotsByNumber(number);
         renderJSON(result);
     }
 

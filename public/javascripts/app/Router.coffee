@@ -23,6 +23,11 @@ RouteWithObjectParam = Em.Route.extend
     if !Em.empty object
       router.get("egbilController").connectOutlet(
         outletName: "egbil"
+        name: "egbilObject"
+        context: object.content
+      )
+      router.get("egbilObjectController").connectOutlet(
+        outletName: "egbilObject"
         name: @get("objectOutletName")
         context: object.content
       )
@@ -121,6 +126,7 @@ App.Router = Em.Router.extend
           controller = router.get "egbilListController"
           controller.set "content", context.get "content"
           controller.set "columns", context.get "columns"
+          controller.set "title", context.get "title"
         router.transitionTo "list"
       list: RouteWithParentMemory.extend
         route: "/lista"

@@ -10,8 +10,7 @@ App.EgbilListModel = Em.Object.extend
   creationProof: null
   creationDate: null
   regon: null
-  number: null
-  numberJRG: null
+  lotNumber: null
   cadastralSheet: null
   address: null
   document: null
@@ -69,10 +68,8 @@ App.EgbilListModel = Em.Object.extend
       label: "Data założenia"
     @regon = App.StandardTableCellModel.create
       label: "REGON"
-    @number= App.StandardFilterElementModel.create
+    @lotNumber= App.StandardFilterElementModel.create
       label: "Numer"
-    @numberJRG= App.StandardFilterElementModel.create
-      label: "Numer JRG"
     @cadastralSheet= App.StandardFilterElementModel.create
       label: "Arkusz ewidecyjny"
     @address= App.StandardFilterElementModel.create
