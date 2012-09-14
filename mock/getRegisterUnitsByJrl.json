@@ -2,7 +2,7 @@
   {
     "id"  : 1,
     "marker" : "",
-    "jrbNumber" : "B1",
+    "jrlNumber" : "L1",
     "precinct" : "0001 - QWERTY",
     "cadastralUnit" : "Miasto XYZ",
     "creationProof" : "założ. ewid. gruntów",
@@ -11,19 +11,19 @@
   {
     "id"  : 2,
     "marker" : "X",
-    "jrbNumber" : "B2",
+    "jrlNumber" : "B2",
     "creationDate" : "2001-01-01"
   },
   {
     "id"  : 3,
-    "jrbNumber" : "B3"
+    "jrlNumber" : "B3"
   },
   {
     "id"  : 4,
-    "jrbNumber" : "B4"
+    "jrlNumber" : "B4"
   },
   {
     "id"  : 5,
-    "jrbNumber" : "B5"
+    "jrlNumber" : "B5"
   }
 ]

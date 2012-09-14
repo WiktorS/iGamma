@@ -12,3 +12,7 @@ App.FilterEntryFieldView = Em.View.extend
   clearField: (event) ->
     @element.set "value", ""
     @element.set "alternateValue", ""
+
+  didInsertElement: ->
+    @_super()
+    @get("parentView").pushFormField? @get("element")

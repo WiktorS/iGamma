@@ -2,6 +2,7 @@ package controllers;
 
 import integra.Integra;
 import integra.IntegraServer;
+import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 import play.mvc.Controller;
 
@@ -15,13 +16,13 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
-    public static void getRegisterUnitsByJrb(String jrb) {
-        List<RegisterUnit> result = integra.getRegisterUnitsByJrb(jrb);
+    public static void getRegisterUnitsByJrgib(String jrgib) {
+        List<RegisterUnit> result = integra.getRegisterUnitsByJrgib(jrgib);
         renderJSON(result);
     }
 
-    public static void getRegisterUnitsByJrg(String jrg) {
-        List<RegisterUnit> result = integra.getRegisterUnitsByJrg(jrg);
+    public static void getRegisterUnitsByJrb(String jrb) {
+        List<RegisterUnit> result = integra.getRegisterUnitsByJrb(jrb);
         renderJSON(result);
     }
 
@@ -30,8 +31,18 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
+    public static void getRegisterUnitsByJrg(String jrg) {
+        List<RegisterUnit> result = integra.getRegisterUnitsByJrg(jrg);
+        renderJSON(result);
+    }
+
     public static void getLotsByNumber(String number) {
         List<RegisterUnit> result = integra.getLotsByNumber(number);
+        renderJSON(result);
+    }
+
+    public static void getEgbilObject(String type, String name) {
+        EgbilObject result = integra.getEgbilObject(type, name);
         renderJSON(result);
     }
 }

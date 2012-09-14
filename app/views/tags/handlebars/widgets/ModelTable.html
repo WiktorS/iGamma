@@ -1,0 +1,14 @@
+<script type="text/x-handlebars" data-template-name="modelTable">
+  <thead>
+    <tr>
+    {{#each view.columns}}
+      {{view App.ModelTableHeaderView contentBinding="view.content" columnBinding="this"}}
+    {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+  {{#each view.content}}
+    {{view App.ModelTableRowView contentBinding="this" columnsBinding="view.columns"}}
+  {{/each}}
+  </tbody>
+</script>

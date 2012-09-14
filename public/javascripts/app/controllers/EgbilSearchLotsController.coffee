@@ -1,27 +1,15 @@
-App.EgbilSearchLotsController = Em.ObjectController.extend
-  content: App.EgbilSearchModel.create()
+App.EgbilSearchLotsController = App.EgbilSearchCommonController.extend
+  jsonMethod: "getLotsByNumber"
   columns: [
     "check"
     "show"
     "marker"
     "number"
-    "cadastralSheet"
     "precinct"
+    "cadastralSheet"
     "cadastralUnit"
-    "numberJRG"
+    "jrgNumber"
     "address"
     "document"
     "cadastralArea"
   ]
-
-  fetch: (event) ->
-    $.ajax
-      url: "/getLotsByNumber.json"
-      dataType: "json"
-      data: {"number": @content.lot.number.value}
-      success: (data) =>
-        App.router.egbilListController.set "columns", @columns
-        App.router.egbilListController.set "content", data.map(App.Common.toModel, App.EgbilListModel)
-        App.router.transitionTo "list"
-      error: (jqXHR, textStatus, errorThrown) ->
-        alert errorThrown

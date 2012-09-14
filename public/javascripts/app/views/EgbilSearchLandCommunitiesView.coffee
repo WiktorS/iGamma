@@ -1,2 +1,2 @@
-App.EgbilSearchLandCommunitiesView = Em.View.extend
+App.EgbilSearchLandCommunitiesView = App.EgbilSearchCommonView.extend
   templateName: "egbilSearchLandCommunities"

@@ -1,7 +1,11 @@
 [
   {
-    "jrg" : "TEST",
-    "jrb" : "X1",
-    "id"  : 3  
+    "id"  : 1,
+    "marker" : "",
+    "jrgNumber" : "GTEST",
+    "precinct" : "TEST1",
+    "cadastralUnit" : "TEST2",
+    "creationProof" : "TEST3",
+    "creationDate" : "TEST4"
   }
 ]

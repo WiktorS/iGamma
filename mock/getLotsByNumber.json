@@ -18,14 +18,17 @@
   },
   {
     "id"  : 3,
+    "marker" : "",
     "number" : "B3"
   },
   {
     "id"  : 4,
+    "marker" : "",
     "number" : "B4"
   },
   {
     "id"  : 5,
+    "marker" : "",
     "number" : "B5"
   }
 ]
