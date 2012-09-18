@@ -11,10 +11,12 @@ import play.Play;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
 
 public class IntegraMock implements Integra {
 
@@ -26,7 +28,8 @@ public class IntegraMock implements Integra {
         try {
             bufferedReader = new BufferedReader(new FileReader(getMockFile(methodName, params)));
             result = gson.fromJson(bufferedReader, typeToken.getType());
-        } catch (FileNotFoundException e) {
+            bufferedReader.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
