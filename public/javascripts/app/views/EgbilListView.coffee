@@ -29,6 +29,3 @@ App.EgbilListTableCellMarkerView = App.ModelTableCellView.extend
 
 App.EgbilListTableCellButtonView = App.ModelTableCellView.extend
   templateName: "egbilListTableCellButton"
-  didInsertElement: ->
-    this.$("button").on "click", =>
-      App.router.send "openObject", App.EgbilObjectInfo.create {name: @get("value"), type: @get("type")}
