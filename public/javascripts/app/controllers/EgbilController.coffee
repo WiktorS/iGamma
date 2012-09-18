@@ -2,13 +2,17 @@ App.EgbilController = Em.Controller.extend
   objects: Em.A()
 
   getObject: (objectType, objectName) ->
-    @objects.filterProperty("name", objectName).findProperty("type", objectType)
+    @objects.filterProperty("value", objectName).findProperty("valueType", objectType)
 
-  showObject: (objectType, objectName) ->
+  showObject: (contextObject) ->
+    objectType = contextObject.get "valueType"
+    objectName = contextObject.get "value"
     object = @getObject objectType, objectName
     App.router.send "goToObject", object if !Em.empty object
 
-  closeObject: (objectType, objectName) ->
+  closeObject: (contextObject) ->
+    objectType = contextObject.get "valueType"
+    objectName = contextObject.get "value"
     object = @getObject objectType, objectName
     if !Em.empty object
       idx = @objects.indexOf object
@@ -21,7 +25,9 @@ App.EgbilController = Em.Controller.extend
         else
           App.router.transitionTo "egbil.list"
 
-  openObject: (objectType, objectName) ->
+  openObject: (contextObject) ->
+    objectType = contextObject.get "valueType"
+    objectName = contextObject.get "value"
     object = @getObject objectType, objectName
     if Em.empty object
       $.ajax
@@ -37,10 +43,7 @@ App.EgbilController = Em.Controller.extend
             content.lots = data.lots.map(App.Common.toModel, App.EgbilObjectLotModel)
             content.buildings = data.buildings.map(App.Common.toModel, App.EgbilObjectBuildingModel)
             content.locals = data.locals.map(App.Common.toModel, App.EgbilObjectLocalModel)
-            object = App.EgbilObjectInfo.create
-              name: objectName
-              type: objectType
-              content: content
+            object = App.StandardTableCellModel.create contextObject, {content: content}
             @objects.addObject object
             App.router.send "goToObject", object
           else

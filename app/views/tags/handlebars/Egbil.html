@@ -7,7 +7,7 @@
       {{view App.TabItemView stateName="list" displayName="Lista obiektów"}}
       {{/if}}
       {{#each controller.objects}}
-        {{view App.ObjectTabItemView objectNameBinding="name" objectTypeBinding="type"}}
+        {{view App.ObjectTabItemView objectBinding="this"}}
       {{/each}}
     </ul>
   </div>
