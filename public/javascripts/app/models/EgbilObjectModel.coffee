@@ -19,6 +19,9 @@ App.EgbilObjectRegisterUnitModel = Em.Object.extend
   jrgNumber: null
   jrbNumber: null
   jrlNumber: null
+  g5: null
+  precinct: null
+  cadastralUnit: null
   area: null
   kw: null
   creationProof: null
@@ -39,6 +42,12 @@ App.EgbilObjectRegisterUnitModel = Em.Object.extend
       label: "Numer JRB"
     @jrlNumber = App.StandardTableCellModel.create
       label: "Numer JRL"
+    @g5 = App.StandardTableCellModel.create
+      label: "Identyfikator G5"
+    @precinct = App.StandardTableCellModel.create
+      label: "Obręb"
+    @cadastralUnit = App.StandardTableCellModel.create
+      label: "Jednostka ewidencyjna"
     @area = App.StandardTableCellModel.create
       label: "Pow. ewidencyjna"
     @kw = App.StandardTableCellModel.create
