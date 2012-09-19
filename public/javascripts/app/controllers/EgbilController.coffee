@@ -43,10 +43,22 @@ App.EgbilController = Em.Controller.extend
             content.lots = data.lots.map(App.Common.toModel, App.EgbilObjectLotModel)
             content.buildings = data.buildings.map(App.Common.toModel, App.EgbilObjectBuildingModel)
             content.locals = data.locals.map(App.Common.toModel, App.EgbilObjectLocalModel)
-            object = App.StandardTableCellModel.create contextObject, {content: content}
+            object = App.StandardTableCellModel.create contextObject,
+              content: content
+              groupName: @getGroupName objectType
             @objects.addObject object
             App.router.send "goToObject", object
           else
             alert "Nie znaleziono rekordu"  #TODO: Error handling
     else
       App.router.send "goToObject", object
+
+  getGroupName: (group) ->
+    switch group
+      when "jrgib" then "Jednostka Rejestrowa Gruntów i Budynków"
+      when "jrb" then "Jednostka Rejestrowa Budynków"
+      when "jrl" then "Jednostka Rejestrowa Lokali"
+      when "jrg" then "Stara Jednostka Rejestrowa Gruntów"
+      when "lot" then "Działka"
+      when "building" then "Budynek"
+      when "local" then "Lokal samodzielny"
