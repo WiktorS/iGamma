@@ -145,6 +145,7 @@ App.Router = Em.Router.extend
       goToObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
         objectType = context.get("valueType")
+        Em.assert "Undefined object type", objectType?
         router.transitionTo ["object", objectType].join("."), context
 
       object: Em.Route.extend

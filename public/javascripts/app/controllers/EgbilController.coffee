@@ -13,6 +13,7 @@ App.EgbilController = Em.Controller.extend
   closeObject: (contextObject) ->
     objectType = contextObject.get "valueType"
     objectName = contextObject.get "value"
+    Em.assert "Missing object type & name", objectType? && objectName?
     object = @getObject objectType, objectName
     if !Em.empty object
       idx = @objects.indexOf object
@@ -28,6 +29,7 @@ App.EgbilController = Em.Controller.extend
   openObject: (contextObject) ->
     objectType = contextObject.get "valueType"
     objectName = contextObject.get "value"
+    Em.assert "Missing object type & name", objectType? && objectName?
     object = @getObject objectType, objectName
     if Em.empty object
       $.ajax
