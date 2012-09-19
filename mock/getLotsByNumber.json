@@ -1,10 +1,12 @@
 [
   {
     "id"  : 1,
+    "marker" : "X",
     "lotNumber" : "numer_dzialki",
     "precinct" : "obreb",
     "cadastralSheet": "arkusz_ewid",
     "cadastralUnit" : "jednostka_ewid",
+    "jrgNumber" : "jrg",
     "address" : "adres",
     "document": "dokument",
     "cadastralArea": "powierzchnia_ewid"
