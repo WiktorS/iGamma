@@ -21,7 +21,7 @@ RouteWithObjectParam = Em.Route.extend
       router.get("egbilController").connectOutlet(
         outletName: "egbil"
         name: "egbilObject"
-        context: object.content
+        context: object
       )
       router.get("egbilObjectController").connectOutlet(
         outletName: "egbilObject"
