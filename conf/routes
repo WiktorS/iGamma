@@ -12,6 +12,7 @@ GET     /getRegisterUnitsByJrb.json               IntegraJson.getRegisterUnitsBy
 GET     /getRegisterUnitsByJrl.json               IntegraJson.getRegisterUnitsByJrl
 GET     /getRegisterUnitsByJrg.json               IntegraJson.getRegisterUnitsByJrg
 GET     /getEgbilObject.json                      IntegraJson.getEgbilObject
+GET     /getDocuments.json                        IntegraJson.getDocuments
 
 #Integra mock
 GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits

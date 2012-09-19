@@ -3,6 +3,7 @@ package integra;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import integra.models.EgbilDocument;
 import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 import models.RegisterUnitMock;
@@ -105,5 +106,11 @@ public class IntegraMock implements Integra {
     public EgbilObject getEgbilObject(String type, String name) {
         TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
         return getMockJsonData("getEgbilObject", typeToken, type, name);
+    }
+
+    @Override
+    public List<EgbilDocument> getDocuments() {
+        TypeToken<List<EgbilDocument>> typeToken = new TypeToken<List<EgbilDocument>>() {};
+        return getMockJsonData("getDocuments", typeToken);
     }
 }

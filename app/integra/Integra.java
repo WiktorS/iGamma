@@ -1,5 +1,6 @@
 package integra;
 
+import integra.models.EgbilDocument;
 import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 
@@ -12,4 +13,5 @@ public interface Integra {
     List<RegisterUnit> getRegisterUnitsByJrl(String jrl);
     List<RegisterUnit> getRegisterUnitsByJrg(String jrg);
     EgbilObject getEgbilObject(String type, String name);
+    List<EgbilDocument> getDocuments();
 }

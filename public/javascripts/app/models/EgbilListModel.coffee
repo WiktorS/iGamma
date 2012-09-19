@@ -10,6 +10,16 @@ App.EgbilListModel = Em.Object.extend
   creationProof: null
   creationDate: null
   regon: null
+
+  #dokumenty
+  sygnature: null
+  type: null
+  scan: null
+  lots: null
+  buildings: null
+  locals: null
+  changes: null
+
   jrgNumberJrgib: ( ->
     App.StandardTableCellModel.create
           label: "Numer JRG"
@@ -60,3 +70,22 @@ App.EgbilListModel = Em.Object.extend
       label: "Data założenia"
     @regon = App.StandardTableCellModel.create
       label: "REGON"
+
+    #dokumenty
+    @sygnature  = App.StandardTableCellModel.create
+      label: "Sygnatura"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "doc"
+    @type = App.StandardTableCellModel.create
+      label: "Rodzaj"
+    @scan = App.StandardTableCellModel.create
+      label: "Skan"
+    @lots = App.StandardTableCellModel.create
+      label: "Działki"
+    @buildings = App.StandardTableCellModel.create
+      label: "Budynki"
+    @locals = App.StandardTableCellModel.create
+      label: "Lokale"
+    @changes = App.StandardTableCellModel.create
+      label: "Zmiany"
+    @sygnture = App.StandardTableCellModel.create

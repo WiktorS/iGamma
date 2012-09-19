@@ -2,6 +2,7 @@ package controllers;
 
 import integra.Integra;
 import integra.IntegraServer;
+import integra.models.EgbilDocument;
 import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 import play.mvc.Controller;
@@ -38,6 +39,11 @@ public class IntegraJson extends Controller {
 
     public static void getEgbilObject(String type, String name) {
         EgbilObject result = integra.getEgbilObject(type, name);
+        renderJSON(result);
+    }
+
+    public static void getDocuments(String unknown) {
+        List<EgbilDocument> result = integra.getDocuments();
         renderJSON(result);
     }
 }

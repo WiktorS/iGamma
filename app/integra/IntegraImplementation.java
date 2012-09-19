@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
+import integra.models.EgbilDocument;
 import integra.models.EgbilObject;
 import integra.models.RegisterUnit;
 import play.Play;
@@ -67,5 +68,10 @@ public class IntegraImplementation implements Integra{
         JsonElement jsonResult = invokeMethodJson("getEgbilObject");
         TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
+    }
+
+    @Override
+    public List<EgbilDocument> getDocuments() {
+        return null;  //TODO
     }
 }
