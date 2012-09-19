@@ -68,13 +68,13 @@ App.EgbilListModel = Em.Object.extend
       label: "Data założenia"
     @regon = App.StandardTableCellModel.create
       label: "REGON"
-    @lotNumber= App.StandardFilterElementModel.create
+    @lotNumber= App.StandardTableCellModel.create
       label: "Numer"
-    @cadastralSheet= App.StandardFilterElementModel.create
+    @cadastralSheet= App.StandardTableCellModel.create
       label: "Arkusz ewidecyjny"
-    @address= App.StandardFilterElementModel.create
+    @address= App.StandardTableCellModel.create
       label: "Adres"
-    @document= App.StandardFilterElementModel.create
+    @document= App.StandardTableCellModel.create
       label: "Dokument"
-    @cadastralArea= App.StandardFilterElementModel.create
+    @cadastralArea= App.StandardTableCellModel.create
       label: "Powierzchnia ewidencyjna"
