@@ -9,16 +9,13 @@ RouteWithObjectParam = Em.Route.extend
   getObject: ->
     App.router.get("egbilController").getObject @get("objectType"), @get("objectName")
   deserialize: (router, params) ->
-    App.EgbilObjectInfo.create
-      type: @get "objectType"
-      name: params.name
+    Em.Object.create
+      value: params.name
   serialize: (router, context) ->
-    App.EgbilObjectInfo.create
-      type: context.get "type"
-      name: context.get "name"
+    Em.Object.create
+      name: context.get "value"
   connectOutlets: (router, context) ->
-    @set "objectName", context.get "name"
-    #@set "objectType", context.get "type" #actually we can't do this, because type is bind with state name
+    @set "objectName", context.get "value"
     object = @getObject()
     if !Em.empty object
       router.get("egbilController").connectOutlet(
@@ -137,13 +134,18 @@ App.Router = Em.Router.extend
             router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
 
       openObject: (router, context) ->
-        router.get("egbilController").openObject context.get("type"), context.get("name")
+        context = context.context if context instanceof jQuery.Event
+        router.get("egbilController").openObject context
       closeObject: (router, context) ->
-        router.get("egbilController").closeObject context.get("type"), context.get("name")
+        context = context.context if context instanceof jQuery.Event
+        router.get("egbilController").closeObject context
       showObject: (router, context) ->
-        router.get("egbilController").showObject context.get("type"), context.get("name")
+        context = context.context if context instanceof jQuery.Event
+        router.get("egbilController").showObject context
       goToObject: (router, context) ->
-        router.transitionTo ["object", context.get "type"].join("."), context
+        context = context.context if context instanceof jQuery.Event
+        objectType = context.get("valueType")
+        router.transitionTo ["object", objectType].join("."), context
 
       object: Em.Route.extend
         route: "/obiekt"

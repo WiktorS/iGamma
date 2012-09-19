@@ -4,7 +4,7 @@ App.TabItemView = Em.View.extend
   classNameBindings: ["active"]
   displayName: null
   stateName: null
-  currentStatePathBinding: "App.router.currentState.path"
+  currentStatePathBinding: "controller.target.currentState.path"
   click: (e) -> App.router.transitionTo this.get("stateName")
   active: ( ->
     @get("currentStatePath").match("\\." + @get("stateName")+"(\\.|$)") != null
@@ -12,23 +12,14 @@ App.TabItemView = Em.View.extend
 
 
 App.ObjectTabItemView = App.TabItemView.extend
+  object: null
   templateName: "objectTabItem"
-  objectName: null
-  objectType: null
-  stateNameBinding: "objectType"
-  displayNameBinding: "objectName"
-  currentStateObjectNameBinding: "App.router.currentState.objectName"
+  stateName: (-> @get "object.valueType").property("object.valueType")
+  displayName: (-> @get "object.value").property("object.value")
+  currentStateObjectNameBinding: "controller.target.currentState.objectName"
   click: (e) ->
-    App.router.send "showObject", App.EgbilObjectInfo.create
-      name: @get "objectName"
-      type: @get "objectType"
+    App.router.send "showObject", @get("object")
   active: ( ->
     @get("currentStatePath").match("\\." + @get("stateName")+"(\\.|$)") != null &&
-      @get("currentStateObjectName") == @get("objectName")
-  ).property("currentStatePath", "currentStateObjectName", "stateName")
-  close: (e) ->
-    e.stopPropagation()
-    this.$().hide "fast", =>
-      App.router.send "closeObject", App.EgbilObjectInfo.create
-        name: @get "objectName"
-        type: @get "objectType"
+      @get("currentStateObjectName") == @get("displayName")
+  ).property("currentStatePath", "currentStateObjectName", "stateName", "displayName")
