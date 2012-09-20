@@ -88,4 +88,3 @@ App.EgbilListModel = Em.Object.extend
       label: "Lokale"
     @changes = App.StandardTableCellModel.create
       label: "Zmiany"
-    @sygnture = App.StandardTableCellModel.create

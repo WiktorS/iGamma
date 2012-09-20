@@ -1,17 +1,21 @@
 App.EgbilObjectModel = Em.Object.extend
+  attributes: null
   registerUnit: null
   shares: null
   lots: null
   buildings: null
   locals: null
+  changes: null
 
   init: ->
     @_super()
     @registerUnit = App.EgbilObjectRegisterUnitModel.create()
+    @document = App.EgbilObjectDocumentModel.create()
     @shares = Em.A()
     @lots = Em.A()
     @buildings = Em.A()
     @locals = Em.A()
+    @changes = Em.A()
 
 
 App.EgbilObjectRegisterUnitModel = Em.Object.extend
@@ -66,6 +70,41 @@ App.EgbilObjectRegisterUnitModel = Em.Object.extend
       label: "Uwagi"
     @notes = App.StandardTableCellModel.create
       label: "Notatki"
+
+
+App.EgbilObjectDocumentModel = Em.Object.extend
+  type: null
+  sygnture: null
+  source: null
+  creationDate: null
+  receiptDate: null
+  description: null
+  designation: null
+  relatedType: null
+  relatedSygnature: null
+
+  init: ->
+    @type = App.StandardTableCellModel.create
+      label: "Rodzaj"
+    @sygnature = App.StandardTableCellModel.create
+      label: "Sygnatura"
+    @source = App.StandardTableCellModel.create
+      label: "Źródło"
+    @creationDate = App.StandardTableCellModel.create
+      label: "Data sporządzenia"
+    @receiptDate = App.StandardTableCellModel.create
+      label: "Data wpływu"
+    @description = App.StandardTableCellModel.create
+      label: "Opis"
+    @designation = App.StandardTableCellModel.create
+      label: "Oznaczenie"
+    @relatedType = App.StandardTableCellModel.create
+      label: "Rodzaj dokumentu związanego"
+    @relatedSygnature = App.StandardTableCellModel.create
+      label: "Sygnatura dokumentu związanego"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "doc"
+
 
 App.EgbilObjectShareModel = Em.Object.extend
   marker: null
@@ -177,6 +216,7 @@ App.EgbilObjectLotModel = Em.Object.extend
       label: "Data wyceny"
     @remarks = App.StandardTableCellModel.create
       label: "Uwagi"
+
 
 App.EgbilObjectBuildingModel = Em.Object.extend
   show: null
@@ -351,3 +391,26 @@ App.EgbilObjectLocalModel = Em.Object.extend
       label: "Data wyceny"
     @remarks = App.StandardTableCellModel.create
       label: "Uwagi"
+
+
+App.EgbilObjectChangeModel = Em.Object.extend
+  changeNumber: null
+  registerDate: null
+  entryDate: null
+  type: null
+  status: null
+  description: null
+
+  init: ->
+    @changeNumber = App.StandardTableCellModel.create
+      label: "Numer zmiany/numer kancelaryjny"
+    @registerDate = App.StandardTableCellModel.create
+      label: "Data rejestracji"
+    @entryDate = App.StandardTableCellModel.create
+      label: "Data wprowadzenia"
+    @type = App.StandardTableCellModel.create
+      label: "Rodzaj zmiany"
+    @status = App.StandardTableCellModel.create
+      label: "Status zmiany"
+    @description = App.StandardTableCellModel.create
+      label: "Opis zmiany"
