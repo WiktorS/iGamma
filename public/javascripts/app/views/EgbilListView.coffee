@@ -18,7 +18,7 @@ App.EgbilListTableCellShowMapView = App.ModelTableCellView.extend
 
 App.EgbilListTableCellMarkerView = App.ModelTableCellView.extend
   tooltip: null
-  template: Em.Handlebars.compile "<span title=\"{{tooltip}}\">{{view.value}}</span>"
+  template: Em.Handlebars.compile "<span title=\"{{tooltip}}\">{{view.displayValue}}</span>"
   didInsertElement: ->
     this.$("span").tooltip
       placement: "bottom"
