@@ -1,0 +1,7 @@
+<script type="text/x-handlebars" data-template-name="modelValueTable">
+  <tbody>
+    {{#each view.columns}}
+      {{view App.ModelValueTableRowView contentBinding="view.content" columnBinding="this"}}
+    {{/each}}
+  </tbody>
+</script>
