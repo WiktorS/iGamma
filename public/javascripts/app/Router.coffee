@@ -171,6 +171,10 @@ App.Router = Em.Router.extend
           route: "/jrg/:name"
           objectOutletName: "egbilObjectJrg"
 
+        doc: RouteWithObjectParam.extend
+          route: "/dokument/:name"
+          objectOutletName: "egbilObjectDocument"
+
     changes: Em.Route.extend
       route: "/zmiany"
       connectOutlets: (router) ->
