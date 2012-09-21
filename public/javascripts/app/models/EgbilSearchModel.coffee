@@ -1,4 +1,8 @@
 App.EgbilSearchModel = Em.Object.extend
+  systematics: App.StandardFilterElementModel.create
+    label: "Systematyka"
+    name: "systematics"
+
   registerUnit:
     jrg: App.StandardFilterElementModel.create
       label: "Numer JRG"

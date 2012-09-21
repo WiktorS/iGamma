@@ -4,4 +4,4 @@ App.FilterSystematicsView = Em.View.extend
 
   didInsertElement: ->
     @_super()
-    @get("parentView").pushFormField? @get("element")
+    @get("parentView").pushFormField? @get "field"

@@ -3,26 +3,26 @@
   <div class="tab-content">
 
     <form id="filter-subject" class="tab-pane active">
-      {{view App.FilterSystematicsView}}
+      {{view App.FilterSystematicsView field=content.systematics}}
 
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView element=content.registerUnit.jrl}}
-          {{view App.FilterEntryFieldView element=content.local.number}}
+          {{view App.FilterEntryFieldView field=content.registerUnit.jrl}}
+          {{view App.FilterEntryFieldView field=content.local.number}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres lokalu</legend>
-          {{view App.FilterEntryFieldView element=content.address.town}}
-          {{view App.FilterEntryFieldView element=content.address.street}}
-          {{view App.FilterEntryFieldView element=content.address.houseNumber}}
+          {{view App.FilterEntryFieldView field=content.address.town}}
+          {{view App.FilterEntryFieldView field=content.address.street}}
+          {{view App.FilterEntryFieldView field=content.address.houseNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterEntryFieldView element=content.signature.local}}
+          {{view App.FilterEntryFieldView field=content.signature.local}}
         </fieldset>
       </div>
 

@@ -3,30 +3,30 @@
   <div class="tab-content">
 
     <form id="filter-subject" class="tab-pane active">
-      {{view App.FilterSystematicsView}}
+      {{view App.FilterSystematicsView field=content.systematics}}
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView element=content.registerUnit.jrl}}
-          {{view App.FilterEntryFieldView element=content.local.number}}
-          {{view App.FilterEntryFieldView element=content.lot.number}}
-          {{view App.FilterEntryFieldView element=content.local.area}}
-          {{view App.FilterEntryFieldView element=content.local.type}}
-          {{view App.FilterEntryFieldView element=content.local.roomsCount}}
+          {{view App.FilterEntryFieldView field=content.registerUnit.jrl}}
+          {{view App.FilterEntryFieldView field=content.local.number}}
+          {{view App.FilterEntryFieldView field=content.lot.number}}
+          {{view App.FilterEntryFieldView field=content.local.area}}
+          {{view App.FilterEntryFieldView field=content.local.type}}
+          {{view App.FilterEntryFieldView field=content.local.roomsCount}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres lokalu</legend>
-          {{view App.FilterEntryFieldView element=content.address.town}}
-          {{view App.FilterEntryFieldView element=content.address.street}}
-          {{view App.FilterEntryFieldView element=content.address.houseNumber}}
-          {{view App.FilterEntryFieldView element=content.address.flatNumber}}
+          {{view App.FilterEntryFieldView field=content.address.town}}
+          {{view App.FilterEntryFieldView field=content.address.street}}
+          {{view App.FilterEntryFieldView field=content.address.houseNumber}}
+          {{view App.FilterEntryFieldView field=content.address.flatNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterEntryFieldView element=content.signature.local}}
+          {{view App.FilterEntryFieldView field=content.signature.local}}
         </fieldset>
       </div>
 

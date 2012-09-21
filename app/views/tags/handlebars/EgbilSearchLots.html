@@ -3,32 +3,32 @@
   <div class="tab-content">
 
     <form id="filter-subject" class="tab-pane active">
-      {{view App.FilterSystematicsView}}
+      {{view App.FilterSystematicsView field=content.systematics}}
 
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView element=content.registerUnit.jrg}}
-          {{view App.FilterEntryFieldView element=content.lot.number}}
-          {{view App.FilterEntryFieldView element=content.lot.area}}
+          {{view App.FilterEntryFieldView field=content.registerUnit.jrg}}
+          {{view App.FilterEntryFieldView field=content.lot.number}}
+          {{view App.FilterEntryFieldView field=content.lot.area}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres działki</legend>
-          {{view App.FilterEntryFieldView element=content.address.town}}
-          {{view App.FilterEntryFieldView element=content.address.street}}
-          {{view App.FilterEntryFieldView element=content.address.houseNumber}}
+          {{view App.FilterEntryFieldView field=content.address.town}}
+          {{view App.FilterEntryFieldView field=content.address.street}}
+          {{view App.FilterEntryFieldView field=content.address.houseNumber}}
         </fieldset>
       </div>
 
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterEntryFieldView element=content.signature.lot}}
+          {{view App.FilterEntryFieldView field=content.signature.lot}}
         </fieldset>
         <fieldset class="span5">
           <legend>Klasoużytki</legend>
-          {{view App.FilterEntryFieldView element=content.terrainCategory.identifier}}
-          {{view App.FilterEntryFieldView element=content.terrainCategory.area}}
+          {{view App.FilterEntryFieldView field=content.terrainCategory.identifier}}
+          {{view App.FilterEntryFieldView field=content.terrainCategory.area}}
         </fieldset>
       </div>
 
