@@ -194,7 +194,7 @@ App.EgbilObjectLotModel = Em.Object.extend
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "document"
+      valueType: "doc"
     @useClassType = App.StandardTableCellModel.create
       label: "Klasoużytki/Rodzaj"
     @useClassArea = App.StandardTableCellModel.create
@@ -262,7 +262,7 @@ App.EgbilObjectBuildingModel = Em.Object.extend
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "document"
+      valueType: "doc"
     @buildUpArea = App.StandardTableCellModel.create
       label: "Powierzchnia zabudowy"
       help: "[m2]"
@@ -352,7 +352,7 @@ App.EgbilObjectLocalModel = Em.Object.extend
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "document"
+      valueType: "doc"
     @usableArea = App.StandardTableCellModel.create
       label: "Powierzchnia użytkowa "
       help: "[m2]"
