@@ -47,6 +47,10 @@ App.Router = Em.Router.extend
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
 
+      doSearch: (router, context) ->
+        view = if context instanceof jQuery.Event then context.view else context
+        router.get("egbilSearchController").search(view)
+
       search: RouteWithParentMemory.extend
         route: "/szukaj"
         initialState: "jrgib"
