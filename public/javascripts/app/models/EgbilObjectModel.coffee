@@ -123,15 +123,6 @@ App.EgbilObjectLotModel = Em.Object.extend
   valuationDate: null
   remarks: null
 
-    public String lotNumber;
-    public String jrgNumber;
-    public String precinct;
-    public String cadastralSheet;
-    public String cadastralUnit;
-    public String cadastralArea;
-    public String address;
-    public String document;
-
   init: ->
     @show = App.StandardTableCellModel.create
       label: "Pokaż"

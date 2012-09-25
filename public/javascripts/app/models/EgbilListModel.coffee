@@ -15,6 +15,17 @@ App.EgbilListModel = Em.Object.extend
   address: null
   document: null
   cadastralArea: null
+  buildingNumber: null
+  type: null
+  finishYear: null
+  buildUpArea: null
+  usableArea: null
+  localNumber: null
+  surnameAndNames: null
+  pesel: null
+  identityDoc: null
+  name: null
+  nip: null
 
   jrgNumberJrgib: ( ->
     App.StandardTableCellModel.create
@@ -66,13 +77,48 @@ App.EgbilListModel = Em.Object.extend
       label: "Data założenia"
     @regon = App.StandardTableCellModel.create
       label: "REGON"
-    @lotNumber= App.StandardTableCellModel.create
-      label: "Numer"
-    @cadastralSheet= App.StandardTableCellModel.create
+    @lotNumber = App.StandardTableCellModel.create
+      label: "Numer działki"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "lot"
+    @cadastralSheet = App.StandardTableCellModel.create
       label: "Arkusz ewidecyjny"
-    @address= App.StandardTableCellModel.create
+    @address = App.StandardTableCellModel.create
       label: "Adres"
-    @document= App.StandardTableCellModel.create
-      label: "Dokument"
-    @cadastralArea= App.StandardTableCellModel.create
-      label: "Powierzchnia ewidencyjna"
+    @document = App.StandardTableCellModel.create
+      label: "Dokument/sygnatura"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "doc"
+    @cadastralArea = App.StandardTableCellModel.create
+      label: "Powierzchnia ewidencyjna [ha]"
+    @buildingNumber = App.StandardTableCellModel.create
+      label: "Numer budynku"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "build_number"
+    @finishYear = App.StandardTableCellModel.create
+      label: "Rok zakończenia budowy"
+    @type = App.StandardTableCellModel.create
+      label: "Rodzaj"
+    @buildUpArea = App.StandardTableCellModel.create
+      label: "Powierzchnia zabudowy [m2]"
+    @usableArea = App.StandardTableCellModel.create
+      label: "Powierzchnia użytkowa [m2]"
+    @localNumber = App.StandardTableCellModel.create
+      label: "Numer ewidencyjny"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "evid_number"
+    @surnameAndNames = App.StandardTableCellModel.create
+      label: "Nazwisko i imiona"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "name"
+    @pesel = App.StandardTableCellModel.create
+      label: "PESEL"
+    @identityDoc = App.StandardTableCellModel.create
+      label: "Dokument tożsamości"
+    @name = App.StandardTableCellModel.create
+      label: "Nazwa pełna"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "fullname"
+    @nip = App.StandardTableCellModel.create
+      label: "NIP"
+
