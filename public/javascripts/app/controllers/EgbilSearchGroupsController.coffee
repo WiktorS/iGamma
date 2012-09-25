@@ -1,3 +1,12 @@
-App.EgbilSearchGroupsController = Em.ObjectController.extend
-  content: App.EgbilSearchModel.create()
+App.EgbilSearchGroupsController = App.EgbilSearchCommonController.extend
+  jsonMethod: "getGroupByNip"
   title: "Podmioty grupowe"
+  columns: [
+    "check"
+    "show"
+    "marker"
+    "name"
+    "address"
+    "regon"
+    "nip"
+  ]
