@@ -2,9 +2,7 @@ package controllers;
 
 import integra.Integra;
 import integra.IntegraServer;
-import integra.models.EgbilLot;
-import integra.models.EgbilObject;
-import integra.models.RegisterUnit;
+import integra.models.*;
 import play.mvc.Controller;
 
 import java.util.List;
@@ -38,7 +36,32 @@ public class IntegraJson extends Controller {
     }
 
     public static void getLotsByNumber(String number) {
-        List<EgbilLot> result = integra.getLotsByNumber(number);
+        List<Lot> result = integra.getLotsByNumber(number);
+        renderJSON(result);
+    }
+
+    public static void getBuildingByNumber(String numberB) {
+        List<Building> result = integra.getBuildingByNumber(numberB);
+        renderJSON(result);
+    }
+
+    public static void getLocalByNumber(String numberL) {
+        List<Local> result = integra.getLocalByNumber(numberL);
+        renderJSON(result);
+    }
+
+    public static void getPersonByPesel(String pesel) {
+        List<Person> result = integra.getPersonByPesel(pesel);
+        renderJSON(result);
+    }
+
+    public static void getInstitutionByNip(String nip) {
+        List<Institution> result = integra.getInstitutionByNip(nip);
+        renderJSON(result);
+    }
+
+    public static void getGroupByNip(String nip) {
+        List<Group> result = integra.getGroupByNip(nip);
         renderJSON(result);
     }
 
