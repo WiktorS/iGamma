@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
-import integra.models.EgbilLot;
-import integra.models.EgbilObject;
-import integra.models.RegisterUnit;
+import integra.models.*;
 import play.Play;
 import play.libs.WS;
 
@@ -66,9 +64,44 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
-    public List<EgbilLot> getLotsByNumber(String number) {
+    public List<Lot> getLotsByNumber(String number) {
         JsonElement jsonResult = invokeMethodJson("getLotsByNumber");
-        TypeToken<List<EgbilLot>> typeToken = new TypeToken<List<EgbilLot>>() {};
+        TypeToken<List<Lot>> typeToken = new TypeToken<List<Lot>>() {};
+        return gson.fromJson(jsonResult, typeToken.getType());
+    }
+
+    @Override
+    public List<Building> getBuildingByNumber(String numberB) {
+        JsonElement jsonResult = invokeMethodJson("getBuildingByNumber");
+        TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
+        return gson.fromJson(jsonResult, typeToken.getType());
+    }
+
+    @Override
+    public List<Local> getLocalByNumber(String numberL) {
+        JsonElement jsonResult = invokeMethodJson("getLocalByNumber");
+        TypeToken<List<Local>> typeToken = new TypeToken<List<Local>>() {};
+        return gson.fromJson(jsonResult, typeToken.getType());
+    }
+
+    @Override
+    public List<Person> getPersonByPesel(String pesel) {
+        JsonElement jsonResult = invokeMethodJson("getPersonByPesel");
+        TypeToken<List<Person>> typeToken = new TypeToken<List<Person>>() {};
+        return gson.fromJson(jsonResult, typeToken.getType());
+    }
+
+    @Override
+    public List<Institution> getInstitutionByNip(String nip) {
+        JsonElement jsonResult = invokeMethodJson("getInstitutionByNip");
+        TypeToken<List<Institution>> typeToken = new TypeToken<List<Institution>>() {};
+        return gson.fromJson(jsonResult, typeToken.getType());
+    }
+
+    @Override
+    public List<Group> getGroupByNip(String nip) {
+        JsonElement jsonResult = invokeMethodJson("getGroupByNip");
+        TypeToken<List<Group>> typeToken = new TypeToken<List<Group>>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }
 

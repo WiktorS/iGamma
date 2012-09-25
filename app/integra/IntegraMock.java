@@ -3,10 +3,7 @@ package integra;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import integra.models.EgbilLot;
-import integra.models.EgbilObject;
-import integra.models.Lot;
-import integra.models.RegisterUnit;
+import integra.models.*;
 import models.RegisterUnitMock;
 import play.Logger;
 import play.Play;
@@ -107,6 +104,36 @@ public class  IntegraMock implements Integra {
     public List<Lot> getLotsByNumber(String number) {
         TypeToken<List<Lot>> typeToken = new TypeToken<List<Lot>>() {};
         return getMockJsonData("getLotsByNumber", typeToken, number);
+    }
+
+    @Override
+    public List<Building> getBuildingByNumber(String numberB) {
+        TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
+        return getMockJsonData("getBuildingByNumber", typeToken, numberB);
+    }
+
+    @Override
+    public List<Local> getLocalByNumber(String numberL) {
+        TypeToken<List<Local>> typeToken = new TypeToken<List<Local>>() {};
+        return getMockJsonData("getLocalByNumber", typeToken, numberL);
+    }
+
+    @Override
+    public List<Person> getPersonByPesel(String pesel) {
+        TypeToken<List<Person>> typeToken = new TypeToken<List<Person>>() {};
+        return getMockJsonData("getPersonByPesel", typeToken, pesel);
+    }
+
+    @Override
+    public List<Institution> getInstitutionByNip(String nip) {
+        TypeToken<List<Institution>> typeToken = new TypeToken<List<Institution>>() {};
+        return getMockJsonData("getInstitutionByNip", typeToken, nip);
+    }
+
+    @Override
+    public List<Group> getGroupByNip(String nip) {
+        TypeToken<List<Group>> typeToken = new TypeToken<List<Group>>() {};
+        return getMockJsonData("getGroupByNip", typeToken, nip);
     }
 
     @Override
