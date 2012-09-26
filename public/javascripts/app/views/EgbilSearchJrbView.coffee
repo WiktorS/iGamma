@@ -1,2 +1,2 @@
-App.EgbilSearchJrbView = Em.View.extend
+App.EgbilSearchJrbView = App.EgbilSearchCommonView.extend
   templateName: "egbilSearchJrb"

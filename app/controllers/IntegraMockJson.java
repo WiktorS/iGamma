@@ -25,4 +25,9 @@ public class IntegraMockJson extends Controller {
         List<RegisterUnitMock> registerUnitMocks = RegisterUnitMock.find("jrg = ?", jrg).fetch();
         renderJSON(registerUnitMocks);
     }
+
+    public static void getRegisterUnitsByJrl(String jrl) {
+        List<RegisterUnitMock> registerUnitMocks = RegisterUnitMock.find("jrl = ?", jrl).fetch();
+        renderJSON(registerUnitMocks);
+    }
 }

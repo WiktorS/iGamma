@@ -1,2 +1,12 @@
-App.EgbilSearchInstitutionsController = Em.ObjectController.extend
-  content: App.EgbilSearchModel.create()
+App.EgbilSearchInstitutionsController = App.EgbilSearchCommonController.extend
+  jsonMethod: "getInstitutionByNip"
+  title: "Instytucje"
+  columns: [
+    "check"
+    "show"
+    "marker"
+    "name"
+    "address"
+    "regon"
+    "nip"
+  ]

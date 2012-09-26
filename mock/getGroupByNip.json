@@ -1,0 +1,27 @@
+[
+  {
+    "id"  : 1,
+    "marker" : "X",
+    "name" : "nazwa grupy",
+    "address" : "adres",
+    "regon" : "regon",
+    "nip" : "nip"
+  },
+  {
+    "id"  : 2,
+    "marker" : "X",
+    "name" : "B2"
+  },
+  {
+    "id"  : 3,
+    "name" : "B3"
+  },
+  {
+    "id"  : 4,
+    "name" : "B4"
+  },
+  {
+    "id"  : 5,
+    "name" : "B5"
+  }
+]

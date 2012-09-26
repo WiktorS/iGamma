@@ -1,6 +1,37 @@
 RouteWithParentMemory = Em.Route.extend
   enter: (router) -> @parentState.set 'initialState', @name
 
+
+RouteWithObjectParam = Em.Route.extend
+  objectName: null
+  objectType: (-> @get "name").property("name")
+  objectOutletName: null
+  getObject: ->
+    App.router.get("egbilController").getObject @get("objectType"), @get("objectName")
+  deserialize: (router, params) ->
+    Em.Object.create
+      value: params.name
+  serialize: (router, context) ->
+    Em.Object.create
+      name: context.get "value"
+  connectOutlets: (router, context) ->
+    @set "objectName", context.get "value"
+    object = @getObject()
+    if !Em.empty object
+      router.get("egbilController").connectOutlet(
+        outletName: "egbil"
+        name: "egbilObject"
+        context: object
+      )
+      router.get("egbilObjectController").connectOutlet(
+        outletName: "egbilObject"
+        name: @get("objectOutletName")
+        context: object.content
+      )
+    else
+      router.transitionTo "egbil.search"
+
+
 App.Router = Em.Router.extend
   location: "hash"
   enableLogging: true
@@ -15,6 +46,10 @@ App.Router = Em.Router.extend
       initialState: "search"
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
+
+      doSearch: (router, context) ->
+        view = if context instanceof jQuery.Event then context.view else context
+        router.get("egbilSearchController").search(view)
 
       search: RouteWithParentMemory.extend
         route: "/szukaj"
@@ -87,13 +122,62 @@ App.Router = Em.Router.extend
         connectOutlets: (router) ->
           router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilMap"})
 
+      goToList: (router, context) ->
+        if context?
+          controller = router.get "egbilListController"
+          controller.set "content", context.get "content"
+          controller.set "columns", context.get "columns"
+          controller.set "title", context.get "title"
+        router.transitionTo "list"
       list: RouteWithParentMemory.extend
         route: "/lista"
         connectOutlets: (router) ->
           if Em.empty(router.get("egbilListController").content)
-            App.router.transitionTo "egbil.search"
+            router.transitionTo "egbil.search"
           else
             router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
+
+      openObject: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        router.get("egbilController").openObject context
+      closeObject: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        router.get("egbilController").closeObject context
+      showObject: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        router.get("egbilController").showObject context
+      goToObject: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        objectType = context.get("valueType")
+        Em.assert "Undefined object type", objectType?
+        router.transitionTo ["object", objectType].join("."), context
+
+      object: Em.Route.extend
+        route: "/obiekt"
+
+        index: Em.Route.extend
+          route: "/"
+          redirectsTo: "egbil.search"
+
+        jrgib: RouteWithObjectParam.extend
+          route: "/jrgib/:name"
+          objectOutletName: "egbilObjectJrgib"
+
+        jrb: RouteWithObjectParam.extend
+          route: "/jrb/:name"
+          objectOutletName: "egbilObjectJrb"
+
+        jrl: RouteWithObjectParam.extend
+          route: "/jrl/:name"
+          objectOutletName: "egbilObjectJrl"
+
+        jrg: RouteWithObjectParam.extend
+          route: "/jrg/:name"
+          objectOutletName: "egbilObjectJrg"
+
+        doc: RouteWithObjectParam.extend
+          route: "/dokument/:name"
+          objectOutletName: "egbilObjectDocument"
 
     changes: Em.Route.extend
       route: "/zmiany"

@@ -1,20 +1,24 @@
 package integra;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import integra.models.RegisterUnit;
+import integra.models.*;
 import models.RegisterUnitMock;
+import play.Logger;
 import play.Play;
-
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.*;
+import java.lang.reflect.Modifier;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
 
-public class IntegraMock implements Integra {
+public class  IntegraMock implements Integra {
 
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
 
     private <T> T getMockJsonData(String methodName, TypeToken<T> typeToken, String... params) {
         BufferedReader bufferedReader;
@@ -22,7 +26,8 @@ public class IntegraMock implements Integra {
         try {
             bufferedReader = new BufferedReader(new FileReader(getMockFile(methodName, params)));
             result = gson.fromJson(bufferedReader, typeToken.getType());
-        } catch (FileNotFoundException e) {
+            bufferedReader.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -57,6 +62,7 @@ public class IntegraMock implements Integra {
                 exitLoop = true;
             }
             result = Play.getFile("mock/" + fileName + ".json");
+            Logger.debug("Trying to load mock '%s'", fileName);
         } while (!exitLoop && !result.exists());
         return result;
     }
@@ -70,14 +76,74 @@ public class IntegraMock implements Integra {
     }
 
     @Override
+    public List<RegisterUnit> getRegisterUnitsByJrgib(String jrgib) {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        return getMockJsonData("getRegisterUnitsByJrgib", typeToken, jrgib);
+    }
+
+    @Override
     public List<RegisterUnit> getRegisterUnitsByJrb(String jrb) {
         TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
         return getMockJsonData("getRegisterUnitsByJrb", typeToken, jrb);
     }
 
     @Override
+    public List<RegisterUnit> getRegisterUnitsByJrl(String jrl) {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        return getMockJsonData("getRegisterUnitsByJrl", typeToken, jrl);
+    }
+
+    @Override
     public List<RegisterUnit> getRegisterUnitsByJrg(String jrg) {
         TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
         return getMockJsonData("getRegisterUnitsByJrg", typeToken, jrg);
+    }
+
+    @Override
+    public List<Lot> getLotsByNumber(String number) {
+        TypeToken<List<Lot>> typeToken = new TypeToken<List<Lot>>() {};
+        return getMockJsonData("getLotsByNumber", typeToken, number);
+    }
+
+    @Override
+    public List<Building> getBuildingByNumber(String numberB) {
+        TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
+        return getMockJsonData("getBuildingByNumber", typeToken, numberB);
+    }
+
+    @Override
+    public List<Local> getLocalByNumber(String numberL) {
+        TypeToken<List<Local>> typeToken = new TypeToken<List<Local>>() {};
+        return getMockJsonData("getLocalByNumber", typeToken, numberL);
+    }
+
+    @Override
+    public List<Person> getPersonByPesel(String pesel) {
+        TypeToken<List<Person>> typeToken = new TypeToken<List<Person>>() {};
+        return getMockJsonData("getPersonByPesel", typeToken, pesel);
+    }
+
+    @Override
+    public List<Institution> getInstitutionByNip(String nip) {
+        TypeToken<List<Institution>> typeToken = new TypeToken<List<Institution>>() {};
+        return getMockJsonData("getInstitutionByNip", typeToken, nip);
+    }
+
+    @Override
+    public List<Group> getGroupByNip(String nip) {
+        TypeToken<List<Group>> typeToken = new TypeToken<List<Group>>() {};
+        return getMockJsonData("getGroupByNip", typeToken, nip);
+    }
+
+    @Override
+    public EgbilObject getEgbilObject(String type, String name) {
+        TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
+        return getMockJsonData("getEgbilObject", typeToken, type, name);
+    }
+
+    @Override
+    public List<EgbilDocument> getDocuments() {
+        TypeToken<List<EgbilDocument>> typeToken = new TypeToken<List<EgbilDocument>>() {};
+        return getMockJsonData("getDocuments", typeToken);
     }
 }

@@ -1,2 +1,12 @@
-App.EgbilSearchIndividualsController = Em.ObjectController.extend
-  content: App.EgbilSearchModel.create()
+App.EgbilSearchIndividualsController = App.EgbilSearchCommonController.extend
+  jsonMethod: "getPersonByPesel"
+  title: "Osoby fizyczne"
+  columns: [
+    "check"
+    "show"
+    "marker"
+    "surnameAndNames"
+    "address"
+    "pesel"
+    "identityDoc"
+  ]

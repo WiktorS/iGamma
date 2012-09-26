@@ -1,3 +1,8 @@
 <script type="text/x-handlebars" data-template-name="egbilList">
-  {{view App.EgbilListTableView contentBinding="content" columnsBinding="columns"}}
+  <div class="btn-primary">
+    {{title}}
+  </div>
+  <div>
+  {{view App.ModelTableView contentBinding="content" columnsBinding="columns"}}
+  </div>
 </script>

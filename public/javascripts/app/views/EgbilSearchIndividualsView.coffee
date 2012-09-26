@@ -1,2 +1,2 @@
-App.EgbilSearchIndividualsView = Em.View.extend
+App.EgbilSearchIndividualsView = App.EgbilSearchCommonView.extend
   templateName: "egbilSearchIndividuals"

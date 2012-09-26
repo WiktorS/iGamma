@@ -1,14 +1,20 @@
 App.FilterEntryFieldView = Em.View.extend
   templateName: "filterTextField"
   tagName: "span"
+
   init: ->
     @_super()
-    if @element.type=="select"
-      @templateName = "filterSelect"
-    if @element.type=="range"
-      @templateName = "filterRange"
-    if @element.type=="calendar"
-      @templateName = "filterCalendar"
+    if @get("field.type") == "select"
+      @set "templateName", "filterSelect"
+    if @get("field.type") == "range"
+      @set "templateName", "filterRange"
+    if @get("field.type") == "calendar"
+      @set "templateName", "filterCalendar"
+
   clearField: (event) ->
-    @element.set "value", ""
-    @element.set "alternateValue", ""
+    @set "field.value", ""
+    @set "field.alternateValue", ""
+
+  didInsertElement: ->
+    @_super()
+    @get("parentView").pushFormField? @get "field"
