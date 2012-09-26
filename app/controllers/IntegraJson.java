@@ -69,4 +69,9 @@ public class IntegraJson extends Controller {
         EgbilObject result = integra.getEgbilObject(type, name);
         renderJSON(result);
     }
+
+    public static void getDocuments(String unknown) {
+        List<EgbilDocument> result = integra.getDocuments();
+        renderJSON(result);
+    }
 }

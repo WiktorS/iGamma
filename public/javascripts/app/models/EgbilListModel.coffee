@@ -26,6 +26,13 @@ App.EgbilListModel = Em.Object.extend
   identityDoc: null
   name: null
   nip: null
+  #dokumenty
+  sygnature: null
+  scan: null
+  lots: null
+  buildings: null
+  locals: null
+  changes: null
 
   jrgNumberJrgib: ( ->
     App.StandardTableCellModel.create
@@ -121,4 +128,18 @@ App.EgbilListModel = Em.Object.extend
       valueType: "fullname"
     @nip = App.StandardTableCellModel.create
       label: "NIP"
-
+    #dokumenty
+    @sygnature  = App.StandardTableCellModel.create
+      label: "Sygnatura"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "doc"
+    @scan = App.StandardTableCellModel.create
+      label: "Skan"
+    @lots = App.StandardTableCellModel.create
+      label: "Działki"
+    @buildings = App.StandardTableCellModel.create
+      label: "Budynki"
+    @locals = App.StandardTableCellModel.create
+      label: "Lokale"
+    @changes = App.StandardTableCellModel.create
+      label: "Zmiany"

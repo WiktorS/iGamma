@@ -111,4 +111,9 @@ public class IntegraImplementation implements Integra{
         TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }
+
+    @Override
+    public List<EgbilDocument> getDocuments() {
+        return null;  //TODO
+    }
 }

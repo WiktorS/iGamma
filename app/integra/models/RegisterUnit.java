@@ -6,6 +6,7 @@ public class RegisterUnit implements IntegraModel {
     public String jrgNumber;
     public String jrbNumber;
     public String jrlNumber;
+    public String g5;
     public String precinct;
     public String cadastralUnit;
     public String creationProof;

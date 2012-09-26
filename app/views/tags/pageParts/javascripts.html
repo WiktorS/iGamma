@@ -39,6 +39,7 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectJrbController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectJrlController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectJrgController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectDocumentController.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/TabItemView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTypesView.coffee'}"></script>
@@ -48,6 +49,8 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelTableHeaderView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelTableRowView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelTableCellView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelValueTableView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelValueTableRowView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/AccordionView.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationView.coffee'}"></script>
@@ -74,6 +77,7 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectJrbView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectJrlView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectJrgView.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectDocumentView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
 
@@ -100,6 +104,7 @@
       #{handlebars.EgbilListTableCellButton /}
     #{handlebars.EgbilObject /}
       #{handlebars.EgbilObjectJr /}
+      #{handlebars.EgbilObjectDocument /}
   #{handlebars.Changes /}
   #{handlebars.Prints /}
 
@@ -111,4 +116,5 @@
 #{handlebars.widgets.FilterTypes /}
 #{handlebars.widgets.ObjectTabItem /}
 #{handlebars.widgets.ModelTable /}
+#{handlebars.widgets.ModelValueTable /}
 #{handlebars.widgets.Accordion /}

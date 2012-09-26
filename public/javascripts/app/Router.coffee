@@ -21,7 +21,7 @@ RouteWithObjectParam = Em.Route.extend
       router.get("egbilController").connectOutlet(
         outletName: "egbil"
         name: "egbilObject"
-        context: object.content
+        context: object
       )
       router.get("egbilObjectController").connectOutlet(
         outletName: "egbilObject"
@@ -46,6 +46,10 @@ App.Router = Em.Router.extend
       initialState: "search"
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
+
+      doSearch: (router, context) ->
+        view = if context instanceof jQuery.Event then context.view else context
+        router.get("egbilSearchController").search(view)
 
       search: RouteWithParentMemory.extend
         route: "/szukaj"
@@ -145,6 +149,7 @@ App.Router = Em.Router.extend
       goToObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
         objectType = context.get("valueType")
+        Em.assert "Undefined object type", objectType?
         router.transitionTo ["object", objectType].join("."), context
 
       object: Em.Route.extend
@@ -169,6 +174,10 @@ App.Router = Em.Router.extend
         jrg: RouteWithObjectParam.extend
           route: "/jrg/:name"
           objectOutletName: "egbilObjectJrg"
+
+        doc: RouteWithObjectParam.extend
+          route: "/dokument/:name"
+          objectOutletName: "egbilObjectDocument"
 
     changes: Em.Route.extend
       route: "/zmiany"

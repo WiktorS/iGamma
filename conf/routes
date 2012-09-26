@@ -18,6 +18,7 @@ GET     /getInstitutionByNip.json                 IntegraJson.getInstitutionByNi
 GET     /getGroupByNip.json                       IntegraJson.getGroupByNip
 GET     /getRegisterUnitsByJrg.json               IntegraJson.getRegisterUnitsByJrg
 GET     /getEgbilObject.json                      IntegraJson.getEgbilObject
+GET     /getDocuments.json                        IntegraJson.getDocuments
 
 #Integra mock
 GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits

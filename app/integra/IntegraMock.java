@@ -7,7 +7,6 @@ import integra.models.*;
 import models.RegisterUnitMock;
 import play.Logger;
 import play.Play;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -140,5 +139,11 @@ public class  IntegraMock implements Integra {
     public EgbilObject getEgbilObject(String type, String name) {
         TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
         return getMockJsonData("getEgbilObject", typeToken, type, name);
+    }
+
+    @Override
+    public List<EgbilDocument> getDocuments() {
+        TypeToken<List<EgbilDocument>> typeToken = new TypeToken<List<EgbilDocument>>() {};
+        return getMockJsonData("getDocuments", typeToken);
     }
 }
