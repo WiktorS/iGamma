@@ -106,6 +106,13 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
+    public List<LandCommunities> getLandCommunities(String name) {
+        JsonElement jsonResult = invokeMethodJson("getLandCommunities");
+        TypeToken<List<LandCommunities>> typeToken = new TypeToken<List<LandCommunities>>() {};
+        return gson.fromJson(jsonResult, typeToken.getType());
+    }
+
+    @Override
     public EgbilObject getEgbilObject(String type, String name) {
         JsonElement jsonResult = invokeMethodJson("getEgbilObject");
         TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
