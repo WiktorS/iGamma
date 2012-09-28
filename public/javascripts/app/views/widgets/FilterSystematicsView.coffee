@@ -9,6 +9,10 @@ App.FilterSystematicsView = Em.View.extend
     #appendTo rootElement fixes event handling on modal, but messes up 'backdrop' dim
     @get("systematicsModal").appendTo(App.get('rootElement')) #TODO: fix 'backdrop'
 
+  clearField: (event) ->
+    @set "field.value", ""
+    @set "field.alternateValue", ""
+
   didInsertElement: ->
     @_super()
     @get("parentView").pushFormField? @get "field"
