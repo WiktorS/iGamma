@@ -19,7 +19,7 @@ App.FilterSystematicsView = Em.View.extend
 
   willDestroyElement: ->
     @_super()
-    @get("systematicsView").$(".modal")?.modal("hide")
+    @get("systematicsModal").$(".modal")?.modal("hide")
 
   chooseSystematics: (e) ->
     @set "systematicsModal.selectedSystematic", Em.makeArray(@get("field.value")?.split("."))
