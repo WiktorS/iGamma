@@ -18,6 +18,7 @@ getSearchArgs = (view) ->
   result = {}
   for field in view.formFields
     name = field.get "name"
-    if !Em.empty name
-      result[name] = field.get "value"
+    value = field.get "value"
+    if !Em.empty(name) && !Em.empty(value)
+      result[name] = value
   result
