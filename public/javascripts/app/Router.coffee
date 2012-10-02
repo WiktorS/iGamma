@@ -6,17 +6,17 @@ RouteWithObjectParam = Em.Route.extend
   objectName: null
   objectType: (-> @get "name").property("name")
   objectOutletName: null
-  getObject: ->
-    App.router.get("egbilController").getObject @get("objectType"), @get("objectName")
   deserialize: (router, params) ->
     Em.Object.create
-      value: params.name
+      objectName: params.name
+      objectType: @get "objectType"
   serialize: (router, context) ->
     Em.Object.create
-      name: context.get "value"
+      name: context.get "objectName"
   connectOutlets: (router, context) ->
-    @set "objectName", context.get "value"
-    object = @getObject()
+    Em.assert "Object type doesn't match state type", @get("objectType") == context.get("objectType")
+    @set "objectName", context.get "objectName"
+    object = router.get("egbilController").getObject @get("objectType"), @get("objectName")
     if !Em.empty object
       router.get("egbilController").connectOutlet(
         outletName: "egbil"
@@ -26,10 +26,12 @@ RouteWithObjectParam = Em.Route.extend
       router.get("egbilObjectController").connectOutlet(
         outletName: "egbilObject"
         name: @get("objectOutletName")
-        context: object.content
+        context: object
       )
     else
-      router.transitionTo "egbil.search"
+      router.send "openObject", Em.Object.create
+         objectType: @get "objectType"
+         objectName: @get "objectName"
 
 
 App.Router = Em.Router.extend
@@ -139,17 +141,17 @@ App.Router = Em.Router.extend
 
       openObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        router.get("egbilController").openObject context
+        router.get("egbilController").openObject context.get("objectType"), context.get("objectName")
       closeObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        router.get("egbilController").closeObject context
+        router.get("egbilController").closeObject context.get("objectType"), context.get("objectName")
       showObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        router.get("egbilController").showObject context
+        router.get("egbilController").showObject context.get("objectType"), context.get("objectName")
       goToObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        objectType = context.get("valueType")
-        Em.assert "Undefined object type", objectType?
+        objectType = context.get("objectType")
+        Em.assert "Can't go to object of undefined type", objectType?
         router.transitionTo ["object", objectType].join("."), context
 
       object: Em.Route.extend
