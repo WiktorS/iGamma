@@ -1,6 +1,5 @@
 App.EgbilSearchGroupsController = App.EgbilSearchCommonController.extend
   jsonMethod: "getGroupByNip"
-  title: "Podmioty grupowe"
   columns: [
     "check"
     "show"
@@ -10,3 +9,5 @@ App.EgbilSearchGroupsController = App.EgbilSearchCommonController.extend
     "regon"
     "nip"
   ]
+  type: "groups"
+  title: "Podmioty grupowe"

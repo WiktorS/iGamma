@@ -1,6 +1,5 @@
 App.EgbilSearchIndividualsController = App.EgbilSearchCommonController.extend
   jsonMethod: "getPersonByPesel"
-  title: "Osoby fizyczne"
   columns: [
     "check"
     "show"
@@ -10,3 +9,5 @@ App.EgbilSearchIndividualsController = App.EgbilSearchCommonController.extend
     "pesel"
     "identityDoc"
   ]
+  type: "individuals"
+  title: "Osoby fizyczne"

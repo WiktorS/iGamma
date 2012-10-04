@@ -16,6 +16,7 @@ App.EgbilSearchController = Em.Controller.extend
 
 getSearchArgs = (view) ->
   result = {}
+  result["type"] = view.get("controller.type") if view.get("controller.type")?
   for field in view.formFields
     name = field.get "name"
     value = field.get "value"

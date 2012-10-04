@@ -1,6 +1,5 @@
 App.EgbilSearchLocalsController = App.EgbilSearchCommonController.extend
   jsonMethod: "getLocalByNumber"
-  title: "Lokale"
   columns: [
     "check"
     "show"
@@ -16,4 +15,5 @@ App.EgbilSearchLocalsController = App.EgbilSearchCommonController.extend
     "lotNumber"
     "buildingNumber"
   ]
-
+  type: "locals"
+  title: "Lokale"
