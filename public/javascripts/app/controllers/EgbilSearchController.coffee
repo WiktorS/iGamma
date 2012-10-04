@@ -9,6 +9,7 @@ App.EgbilSearchController = Em.Controller.extend
         context = Em.Object.create
           columns: view.get "controller.columns"
           content: data.map(App.Common.toModel, App.EgbilListModel)
+          type: view.get "controller.type"
           title: view.get "controller.title"
         @get("target").send "goToList", context
       error: (jqXHR, textStatus, errorThrown) ->

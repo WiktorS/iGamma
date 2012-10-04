@@ -1,5 +1,14 @@
 App.EgbilListView = Em.View.extend
   templateName: "egbilList"
+  didInsertElement: ->
+    @$().layout
+      defaults:
+        resizable: false
+        slidable: true
+        closable: true
+      east:
+        initClosed: true
+
 
 App.EgbilListTableCellCheckBoxView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "<input type=\"checkbox\"/>"

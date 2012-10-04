@@ -1,8 +1,17 @@
 <script type="text/x-handlebars" data-template-name="egbilList">
-  <div class="btn-primary">
-    {{title}}
+  <div class="ui-layout-center">
+    <div class="btn-primary">
+      {{title}}
+    </div>
+    <div>
+    {{view App.ModelTableView contentBinding="content" columnsBinding="columns"}}
+    </div>
   </div>
-  <div>
-  {{view App.ModelTableView contentBinding="content" columnsBinding="columns"}}
-  </div>
+  {{#view Em.View classNames="ui-layout-east"}}
+    <ul class="nav nav-pills nav-stacked">
+    {{#each controller.rightPaneContent}}
+      <li><a>{{name}}</a></li>
+    {{/each}}
+    </ul>
+  {{/view}}
 </script>
