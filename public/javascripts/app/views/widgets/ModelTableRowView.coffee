@@ -10,7 +10,7 @@ App.ModelTableRowView = Em.View.extend
         cell = content.get field
         Ember.assert "Cell must inherit from App.StandardTableCellModel",cell instanceof App.StandardTableCellModel
 
-        cellClass = cell.get("viewClass") ? "App.ModelTableCellView"
+        cellClass = (cell.get("viewClass") ? "App.ModelTableCellView").toString()
         result += "{{view #{cellClass} contentBinding=\"view.content.#{field}\"}}"
       )
     Em.Handlebars.compile result
