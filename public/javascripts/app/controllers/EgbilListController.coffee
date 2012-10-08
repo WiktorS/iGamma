@@ -4,9 +4,20 @@ App.EgbilListController = Em.ArrayController.extend
   title: null
   type: null
 
+  isAnyChecked: (->
+    !Em.empty(@get("content").findProperty "isChecked", true)
+    ).property("content.@each.isChecked")
+  isMultipleChecked: (->
+    (@get("content").filterProperty "isChecked").length > 1
+    ).property("content.@each.isChecked")
   rightPaneContent: (->
-    @get ["rightPaneData", @get "type"].join(".")
-    ).property("type")
+    data = @get ["rightPaneData", @get "type"].join(".")
+    if @get "isAnyChecked"
+      if @get "isMultipleChecked"
+        data.filterProperty "multiselect", true
+      else
+        data
+    ).property("type", "isAnyChecked", "isMultipleChecked")
   rightPaneData: Em.Object.create
     jrgib: [
       { name: "Wypis pełny z RG", multiselect: true }
@@ -18,7 +29,7 @@ App.EgbilListController = Em.ArrayController.extend
       { name: "Raport dowolny", multiselect: true }
       { name: "Dzierżawy", multiselect: false }
     ]
-    jrg: [
+    jrb: [
       { name: "Wypis z RB", multiselect: true }
       { name: "Wypis z KL", multiselect: true }
       { name: "Rozliczenie udziałów", multiselect: false }
@@ -27,6 +38,13 @@ App.EgbilListController = Em.ArrayController.extend
     ]
     jrl: [
       { name: "Wypis z RL", multiselect: true }
+      { name: "Rozliczenie udziałów", multiselect: false }
+      { name: "Lista zmian w JR", multiselect: true }
+      { name: "Raport dowolny", multiselect: true }
+    ]
+    jrg: [
+      { name: "Wypis z RG", multiselect: true }
+      { name: "Wypis z KL", multiselect: true }
       { name: "Rozliczenie udziałów", multiselect: false }
       { name: "Lista zmian w JR", multiselect: true }
       { name: "Raport dowolny", multiselect: true }
