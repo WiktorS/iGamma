@@ -7,11 +7,11 @@ App.EgbilListView = Em.View.extend
         slidable: true
         closable: true
       east:
-        initClosed: true
+        initClosed: !@get "controller.isAnyChecked"
 
 
 App.EgbilListTableCellCheckBoxView = App.ModelTableCellView.extend
-  template: Em.Handlebars.compile "<input type=\"checkbox\"/>"
+  template: Em.Handlebars.compile "{{view Ember.Checkbox  checkedBinding=\"view.content.value\"}}"
 
 
 App.EgbilListTableCellShowMapView = App.ModelTableCellView.extend
