@@ -1,13 +1,28 @@
 App.EgbilListView = Em.View.extend
   templateName: "egbilList"
+  layout: null
   didInsertElement: ->
-    @$().layout
+    @set "layout", @$().layout
       defaults:
         resizable: false
-        slidable: true
+        slidable: false
         closable: true
       east:
         initClosed: !@get "controller.isAnyChecked"
+    #disable closable here (force hide) - don't do it in options above, because we do need "toggle" later
+    @get("layout").disableClosable("east", true)
+  _checkedItemsCountChanged: (->
+    layout = @get("layout")
+    if layout?
+      if @get "controller.isAnyChecked"
+        if !layout.east.options.closable
+          layout.enableClosable("east")
+          layout.open "east"
+      else
+        layout.close "east"
+        if layout.east.options.closable
+          layout.disableClosable("east", true)
+    ).observes("controller.isAnyChecked")
 
 
 App.EgbilListTableCellCheckBoxView = App.ModelTableCellView.extend
