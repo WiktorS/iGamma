@@ -1,8 +1,32 @@
 App.EgbilListView = Em.View.extend
   templateName: "egbilList"
+  layout: null
+  didInsertElement: ->
+    @set "layout", @$().layout
+      defaults:
+        resizable: false
+        slidable: false
+        closable: true
+      east:
+        initClosed: !@get "controller.isAnyChecked"
+    #disable closable here (force hide) - don't do it in options above, because we do need "toggle" later
+    @get("layout").disableClosable("east", true)
+  _checkedItemsCountChanged: (->
+    layout = @get("layout")
+    if layout?
+      if @get "controller.isAnyChecked"
+        if !layout.east.options.closable
+          layout.enableClosable("east")
+          layout.open "east"
+      else
+        layout.close "east"
+        if layout.east.options.closable
+          layout.disableClosable("east", true)
+    ).observes("controller.isAnyChecked")
+
 
 App.EgbilListTableCellCheckBoxView = App.ModelTableCellView.extend
-  template: Em.Handlebars.compile "<input type=\"checkbox\"/>"
+  template: Em.Handlebars.compile "{{view Ember.Checkbox  checkedBinding=\"view.content.value\"}}"
 
 
 App.EgbilListTableCellShowMapView = App.ModelTableCellView.extend

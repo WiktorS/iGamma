@@ -1,6 +1,15 @@
 <script type="text/x-handlebars" data-template-name="egbilObject">
-  <div class="btn-primary">
-    {{title}}
+  <div class="ui-layout-center">
+    <div class="btn-primary">
+      {{title}}
+    </div>
+    {{outlet egbilObject}}
   </div>
-  {{outlet egbilObject}}
+  {{#view Em.View classNames="ui-layout-east"}}
+  <ul class="nav nav-pills nav-stacked">
+    {{#each rightPaneContent}}
+    <li><a>{{name}}</a></li>
+    {{/each}}
+  </ul>
+  {{/view}}
 </script>
