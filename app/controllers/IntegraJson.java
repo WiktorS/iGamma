@@ -45,6 +45,11 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
+    public static void getLandCommunities(String name) {
+        List<LandCommunities> result = integra.getLandCommunities(name);
+        renderJSON(result);
+    }
+
     public static void getEgbilObject(String type, String name) {
         EgbilObject result = integra.getEgbilObject(type, name);
         renderJSON(result);

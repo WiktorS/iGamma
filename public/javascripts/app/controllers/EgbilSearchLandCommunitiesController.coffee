@@ -1,4 +1,11 @@
-App.EgbilSearchLandCommunitiesController = Em.ObjectController.extend
-  content: App.EgbilSearchModel.create()
+App.EgbilSearchLandCommunitiesController = App.EgbilSearchCommonController.extend
+  jsonMethod: "getLandCommunities"
+  columns: [
+    "check"
+    "show"
+    "marker"
+    "name"
+    "address"
+  ]
   type: "landCommunities"
   title: "Zarządy wspólnot gruntowych"
