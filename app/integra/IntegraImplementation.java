@@ -116,4 +116,9 @@ public class IntegraImplementation implements Integra{
     public List<EgbilDocument> getDocuments() {
         return null;  //TODO
     }
+
+    @Override
+    public List<Systematics> getSystematics() {
+        return null;  //TODO
+    }
 }

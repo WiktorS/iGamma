@@ -74,4 +74,9 @@ public class IntegraJson extends Controller {
         List<EgbilDocument> result = integra.getDocuments();
         renderJSON(result);
     }
+
+    public static void getSystematics() {
+        List<Systematics> result = integra.getSystematics();
+        renderJSON(result);
+    }
 }

@@ -1,6 +1,7 @@
 package integra;
 
 import integra.models.*;
+
 import java.util.List;
 
 public interface Integra {
@@ -17,4 +18,5 @@ public interface Integra {
     List<Group> getGroupByNip(String nip);
     EgbilObject getEgbilObject(String type, String name);
     List<EgbilDocument> getDocuments();
+    List<Systematics> getSystematics();
 }

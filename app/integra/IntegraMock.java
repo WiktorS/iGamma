@@ -7,6 +7,7 @@ import integra.models.*;
 import models.RegisterUnitMock;
 import play.Logger;
 import play.Play;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-public class  IntegraMock implements Integra {
+public class IntegraMock implements Integra {
 
     private static final Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
 
@@ -145,5 +146,11 @@ public class  IntegraMock implements Integra {
     public List<EgbilDocument> getDocuments() {
         TypeToken<List<EgbilDocument>> typeToken = new TypeToken<List<EgbilDocument>>() {};
         return getMockJsonData("getDocuments", typeToken);
+    }
+
+    @Override
+    public List<Systematics> getSystematics() {
+        TypeToken<List<Systematics>> typeToken = new TypeToken<List<Systematics>>() {};
+        return getMockJsonData("getSystematics", typeToken);
     }
 }
