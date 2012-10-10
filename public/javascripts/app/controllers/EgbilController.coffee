@@ -66,7 +66,7 @@ App.EgbilController = Em.Controller.extend
       when "local" then "Lokal samodzielny"
       when "doc" then "Dokument"
 
-  rightPaneData: Em.Object.create
+  rightPanelData: Em.Object.create
     jrgib: [
       { name: "Wypis pełny z RG", multiselect: true }
       { name: "Wypis uproszczony z RG", multiselect: true }

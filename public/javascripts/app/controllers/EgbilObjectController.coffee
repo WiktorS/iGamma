@@ -7,6 +7,6 @@ App.EgbilObjectController = Em.ObjectController.extend
     g5 = @get "content.registerUnit.g5.value"
     "#{groupName}: JE #{cadastralUnit}, Obręb #{precinct}, ID #{g5}"
     ).property("content")
-  rightPaneContent: (->
-    data = @get ["target.egbilController.rightPaneData", @get "content.objectType"].join(".")
+  rightPanelContent: (->
+    data = @get ["target.egbilController.rightPanelData", @get "content.objectType"].join(".")
     ).property("content.objectType")

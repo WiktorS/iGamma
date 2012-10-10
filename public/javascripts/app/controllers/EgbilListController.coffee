@@ -11,11 +11,11 @@ App.EgbilListController = Em.ArrayController.extend
     (@get("content").filterProperty "isChecked").length > 1
     ).property("content.@each.isChecked")
   canShowRightPanel: (->
-    Em.A(@get ["target.egbilController.rightPaneData", @get "type"].join(".")).length > 0
+    Em.A(@get ["target.egbilController.rightPanelData", @get "type"].join(".")).length > 0
     ).property("type")
-  rightPaneContent: (->
-    data = @get ["target.egbilController.rightPaneData", @get "type"].join(".")
-    if @get "isAnyChecked" && @get "canShowRightPanel"
+  rightPanelContent: (->
+    data = @get ["target.egbilController.rightPanelData", @get "type"].join(".")
+    if @get("isAnyChecked") && @get("canShowRightPanel")
       if @get "isMultipleChecked"
         data.filterProperty "multiselect", true
       else
