@@ -1,0 +1,21 @@
+<script type="text/x-handlebars" data-template-name="systematicsNode">
+  <div class="tier1_header">
+    {{#if view.node.children}}
+    <i {{action "doToggleExpand" target="view"}} {{bindAttr class="view.isExpanded:icon-minus:icon-plus :icon-white :tree-block"}}></i>
+    {{else}}
+    <i class="tree-block"></i>
+    {{/if}}
+    <a {{action "doSelect" target="view"}}>
+    {{#if view.isSelected}}
+      <strong class="tree-selected">{{view.displayValue}}</strong>
+    {{else}}
+      {{view.displayValue}}
+    {{/if}}
+    </a>
+  </div>
+  <div {{bindAttr class="view.isExpanded::hide :well :tier1_content"}}>
+  {{#each view.node.children}}
+    {{view App.SystematicsNodeView nodeBinding="this" classNames="tier1"}}
+  {{/each}}
+  </div>
+</script>
