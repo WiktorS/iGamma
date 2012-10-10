@@ -1,5 +1,5 @@
 App.EgbilSearchJrbController = App.EgbilSearchCommonController.extend
-  jsonMethod: "getRegisterUnitsByJrb"
+  jsonMethod: "getRegisterUnits"
   columns: [
     "check"
     "show"
@@ -10,4 +10,5 @@ App.EgbilSearchJrbController = App.EgbilSearchCommonController.extend
     "creationProof"
     "creationDate"
   ]
+  type: "jrb"
   title: "Jednostki Rejestrowe Budynków"

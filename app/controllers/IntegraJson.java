@@ -10,28 +10,8 @@ import java.util.List;
 public class IntegraJson extends Controller {
     private static Integra integra = IntegraServer.createServer();
 
-    public static void getRegisterUnits(){
-        List<RegisterUnit> result = integra.getRegisterUnits();
-        renderJSON(result);
-    }
-
-    public static void getRegisterUnitsByJrgib(String jrgib) {
-        List<RegisterUnit> result = integra.getRegisterUnitsByJrgib(jrgib);
-        renderJSON(result);
-    }
-
-    public static void getRegisterUnitsByJrb(String jrb) {
-        List<RegisterUnit> result = integra.getRegisterUnitsByJrb(jrb);
-        renderJSON(result);
-    }
-
-    public static void getRegisterUnitsByJrl(String jrl) {
-        List<RegisterUnit> result = integra.getRegisterUnitsByJrl(jrl);
-        renderJSON(result);
-    }
-
-    public static void getRegisterUnitsByJrg(String jrg) {
-        List<RegisterUnit> result = integra.getRegisterUnitsByJrg(jrg);
+    public static void getRegisterUnits(String type){
+        List<RegisterUnit> result = integra.getRegisterUnits(type);
         renderJSON(result);
     }
 

@@ -11,4 +11,5 @@ App.EgbilSearchDocumentsController = App.EgbilSearchCommonController.extend
     "locals"
     "changes"
   ]
+  type: "documents"
   title: "Dokumenty"

@@ -1,6 +1,5 @@
 App.EgbilSearchLotsController = App.EgbilSearchCommonController.extend
   jsonMethod: "getLotsByNumber"
-  title: "Działki"
   columns: [
     "check"
     "show"
@@ -14,3 +13,5 @@ App.EgbilSearchLotsController = App.EgbilSearchCommonController.extend
     "document"
     "cadastralArea"
   ]
+  type: "lots"
+  title: "Działki"

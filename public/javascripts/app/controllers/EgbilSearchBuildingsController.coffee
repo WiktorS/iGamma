@@ -1,6 +1,5 @@
 App.EgbilSearchBuildingsController = App.EgbilSearchCommonController.extend
   jsonMethod: "getBuildingByNumber"
-  title: "Budynki"
   columns: [
     "check"
     "show"
@@ -15,3 +14,5 @@ App.EgbilSearchBuildingsController = App.EgbilSearchCommonController.extend
     "finishYear"
     "buildUpArea"
   ]
+  type: "buildings"
+  title: "Budynki"

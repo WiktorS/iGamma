@@ -14,8 +14,8 @@ App.TabItemView = Em.View.extend
 App.ObjectTabItemView = App.TabItemView.extend
   object: null
   templateName: "objectTabItem"
-  stateName: (-> @get "object.valueType").property("object.valueType")
-  displayName: (-> @get "object.value").property("object.value")
+  stateName: (-> @get "object.objectType").property("object.objectType")
+  displayName: (-> @get "object.objectName").property("object.objectName")
   currentStateObjectNameBinding: "controller.target.currentState.objectName"
   click: (e) ->
     App.router.send "showObject", @get("object")

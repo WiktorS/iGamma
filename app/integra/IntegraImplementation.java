@@ -31,34 +31,8 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
-    public List<RegisterUnit> getRegisterUnits() {
+    public List<RegisterUnit> getRegisterUnits(String type) {
         JsonElement jsonResult = invokeMethodJson("getRegisterUnits");
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
-    }
-
-    @Override
-    public List<RegisterUnit> getRegisterUnitsByJrgib(String jrgib) {
-        return null;  //TODO
-    }
-
-    @Override
-    public List<RegisterUnit> getRegisterUnitsByJrb(String jrb) {
-        JsonElement jsonResult = invokeMethodJson("getRegisterUnitsByJrb");
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
-    }
-
-    @Override
-    public List<RegisterUnit> getRegisterUnitsByJrl(String jrl) {
-        JsonElement jsonResult = invokeMethodJson("getRegisterUnitsByJrl");
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
-    }
-
-    @Override
-    public List<RegisterUnit> getRegisterUnitsByJrg(String jrg) {
-        JsonElement jsonResult = invokeMethodJson("getRegisterUnitsByJrg");
         TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }
