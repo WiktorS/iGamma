@@ -8,13 +8,15 @@ App.EgbilListView = Em.View.extend
         slidable: false
         closable: true
       east:
-        initClosed: !@get "controller.isAnyChecked"
+        initClosed: !(@get("controller.isAnyChecked") && @get("controller.canShowRightPanel"))
+    layout = @get "layout"
     #disable closable here (force hide) - don't do it in options above, because we do need "toggle" later
-    @get("layout").disableClosable("east", true)
+    if layout.east.state.isClosed && layout.east.options.closable
+      layout.disableClosable("east", true)
   _checkedItemsCountChanged: (->
     layout = @get("layout")
     if layout?
-      if @get "controller.isAnyChecked"
+      if @get("controller.isAnyChecked")  && @get("controller.canShowRightPanel")
         if !layout.east.options.closable
           layout.enableClosable("east")
           layout.open "east"
@@ -22,7 +24,7 @@ App.EgbilListView = Em.View.extend
         layout.close "east"
         if layout.east.options.closable
           layout.disableClosable("east", true)
-    ).observes("controller.isAnyChecked")
+    ).observes("controller.isAnyChecked", "controller.canShowRightPanel")
 
 
 App.EgbilListTableCellCheckBoxView = App.ModelTableCellView.extend

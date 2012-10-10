@@ -5,11 +5,5 @@
     </div>
     {{outlet egbilObject}}
   </div>
-  {{#view Em.View classNames="ui-layout-east"}}
-  <ul class="nav nav-pills nav-stacked">
-    {{#each rightPaneContent}}
-    <li><a>{{name}}</a></li>
-    {{/each}}
-  </ul>
-  {{/view}}
+  {{view App.EgbilRightPanelView contentBinding="rightPanelContent"}}
 </script>
