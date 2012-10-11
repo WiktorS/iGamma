@@ -7,8 +7,8 @@ public class EgbilLot implements IntegraModel {
     public String geodesicArea;
     public String addresses;
     public String documentsSygnature;
-    public String useClassType;
-    public String useClassArea;
+    public String terrainCategoryType;
+    public String terrainCategoryArea;
     public String monumentRegister;
     public String statisticalRegion;
     public String listDistrict;

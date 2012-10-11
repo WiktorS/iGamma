@@ -160,8 +160,8 @@ App.EgbilObjectLotModel = Em.Object.extend
   geodesicArea: null
   addresses: null
   documentsSygnature: null
-  useClassType: null
-  useClassArea: null
+  terrainCategoryType: null
+  terrainCategoryArea: null
   monumentRegister: null
   statisticalRegion: null
   listDistrict: null
@@ -195,9 +195,9 @@ App.EgbilObjectLotModel = Em.Object.extend
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
       valueType: "doc"
-    @useClassType = App.StandardTableCellModel.create
+    @terrainCategoryType = App.StandardTableCellModel.create
       label: "Klasoużytki/Rodzaj"
-    @useClassArea = App.StandardTableCellModel.create
+    @terrainCategoryArea = App.StandardTableCellModel.create
       label: "Klasoużytki/Powierzchnia"
       help: "[ha]"
     @monumentRegister = App.StandardTableCellModel.create
