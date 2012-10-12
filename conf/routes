@@ -7,9 +7,6 @@ GET     /                                         Application.index
 
 #Integra json interface
 GET     /getRegisterUnits.json                    IntegraJson.getRegisterUnits
-GET     /getRegisterUnitsByJrgib.json             IntegraJson.getRegisterUnitsByJrgib
-GET     /getRegisterUnitsByJrb.json               IntegraJson.getRegisterUnitsByJrb
-GET     /getRegisterUnitsByJrl.json               IntegraJson.getRegisterUnitsByJrl
 GET     /getLotsByNumber.json                     IntegraJson.getLotsByNumber
 GET     /getBuildingByNumber.json                 IntegraJson.getBuildingByNumber
 GET     /getLocalByNumber.json                    IntegraJson.getLocalByNumber
@@ -20,6 +17,7 @@ GET     /getLandCommunities.json                  IntegraJson.getLandCommunities
 GET     /getRegisterUnitsByJrg.json               IntegraJson.getRegisterUnitsByJrg
 GET     /getEgbilObject.json                      IntegraJson.getEgbilObject
 GET     /getDocuments.json                        IntegraJson.getDocuments
+GET     /getSystematics.json                      IntegraJson.getSystematics
 
 #Integra mock
 GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits

@@ -1,5 +1,5 @@
 App.EgbilSearchJrgController = App.EgbilSearchCommonController.extend
-  jsonMethod: "getRegisterUnitsByJrg"
+  jsonMethod: "getRegisterUnits"
   columns: [
     "check"
     "show"
@@ -10,4 +10,5 @@ App.EgbilSearchJrgController = App.EgbilSearchCommonController.extend
     "creationProof"
     "creationDate"
   ]
+  type: "jrg"
   title: "Stare Jednostki Rejestrowe Gruntów"

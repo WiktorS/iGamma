@@ -5,3 +5,6 @@ App.StandardTableCellModel = Em.Object.extend
   sortable: true
   valueType: null
   viewClass: null
+
+  objectType: (-> @get "valueType").property("valueType")
+  objectName: (-> @get "value").property("value")

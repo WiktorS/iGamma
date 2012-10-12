@@ -1,6 +1,5 @@
 App.EgbilSearchLandCommunitiesController = App.EgbilSearchCommonController.extend
   jsonMethod: "getLandCommunities"
-  title: "Zarządy wspólnot gruntowych"
   columns: [
     "check"
     "show"
@@ -8,3 +7,5 @@ App.EgbilSearchLandCommunitiesController = App.EgbilSearchCommonController.exten
     "name"
     "address"
   ]
+  type: "landCommunities"
+  title: "Zarządy wspólnot gruntowych"

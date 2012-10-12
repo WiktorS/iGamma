@@ -2,18 +2,14 @@ App.EgbilController = Em.Controller.extend
   objects: Em.A()
 
   getObject: (objectType, objectName) ->
-    @objects.filterProperty("value", objectName).findProperty("valueType", objectType)
+    @objects.filterProperty("objectName", objectName).findProperty("objectType", objectType)
 
-  showObject: (contextObject) ->
-    objectType = contextObject.get "valueType"
-    objectName = contextObject.get "value"
+  showObject: (objectType, objectName) ->
     object = @getObject objectType, objectName
-    App.router.send "goToObject", object if !Em.empty object
+    @get("target").send "goToObject", object if !Em.empty object
 
-  closeObject: (contextObject) ->
-    objectType = contextObject.get "valueType"
-    objectName = contextObject.get "value"
-    Em.assert "Missing object type & name", objectType? && objectName?
+  closeObject: (objectType, objectName) ->
+    Em.assert "Cannot close object without type & name", objectType? && objectName?
     object = @getObject objectType, objectName
     if !Em.empty object
       idx = @objects.indexOf object
@@ -22,14 +18,15 @@ App.EgbilController = Em.Controller.extend
       if currentStateObjectName == objectName
         if @objects.length > 0
           idx-- while idx >= @objects.length
-          App.router.send "goToObject", @objects[idx]
+          @get("target").send "goToObject", @objects[idx]
+        else if @get("target").egbilListController.content
+          @get("target").transitionTo "egbil.list"
         else
-          App.router.transitionTo "egbil.list"
+          @get("target").transitionTo "egbil.search"
 
-  openObject: (contextObject) ->
-    objectType = contextObject.get "valueType"
-    objectName = contextObject.get "value"
-    Em.assert "Missing object type & name", objectType? && objectName?
+  openObject: (objectType, objectName) ->
+    Em.assert "Can't open object of undefined type", objectType?
+    Em.assert "Can't open object of undefined name", objectName?
     object = @getObject objectType, objectName
     if Em.empty object
       $.ajax
@@ -50,15 +47,16 @@ App.EgbilController = Em.Controller.extend
             content.locals = data.locals.map(App.Common.toModel, App.EgbilObjectLocalModel)
             content.landCommunities = data.landCommunities.map(App.Common.toModel, App.EgbilObjectLandCommunityModel)
             content.changes = data.changes.map(App.Common.toModel, App.EgbilObjectChangeModel)
-            object = App.StandardTableCellModel.create contextObject,
-              content: content
+            object = Em.Object.create content,
+              objectType: objectType
+              objectName: objectName
               groupName: @getGroupName objectType
             @objects.addObject object
-            App.router.send "goToObject", object
+            @showObject objectType, objectName
           else
             alert "Nie znaleziono rekordu"  #TODO: Error handling
     else
-      App.router.send "goToObject", object
+      @showObject objectType, objectName
 
   getGroupName: (group) ->
     switch group
@@ -72,3 +70,99 @@ App.EgbilController = Em.Controller.extend
       when "doc" then "Dokument"
       when "person" then "Osoba fizyczna"
       when "institution" then "Instytucja"
+
+  rightPanelData: Em.Object.create
+    jrgib: [
+      { name: "Wypis pełny z RG", multiselect: true }
+      { name: "Wypis uproszczony z RG", multiselect: true }
+      { name: "Wypis z RB", multiselect: true }
+      { name: "Wypis z KB", multiselect: true }
+      { name: "Zestawienie klasoużytków", multiselect: true }
+      { name: "Rozliczenie udziałów", multiselect: false }
+      { name: "Raport dowolny", multiselect: true }
+      { name: "Dzierżawy", multiselect: false }
+    ]
+    jrb: [
+      { name: "Wypis z RB", multiselect: true }
+      { name: "Wypis z KL", multiselect: true }
+      { name: "Rozliczenie udziałów", multiselect: false }
+      { name: "Lista zmian w JR", multiselect: true }
+      { name: "Raport dowolny", multiselect: true }
+    ]
+    jrl: [
+      { name: "Wypis z RL", multiselect: true }
+      { name: "Rozliczenie udziałów", multiselect: false }
+      { name: "Lista zmian w JR", multiselect: true }
+      { name: "Raport dowolny", multiselect: true }
+    ]
+    jrg: [
+      { name: "Wypis z RG", multiselect: true }
+      { name: "Wypis z KL", multiselect: true }
+      { name: "Rozliczenie udziałów", multiselect: false }
+      { name: "Lista zmian w JR", multiselect: true }
+      { name: "Raport dowolny", multiselect: true }
+    ]
+    lots: [
+      { name: "Wypis pełny z RG", multiselect: true }
+      { name: "Wypis uproszczony z RG", multiselect: true }
+      { name: "Zestawienie klasoużytków", multiselect: true }
+      { name: "Lista zmian oczekujących", multiselect: true }
+      { name: "Rezerwacja numerów", multiselect: false }
+      { name: "Raport dowolny", multiselect: true }
+    ]
+    buildings: [
+      { name: "Wypis z RB", multiselect: true }
+      { name: "Wypis z KL", multiselect: true }
+      { name: "Rezerwacja numerów", multiselect: false }
+      { name: "Raport dowolny", multiselect: true }
+    ]
+    locals: [
+      { name: "Wypis z RL", multiselect: true}
+    ]
+    individuals: [
+      { name: "Wypis pełny z RG" , multiselect: true}
+      { name: "Wypis uproszczony z RG" , multiselect: true}
+      { name: "Zestawienie klasoużytków" , multiselect: true}
+      { name: "Lista zmian oczekujących" , multiselect: true}
+      { name: "Raport dowolny" , multiselect: true}
+      { name: "Działki" , multiselect: true}
+      { name: "Budynki" , multiselect: true}
+      { name: "Lokale" , multiselect: true}
+      { name: "Raport dowolny" , multiselect: true}
+    ]
+    institutions: [
+      { name: "Wypis pełny z RG" , multiselect: true}
+      { name: "Wypis uproszczony z RG" , multiselect: true}
+      { name: "Zestawienie klasoużytków" , multiselect: true}
+      { name: "Lista zmian oczekujących" , multiselect: true}
+      { name: "Raport dowolny" , multiselect: true}
+      { name: "Działki" , multiselect: true}
+      { name: "Budynki" , multiselect: true}
+      { name: "Lokale" , multiselect: true}
+      { name: "Raport dowolny" , multiselect: true}
+    ]
+    groups: [
+      { name: "Wypis pełny z RG" , multiselect: true}
+      { name: "Wypis uproszczony z RG" , multiselect: true}
+      { name: "Zestawienie klasoużytków" , multiselect: true}
+      { name: "Lista zmian oczekujących" , multiselect: true}
+      { name: "Raport dowolny" , multiselect: true}
+      { name: "Działki" , multiselect: true}
+      { name: "Budynki" , multiselect: true}
+      { name: "Lokale" , multiselect: true}
+      { name: "Raport dowolny" , multiselect: true}
+    ]
+    documents: [
+      { name: "Skan", multiselect: false}
+      { name: "Działki", multiselect: false}
+      { name: "Budynki", multiselect: false}
+      { name: "Lokale", multiselect: false}
+      { name: "Zmiany", multiselect: false}
+    ]
+    changes: [
+      { name: "Dokumenty", multiselect: false}
+      { name: "Działki", multiselect: false}
+      { name: "Zawiadomienie o zmianie", multiselect: false}
+      { name: "Różnice", multiselect: false}
+      { name: "Raport dowolny", multiselect: true}
+    ]

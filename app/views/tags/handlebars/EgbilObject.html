@@ -1,6 +1,9 @@
 <script type="text/x-handlebars" data-template-name="egbilObject">
-  <div class="btn-primary">
-    {{title}}
+  <div class="ui-layout-center">
+    <div class="btn-primary">
+      {{title}}
+    </div>
+    {{outlet egbilObject}}
   </div>
-  {{outlet egbilObject}}
+  {{view App.EgbilRightPanelView contentBinding="rightPanelContent"}}
 </script>

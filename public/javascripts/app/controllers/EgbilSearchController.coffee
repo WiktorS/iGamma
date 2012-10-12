@@ -8,7 +8,8 @@ App.EgbilSearchController = Em.Controller.extend
       success: (data) =>
         context = Em.Object.create
           columns: view.get "controller.columns"
-          content: data.map(App.Common.toModel, App.EgbilListModel)
+          content: Em.A(data.map(App.Common.toModel, App.EgbilListModel))
+          type: view.get "controller.type"
           title: view.get "controller.title"
         @get("target").send "goToList", context
       error: (jqXHR, textStatus, errorThrown) ->
@@ -16,8 +17,10 @@ App.EgbilSearchController = Em.Controller.extend
 
 getSearchArgs = (view) ->
   result = {}
+  result["type"] = view.get("controller.type") if view.get("controller.type")?
   for field in view.formFields
     name = field.get "name"
-    if !Em.empty name
-      result[name] = field.get "value"
+    value = field.get "value"
+    if !Em.empty(name) && !Em.empty(value)
+      result[name] = value
   result

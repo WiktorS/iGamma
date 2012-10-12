@@ -1,4 +1,5 @@
 App.EgbilListModel = Em.Object.extend
+  isCheckedBinding: "check.value"
   check: null
   show: null
   marker: null
@@ -51,8 +52,8 @@ App.EgbilListModel = Em.Object.extend
 
   init: ->
     @_super()
-    @check = App.StandardTableCellModel.create
-      label: ""
+    @set "check", App.StandardTableCellModel.create
+      value: false
       viewClass: App.EgbilListTableCellCheckBoxView
       sortable: false
     @show = App.StandardTableCellModel.create

@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import integra.models.*;
-import models.RegisterUnitMock;
 import play.Logger;
 import play.Play;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-public class  IntegraMock implements Integra {
+public class IntegraMock implements Integra {
 
     private static final Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
 
@@ -69,34 +69,9 @@ public class  IntegraMock implements Integra {
 
 
     @Override
-    public List<RegisterUnit> getRegisterUnits() {
-        List<RegisterUnitMock> registerUnitMocks = RegisterUnitMock.findAll();
+    public List<RegisterUnit> getRegisterUnits(String type) {
         TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return gson.fromJson(gson.toJsonTree(registerUnitMocks), typeToken.getType());
-    }
-
-    @Override
-    public List<RegisterUnit> getRegisterUnitsByJrgib(String jrgib) {
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return getMockJsonData("getRegisterUnitsByJrgib", typeToken, jrgib);
-    }
-
-    @Override
-    public List<RegisterUnit> getRegisterUnitsByJrb(String jrb) {
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return getMockJsonData("getRegisterUnitsByJrb", typeToken, jrb);
-    }
-
-    @Override
-    public List<RegisterUnit> getRegisterUnitsByJrl(String jrl) {
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return getMockJsonData("getRegisterUnitsByJrl", typeToken, jrl);
-    }
-
-    @Override
-    public List<RegisterUnit> getRegisterUnitsByJrg(String jrg) {
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return getMockJsonData("getRegisterUnitsByJrg", typeToken, jrg);
+        return getMockJsonData("getRegisterUnits", typeToken, type);
     }
 
     @Override
@@ -151,5 +126,11 @@ public class  IntegraMock implements Integra {
     public List<EgbilDocument> getDocuments() {
         TypeToken<List<EgbilDocument>> typeToken = new TypeToken<List<EgbilDocument>>() {};
         return getMockJsonData("getDocuments", typeToken);
+    }
+
+    @Override
+    public List<Systematics> getSystematics() {
+        TypeToken<List<Systematics>> typeToken = new TypeToken<List<Systematics>>() {};
+        return getMockJsonData("getSystematics", typeToken);
     }
 }
