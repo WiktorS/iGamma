@@ -16,6 +16,37 @@
     "remarks" : "E",
     "notes" : "R"
   },
+  "person": {
+    "pesel": "1",
+    "surname": "2",
+    "firstname": "3",
+    "secondname": "4",
+    "sex": "5",
+    "fathername": "6",
+    "mothername": "7",
+    "nationality": "8",
+    "status": "9",
+    "nip": "9",
+    "document": "9",
+    "address": "9",
+    "mailaddress": "9",
+    "alive": "9",
+    "remarks": "9",
+    "notes": "9"
+  },
+  "institution": {
+    "fullname": "1",
+    "shortname": "2",
+    "status": "3",
+    "regon": "4",
+    "nip": "5",
+    "address": "6",
+    "registername": "7",
+    "registernumber": "8",
+    "registercourt": "9",
+    "remarks": "9",
+    "notes": "9"
+  },
   "document": {
     "type": "1",
     "sygnature": "2",
@@ -191,6 +222,20 @@
       "cadastralValue" : "567",
       "valuationDate" : "01-01-2001",
       "remarks" : "W"
+    }
+  ],
+  "landCommunities":[
+    {
+      "marker" : "!2",
+      "name" : "name",
+      "address" : "Q2",
+      "landCommunity" : "land comunity"
+    },
+    {
+      "marker" : "!",
+      "name" : "name1",
+      "address" : "Q",
+      "landCommunity" : "land comunity2"
     }
   ],
   "changes":[

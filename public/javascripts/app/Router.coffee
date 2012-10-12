@@ -179,6 +179,18 @@ App.Router = Em.Router.extend
           route: "/dokument/:name"
           objectOutletName: "egbilObjectDocument"
 
+        lot: RouteWithObjectParam.extend
+          route: "/lot/:name"
+          objectOutletName: "egbilObjectLot"
+
+        person: RouteWithObjectParam.extend
+          route: "/person/:name"
+          objectOutletName: "egbilObjectPerson"
+
+        institution: RouteWithObjectParam.extend
+          route: "/institution/:name"
+          objectOutletName: "egbilObjectInstitution"
+
     changes: Em.Route.extend
       route: "/zmiany"
       connectOutlets: (router) ->

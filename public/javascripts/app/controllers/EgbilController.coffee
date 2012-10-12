@@ -40,12 +40,15 @@ App.EgbilController = Em.Controller.extend
         success: (data) =>
           if !Em.empty data
             content = App.EgbilObjectModel.create()
+            content.person = App.Common.toModel.call(App.EgbilObjectPersonModel, data.person)
+            content.institution = App.Common.toModel.call(App.EgbilObjectInstitutionModel, data.institution)
             content.document = App.Common.toModel.call(App.EgbilObjectDocumentModel, data.document)
             content.registerUnit = App.Common.toModel.call(App.EgbilObjectRegisterUnitModel, data.registerUnit)
             content.shares = data.shares.map(App.Common.toModel, App.EgbilObjectShareModel)
             content.lots = data.lots.map(App.Common.toModel, App.EgbilObjectLotModel)
             content.buildings = data.buildings.map(App.Common.toModel, App.EgbilObjectBuildingModel)
             content.locals = data.locals.map(App.Common.toModel, App.EgbilObjectLocalModel)
+            content.landCommunities = data.landCommunities.map(App.Common.toModel, App.EgbilObjectLandCommunityModel)
             content.changes = data.changes.map(App.Common.toModel, App.EgbilObjectChangeModel)
             object = App.StandardTableCellModel.create contextObject,
               content: content
@@ -67,3 +70,5 @@ App.EgbilController = Em.Controller.extend
       when "building" then "Budynek"
       when "local" then "Lokal samodzielny"
       when "doc" then "Dokument"
+      when "person" then "Osoba fizyczna"
+      when "institution" then "Instytucja"

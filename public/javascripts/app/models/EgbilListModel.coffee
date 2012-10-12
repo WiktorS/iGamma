@@ -117,7 +117,7 @@ App.EgbilListModel = Em.Object.extend
     @surnameAndNames = App.StandardTableCellModel.create
       label: "Nazwisko i imiona"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "name"
+      valueType: "person"
     @pesel = App.StandardTableCellModel.create
       label: "PESEL"
     @identityDoc = App.StandardTableCellModel.create
@@ -125,7 +125,7 @@ App.EgbilListModel = Em.Object.extend
     @name = App.StandardTableCellModel.create
       label: "Nazwa pełna"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "fullname"
+      valueType: "institution"
     @nip = App.StandardTableCellModel.create
       label: "NIP"
     #dokumenty

@@ -10,6 +10,8 @@ App.EgbilObjectModel = Em.Object.extend
   init: ->
     @_super()
     @registerUnit = App.EgbilObjectRegisterUnitModel.create()
+    @person = App.EgbilObjectPersonModel.create()
+    @institution = App.EgbilObjectInstitutionModel.create()
     @document = App.EgbilObjectDocumentModel.create()
     @shares = Em.A()
     @lots = Em.A()
@@ -68,6 +70,98 @@ App.EgbilObjectRegisterUnitModel = Em.Object.extend
       label: "REGON"
     @remarks = App.StandardTableCellModel.create
       label: "Uwagi"
+    @notes = App.StandardTableCellModel.create
+      label: "Notatki"
+
+
+App.EgbilObjectPersonModel = Em.Object.extend
+  pesel: null
+  surname: null
+  firstname: null
+  secondname: null
+  sex: null
+  fathername: null
+  mothername: null
+  nationality: null
+  status: null
+  nip: null
+  document: null
+  address: null
+  mailaddress: null
+  alive: null
+  remarks: null
+  notes: null
+
+  init: ->
+    @pesel = App.StandardTableCellModel.create
+      label: "PESEL"
+    @surname = App.StandardTableCellModel.create
+      label: "Nazwisko"
+    @firstname = App.StandardTableCellModel.create
+      label: "Pierwsze imię"
+    @secondname = App.StandardTableCellModel.create
+      label: "Drugie imię"
+    @sex = App.StandardTableCellModel.create
+      label: "Płeć"
+    @fathername = App.StandardTableCellModel.create
+      label: "Imię ojca"
+    @mothername = App.StandardTableCellModel.create
+      label: "Imię matki"
+    @nationality = App.StandardTableCellModel.create
+      label: "Obywatelstwo"
+    @status = App.StandardTableCellModel.create
+      label: "Status podmiotu"
+    @nip = App.StandardTableCellModel.create
+      label: "NIP"
+    @document = App.StandardTableCellModel.create
+      label: "Oznaczenie dokumentu"
+    @address = App.StandardTableCellModel.create
+      label: "Adres zamieszkania"
+    @mailaddress = App.StandardTableCellModel.create
+      label: "Adres korespondencyjny"
+    @alive = App.StandardTableCellModel.create
+      label: "Żyje"
+    @remarks = App.StandardTableCellModel.create
+      label: "_Uwagi"
+    @notes = App.StandardTableCellModel.create
+      label: "Notatki"
+
+
+
+App.EgbilObjectInstitutionModel = Em.Object.extend
+  fullname: null
+  shortname: null
+  status: null
+  regon: null
+  nip: null
+  address: null
+  registername: null
+  registernumber: null
+  registercourt: null
+  remarks: null
+  notes: null
+
+  init: ->
+    @fullname = App.StandardTableCellModel.create
+      label: "Nazwa pełna"
+    @shortname = App.StandardTableCellModel.create
+      label: "Nazwa skrócona"
+    @status = App.StandardTableCellModel.create
+      label: "Status podmiotu"
+    @regon = App.StandardTableCellModel.create
+      label: "REGON"
+    @nip = App.StandardTableCellModel.create
+      label: "NIP"
+    @address = App.StandardTableCellModel.create
+      label: "Adres"
+    @registername = App.StandardTableCellModel.create
+      label: "Nazwa rejestru osób prawnych"
+    @registernumber = App.StandardTableCellModel.create
+      label: "Numer rejestru osób prawnych"
+    @registercourt = App.StandardTableCellModel.create
+      label: "Nazwa sądu rejestrowego"
+    @remarks = App.StandardTableCellModel.create
+      label: "_Uwagi"
     @notes = App.StandardTableCellModel.create
       label: "Notatki"
 
@@ -392,6 +486,27 @@ App.EgbilObjectLocalModel = Em.Object.extend
     @remarks = App.StandardTableCellModel.create
       label: "Uwagi"
 
+App.EgbilObjectLandCommunityModel = Em.Object.extend
+  show: null
+  marker: null
+  name: null
+  address: null
+  landCommunity: null
+
+  init: ->
+    @show = App.StandardTableCellModel.create
+      label: "Pokaż"
+      viewClass: App.EgbilListTableCellShowMapView
+      sortable: false
+    @marker = App.StandardTableCellModel.create
+      label: "Oznaczenie"
+      viewClass: App.EgbilListTableCellMarkerView
+    @name = App.StandardTableCellModel.create
+      label: "Nazwa spółki"
+    @address = App.StandardTableCellModel.create
+      label: "Adres"
+    @landCommunity = App.StandardTableCellModel.create
+      label: "Wspólnota gruntowa"
 
 App.EgbilObjectChangeModel = Em.Object.extend
   changeNumber: null
