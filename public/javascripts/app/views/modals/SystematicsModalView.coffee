@@ -1,13 +1,9 @@
-App.SystematicsModalView = Em.View.extend
+App.SystematicsModalView = App.ModalView.extend
   templateName: "systematicsModal"
   systematics: Em.A()
   selectedSystematic: null
   selectSystematic: (systematicsArray) ->
     @set "selectedSystematic", systematicsArray
-
-  didInsertElement: ->
-    @_super()
-    @$(".modal").on 'show', => @onShow()
 
   onShow: ->
     @fetchSystematics()
