@@ -64,4 +64,8 @@ public class IntegraJson extends Controller {
         List<Systematics> result = integra.getSystematics();
         renderJSON(result);
     }
+
+    public static void getTerrainCategorySummary(String objectType, String objectName) {
+        renderText("ZESTAWIENIE KLASOUŻYTKÓW");
+    }
 }

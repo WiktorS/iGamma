@@ -55,7 +55,6 @@ App.Router = Em.Router.extend
       doSearch: (router, context) ->
         view = if context instanceof jQuery.Event then context.view else context
         router.get("egbilSearchController").search(view)
-
       search: RouteWithParentMemory.extend
         route: "/szukaj"
         initialState: "jrgib"
@@ -157,7 +156,6 @@ App.Router = Em.Router.extend
         objectType = context.get("objectType")
         Em.assert "Can't go to object of undefined type", objectType?
         router.transitionTo ["object", objectType].join("."), context
-
       object: Em.Route.extend
         route: "/obiekt"
 
@@ -184,6 +182,11 @@ App.Router = Em.Router.extend
         doc: RouteWithObjectParam.extend
           route: "/dokument/:name"
           objectOutletName: "egbilObjectDocument"
+
+      openTerrainCategorySummary: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        url = "/getTerrainCategorySummary?objectType=#{context.get "objectType"}&objectName=#{context.get "objectName"}"
+        window.open(url)
 
     changes: Em.Route.extend
       route: "/zmiany"

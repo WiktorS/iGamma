@@ -169,7 +169,10 @@ App.EgbilController = Em.Controller.extend
         printModal.set "selectedLots", Em.A()
       when "terrainCategorySummary"
         #tab terrainCategorySummary
-        false
+        context = Em.Object.create
+          objectType: view.get("controller.content.objectType")
+          objectName: view.get("controller.content.objectName")
+        @get("target").send "openTerrainCategorySummary", context
       when "sharesAccounting"
         #modal sharesAccounting
         false

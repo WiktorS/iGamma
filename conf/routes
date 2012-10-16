@@ -19,6 +19,9 @@ GET     /getEgbilObject.json                      IntegraJson.getEgbilObject
 GET     /getDocuments.json                        IntegraJson.getDocuments
 GET     /getSystematics.json                      IntegraJson.getSystematics
 
+#Integra documents
+GET     /getTerrainCategorySummary                IntegraJson.getTerrainCategorySummary
+
 #Integra mock
 GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits
 GET     /integraMock/getRegisterUnitsByJrb.json   IntegraMockJson.getRegisterUnitsByJrb
