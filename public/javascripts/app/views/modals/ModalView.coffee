@@ -1,19 +1,20 @@
 App.ModalView = Em.View.extend
+  classNames: [ "modal", "fade", "hide" ]
   destroyAfterHide: true
 
   showModal: ->
-    @$(".modal").modal
+    @$().modal
       backdrop: false
 
   hideModal: ->
-    @$(".modal").modal "hide"
+    @$().modal "hide"
 
   didInsertElement: ->
     @_super()
-    @$(".modal").on "show", (e) => @onShow(e)
-    @$(".modal").on "shown", (e) => @onShown(e)
-    @$(".modal").on "hide", (e) => @onHide(e)
-    @$(".modal").on "hidden", (e) => @onHidden(e)
+    @$().on "show", (e) => @onShow(e)
+    @$().on "shown", (e) => @onShown(e)
+    @$().on "hide", (e) => @onHide(e)
+    @$().on "hidden", (e) => @onHidden(e)
     @showModal()
 
   onShow: (e) ->
