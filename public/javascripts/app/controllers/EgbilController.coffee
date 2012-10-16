@@ -160,22 +160,36 @@ App.EgbilController = Em.Controller.extend
     ]
 
   rightPanelAction: (object, view)->
+    objectType = view.get("controller.content.objectType")
+    objectName = view.get("controller.content.objectName")
+    content = view.get("controller.content") 
     switch object.get "type"
       when "prg", "urg", "rb", "kb", "kl"
         #modal print (part of print tab)
-        printModal = App.PrintModalView.modal
-        printModal.set "selectedObject", view.get("controller.content.registerUnit")
+        printModal = App.PrintModalView.modal()
+        printModal.set "selectedObject", content.get("registerUnit")
         printModal.set "selectedShares", Em.A()
         printModal.set "selectedLots", Em.A()
       when "terrainCategorySummary"
         #tab terrainCategorySummary
         context = Em.Object.create
-          objectType: view.get("controller.content.objectType")
-          objectName: view.get("controller.content.objectName")
+          objectType: objectType
+          objectName: objectName
         @get("target").send "openTerrainCategorySummary", context
       when "sharesAccounting"
         #modal sharesAccounting
-        false
+        sharesAccountingModal = App.SharesAccountingView.modal()
+        $.ajax
+          url: "/getShareAccounting.json"
+          data:
+            type: objectType
+            name: objectName
+          success: (data) ->
+            if !Em.empty data
+              sharesAccountingModal.set "columns", Em.A([ "group", "share" ])
+              sharesAccountingModal.set "content", data.map(App.Common.toModel, App.ShareAccountingModel)
+            else
+              alert "Nie znaleziono rekordu"  #TODO: Error handling
       when "changes"
         #goTo changesList/change(if 1)
         false
