@@ -133,4 +133,10 @@ public class IntegraMock implements Integra {
         TypeToken<List<Systematics>> typeToken = new TypeToken<List<Systematics>>() {};
         return getMockJsonData("getSystematics", typeToken);
     }
+
+    @Override
+    public List<ShareAccounting> getShareAccounting() {
+        TypeToken<List<ShareAccounting>> typeToken = new TypeToken<List<ShareAccounting>>() {};
+        return getMockJsonData("getShareAccounting", typeToken);
+    }
 }

@@ -102,4 +102,9 @@ public class IntegraImplementation implements Integra{
     public List<Systematics> getSystematics() {
         return null;  //TODO
     }
+
+    @Override
+    public List<ShareAccounting> getShareAccounting() {
+        return null;  //TODO
+    }
 }

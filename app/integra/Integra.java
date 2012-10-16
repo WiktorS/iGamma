@@ -16,4 +16,5 @@ public interface Integra {
     EgbilObject getEgbilObject(String type, String name);
     List<EgbilDocument> getDocuments();
     List<Systematics> getSystematics();
+    List<ShareAccounting> getShareAccounting();
 }

@@ -65,6 +65,11 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
+    public static void getShareAccounting() {
+        List<ShareAccounting> result = integra.getShareAccounting();
+        renderJSON(result);
+    }
+
     public static void getTerrainCategorySummary(String objectType, String objectName) {
         renderText("ZESTAWIENIE KLASOUŻYTKÓW");
     }
