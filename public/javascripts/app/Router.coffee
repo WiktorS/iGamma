@@ -49,6 +49,9 @@ App.Router = Em.Router.extend
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
 
+      doRightPanelAction: (router, context) ->
+        router.get("egbilController").rightPanelAction context.context, context.view
+
       doSearch: (router, context) ->
         view = if context instanceof jQuery.Event then context.view else context
         router.get("egbilSearchController").search(view)
