@@ -192,7 +192,26 @@ App.EgbilController = Em.Controller.extend
               alert "Nie znaleziono rekordu"  #TODO: Error handling
       when "changes"
         #goTo changesList/change(if 1)
-        false
+        if Em.isArray content
+          type = view.get "controller.type"
+          checkedList = content.filterProperty "isChecked"
+          field = null
+          $.each checkedList[0], (k,v) ->
+            if v instanceof App.StandardTableCellModel
+              if v.get("valueType") == type
+                field = k
+                return false
+          Em.assert "Can't find column with specified object type: #{type}", !Em.empty field
+          data = checkedList.map(((x) ->
+            @create
+              objectName: x.get "#{field}.value"
+              objectType: type
+            ), Em.Object)
+        else
+          data = Em.makeArray Em.Object.create
+            objectType: objectType
+            objectName: objectName
+        @get("target").send "showChanges", data
       when "reservation"
         #report?
         false

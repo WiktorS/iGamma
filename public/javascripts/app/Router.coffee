@@ -52,6 +52,10 @@ App.Router = Em.Router.extend
       doRightPanelAction: (router, context) ->
         router.get("egbilController").rightPanelAction context.context, context.view
 
+      showChanges: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        #TODO: search for changes related with context (changes tab is missing now)
+
       doSearch: (router, context) ->
         view = if context instanceof jQuery.Event then context.view else context
         router.get("egbilSearchController").search(view)
