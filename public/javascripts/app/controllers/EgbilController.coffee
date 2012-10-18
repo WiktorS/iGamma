@@ -39,6 +39,8 @@ App.EgbilController = Em.Controller.extend
             content = App.EgbilObjectModel.create()
             content.person = App.Common.toModel.call(App.EgbilObjectPersonModel, data.person)
             content.institution = App.Common.toModel.call(App.EgbilObjectInstitutionModel, data.institution)
+            content.group = App.Common.toModel.call(App.EgbilObjectGroupModel, data.group)
+            content.landCommunity = App.Common.toModel.call(App.EgbilObjectLandCommunityModel, data.landCommunity)
             content.document = App.Common.toModel.call(App.EgbilObjectDocumentModel, data.document)
             content.registerUnit = App.Common.toModel.call(App.EgbilObjectRegisterUnitModel, data.registerUnit)
             content.shares = data.shares.map(App.Common.toModel, App.EgbilObjectShareModel)
@@ -46,6 +48,7 @@ App.EgbilController = Em.Controller.extend
             content.buildings = data.buildings.map(App.Common.toModel, App.EgbilObjectBuildingModel)
             content.locals = data.locals.map(App.Common.toModel, App.EgbilObjectLocalModel)
             content.landCommunities = data.landCommunities.map(App.Common.toModel, App.EgbilObjectLandCommunityModel)
+            content.members = data.members.map(App.Common.toModel, App.EgbilObjectMemberModel)
             content.changes = data.changes.map(App.Common.toModel, App.EgbilObjectChangeModel)
             object = Em.Object.create content,
               objectType: objectType
@@ -70,6 +73,8 @@ App.EgbilController = Em.Controller.extend
       when "doc" then "Dokument"
       when "person" then "Osoba fizyczna"
       when "institution" then "Instytucja"
+      when "group" then "Podmiot grupowy"
+      when "landCommunity" then "Zarząd wspólnoty grupowej"
 
   rightPanelData: Em.Object.create
     jrgib: [

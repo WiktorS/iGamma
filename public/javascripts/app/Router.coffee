@@ -194,6 +194,14 @@ App.Router = Em.Router.extend
           route: "/institution/:name"
           objectOutletName: "egbilObjectInstitution"
 
+        group: RouteWithObjectParam.extend
+          route: "/group/:name"
+          objectOutletName: "egbilObjectGroup"
+
+        landCommunity: RouteWithObjectParam.extend
+          route: "/landCommunity/:name"
+          objectOutletName: "egbilObjectLandCommunity"
+
     changes: Em.Route.extend
       route: "/zmiany"
       connectOutlets: (router) ->

@@ -26,6 +26,8 @@ App.EgbilListModel = Em.Object.extend
   pesel: null
   identityDoc: null
   name: null
+  groupName: null
+  landCommunityName: null
   nip: null
   #dokumenty
   sygnature: null
@@ -127,6 +129,14 @@ App.EgbilListModel = Em.Object.extend
       label: "Nazwa pełna"
       viewClass: App.EgbilListTableCellButtonView
       valueType: "institution"
+    @groupName = App.StandardTableCellModel.create
+      label: "Nazwa pełna"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "group"
+    @landCommunityName = App.StandardTableCellModel.create
+      label: "Nazwa pełna"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "landCommunity"
     @nip = App.StandardTableCellModel.create
       label: "NIP"
     #dokumenty

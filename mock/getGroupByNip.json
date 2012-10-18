@@ -2,7 +2,7 @@
   {
     "id"  : 1,
     "marker" : "X",
-    "name" : "nazwa grupy",
+    "groupName" : "nazwa grupy",
     "address" : "adres",
     "regon" : "regon",
     "nip" : "nip"
@@ -10,18 +10,18 @@
   {
     "id"  : 2,
     "marker" : "X",
-    "name" : "B2"
+    "groupName" : "B2"
   },
   {
     "id"  : 3,
-    "name" : "B3"
+    "groupName" : "B3"
   },
   {
     "id"  : 4,
-    "name" : "B4"
+    "groupName" : "B4"
   },
   {
     "id"  : 5,
-    "name" : "B5"
+    "groupName" : "B5"
   }
 ]

@@ -2,24 +2,24 @@
   {
     "id"  : 1,
     "marker" : "X",
-    "name" : "nazwa spółki",
+    "landCommunityName" : "nazwa spółki",
     "address" : "adres"
   },
   {
     "id"  : 2,
     "marker" : "X",
-    "name" : "B2"
+    "landCommunityName" : "B2"
   },
   {
     "id"  : 3,
-    "name" : "B3"
+    "landCommunityName" : "B3"
   },
   {
     "id"  : 4,
-    "name" : "B4"
+    "landCommunityName" : "B4"
   },
   {
     "id"  : 5,
-    "name" : "B5"
+    "landCommunityName" : "B5"
   }
 ]

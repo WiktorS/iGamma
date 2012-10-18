@@ -4,7 +4,7 @@ App.EgbilSearchLandCommunitiesController = App.EgbilSearchCommonController.exten
     "check"
     "show"
     "marker"
-    "name"
+    "landCommunityName"
     "address"
   ]
   type: "landCommunities"

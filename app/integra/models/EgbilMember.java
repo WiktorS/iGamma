@@ -3,14 +3,15 @@ package integra.models;
 /**
  * Created with IntelliJ IDEA.
  * User: pchmielarz
- * Date: 25.09.12
- * Time: 01:52
+ * Date: 16.10.12
+ * Time: 17:08
  * To change this template use File | Settings | File Templates.
  */
-public class Group implements IntegraModel {
+public class EgbilMember implements IntegraModel {
     public String marker;
-    public String groupName;
+    public String type;
+    public String surnameAndNames;
     public String address;
-    public String regon;
+    public String pesel;
     public String nip;
 }

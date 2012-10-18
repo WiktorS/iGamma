@@ -9,6 +9,6 @@ package integra.models;
  */
 public class LandCommunities implements IntegraModel {
     public String marker;
-    public String name;
+    public String landCommunityName;
     public String address;
 }

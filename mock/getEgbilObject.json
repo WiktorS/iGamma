@@ -47,6 +47,28 @@
     "remarks": "9",
     "notes": "9"
   },
+  "group": {
+    "fullname": "1",
+    "shortname": "2",
+    "status": "3",
+    "regon": "4",
+    "nip": "5",
+    "address": "6",
+    "registername": "7",
+    "registernumber": "8",
+    "registercourt": "9",
+    "remarks": "9",
+    "notes": "9"
+  },
+  "landCommunity":{
+    "name" : "name",
+    "status": "3",
+    "address" : "Q2",
+    "landCommunity" : "land comunity",
+    "remarks": "9",
+    "notes": "9"
+   },
+
   "document": {
     "type": "1",
     "sygnature": "2",
@@ -236,6 +258,24 @@
       "name" : "name1",
       "address" : "Q",
       "landCommunity" : "land comunity2"
+    }
+  ],
+  "members":[
+    {
+      "marker" : "!2",
+      "type" : "type",
+      "surnameAndNames" : "name",
+      "address" : "address",
+      "pesel" : "pesel/regon",
+      "nip" : "nip"
+    },
+    {
+      "marker" : "!2",
+      "type" : "type",
+      "surnameAndNames" : "name",
+      "address" : "address",
+      "pesel" : "pesel/regon",
+      "nip" : "nip"
     }
   ],
   "changes":[
