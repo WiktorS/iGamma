@@ -18,7 +18,7 @@ GET     /getRegisterUnitsByJrg.json               IntegraJson.getRegisterUnitsBy
 GET     /getEgbilObject.json                      IntegraJson.getEgbilObject
 GET     /getDocuments.json                        IntegraJson.getDocuments
 GET     /getSystematics.json                      IntegraJson.getSystematics
-GET     /getShareAccounting.json                  IntegraJson.getShareAccounting
+GET     /getShareSummary.json                     IntegraJson.getShareSummary
 
 #Integra documents
 GET     /getTerrainCategorySummary                IntegraJson.getTerrainCategorySummary

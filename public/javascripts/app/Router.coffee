@@ -85,45 +85,45 @@ App.Router = Em.Router.extend
           connectOutlets: (router) ->
             router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrg"})
 
-        lots: RouteWithParentMemory.extend
+        lot: RouteWithParentMemory.extend
           route: "/dzialki"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLots"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLot"})
 
-        buildings: RouteWithParentMemory.extend
+        building: RouteWithParentMemory.extend
           route: "/budynki"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchBuildings"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchBuilding"})
 
-        locals: RouteWithParentMemory.extend
+        local: RouteWithParentMemory.extend
           route: "/lokale"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLocals"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLocal"})
 
-        individuals: RouteWithParentMemory.extend
+        individual: RouteWithParentMemory.extend
           route: "/osoby_fizyczne"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchIndividuals"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchIndividual"})
 
-        institutions: RouteWithParentMemory.extend
+        institution: RouteWithParentMemory.extend
           route: "/instytucje"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchInstitutions"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchInstitution"})
 
-        groups: RouteWithParentMemory.extend
+        group: RouteWithParentMemory.extend
           route: "/podmioty_grupowe"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchGroups"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchGroup"})
 
-        landCommunities: RouteWithParentMemory.extend
+        landCommunity: RouteWithParentMemory.extend
           route: "/zarzady_wspolnot_gruntowych"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLandCommunities"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLandCommunity"})
 
-        documents: RouteWithParentMemory.extend
+        document: RouteWithParentMemory.extend
           route: "/dokumenty"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchDocuments"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchDocument"})
 
       map: RouteWithParentMemory.extend
         route: "/mapa"
@@ -183,7 +183,7 @@ App.Router = Em.Router.extend
           route: "/jrg/:name"
           objectOutletName: "egbilObjectJrg"
 
-        doc: RouteWithObjectParam.extend
+        document: RouteWithObjectParam.extend
           route: "/dokument/:name"
           objectOutletName: "egbilObjectDocument"
 
@@ -194,15 +194,15 @@ App.Router = Em.Router.extend
 
       openReservation: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        url = "/getReservationSummary?objectType=#{context.get "objectType"}&objectName=#{context.get "objectName"}"
+        url = "/getReservation?objectType=#{context.get "objectType"}&objectName=#{context.get "objectName"}"
         window.open(url)
 
     changes: Em.Route.extend
       route: "/zmiany"
       connectOutlets: (router) ->
-        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "changes"})
+        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "change"})
 
     prints: Em.Route.extend
       route: "/wydruki"
       connectOutlets: (router) ->
-        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "prints"})
+        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "print"})

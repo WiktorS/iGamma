@@ -12,9 +12,9 @@ public interface Integra {
     List<Person> getPersonByPesel(String pesel);
     List<Institution> getInstitutionByNip(String nip);
     List<Group> getGroupByNip(String nip);
-    List<LandCommunities> getLandCommunities(String name);
+    List<LandCommunity> getLandCommunities(String name);
     EgbilObject getEgbilObject(String type, String name);
     List<EgbilDocument> getDocuments();
-    List<Systematics> getSystematics();
-    List<ShareAccounting> getShareAccounting();
+    List<Systematic> getSystematics();
+    List<ShareSummary> getShareSummary();
 }

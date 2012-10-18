@@ -46,7 +46,7 @@ public class IntegraJson extends Controller {
     }
 
     public static void getLandCommunities(String name) {
-        List<LandCommunities> result = integra.getLandCommunities(name);
+        List<LandCommunity> result = integra.getLandCommunities(name);
         renderJSON(result);
     }
 
@@ -61,12 +61,12 @@ public class IntegraJson extends Controller {
     }
 
     public static void getSystematics() {
-        List<Systematics> result = integra.getSystematics();
+        List<Systematic> result = integra.getSystematics();
         renderJSON(result);
     }
 
-    public static void getShareAccounting() {
-        List<ShareAccounting> result = integra.getShareAccounting();
+    public static void getShareSummary() {
+        List<ShareSummary> result = integra.getShareSummary();
         renderJSON(result);
     }
 
