@@ -1,2 +1,2 @@
-App.ShareSummaryView = App.ModalView.extend
+App.ShareSummaryModalView = App.ModalView.extend
   templateName: "shareSummaryModal"

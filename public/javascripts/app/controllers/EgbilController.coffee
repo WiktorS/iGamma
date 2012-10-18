@@ -178,7 +178,7 @@ App.EgbilController = Em.Controller.extend
         @get("target").send "openTerrainCategorySummary", context
       when "shareSummary"
         #modal sharesAccounting
-        shareSummaryModal = App.ShareSummaryView.modal()
+        shareSummaryModal = App.ShareSummaryModalView.modal()
         $.ajax
           url: "/getShareSummary.json"
           data:
