@@ -22,6 +22,7 @@ GET     /getShareAccounting.json                  IntegraJson.getShareAccounting
 
 #Integra documents
 GET     /getTerrainCategorySummary                IntegraJson.getTerrainCategorySummary
+GET     /getReservation                           IntegraJson.getReservation
 
 #Integra mock
 GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits

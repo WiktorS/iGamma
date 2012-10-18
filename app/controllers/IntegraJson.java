@@ -73,4 +73,8 @@ public class IntegraJson extends Controller {
     public static void getTerrainCategorySummary(String objectType, String objectName) {
         renderText("ZESTAWIENIE KLASOUŻYTKÓW");
     }
+
+    public static void getReservation(String objectType, String objectName) {
+        renderText("REZERWACJA NUMERÓW");
+    }
 }

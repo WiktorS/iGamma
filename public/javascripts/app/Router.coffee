@@ -192,6 +192,11 @@ App.Router = Em.Router.extend
         url = "/getTerrainCategorySummary?objectType=#{context.get "objectType"}&objectName=#{context.get "objectName"}"
         window.open(url)
 
+      openReservation: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        url = "/getReservationSummary?objectType=#{context.get "objectType"}&objectName=#{context.get "objectName"}"
+        window.open(url)
+
     changes: Em.Route.extend
       route: "/zmiany"
       connectOutlets: (router) ->
