@@ -237,7 +237,7 @@ App.EgbilController = Em.Controller.extend
         false
       when "customReport"
         #modal report
-        false
+        customReportModal = App.CustomReportModalView.modal()
       when "lot", "building", "local", "change"
         #goTo
         false
