@@ -5,6 +5,10 @@ App.ModalView = Em.View.extend
   showModal: ->
     @$().modal
       backdrop: false
+    @$().css
+      'width': 'auto'
+      'min-width': '560px'
+      'margin-left': -> -($(this).width() / 2)
 
   hideModal: ->
     @$().modal "hide"
