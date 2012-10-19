@@ -4,9 +4,89 @@
     <h3>Raport dowolny</h3>
   </div>
   <div class="modal-body">
-    {!{view App.CustomReportView}}
+    <div class="row-fluid">
+      <div class="span5">
+        <fieldset>
+          <legend>Atrybuty do wyboru</legend>
+          {{view Em.Select multiple=true contentBinding="view.attributes"}}
+        </fieldset>
+        <fieldset>
+          <div class="row-fluid">
+            <legend>Konfiguracje</legend>
+            <fieldset>
+              <div class="row-fluid">
+                <span class="span9">{{view Em.Select multiple=true contentBinding="view.configurations"}}</span>
+                <span class="span3">
+                  <button class="btn" {{action "onSaveConfiguration" target="view"}}>Zapisz</button>
+                  <button class="btn" {{action "onDelConfiguration" target="view"}}>Usuń</button>
+                </span>
+              </div>
+            </fieldset>
+          </div>
+        </fieldset>
+      </div>
+      <div class="span7">
+        <fieldset>
+          <legend>Atrybuty wybrane</legend>
+          <div class="row-fluid">
+            <fieldset class="span3">
+              <button class="btn" {{action "onAddAttribute" target="view"}}>Dodaj &gt;&gt;</button>
+              <button class="btn" {{action "onDelAttribute" target="view"}}>&lt;&lt; Usuń</button>
+            </fieldset>
+            <fieldset class="span8">
+              {{view Em.Select multiple=true contentBinding="view.configurations"}}
+            </fieldset>
+            <fieldset class="span1">
+              <button class="btn" {{action "onUpAttribute" target="view"}}><i class="icon-arrow-up"></i></button>
+              <button class="btn" {{action "onDownAttribute" target="view"}}><i class="icon-arrow-down"></i></button>
+            </fieldset>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Atrybuty</legend>
+          <label class="control-group">
+            <span class="field-label span4">Etykieta</span>
+            <span class="input">{{view Em.TextField contentBinding="view.label"}}</span>
+          </label>
+          <label class="control-group">
+            <span class="field-label span4">Precyzja</span>
+            {{view Em.Select contentBinding="view.precision"}}
+          </label>
+          <label class="control-group">
+            <span class="field-label span4">Jednostka</span>
+            {{view Em.Select contentBinding="view.unit"}}
+          </label>
+          <div class="row-fluid">
+            <label class="control-group span6">
+              {{view Em.Checkbox checkedBinding="view.sumUp"}}
+              <span class="field-label">Sumowanie</span>
+            </label>
+            <label class="control-group span6">
+              {{view Em.Checkbox checkedBinding="view.dictionaryLegend"}}
+              <span class="field-label">Legenda dla słowników</span>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Opcje raportu</legend>
+          <label class="control-group">
+            {{view Em.Checkbox checkedBinding="view.attributeLegend"}}
+            <span class="field-label">Legenda nazw atrybutów</span>
+          </label>
+          <label class="control-group">
+            <span class="field-label span4">Linia rozdzielająca</span>
+            {{view Em.Select contentBinding="view.lineBreak"  optionLabelPath="content.displayValue" optionValuePath="content.value"}}
+          </label>
+          <label class="control-group">
+            <span class="field-label span4">Format pliku</span>
+            {{view Em.Select contentBinding="view.fileFormat" optionLabelPath="content.displayValue" optionValuePath="content.value"}}
+          </label>
+        </fieldset>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
+    <button class="btn btn-primary" {{action "onPrint" target="view"}}>Wydruk</button>
     <button class="btn" data-dismiss="modal">Zamknij</button>
   </div>
 </script>

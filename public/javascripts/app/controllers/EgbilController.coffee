@@ -238,6 +238,10 @@ App.EgbilController = Em.Controller.extend
       when "customReport"
         #modal report
         customReportModal = App.CustomReportModalView.modal()
+
+        customReportModal.set "attributes", Em.A()
+        customReportModal.set "configurations", Em.A()
+
       when "lot", "building", "local", "change"
         #goTo
         false
