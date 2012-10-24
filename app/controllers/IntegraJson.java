@@ -70,11 +70,20 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
+    public static void getCustomReportData(String type, String name) {
+        CustomReportData result = integra.getCustomReportData(type, name);
+        renderJSON(result);
+    }
+
     public static void getTerrainCategorySummary(String objectType, String objectName) {
         renderText("ZESTAWIENIE KLASOUŻYTKÓW");
     }
 
     public static void getReservation(String objectType, String objectName) {
         renderText("REZERWACJA NUMERÓW");
+    }
+
+    public static void getCustomReport(Boolean attributeLegend, String lineBreak, String fileFormat, CustomReportAttribute[] attributeList) {
+        renderText("RAPORT DOWOLNY");
     }
 }

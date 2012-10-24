@@ -107,4 +107,9 @@ public class IntegraImplementation implements Integra{
     public List<ShareSummary> getShareSummary() {
         return null;  //TODO
     }
+
+    @Override
+    public CustomReportData getCustomReportData(String type, String name) {
+        return null;  //TODO
+    }
 }

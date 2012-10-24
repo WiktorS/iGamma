@@ -139,4 +139,10 @@ public class IntegraMock implements Integra {
         TypeToken<List<ShareSummary>> typeToken = new TypeToken<List<ShareSummary>>() {};
         return getMockJsonData("getShareSummary", typeToken);
     }
+
+    @Override
+    public CustomReportData getCustomReportData(String type, String name) {
+        TypeToken<CustomReportData> typeToken = new TypeToken<CustomReportData>() {};
+        return getMockJsonData("getCustomReportData", typeToken, type, name);
+    }
 }
