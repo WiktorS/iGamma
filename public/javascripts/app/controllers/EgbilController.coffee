@@ -159,7 +159,7 @@ App.EgbilController = Em.Controller.extend
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
 
-  rightPanelAction: (object, view)->
+  rightPanelAction: (object, view) ->
     objectType = view.get("controller.content.objectType")
     objectName = view.get("controller.content.objectName")
     content = view.get("controller.content") 
@@ -238,9 +238,24 @@ App.EgbilController = Em.Controller.extend
       when "customReport"
         #modal report
         customReportModal = App.CustomReportModalView.modal()
-
-        customReportModal.set "attributes", Em.A()
-        customReportModal.set "configurations", Em.A()
+        $.ajax
+          url: "/getCustomReportData.json"
+          data:
+            type: objectType
+            name: objectName
+          success: (data) ->
+            if !Em.empty data
+              customReportModal.set "attributeList", data.attributeList.map(((x) ->
+                @create x ? Em.Object.create(),
+                  isChosen: false
+                  displayValue: x.name
+                ), Em.Object)
+              customReportModal.set "configurationList", data.configurationList.map(((x) ->
+                @create x ? Em.Object.create()
+                ), Em.Object)
+              customReportModal.set "unitList", data.unitList
+            else
+              alert "Nie znaleziono rekordu"  #TODO: Error handling
 
       when "lot", "building", "local", "change"
         #goTo

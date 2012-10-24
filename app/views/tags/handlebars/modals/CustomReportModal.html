@@ -8,17 +8,29 @@
       <div class="span5">
         <fieldset>
           <legend>Atrybuty do wyboru</legend>
-          {{view Em.Select multiple=true contentBinding="view.attributes"}}
+          {{view Em.Select multiple=true
+                           contentBinding="view.possibleAttributeList"
+                           selectionBinding="view.selectedPossibleAttributeList"
+                           optionLabelPath="content.displayValue"
+                           optionValuePath="content"
+          }}
         </fieldset>
         <fieldset>
           <div class="row-fluid">
             <legend>Konfiguracje</legend>
             <fieldset>
               <div class="row-fluid">
-                <span class="span9">{{view Em.Select multiple=true contentBinding="view.configurations"}}</span>
+                <span class="span9">
+                  {{view Em.Select multiple=true
+                                   contentBinding="view.configurationList"
+                                   selectionBinding="view.selectedConfigurationList"
+                                   optionLabelPath="content.name"
+                                   optionValuePath="content"
+                  }}
+                </span>
                 <span class="span3">
                   <button class="btn" {{action "onSaveConfiguration" target="view"}}>Zapisz</button>
-                  <button class="btn" {{action "onDelConfiguration" target="view"}}>Usuń</button>
+                  <button {{bindAttr class=":btn view.anyConfigurationSelected::disabled"}} {{action "onDelConfiguration" target="view"}}>Usuń</button>
                 </span>
               </div>
             </fieldset>
@@ -30,15 +42,20 @@
           <legend>Atrybuty wybrane</legend>
           <div class="row-fluid">
             <fieldset class="span3">
-              <button class="btn" {{action "onAddAttribute" target="view"}}>Dodaj &gt;&gt;</button>
-              <button class="btn" {{action "onDelAttribute" target="view"}}>&lt;&lt; Usuń</button>
+              <button {{bindAttr class=":btn view.anyPossibleAttributeSelected::disabled"}} {{action "onAddAttribute" target="view"}}>Dodaj &gt;&gt;</button>
+              <button {{bindAttr class=":btn view.anyChosenAttributeSelected::disabled"}} {{action "onDelAttribute" target="view"}}>&lt;&lt; Usuń</button>
             </fieldset>
             <fieldset class="span8">
-              {{view Em.Select multiple=true contentBinding="view.configurations"}}
+              {{view Em.Select multiple=true
+                               contentBinding="view.chosenAttributeList"
+                               selectionBinding="view.selectedChosenAttributeList"
+                               optionLabelPath="content.displayValue"
+                               optionValuePath="content"
+              }}
             </fieldset>
             <fieldset class="span1">
-              <button class="btn" {{action "onUpAttribute" target="view"}}><i class="icon-arrow-up"></i></button>
-              <button class="btn" {{action "onDownAttribute" target="view"}}><i class="icon-arrow-down"></i></button>
+              <button {{bindAttr class=":btn view.disableMoveUpSelectedChosenAttribute:disabled"}} {{action "onUpAttribute" target="view"}}><i class="icon-arrow-up"></i></button>
+              <button {{bindAttr class=":btn view.disableMoveDownSelectedChosenAttribute:disabled"}} {{action "onDownAttribute" target="view"}}><i class="icon-arrow-down"></i></button>
             </fieldset>
           </div>
         </fieldset>
@@ -46,23 +63,23 @@
           <legend>Atrybuty</legend>
           <label class="control-group">
             <span class="field-label span4">Etykieta</span>
-            <span class="input">{{view Em.TextField contentBinding="view.label"}}</span>
+            <span class="input">{{view Em.TextField valueBinding="view.selectedChosenAttribute.displayValue" disabledBinding="view.disableAttributeEdit"}}</span>
           </label>
           <label class="control-group">
             <span class="field-label span4">Precyzja</span>
-            {{view Em.Select contentBinding="view.precision"}}
+            {{view Em.Select contentBinding="view.precisionList" valueBinding="view.selectedChosenAttribute.precision" disabledBinding="view.disableAttributeEdit"}}
           </label>
           <label class="control-group">
             <span class="field-label span4">Jednostka</span>
-            {{view Em.Select contentBinding="view.unit"}}
+            {{view Em.Select contentBinding="view.unitList" valueBinding="view.selectedChosenAttribute.unit" disabledBinding="view.disableAttributeEdit"}}
           </label>
           <div class="row-fluid">
             <label class="control-group span6">
-              {{view Em.Checkbox checkedBinding="view.sumUp"}}
+              {{view Em.Checkbox checkedBinding="view.selectedChosenAttribute.sumUp" disabledBinding="view.disableAttributeEdit"}}
               <span class="field-label">Sumowanie</span>
             </label>
             <label class="control-group span6">
-              {{view Em.Checkbox checkedBinding="view.dictionaryLegend"}}
+              {{view Em.Checkbox checkedBinding="view.selectedChosenAttribute.dictionaryLegend" disabledBinding="view.disableAttributeEdit"}}
               <span class="field-label">Legenda dla słowników</span>
             </label>
           </div>
@@ -75,18 +92,26 @@
           </label>
           <label class="control-group">
             <span class="field-label span4">Linia rozdzielająca</span>
-            {{view Em.Select contentBinding="view.lineBreak"  optionLabelPath="content.displayValue" optionValuePath="content.value"}}
+            {{view Em.Select contentBinding="view.lineBreakList"
+                             selectionBinding="view.lineBreak"
+                             optionLabelPath="content.displayValue"
+                             optionValuePath="content.value"
+            }}
           </label>
           <label class="control-group">
             <span class="field-label span4">Format pliku</span>
-            {{view Em.Select contentBinding="view.fileFormat" optionLabelPath="content.displayValue" optionValuePath="content.value"}}
+            {{view Em.Select contentBinding="view.fileFormatList"
+                             selectionBinding="view.fileFormat"
+                             optionLabelPath="content.displayValue"
+                             optionValuePath="content.value"
+            }}
           </label>
         </fieldset>
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary" {{action "onPrint" target="view"}}>Wydruk</button>
+    <button {{bindAttr class=":btn :btn-primary view.disablePrint:disabled"}} {{action "onPrint" target="view"}}>Wydruk</button>
     <button class="btn" data-dismiss="modal">Zamknij</button>
   </div>
 </script>
