@@ -203,6 +203,12 @@ App.Router = Em.Router.extend
         url = "/getCustomReport?#{args}"
         window.open(url)
 
+      openDifferenceReport: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        args = decodeURIComponent($.param(context))
+        url = "/getDifferenceReport?#{args}"
+        window.open(url)
+
     changes: Em.Route.extend
       route: "/zmiany"
       connectOutlets: (router) ->

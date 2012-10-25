@@ -86,4 +86,9 @@ public class IntegraJson extends Controller {
     public static void getCustomReport(Boolean attributeLegend, String lineBreak, String fileFormat, CustomReportAttribute[] attributeList) {
         renderText("RAPORT DOWOLNY");
     }
+
+    public static void getDifferenceReport(String reportType, Boolean attribute, Boolean registerUnit, Boolean share, Boolean lot, Boolean building, Boolean local) {
+        renderText("RAPORT RÓŻNIC");
+    }
+
 }

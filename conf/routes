@@ -25,6 +25,7 @@ GET     /getCustomReportData.json                 IntegraJson.getCustomReportDat
 GET     /getTerrainCategorySummary                IntegraJson.getTerrainCategorySummary
 GET     /getReservation                           IntegraJson.getReservation
 GET     /getCustomReport                          IntegraJson.getCustomReport
+GET     /getDifferenceReport                      IntegraJson.getDifferenceReport
 
 #Integra mock
 GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits
