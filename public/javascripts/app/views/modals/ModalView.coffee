@@ -3,8 +3,7 @@ App.ModalView = Em.View.extend
   destroyAfterHide: true
 
   showModal: ->
-    @$().modal
-      backdrop: false
+    @$().modal()
     @$().css
       'width': 'auto'
       'min-width': '560px'
@@ -37,5 +36,4 @@ App.ModalView = Em.View.extend
 App.ModalView.reopenClass
   modal: ->
     result = @create.apply(this, arguments)
-    #appendTo rootElement fixes event handling on modal, but messes up 'backdrop' dim
-    result.appendTo App.get("rootElement")
+    result.append()
