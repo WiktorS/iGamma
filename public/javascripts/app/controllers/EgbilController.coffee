@@ -291,4 +291,7 @@ App.EgbilController = Em.Controller.extend
         false
       when "changeNotification"
         #modal print
-        false
+        printModal = App.PrintModalView.modal()
+        printModal.set "selectedObject", content.get("registerUnit")
+        printModal.set "selectedShares", Em.A()
+        printModal.set "selectedLots", Em.A()
