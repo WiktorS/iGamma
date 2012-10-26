@@ -209,6 +209,12 @@ App.Router = Em.Router.extend
         url = "/getDifferenceReport?#{args}"
         window.open(url)
 
+      showScan: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        args = decodeURIComponent($.param(context))
+        url = "/getScan?#{args}"
+        window.open(url)
+
     changes: Em.Route.extend
       route: "/zmiany"
       connectOutlets: (router) ->

@@ -91,4 +91,8 @@ public class IntegraJson extends Controller {
         renderText("RAPORT RÓŻNIC");
     }
 
+    public static void getScan(String objectType, String objectName) {
+        renderText("SKAN");
+    }
+
 }

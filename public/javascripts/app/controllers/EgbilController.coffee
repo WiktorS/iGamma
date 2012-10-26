@@ -285,7 +285,31 @@ App.EgbilController = Em.Controller.extend
         false
       when "scan"
         #tab scan
-        false
+        if Em.isArray content
+          type = view.get "controller.type"
+          checkedList = content.filterProperty "isChecked"
+          field = null
+          for own key of checkedList[0]
+            value = checkedList[0].get key
+            if value instanceof App.StandardTableCellModel
+              if value.get("valueType") == type && value.get("value")?
+                field = key
+                break
+          Em.assert "Can't find column with specified object type: #{type}", !Em.empty field
+          data = checkedList.map(((x) ->
+            @create
+              objectName: x.get "#{field}.value"
+              objectType: type
+            ), Em.Object)
+        else
+          data = Em.makeArray Em.Object.create
+            objectType: objectType
+            objectName: objectName
+        context = {
+          objectType: data[0].get "objectType"
+          objectName: data[0].get "objectName"
+        }
+        @get("target").send "showScan", context
       when "document"
         #goTo docs
         false
