@@ -218,11 +218,15 @@ App.EgbilController = Em.Controller.extend
       when "customReport"
         #modal report
         customReportModal = App.CustomReportModalView.modal()
+        context = []
+        for object in objectList
+          context.push
+            objectType: object.get "objectType"
+            objectName: object.get "objectName"
         $.ajax
           url: "/getCustomReportData.json"
           data:
-            type: objectType
-            name: objectName
+            object: context
           success: (data) ->
             if !Em.empty data
               customReportModal.set "attributeList", data.attributeList.map(((x) ->
