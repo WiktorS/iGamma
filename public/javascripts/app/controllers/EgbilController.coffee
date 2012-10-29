@@ -177,19 +177,22 @@ App.EgbilController = Em.Controller.extend
         #tab terrainCategoryReport
         context = []
         for object in objectList
-          context.push {
+          context.push
             objectType: object.get "objectType"
             objectName: object.get "objectName"
-          }
         @get("target").send "openTerrainCategoryReport", context
       when "shareSummary"
         #modal sharesAccounting
         shareSummaryModal = App.ShareSummaryModalView.modal()
+        context = []
+        for object in objectList
+          context.push
+            objectType: object.get "objectType"
+            objectName: object.get "objectName"
         $.ajax
           url: "/getShareSummary.json"
           data:
-            type: objectType
-            name: objectName
+            object: context
           success: (data) ->
             if !Em.empty data
               shareSummaryModal.set "columns", Em.A([ "group", "share" ])
