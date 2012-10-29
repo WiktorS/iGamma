@@ -243,28 +243,8 @@ App.EgbilController = Em.Controller.extend
       when "difference"
         #modal DifferenceReport
         differenceReportModal = App.DifferenceReportModalView.modal()
-        if Em.isArray content
-          type = view.get "controller.type"
-          checkedList = content.filterProperty "isChecked"
-          field = null
-          for own key of checkedList[0]
-            value = checkedList[0].get key
-            if value instanceof App.StandardTableCellModel
-              if value.get("valueType") == type
-                field = key
-                break
-          Em.assert "Can't find column with specified object type: #{type}", !Em.empty field
-          data = checkedList.map(((x) ->
-            @create
-              objectName: x.get "#{field}.value"
-              objectType: type
-            ), Em.Object)
-        else
-          data = Em.makeArray Em.Object.create
-            objectType: objectType
-            objectName: objectName
-        differenceReportModal.set "objectName", data.get "0.objectName"
-        differenceReportModal.set "objectType", data.get "0.objectType"
+        differenceReportModal.set "objectName", objectList.get "0.objectName"
+        differenceReportModal.set "objectType", objectList.get "0.objectType"
       when "lot", "building", "local", "change"
         #goTo
         false
