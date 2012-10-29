@@ -50,7 +50,9 @@ App.Router = Em.Router.extend
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
 
       doRightPanelAction: (router, context) ->
-        router.get("egbilController").rightPanelAction context.context, context.view
+        action = context.context.get("type")
+        objectList = context.view.get("controller.rightPanelSelectedObjects")
+        router.get("egbilController").rightPanelAction action, objectList
 
       showChanges: (router, context) ->
         context = context.context if context instanceof jQuery.Event

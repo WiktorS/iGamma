@@ -159,17 +159,20 @@ App.EgbilController = Em.Controller.extend
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
 
-  rightPanelAction: (object, view) ->
-    objectType = view.get("controller.content.objectType")
-    objectName = view.get("controller.content.objectName")
-    content = view.get("controller.content") 
-    switch object.get "type"
+  rightPanelAction: (action, objectList) ->
+    switch action
       when "prg", "urg", "rb", "kb", "kl"
         #modal print (part of print tab)
         printModal = App.PrintModalView.modal()
-        printModal.set "selectedObject", content.get("registerUnit")
-        printModal.set "selectedShares", Em.A()
-        printModal.set "selectedLots", Em.A()
+        if (objectList.length == 1)
+          selectedShares = objectList[0].get "selectedShares"
+          selectedLots = objectList[0].get "selectedLots"
+        else
+          selectedShares = Em.A()
+          selectedLots = Em.A()
+        printModal.set "selectedObjects", objectList
+        printModal.set "selectedShares", selectedShares
+        printModal.set "selectedLots", selectedLots
       when "terrainCategorySummary"
         #tab terrainCategorySummary
         context = Em.Object.create

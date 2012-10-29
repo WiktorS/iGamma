@@ -10,3 +10,9 @@ App.EgbilObjectController = Em.ObjectController.extend
   rightPanelContent: (->
     data = @get ["target.egbilController.rightPanelData", @get "content.objectType"].join(".")
     ).property("content.objectType")
+  rightPanelSelectedObjects: ( ->
+    object = Em.Object.create @get("content"),
+      selectedShares: Em.A()
+      selectedLots: Em.A()
+    Em.makeArray object
+    ).property("content")
