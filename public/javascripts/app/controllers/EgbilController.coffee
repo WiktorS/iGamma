@@ -209,26 +209,12 @@ App.EgbilController = Em.Controller.extend
         @get("target").send "showChange", context
       when "reservation"
         #report?
-        if Em.isArray content
-          type = view.get "controller.type"
-          checkedList = content.filterProperty "isChecked"
-          field = null
-          $.each checkedList[0], (k,v) ->
-            if v instanceof App.StandardTableCellModel
-              if v.get("valueType") == type
-                field = k
-                return false
-          Em.assert "Can't find column with specified object type: #{type}", !Em.empty field
-          data = checkedList.map(((x) ->
-            @create
-              objectName: x.get "#{field}.value"
-              objectType: type
-            ), Em.Object)
-        else
-          data = Em.makeArray Em.Object.create
-            objectType: objectType
-            objectName: objectName
-        @get("target").send "openReservation", data[0] #only single object possible
+        context = []
+        for object in objectList
+          context.push
+            objectType: object.get "objectType"
+            objectName: object.get "objectName"
+        @get("target").send "openReservation", context[0] #reservation is only avialable for single selection
       when "customReport"
         #modal report
         customReportModal = App.CustomReportModalView.modal()

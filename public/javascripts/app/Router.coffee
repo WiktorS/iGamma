@@ -197,7 +197,8 @@ App.Router = Em.Router.extend
 
       openReservation: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        url = "/getReservation?objectType=#{context.get "objectType"}&objectName=#{context.get "objectName"}"
+        args = decodeURIComponent($.param(context))
+        url = "/getReservation?#{args}"
         window.open(url)
 
       openCustomReport: (router, context) ->
