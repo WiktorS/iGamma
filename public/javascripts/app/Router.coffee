@@ -189,9 +189,10 @@ App.Router = Em.Router.extend
           route: "/dokument/:name"
           objectOutletName: "egbilObjectDocument"
 
-      openTerrainCategorySummary: (router, context) ->
+      openTerrainCategoryReport: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        url = "/getTerrainCategorySummary?objectType=#{context.get "objectType"}&objectName=#{context.get "objectName"}"
+        args = decodeURIComponent($.param({object: context}))
+        url = "/getTerrainCategorySummary?#{args}"
         window.open(url)
 
       openReservation: (router, context) ->
