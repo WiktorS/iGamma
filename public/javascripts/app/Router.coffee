@@ -54,7 +54,7 @@ App.Router = Em.Router.extend
         objectList = context.view.get("controller.rightPanelSelectedObjects")
         router.get("egbilController").rightPanelAction action, objectList
 
-      showChanges: (router, context) ->
+      showChange: (router, context) ->
         context = context.context if context instanceof jQuery.Event
         #TODO: search for changes related with context (changes tab is missing now)
 

@@ -81,27 +81,27 @@ App.EgbilController = Em.Controller.extend
       Em.Object.create { name: "Wypis z RB", type: "rb", multiselect: true }
       Em.Object.create { name: "Wypis z KL", type: "kl", multiselect: true }
       Em.Object.create { name: "Rozliczenie udziałów", type: "shareSummary", multiselect: false }
-      Em.Object.create { name: "Lista zmian w JR", type: "changes", multiselect: true }
+      Em.Object.create { name: "Lista zmian w JR", type: "change", multiselect: true }
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
     jrl: [
       Em.Object.create { name: "Wypis z RL", type: "rl", multiselect: true }
       Em.Object.create { name: "Rozliczenie udziałów", type: "shareSummary", multiselect: false }
-      Em.Object.create { name: "Lista zmian w JR", type: "changes", multiselect: true }
+      Em.Object.create { name: "Lista zmian w JR", type: "change", multiselect: true }
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
     jrg: [
       Em.Object.create { name: "Wypis z RG", type: "rg", multiselect: true }
       Em.Object.create { name: "Wypis z KL", type: "kl", multiselect: true }
       Em.Object.create { name: "Rozliczenie udziałów", type: "shareSummary", multiselect: false }
-      Em.Object.create { name: "Lista zmian w JR", type: "changes", multiselect: true }
+      Em.Object.create { name: "Lista zmian w JR", type: "change", multiselect: true }
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
     lot: [
       Em.Object.create { name: "Wypis pełny z RG", type: "prg", multiselect: true }
       Em.Object.create { name: "Wypis uproszczony z RG", type: "urg", multiselect: true }
       Em.Object.create { name: "Zestawienie klasoużytków", type: "terrainCategoryReport", multiselect: true }
-      Em.Object.create { name: "Lista zmian oczekujących", type: "changes", multiselect: true }
+      Em.Object.create { name: "Lista zmian oczekujących", type: "change", multiselect: true }
       Em.Object.create { name: "Rezerwacja numerów", type: "reservation", multiselect: false }
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
@@ -201,26 +201,12 @@ App.EgbilController = Em.Controller.extend
               alert "Nie znaleziono rekordu"  #TODO: Error handling
       when "change"
         #goTo changesList/change(if 1)
-        if Em.isArray content
-          type = view.get "controller.type"
-          checkedList = content.filterProperty "isChecked"
-          field = null
-          $.each checkedList[0], (k,v) ->
-            if v instanceof App.StandardTableCellModel
-              if v.get("valueType") == type
-                field = k
-                return false
-          Em.assert "Can't find column with specified object type: #{type}", !Em.empty field
-          data = checkedList.map(((x) ->
-            @create
-              objectName: x.get "#{field}.value"
-              objectType: type
-            ), Em.Object)
-        else
-          data = Em.makeArray Em.Object.create
-            objectType: objectType
-            objectName: objectName
-        @get("target").send "showChanges", data
+        context = []
+        for object in objectList
+          context.push
+            objectType: object.get "objectType"
+            objectName: object.get "objectName"
+        @get("target").send "showChange", context
       when "reservation"
         #report?
         if Em.isArray content
