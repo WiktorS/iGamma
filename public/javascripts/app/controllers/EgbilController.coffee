@@ -160,112 +160,115 @@ App.EgbilController = Em.Controller.extend
       when "document" then "Dokument"
 
   rightPanelAction: (action, objectList) ->
+    simpleList = (objectList) ->
+      list = []
+      for object in objectList
+        list.push
+          objectType: object.get "objectType"
+          objectName: object.get "objectName"
+      list
     switch action
       when "prg", "urg", "rb", "kb", "kl"
-        #modal print (part of print tab)
-        printModal = App.PrintModalView.modal()
-        if (objectList.length == 1)
-          selectedShares = objectList[0].get "selectedShares"
-          selectedLots = objectList[0].get "selectedLots"
-        else
-          selectedShares = Em.A()
-          selectedLots = Em.A()
-        printModal.set "selectedObjects", objectList
-        printModal.set "selectedShares", selectedShares
-        printModal.set "selectedLots", selectedLots
-      when "terrainCategoryReport"
-        #tab terrainCategoryReport
-        context = []
-        for object in objectList
-          context.push
-            objectType: object.get "objectType"
-            objectName: object.get "objectName"
-        @get("target").send "openTerrainCategoryReport", context
-      when "shareSummary"
-        #modal sharesAccounting
-        shareSummaryModal = App.ShareSummaryModalView.modal()
-        context = []
-        for object in objectList
-          context.push
-            objectType: object.get "objectType"
-            objectName: object.get "objectName"
-        $.ajax
-          url: "/getShareSummary.json"
-          data:
-            object: context
-          success: (data) ->
-            if !Em.empty data
-              shareSummaryModal.set "columns", Em.A([ "group", "share" ])
-              shareSummaryModal.set "content", data.map(App.Common.toModel, App.ShareSummaryModel)
-            else
-              alert "Nie znaleziono rekordu"  #TODO: Error handling
-      when "reservation"
-        #report?
-        context = []
-        for object in objectList
-          context.push
-            objectType: object.get "objectType"
-            objectName: object.get "objectName"
-        @get("target").send "openReservation", context[0] #reservation is only avialable for single selection
-      when "customReport"
-        #modal report
-        customReportModal = App.CustomReportModalView.modal()
-        context = []
-        for object in objectList
-          context.push
-            objectType: object.get "objectType"
-            objectName: object.get "objectName"
-        $.ajax
-          url: "/getCustomReportData.json"
-          data:
-            object: context
-          success: (data) ->
-            if !Em.empty data
-              customReportModal.set "attributeList", data.attributeList.map(((x) ->
-                @create x ? Em.Object.create(),
-                  isChosen: false
-                  displayValue: x.name
-                ), Em.Object)
-              customReportModal.set "configurationList", data.configurationList.map(((x) ->
-                @create x ? Em.Object.create()
-                ), Em.Object)
-              customReportModal.set "unitList", data.unitList
-            else
-              alert "Nie znaleziono rekordu"  #TODO: Error handling
-      when "difference"
-        #modal DifferenceReport
-        differenceReportModal = App.DifferenceReportModalView.modal()
-        differenceReportModal.set "objectName", objectList.get "0.objectName"
-        differenceReportModal.set "objectType", objectList.get "0.objectType"
-      when "lot", "building", "local", "change", "document"
-        #goTo
-        context = []
-        for object in objectList
-          context.push
-            objectType: object.get "objectType"
-            objectName: object.get "objectName"
-        $.ajax
-          url: "/getRelatedObjects.json"
-          data:
-            relation: action
-            objectList: context
-          success: (data) =>
-            if !Em.empty data && Em.isArray data
-              if data.length == 1
-                @get("target").send "openObject", Em.Object.create(data[0])
-              else
-                @get("target").send "openList", data
-            else
-              alert "Nie znaleziono rekordu"  #TODO: Error handling
-      when "scan"
-        #tab scan
-        context =
-          objectType: objectList.get "0.objectType"
-          objectName: objectList.get "0.objectName"
-        @get("target").send "showScan", context
+        @showPrintExtractModal action, objectList
       when "changeNotification"
-        #modal print
-        printModal = App.PrintModalView.modal()
-        printModal.set "selectedObject", content.get("registerUnit")
-        printModal.set "selectedShares", Em.A()
-        printModal.set "selectedLots", Em.A()
+        @showChangeNotificationModal objectList
+      when "shareSummary"
+        @showShareSummaryModal simpleList(objectList)
+      when "customReport"
+        @showCustomReportModal simpleList(objectList)
+      when "difference"
+        @showDifferenceReportModal objectList
+      when "terrainCategoryReport"
+        @openTerrainCategoryReport simpleList(objectList)
+      when "reservation"
+        @openReservation simpleList(objectList)
+      when "scan"
+        @openScan simpleList(objectList)
+      when "lot", "building", "local", "change", "document"
+        @goToRelatedObject action, simpleList(objectList)
+
+  showPrintExtractModal: (action, objectList) ->
+    printModal = App.PrintModalView.modal()
+    if (objectList.length == 1)
+      selectedShares = objectList[0].get "selectedShares"
+      selectedLots = objectList[0].get "selectedLots"
+    else
+      selectedShares = Em.A()
+      selectedLots = Em.A()
+    printModal.set "selectedObjects", objectList
+    printModal.set "selectedShares", selectedShares
+    printModal.set "selectedLots", selectedLots
+
+  showChangeNotificationModal: (objectList) ->
+    printModal = App.PrintModalView.modal()
+    if (objectList.length == 1)
+      selectedShares = objectList[0].get "selectedShares"
+      selectedLots = objectList[0].get "selectedLots"
+    else
+      selectedShares = Em.A()
+      selectedLots = Em.A()
+    printModal.set "selectedObjects", objectList
+    printModal.set "selectedShares", selectedShares
+    printModal.set "selectedLots", selectedLots
+
+  showShareSummaryModal: (simpleList) ->
+    shareSummaryModal = App.ShareSummaryModalView.modal()
+    $.ajax
+      url: "getShareSummary.json"
+      data:
+        object: simpleList
+      success: (data) ->
+        if !Em.empty data
+          shareSummaryModal.set "columns", Em.A([ "group", "share" ])
+          shareSummaryModal.set "content", data.map(App.Common.toModel, App.ShareSummaryModel)
+        else
+          alert "Nie znaleziono rekordu"  #TODO: Error handling
+
+  showCustomReportModal: (simpleList) ->
+    customReportModal = App.CustomReportModalView.modal()
+    $.ajax
+      url: "getCustomReportData.json"
+      data:
+        object: simpleList
+      success: (data) ->
+        if !Em.empty data
+          customReportModal.set "attributeList", data.attributeList.map(((x) ->
+            @create x ? Em.Object.create(),
+              isChosen: false
+              displayValue: x.name
+            ), Em.Object)
+          customReportModal.set "configurationList", data.configurationList.map(((x) ->
+            @create x ? Em.Object.create()
+            ), Em.Object)
+          customReportModal.set "unitList", data.unitList
+        else
+          alert "Nie znaleziono rekordu"  #TODO: Error handling
+
+  showDifferenceReportModal: (objectList) ->
+    differenceReportModal = App.DifferenceReportModalView.modal()
+    differenceReportModal.set "objectName", objectList.get "0.objectName"
+    differenceReportModal.set "objectType", objectList.get "0.objectType"
+
+  openTerrainCategoryReport: (simpleList) ->
+    @get("target").send "openTerrainCategoryReport", simpleList
+
+  openReservation: (simpleList) ->
+    @get("target").send "openReservation", simpleList[0] #reservation is only avialable for single selection
+
+  openScan: (simpleList) ->
+    @get("target").send "showScan", simpleList[0]
+
+  goToRelatedObject: (action, simpleList) ->
+    $.ajax
+      url: "getRelatedObjects.json"
+      data:
+        relation: action
+        objectList: simpleList
+      success: (data) =>
+        if !Em.empty data && Em.isArray data
+          if data.length == 1
+            @get("target").send "openObject", Em.Object.create(data[0])
+          else
+            @get("target").send "openList", data
+        else
+          alert "Nie znaleziono rekordu"  #TODO: Error handling
