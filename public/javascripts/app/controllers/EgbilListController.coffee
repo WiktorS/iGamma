@@ -1,8 +1,42 @@
 App.EgbilListController = Em.ArrayController.extend
   content: null
-  columns: null
-  title: null
   type: null
+
+  columns: (->
+    type = @get "type"
+    @get "columnsData.#{type}"
+    ).property("type")
+  columnsData:
+    building: [ "check","show","marker","buildingNumber","lotNumber","precinct","cadastralUnit","jrgNumber","jrbNumber","type","finishYear","buildUpArea" ]
+    document: [ "check","marker","sygnature","type","scan","lots","buildings","locals","changes" ]
+    group: [ "check","show","marker","name","address","regon","nip" ]
+    individual: [ "check","show","marker","surnameAndNames","address","pesel","identityDoc" ]
+    institution: [ "check","show","marker","name","address","regon","nip" ]
+    jrb: [ "check","show","marker","jrbNumber","precinct","cadastralUnit","creationProof","creationDate" ]
+    jrg: [ "check","show","marker","jrgNumber","precinct","cadastralUnit","creationProof","creationDate" ]
+    jrgib: [ "check","show","marker","jrgNumberJrgib","jrbNumberJrgib","precinct","cadastralUnit","creationProof","creationDate","regon" ]
+    jrl: [ "check","show","marker","jrlNumber","precinct","cadastralUnit","creationProof","creationDate" ]
+    landCommunity: [ "check","show","marker","name","address" ]
+    local:[ "check","show","marker","localNumber","address","document","precinct","cadastralUnit","jrgNumber","jrlNumber","usableArea","lotNumber","buildingNumber" ]
+    lot: [ "check","show","marker","lotNumber","precinct","cadastralSheet","cadastralUnit","jrgNumber","address","document","cadastralArea" ]
+
+  title: (->
+    type = @get "type"
+    @get "titleData.#{type}"
+    ).property("type")
+  titleData:
+    building: "Budynki"
+    document: "Dokumenty"
+    group: "Podmioty grupowe"
+    individual: "Osoby fizyczne"
+    institution: "Instytucje"
+    jrb: "Jednostki Rejestrowe Budynków"
+    jrg: "Stare Jednostki Rejestrowe Gruntów"
+    jrgib: "Jednostki Rejestrowe Gruntów i Budynków"
+    jrl: "Jednostki Rejestrowe Lokali"
+    landCommunity: "Zarządy wspólnot gruntowych"
+    local: "Lokale"
+    lot: "Działki"
 
   checkedList: (->
     @get("content").filterProperty "isChecked"
@@ -14,10 +48,12 @@ App.EgbilListController = Em.ArrayController.extend
     @get("checkedList").length > 1
     ).property("checkedList")
   canShowRightPanel: (->
-    Em.A(@get ["target.egbilController.rightPanelData", @get "type"].join(".")).length > 0
+    type = @get "type"
+    Em.A(@get "target.egbilController.rightPanelData.#{type}").length > 0
     ).property("type")
   rightPanelContent: (->
-    data = @get ["target.egbilController.rightPanelData", @get "type"].join(".")
+    type = @get "type"
+    data = @get "target.egbilController.rightPanelData.#{type}"
     if @get("isAnyChecked") && @get("canShowRightPanel")
       if @get "isMultipleChecked"
         data.filterProperty "multiselect", true

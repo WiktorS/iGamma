@@ -59,8 +59,9 @@ App.Router = Em.Router.extend
         #TODO: search for changes related with context (changes tab is missing now)
 
       doSearch: (router, context) ->
-        view = if context instanceof jQuery.Event then context.view else context
-        router.get("egbilSearchController").search(view)
+        Em.assert "doSearch context must be jQuery.Event", context instanceof jQuery.Event
+        searchArgs = context.view.getSearchArgs()
+        router.get("egbilSearchController").doSearch searchArgs
       search: RouteWithParentMemory.extend
         route: "/szukaj"
         initialState: "jrgib"
@@ -133,12 +134,6 @@ App.Router = Em.Router.extend
           router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilMap"})
 
       goToList: (router, context) ->
-        if context?
-          controller = router.get "egbilListController"
-          controller.set "content", context.get "content"
-          controller.set "columns", context.get "columns"
-          controller.set "type", context.get "type"
-          controller.set "title", context.get "title"
         router.transitionTo "list"
       list: RouteWithParentMemory.extend
         route: "/lista"
