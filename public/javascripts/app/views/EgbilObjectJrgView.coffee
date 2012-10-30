@@ -1,2 +1,2 @@
 App.EgbilObjectJrgView = Em.View.extend
-  templateName: "egbilObjectJr"
+  templateName: "egbilObjectJrg"

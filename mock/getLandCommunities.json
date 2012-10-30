@@ -1,0 +1,25 @@
+[
+  {
+    "id"  : 1,
+    "marker" : "X",
+    "landCommunityName" : "nazwa spółki",
+    "address" : "adres"
+  },
+  {
+    "id"  : 2,
+    "marker" : "X",
+    "landCommunityName" : "B2"
+  },
+  {
+    "id"  : 3,
+    "landCommunityName" : "B3"
+  },
+  {
+    "id"  : 4,
+    "landCommunityName" : "B4"
+  },
+  {
+    "id"  : 5,
+    "landCommunityName" : "B5"
+  }
+]

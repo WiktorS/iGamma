@@ -111,6 +111,12 @@ public class IntegraMock implements Integra {
     }
 
     @Override
+    public List<LandCommunities> getLandCommunities(String name) {
+        TypeToken<List<LandCommunities>> typeToken = new TypeToken<List<LandCommunities>>() {};
+        return getMockJsonData("getLandCommunities", typeToken, name);
+    }
+
+    @Override
     public EgbilObject getEgbilObject(String type, String name) {
         TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
         return getMockJsonData("getEgbilObject", typeToken, type, name);

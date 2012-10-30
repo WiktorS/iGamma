@@ -4,7 +4,7 @@ App.EgbilSearchGroupsController = App.EgbilSearchCommonController.extend
     "check"
     "show"
     "marker"
-    "name"
+    "groupName"
     "address"
     "regon"
     "nip"
