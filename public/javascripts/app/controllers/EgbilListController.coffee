@@ -79,3 +79,19 @@ App.EgbilListController = Em.ArrayController.extend
         objectType: type
     @get("checkedList").map listMappingFunc, Em.Object
     ).property("type", "checkedList", "objectNameColumn")
+
+  openList: (objectList)->
+    type = objectList.get "0.objectType"
+    jsonMethod = @get "target.egbilSearchController.searchMethodData.#{type}"
+    Em.assert "SearchMethod undefinned for type: #{type}", jsonMethod
+    $.ajax
+      url: "#{jsonMethod}.json"
+      data:
+        objectList: objectList
+      success: (data) =>
+        if !Em.empty data && Em.isArray data
+          @set "target.egbilListController.type", type
+          @set "target.egbilListController.content", Em.A(data.map(App.Common.toModel, App.EgbilListModel))
+          @get("target").send "goToList"
+        else
+          alert "Nie znaleziono rekordu"  #TODO: Error handling

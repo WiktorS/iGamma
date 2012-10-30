@@ -199,14 +199,6 @@ App.EgbilController = Em.Controller.extend
               shareSummaryModal.set "content", data.map(App.Common.toModel, App.ShareSummaryModel)
             else
               alert "Nie znaleziono rekordu"  #TODO: Error handling
-      when "change"
-        #goTo changesList/change(if 1)
-        context = []
-        for object in objectList
-          context.push
-            objectType: object.get "objectType"
-            objectName: object.get "objectName"
-        @get("target").send "showChange", context
       when "reservation"
         #report?
         context = []
@@ -245,18 +237,32 @@ App.EgbilController = Em.Controller.extend
         differenceReportModal = App.DifferenceReportModalView.modal()
         differenceReportModal.set "objectName", objectList.get "0.objectName"
         differenceReportModal.set "objectType", objectList.get "0.objectType"
-      when "lot", "building", "local", "change"
+      when "lot", "building", "local", "change", "document"
         #goTo
-        false
+        context = []
+        for object in objectList
+          context.push
+            objectType: object.get "objectType"
+            objectName: object.get "objectName"
+        $.ajax
+          url: "/getRelatedObjects.json"
+          data:
+            relation: action
+            objectList: context
+          success: (data) =>
+            if !Em.empty data && Em.isArray data
+              if data.length == 1
+                @get("target").send "openObject", Em.Object.create(data[0])
+              else
+                @get("target").send "openList", data
+            else
+              alert "Nie znaleziono rekordu"  #TODO: Error handling
       when "scan"
         #tab scan
         context =
           objectType: objectList.get "0.objectType"
           objectName: objectList.get "0.objectName"
         @get("target").send "showScan", context
-      when "document"
-        #goTo docs
-        false
       when "changeNotification"
         #modal print
         printModal = App.PrintModalView.modal()
