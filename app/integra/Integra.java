@@ -18,4 +18,5 @@ public interface Integra {
     List<Systematic> getSystematics();
     List<ShareSummary> getShareSummary();
     CustomReportData getCustomReportData(String type, String name);
+    List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList);
 }

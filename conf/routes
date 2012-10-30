@@ -19,6 +19,7 @@ GET     /getEgbilObject.json                      IntegraJson.getEgbilObject
 GET     /getDocuments.json                        IntegraJson.getDocuments
 GET     /getSystematics.json                      IntegraJson.getSystematics
 GET     /getShareSummary.json                     IntegraJson.getShareSummary
+GET     /getRelatedObjects.json                   IntegraJson.getRelatedObjects
 GET     /getCustomReportData.json                 IntegraJson.getCustomReportData
 
 #Integra documents

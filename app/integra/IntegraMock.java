@@ -145,4 +145,10 @@ public class IntegraMock implements Integra {
         TypeToken<CustomReportData> typeToken = new TypeToken<CustomReportData>() {};
         return getMockJsonData("getCustomReportData", typeToken, type, name);
     }
+
+    @Override
+    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
+        TypeToken<List<EgbilObjectData>> typeToken = new TypeToken<List<EgbilObjectData>>() {};
+        return getMockJsonData("getRelatedObjects", typeToken, relation, objectList.toString());
+    }
 }

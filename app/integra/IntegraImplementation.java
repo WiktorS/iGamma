@@ -112,4 +112,9 @@ public class IntegraImplementation implements Integra{
     public CustomReportData getCustomReportData(String type, String name) {
         return null;  //TODO
     }
+
+    @Override
+    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
+        return null;  //TODO
+    }
 }

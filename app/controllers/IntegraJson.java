@@ -75,6 +75,11 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
+    public static void getRelatedObjects(String relation, EgbilObjectData[] objectList) {
+        List<EgbilObjectData> result = integra.getRelatedObjects(relation, objectList);
+        renderJSON(result);
+    }
+
     public static void getTerrainCategorySummary(String objectType, String objectName) {
         renderText("ZESTAWIENIE KLASOUŻYTKÓW");
     }
