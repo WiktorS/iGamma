@@ -2,7 +2,6 @@ App.EgbilSearchLandCommunitiesController = App.EgbilSearchCommonController.exten
   jsonMethod: "getLandCommunities"
   columns: [
     "check"
-    "show"
     "marker"
     "landCommunityName"
     "address"

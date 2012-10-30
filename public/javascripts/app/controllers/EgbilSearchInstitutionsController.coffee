@@ -2,7 +2,6 @@ App.EgbilSearchInstitutionsController = App.EgbilSearchCommonController.extend
   jsonMethod: "getInstitutionByNip"
   columns: [
     "check"
-    "show"
     "marker"
     "name"
     "address"

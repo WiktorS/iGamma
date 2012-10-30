@@ -224,8 +224,33 @@ App.EgbilObjectLandCommunityModel = Em.Object.extend
     @notes = App.StandardTableCellModel.create
       label: "Notatki"
 
+App.EgbilObjectLandCommunitiesModel = Em.Object.extend
+  isCheckedBinding: "check.value"
+  check: null
+  marker: null
+  name: null
+  address: null
+  landCommunity: null
+
+  init: ->
+    @_super()
+    @set "check", App.StandardTableCellModel.create
+      value: false
+      viewClass: App.EgbilListTableCellCheckBoxView
+      sortable: false
+    @marker = App.StandardTableCellModel.create
+      label: "Oznaczenie"
+      viewClass: App.EgbilListTableCellMarkerView
+    @name = App.StandardTableCellModel.create
+      label: "Nazwa spółki"
+    @address = App.StandardTableCellModel.create
+      label: "Adres"
+    @landCommunity = App.StandardTableCellModel.create
+      label: "Wspólnota gruntowa"
+
 App.EgbilObjectMemberModel = Em.Object.extend
-  show: null
+  isCheckedBinding: "check.value"
+  check: null
   marker: null
   type: null
   surnameAndNames: null
@@ -234,9 +259,10 @@ App.EgbilObjectMemberModel = Em.Object.extend
   address: null
 
   init: ->
-    @show = App.StandardTableCellModel.create
-      label: "Pokaż"
-      viewClass: App.EgbilListTableCellShowMapView
+    @_super()
+    @set "check", App.StandardTableCellModel.create
+      value: false
+      viewClass: App.EgbilListTableCellCheckBoxView
       sortable: false
     @marker = App.StandardTableCellModel.create
       label: "Oznaczenie"
@@ -287,6 +313,8 @@ App.EgbilObjectDocumentModel = Em.Object.extend
 
 
 App.EgbilObjectShareModel = Em.Object.extend
+  isCheckedBinding: "check.value"
+  check: null
   marker: null
   characterG: null
   characterB: null
@@ -301,6 +329,11 @@ App.EgbilObjectShareModel = Em.Object.extend
   personRemarks: null
 
   init: ->
+    @_super()
+    @set "check", App.StandardTableCellModel.create
+      value: false
+      viewClass: App.EgbilListTableCellCheckBoxView
+      sortable: false
     @marker = App.StandardTableCellModel.create
       label: "Oznaczenie"
       viewClass: App.EgbilListTableCellMarkerView
@@ -333,6 +366,8 @@ App.EgbilObjectShareModel = Em.Object.extend
 
 
 App.EgbilObjectLotModel = Em.Object.extend
+  isCheckedBinding: "check.value"
+  check: null
   show: null
   marker: null
   g5: null
@@ -352,6 +387,11 @@ App.EgbilObjectLotModel = Em.Object.extend
   remarks: null
 
   init: ->
+    @_super()
+    @set "check", App.StandardTableCellModel.create
+      value: false
+      viewClass: App.EgbilListTableCellCheckBoxView
+      sortable: false
     @show = App.StandardTableCellModel.create
       label: "Pokaż"
       viewClass: App.EgbilListTableCellShowMapView
@@ -399,6 +439,8 @@ App.EgbilObjectLotModel = Em.Object.extend
 
 
 App.EgbilObjectBuildingModel = Em.Object.extend
+  isCheckedBinding: "check.value"
+  check: null
   show: null
   marker: null
   g5: null
@@ -426,6 +468,11 @@ App.EgbilObjectBuildingModel = Em.Object.extend
   remarks: null
 
   init: ->
+    @_super()
+    @set "check", App.StandardTableCellModel.create
+      value: false
+      viewClass: App.EgbilListTableCellCheckBoxView
+      sortable: false
     @show = App.StandardTableCellModel.create
       label: "Pokaż"
       viewClass: App.EgbilListTableCellShowMapView
@@ -490,6 +537,8 @@ App.EgbilObjectBuildingModel = Em.Object.extend
 
 
 App.EgbilObjectLocalModel = Em.Object.extend
+  isCheckedBinding: "check.value"
+  check: null
   show: null
   marker: null
   g5: null
@@ -512,6 +561,11 @@ App.EgbilObjectLocalModel = Em.Object.extend
   remarks: null
 
   init: ->
+    @_super()
+    @set "check", App.StandardTableCellModel.create
+      value: false
+      viewClass: App.EgbilListTableCellCheckBoxView
+      sortable: false
     @show = App.StandardTableCellModel.create
       label: "Pokaż"
       viewClass: App.EgbilListTableCellShowMapView
@@ -573,6 +627,8 @@ App.EgbilObjectLocalModel = Em.Object.extend
       label: "Uwagi"
 
 App.EgbilObjectChangeModel = Em.Object.extend
+  isCheckedBinding: "check.value"
+  check: null
   changeNumber: null
   registerDate: null
   entryDate: null
@@ -581,6 +637,11 @@ App.EgbilObjectChangeModel = Em.Object.extend
   description: null
 
   init: ->
+    @_super()
+    @set "check", App.StandardTableCellModel.create
+      value: false
+      viewClass: App.EgbilListTableCellCheckBoxView
+      sortable: false
     @changeNumber = App.StandardTableCellModel.create
       label: "Numer zmiany/numer kancelaryjny"
     @registerDate = App.StandardTableCellModel.create
