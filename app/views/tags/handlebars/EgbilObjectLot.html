@@ -1,0 +1,8 @@
+<script type="text/x-handlebars" data-template-name="egbilObjectLot">
+  <div class="accordion">
+    {{#view classNames="accordion-group"}}
+    {{view App.AccordionHeaderView label="Udziały"}}
+    {{view App.AccordionBodyView contentBinding="controller.content.shares" columnsBinding="controller.shareColumns"}}
+    {{/view}}
+  </div>
+</script>

@@ -186,6 +186,26 @@ App.Router = Em.Router.extend
           route: "/dokument/:name"
           objectOutletName: "egbilObjectDocument"
 
+        lot: RouteWithObjectParam.extend
+          route: "/lot/:name"
+          objectOutletName: "egbilObjectLot"
+
+        person: RouteWithObjectParam.extend
+          route: "/person/:name"
+          objectOutletName: "egbilObjectPerson"
+
+        institution: RouteWithObjectParam.extend
+          route: "/institution/:name"
+          objectOutletName: "egbilObjectInstitution"
+
+        group: RouteWithObjectParam.extend
+          route: "/group/:name"
+          objectOutletName: "egbilObjectGroup"
+
+        landCommunity: RouteWithObjectParam.extend
+          route: "/landCommunity/:name"
+          objectOutletName: "egbilObjectLandCommunity"
+          
       openTerrainCategoryReport: (router, context) ->
         context = context.context if context instanceof jQuery.Event
         args = decodeURIComponent($.param({object: context}))

@@ -9,14 +9,14 @@ App.EgbilListController = Em.ArrayController.extend
   columnsData:
     building: [ "check","show","marker","buildingNumber","lotNumber","precinct","cadastralUnit","jrgNumber","jrbNumber","type","finishYear","buildUpArea" ]
     document: [ "check","marker","sygnature","type","scan","lots","buildings","locals","changes" ]
-    group: [ "check","show","marker","name","address","regon","nip" ]
+    group: [ "check","show","marker","groupName","address","regon","nip" ]
     individual: [ "check","show","marker","surnameAndNames","address","pesel","identityDoc" ]
     institution: [ "check","show","marker","name","address","regon","nip" ]
     jrb: [ "check","show","marker","jrbNumber","precinct","cadastralUnit","creationProof","creationDate" ]
     jrg: [ "check","show","marker","jrgNumber","precinct","cadastralUnit","creationProof","creationDate" ]
     jrgib: [ "check","show","marker","jrgNumberJrgib","jrbNumberJrgib","precinct","cadastralUnit","creationProof","creationDate","regon" ]
     jrl: [ "check","show","marker","jrlNumber","precinct","cadastralUnit","creationProof","creationDate" ]
-    landCommunity: [ "check","show","marker","name","address" ]
+    landCommunity: [ "check","show","marker","landCommunityName","address" ]
     local:[ "check","show","marker","localNumber","address","document","precinct","cadastralUnit","jrgNumber","jrlNumber","usableArea","lotNumber","buildingNumber" ]
     lot: [ "check","show","marker","lotNumber","precinct","cadastralSheet","cadastralUnit","jrgNumber","address","document","cadastralArea" ]
 
