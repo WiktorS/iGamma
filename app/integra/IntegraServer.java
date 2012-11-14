@@ -1,5 +1,6 @@
 package integra;
 
+import play.Logger;
 import play.Play;
 
 public class IntegraServer {
@@ -14,7 +15,7 @@ public class IntegraServer {
 
     public static String integraUser = getProperty("integra.user");
 
-    public static String integraName = getProperty("integra.pass");
+    public static String integraPass = getProperty("integra.pass");
 
     private static String getProperty(String property) {
         String result;
@@ -33,6 +34,7 @@ public class IntegraServer {
     }
 
     public static Integra createServer() {
+        Logger.info("Using source: '%s'", integraSource);
         if (integraSource.equals("mock")) {
             return new IntegraMock();
         }
