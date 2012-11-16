@@ -1,78 +1,44 @@
 [
   {
+    "parentId": "0",
+    "id" : "1",
     "name" : "1",
-    "children" : [
-      {
-        "name" : "sub11",
-        "children" : [
-          {
-            "name" : "Q"
-          },
-          {
-            "name" : "W"
-          },
-          {
-            "name" : "E"
-          },
-          {
-            "name" : "R"
-          },
-          {
-            "name" : "T"
-          },
-          {
-            "name" : "Y"
-          }
-        ]
-      },
-      {
-        "name" : "sub12",
-        "children" : [
-          {
-            "name" : "A"
-          },
-          {
-            "name" : "S"
-          },
-          {
-            "name" : "D"
-          },
-          {
-            "name" : "F"
-          },
-          {
-            "name" : "G"
-          },
-          {
-            "name" : "H"
-          }
-        ]
-      }
-    ]
+    "desc" : "a"
   },
   {
+    "parentId": "0",
+    "id" : "2",
     "name" : "2",
-    "children" : [
-      {
-        "name" : "sub21"
-      },
-      {
-        "name" : "sub22",
-        "children" : [
-          {
-            "name" : "!"
-          },
-          {
-            "name" : "@"
-          },
-          {
-            "name" : "#"
-          },
-          {
-            "name" : "$"
-          }
-        ]
-      }
-    ]
+    "desc" : "b"
+  },
+  {
+    "parentId": "1",
+    "id" : "11",
+    "name" : "11",
+    "desc" : "aa"
+  },
+  {
+    "parentId": "1",
+    "id" : "12",
+    "name" : "12",
+    "desc" : "ab"
+  },
+  {
+    "parentId": "1",
+    "id" : "13",
+    "name" : "13",
+    "desc" : "ac"
+  },
+  {
+    "parentId": "2",
+    "id" : "21",
+    "name" : "21",
+    "desc" : "ba"
+  },
+  {
+    "parentId": "12",
+    "id" : "121",
+    "name" : "121",
+    "desc" : "aba"
   }
 ]
