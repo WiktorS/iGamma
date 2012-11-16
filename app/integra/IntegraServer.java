@@ -4,23 +4,24 @@ import play.Logger;
 import play.Play;
 
 public class IntegraServer {
-    public static int integraPoolMinSize = getIntProperty("integra.poll.minSize");
-    public static int integraPoolMaxSize = getIntProperty("integra.poll.maxSize");
+    public static final int integraPoolMinSize = getIntProperty("integra.poll.minSize");
+    public static final int integraPoolMaxSize = getIntProperty("integra.poll.maxSize");
+    public static final int integraPoolConnectionMaxValidTime = getIntProperty("integra.poll.connectionMaxValidTime");
 
-    public static String integraSource = getProperty("integra.source");
+    public static final String integraSource = getProperty("integra.source");
 
-    public static String integraOdbcName = getProperty("integra.odbc.name");
-    public static String integraOdbcUser = getProperty("integra.odbc.user");
-    public static String integraOdbcPass = getProperty("integra.odbc.pass");
+    public static final String integraOdbcName = getProperty("integra.odbc.name");
+    public static final String integraOdbcUser = getProperty("integra.odbc.user");
+    public static final String integraOdbcPass = getProperty("integra.odbc.pass");
 
-    public static String integraUser = getProperty("integra.user");
+    public static final String integraUser = getProperty("integra.user");
 
-    public static String integraPass = getProperty("integra.pass");
+    public static final String integraPass = getProperty("integra.pass");
 
     private static String getProperty(String property) {
         String result;
         result = System.getProperty(property);
-        if (result == null || result.isEmpty())
+        if (result == null)
             result = Play.configuration.getProperty(property);
         return result;
     }
@@ -28,8 +29,10 @@ public class IntegraServer {
     private static int getIntProperty(String property) {
         String result;
         result = System.getProperty(property);
-        if (result == null || result.isEmpty())
+        if (result == null)
             result = Play.configuration.getProperty(property);
+        if (result == null)
+            return 0;
         return Integer.valueOf(result);
     }
 
