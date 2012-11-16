@@ -28,15 +28,16 @@ App.SystematicModalView = App.ModalView.extend
       success: (data) =>
         if data?
           for node in data
-            parentNode = @get("systematics").findProperty("id", node.parentId)
-            Em.assert "Systematic of ID: #{node.parentId} does'nt exist", parentNode
+            if node
+              parentNode = @get("systematics").findProperty("id", node.parentId)
+              Em.assert "Systematic of ID: #{node.parentId} does'nt exist", parentNode
 
-            parentNode.set("children", Em.A()) if !Em.isArray(parentNode.get "children")
-            parentNode.get("children").addObject node.id
+              parentNode.set("children", Em.A()) if !Em.isArray(parentNode.get "children")
+              parentNode.get("children").addObject node.id
 
-            if !@get("systematics").findProperty("id", node.id)
-              @get("systematics").addObject App.SystematicModel.create
-                id: node.id
-                name: node.name
-                desc: node.desc
+              if !@get("systematics").findProperty("id", node.id)
+                @get("systematics").addObject App.SystematicModel.create
+                  id: node.id
+                  name: node.name
+                  desc: node.desc
         return
