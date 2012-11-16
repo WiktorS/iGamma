@@ -15,7 +15,7 @@ public interface Integra {
     List<LandCommunity> getLandCommunities(String name);
     EgbilObject getEgbilObject(String type, String name);
     List<EgbilDocument> getDocuments();
-    List<Systematic> getSystematics();
+    List<Systematic> getSystematics(long[] parentIdList);
     List<ShareSummary> getShareSummary();
     CustomReportData getCustomReportData(String type, String name);
     List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList);

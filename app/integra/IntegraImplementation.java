@@ -99,7 +99,7 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
-    public List<Systematic> getSystematics() {
+    public List<Systematic> getSystematics(long[] parentIdList) {
         return null;  //TODO
     }
 

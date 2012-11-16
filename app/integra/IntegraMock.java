@@ -129,9 +129,9 @@ public class IntegraMock implements Integra {
     }
 
     @Override
-    public List<Systematic> getSystematics() {
+    public List<Systematic> getSystematics(long[] parentIdList) {
         TypeToken<List<Systematic>> typeToken = new TypeToken<List<Systematic>>() {};
-        return getMockJsonData("getSystematics", typeToken);
+        return getMockJsonData("getSystematics", typeToken, String.valueOf(parentIdList));
     }
 
     @Override

@@ -60,8 +60,8 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
-    public static void getSystematics() {
-        List<Systematic> result = integra.getSystematics();
+    public static void getSystematics(long[] parentIdList) {
+        List<Systematic> result = integra.getSystematics(parentIdList);
         renderJSON(result);
     }
 
