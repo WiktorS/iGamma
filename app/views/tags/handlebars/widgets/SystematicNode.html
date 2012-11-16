@@ -1,6 +1,6 @@
 <script type="text/x-handlebars" data-template-name="systematicNode">
   <div class="tier1_header">
-    {{#if view.node.children}}
+    {{#if view.nodeChildren}}
     <i {{action "doToggleExpand" target="view"}} {{bindAttr class="view.isExpanded:icon-minus:icon-plus :icon-white :tree-block"}}></i>
     {{else}}
     <i class="tree-block"></i>
@@ -14,7 +14,7 @@
     </a>
   </div>
   <div {{bindAttr class="view.isExpanded::hide :well :tier1_content"}}>
-  {{#each view.node.children}}
+  {{#each view.nodeChildren}}
     {{view App.SystematicNodeView nodeBinding="this" classNames="tier1"}}
   {{/each}}
   </div>
