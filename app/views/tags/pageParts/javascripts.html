@@ -15,7 +15,8 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilSearchModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilListModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilObjectModel.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/models/SystematicsModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/SystematicModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/ShareSummaryModel.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilController.coffee'}"></script>
@@ -26,14 +27,14 @@
         <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchJrbController.coffee'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchJrlController.coffee'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchJrgController.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchLotsController.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchBuildingsController.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchLocalsController.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchIndividualsController.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchInstitutionsController.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchGroupsController.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchLandCommunitiesController.coffee'}"></script>
-      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchDocumentsController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchLotController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchBuildingController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchLocalController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchIndividualController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchInstitutionController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchGroupController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchLandCommunityController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchDocumentController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilListController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectJrgibController.coffee'}"></script>
@@ -47,11 +48,10 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectGroupController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectLandCommunityController.coffee'}"></script>
 
-
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/TabItemView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTypesView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterEntryFieldView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterSystematicsView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterSystematicView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelTableView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelTableHeaderView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelTableRowView.coffee'}"></script>
@@ -59,9 +59,14 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelValueTableView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/ModelValueTableRowView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/AccordionView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/SystematicsNodeView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/SystematicNodeView.coffee'}"></script>
 
-<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/SystematicsModalView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/ModalView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/SystematicModalView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/PrintModalView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/ShareSummaryModalView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/CustomReportModalView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/DifferenceReportModalView.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationMenuView.coffee'}"></script>
@@ -73,14 +78,14 @@
         <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchJrbView.coffee'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchJrlView.coffee'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchJrgView.coffee'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLotsView.coffee'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchBuildingsView.coffee'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLocalsView.coffee'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchIndividualsView.coffee'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchInstitutionsView.coffee'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchGroupsView.coffee'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLandCommunitiesView.coffee'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchDocumentsView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLotView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchBuildingView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLocalView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchIndividualView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchInstitutionView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchGroupView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLandCommunityView.coffee'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchDocumentView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectJrgibView.coffee'}"></script>
@@ -93,9 +98,9 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectInstitutionView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectGroupView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectLandCommunityView.coffee'}"></script>
-    <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilRightPanelView.coffee'}"></script>
-  <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
-  <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
+     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilRightPanelView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangeView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintView.coffee'}"></script>
 
 #{get 'moreScripts' /}
 
@@ -108,13 +113,13 @@
       #{handlebars.EgbilSearchJrb /}
       #{handlebars.EgbilSearchJrl /}
       #{handlebars.EgbilSearchJrg /}
-      #{handlebars.EgbilSearchLots /}
-      #{handlebars.EgbilSearchBuildings /}
-      #{handlebars.EgbilSearchLocals /}
-      #{handlebars.EgbilSearchIndividuals /}
-      #{handlebars.EgbilSearchInstitutionsOrGroups /}
-      #{handlebars.EgbilSearchLandCommunities /}
-      #{handlebars.EgbilSearchDocuments /}
+      #{handlebars.EgbilSearchLot /}
+      #{handlebars.EgbilSearchBuilding /}
+      #{handlebars.EgbilSearchLocal /}
+      #{handlebars.EgbilSearchIndividual /}
+      #{handlebars.EgbilSearchInstitutionOrGroup /}
+      #{handlebars.EgbilSearchLandCommunity /}
+      #{handlebars.EgbilSearchDocument /}
     #{handlebars.EgbilList /}
       #{handlebars.EgbilListTableCellShow /}
       #{handlebars.EgbilListTableCellButton /}
@@ -130,19 +135,23 @@
       #{handlebars.EgbilObjectLandCommunity /}
       #{handlebars.EgbilObjectDocument /}
     #{handlebars.EgbilRightPanel /}
-  #{handlebars.Changes /}
-  #{handlebars.Prints /}
+  #{handlebars.Change /}
+  #{handlebars.Print /}
 
 #{handlebars.widgets.FilterTextField /}
 #{handlebars.widgets.FilterSelect /}
 #{handlebars.widgets.FilterRange /}
 #{handlebars.widgets.FilterCalendar /}
-#{handlebars.widgets.FilterSystematics /}
+#{handlebars.widgets.FilterSystematic /}
 #{handlebars.widgets.FilterTypes /}
 #{handlebars.widgets.ObjectTabItem /}
 #{handlebars.widgets.ModelTable /}
 #{handlebars.widgets.ModelValueTable /}
 #{handlebars.widgets.Accordion /}
-#{handlebars.widgets.SystematicsNode /}
+#{handlebars.widgets.SystematicNode /}
 
-#{handlebars.modals.SystematicsModal /}
+#{handlebars.modals.SystematicModal /}
+#{handlebars.modals.PrintModal /}
+#{handlebars.modals.ShareSummaryModal /}
+#{handlebars.modals.DifferenceReportModal /}
+#{handlebars.modals.CustomReportModal /}

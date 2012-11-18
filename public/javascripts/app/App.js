@@ -1,1 +1,1 @@
-App = Em.Application.create({  rootElement: "#app_page" })
+App = Em.Application.create();

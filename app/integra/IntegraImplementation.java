@@ -80,9 +80,9 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
-    public List<LandCommunities> getLandCommunities(String name) {
+    public List<LandCommunity> getLandCommunities(String name) {
         JsonElement jsonResult = invokeMethodJson("getLandCommunities");
-        TypeToken<List<LandCommunities>> typeToken = new TypeToken<List<LandCommunities>>() {};
+        TypeToken<List<LandCommunity>> typeToken = new TypeToken<List<LandCommunity>>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }
 
@@ -99,7 +99,22 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
-    public List<Systematics> getSystematics() {
+    public List<Systematic> getSystematics() {
+        return null;  //TODO
+    }
+
+    @Override
+    public List<ShareSummary> getShareSummary() {
+        return null;  //TODO
+    }
+
+    @Override
+    public CustomReportData getCustomReportData(String type, String name) {
+        return null;  //TODO
+    }
+
+    @Override
+    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
         return null;  //TODO
     }
 }

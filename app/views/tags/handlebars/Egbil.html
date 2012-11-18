@@ -6,7 +6,7 @@
       {{#if App.router.egbilListController.content}}
       {{view App.TabItemView stateName="list" displayName="Lista obiektów"}}
       {{/if}}
-      {{#each controller.objects}}
+      {{#each controller.objectList}}
         {{view App.ObjectTabItemView objectBinding="this"}}
       {{/each}}
     </ul>

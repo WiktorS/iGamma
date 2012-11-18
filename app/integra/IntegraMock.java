@@ -111,8 +111,8 @@ public class IntegraMock implements Integra {
     }
 
     @Override
-    public List<LandCommunities> getLandCommunities(String name) {
-        TypeToken<List<LandCommunities>> typeToken = new TypeToken<List<LandCommunities>>() {};
+    public List<LandCommunity> getLandCommunities(String name) {
+        TypeToken<List<LandCommunity>> typeToken = new TypeToken<List<LandCommunity>>() {};
         return getMockJsonData("getLandCommunities", typeToken, name);
     }
 
@@ -129,8 +129,26 @@ public class IntegraMock implements Integra {
     }
 
     @Override
-    public List<Systematics> getSystematics() {
-        TypeToken<List<Systematics>> typeToken = new TypeToken<List<Systematics>>() {};
+    public List<Systematic> getSystematics() {
+        TypeToken<List<Systematic>> typeToken = new TypeToken<List<Systematic>>() {};
         return getMockJsonData("getSystematics", typeToken);
+    }
+
+    @Override
+    public List<ShareSummary> getShareSummary() {
+        TypeToken<List<ShareSummary>> typeToken = new TypeToken<List<ShareSummary>>() {};
+        return getMockJsonData("getShareSummary", typeToken);
+    }
+
+    @Override
+    public CustomReportData getCustomReportData(String type, String name) {
+        TypeToken<CustomReportData> typeToken = new TypeToken<CustomReportData>() {};
+        return getMockJsonData("getCustomReportData", typeToken, type, name);
+    }
+
+    @Override
+    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
+        TypeToken<List<EgbilObjectData>> typeToken = new TypeToken<List<EgbilObjectData>>() {};
+        return getMockJsonData("getRelatedObjects", typeToken, relation, objectList.toString());
     }
 }

@@ -283,7 +283,7 @@ App.EgbilObjectDocumentModel = Em.Object.extend
     @relatedSygnature = App.StandardTableCellModel.create
       label: "Sygnatura dokumentu związanego"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
+      valueType: "document"
 
 
 App.EgbilObjectShareModel = Em.Object.extend
@@ -340,8 +340,8 @@ App.EgbilObjectLotModel = Em.Object.extend
   geodesicArea: null
   addresses: null
   documentsSygnature: null
-  useClassType: null
-  useClassArea: null
+  terrainCategoryType: null
+  terrainCategoryArea: null
   monumentRegister: null
   statisticalRegion: null
   listDistrict: null
@@ -374,10 +374,10 @@ App.EgbilObjectLotModel = Em.Object.extend
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
-    @useClassType = App.StandardTableCellModel.create
+      valueType: "document"
+    @terrainCategoryType = App.StandardTableCellModel.create
       label: "Klasoużytki/Rodzaj"
-    @useClassArea = App.StandardTableCellModel.create
+    @terrainCategoryArea = App.StandardTableCellModel.create
       label: "Klasoużytki/Powierzchnia"
       help: "[ha]"
     @monumentRegister = App.StandardTableCellModel.create
@@ -442,7 +442,7 @@ App.EgbilObjectBuildingModel = Em.Object.extend
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
+      valueType: "document"
     @buildUpArea = App.StandardTableCellModel.create
       label: "Powierzchnia zabudowy"
       help: "[m2]"
@@ -532,7 +532,7 @@ App.EgbilObjectLocalModel = Em.Object.extend
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
+      valueType: "document"
     @usableArea = App.StandardTableCellModel.create
       label: "Powierzchnia użytkowa "
       help: "[m2]"

@@ -1,7 +1,7 @@
 <script type="text/x-handlebars" data-template-name="egbilRightPanel">
   <ul class="nav nav-pills nav-stacked">
     {{#each view.content}}
-    <li><a>{{name}}</a></li>
+    <li><a {{action doRightPanelAction this}}>{{name}}</a></li>
     {{/each}}
   </ul>
 </script>

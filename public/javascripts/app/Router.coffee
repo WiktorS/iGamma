@@ -49,10 +49,19 @@ App.Router = Em.Router.extend
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
 
-      doSearch: (router, context) ->
-        view = if context instanceof jQuery.Event then context.view else context
-        router.get("egbilSearchController").search(view)
+      doRightPanelAction: (router, context) ->
+        action = context.context.get("type")
+        objectList = context.view.get("controller.rightPanelSelectedObjects")
+        router.get("egbilController").rightPanelAction action, objectList
 
+      showChange: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        #TODO: search for changes related with context (changes tab is missing now)
+
+      doSearch: (router, context) ->
+        Em.assert "doSearch context must be jQuery.Event", context instanceof jQuery.Event
+        searchArgs = context.view.getSearchArgs()
+        router.get("egbilSearchController").doSearch searchArgs
       search: RouteWithParentMemory.extend
         route: "/szukaj"
         initialState: "jrgib"
@@ -79,63 +88,59 @@ App.Router = Em.Router.extend
           connectOutlets: (router) ->
             router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrg"})
 
-        lots: RouteWithParentMemory.extend
+        lot: RouteWithParentMemory.extend
           route: "/dzialki"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLots"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLot"})
 
-        buildings: RouteWithParentMemory.extend
+        building: RouteWithParentMemory.extend
           route: "/budynki"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchBuildings"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchBuilding"})
 
-        locals: RouteWithParentMemory.extend
+        local: RouteWithParentMemory.extend
           route: "/lokale"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLocals"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLocal"})
 
-        individuals: RouteWithParentMemory.extend
+        individual: RouteWithParentMemory.extend
           route: "/osoby_fizyczne"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchIndividuals"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchIndividual"})
 
-        institutions: RouteWithParentMemory.extend
+        institution: RouteWithParentMemory.extend
           route: "/instytucje"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchInstitutions"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchInstitution"})
 
-        groups: RouteWithParentMemory.extend
+        group: RouteWithParentMemory.extend
           route: "/podmioty_grupowe"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchGroups"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchGroup"})
 
-        landCommunities: RouteWithParentMemory.extend
+        landCommunity: RouteWithParentMemory.extend
           route: "/zarzady_wspolnot_gruntowych"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLandCommunities"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLandCommunity"})
 
-        documents: RouteWithParentMemory.extend
+        document: RouteWithParentMemory.extend
           route: "/dokumenty"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchDocuments"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchDocument"})
 
       map: RouteWithParentMemory.extend
         route: "/mapa"
         connectOutlets: (router) ->
           router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilMap"})
 
+      openList: (router, context) ->
+        router.get("egbilListController").openList context
       goToList: (router, context) ->
-        if context?
-          controller = router.get "egbilListController"
-          controller.set "content", context.get "content"
-          controller.set "columns", context.get "columns"
-          controller.set "type", context.get "type"
-          controller.set "title", context.get "title"
         router.transitionTo "list"
       list: RouteWithParentMemory.extend
         route: "/lista"
         connectOutlets: (router) ->
-          if Em.empty(router.get("egbilListController").content)
+          if Em.empty router.get("egbilListController.content")
             router.transitionTo "egbil.search"
           else
             router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
@@ -154,7 +159,6 @@ App.Router = Em.Router.extend
         objectType = context.get("objectType")
         Em.assert "Can't go to object of undefined type", objectType?
         router.transitionTo ["object", objectType].join("."), context
-
       object: Em.Route.extend
         route: "/obiekt"
 
@@ -178,7 +182,7 @@ App.Router = Em.Router.extend
           route: "/jrg/:name"
           objectOutletName: "egbilObjectJrg"
 
-        doc: RouteWithObjectParam.extend
+        document: RouteWithObjectParam.extend
           route: "/dokument/:name"
           objectOutletName: "egbilObjectDocument"
 
@@ -201,13 +205,43 @@ App.Router = Em.Router.extend
         landCommunity: RouteWithObjectParam.extend
           route: "/landCommunity/:name"
           objectOutletName: "egbilObjectLandCommunity"
+          
+      openTerrainCategoryReport: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        args = decodeURIComponent($.param({object: context}))
+        url = "/getTerrainCategorySummary?#{args}"
+        window.open(url)
+
+      openReservation: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        args = decodeURIComponent($.param(context))
+        url = "/getReservation?#{args}"
+        window.open(url)
+
+      openCustomReport: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        args = decodeURIComponent($.param(context))
+        url = "/getCustomReport?#{args}"
+        window.open(url)
+
+      openDifferenceReport: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        args = decodeURIComponent($.param(context))
+        url = "/getDifferenceReport?#{args}"
+        window.open(url)
+
+      showScan: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        args = decodeURIComponent($.param(context))
+        url = "/getScan?#{args}"
+        window.open(url)
 
     changes: Em.Route.extend
       route: "/zmiany"
       connectOutlets: (router) ->
-        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "changes"})
+        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "change"})
 
     prints: Em.Route.extend
       route: "/wydruki"
       connectOutlets: (router) ->
-        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "prints"})
+        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "print"})

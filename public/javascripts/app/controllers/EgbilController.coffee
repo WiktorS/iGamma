@@ -1,8 +1,101 @@
 App.EgbilController = Em.Controller.extend
-  objects: Em.A()
+  objectList: Em.A()
+  rightPanelData:
+    jrgib: [
+      Em.Object.create { name: "Wypis pełny z RG", type: "prg", multiselect: true }
+      Em.Object.create { name: "Wypis uproszczony z RG", type: "urg", multiselect: true }
+      Em.Object.create { name: "Wypis z RB", type: "rb", multiselect: true }
+      Em.Object.create { name: "Wypis z KB", type: "kb", multiselect: true }
+      Em.Object.create { name: "Zestawienie klasoużytków", type: "terrainCategoryReport", multiselect: true }
+      Em.Object.create { name: "Rozliczenie udziałów", type: "shareSummary", multiselect: false }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+#      Em.Object.create { name: "Dzierżawy", type: "leases", multiselect: false }
+    ]
+    jrb: [
+      Em.Object.create { name: "Wypis z RB", type: "rb", multiselect: true }
+      Em.Object.create { name: "Wypis z KL", type: "kl", multiselect: true }
+      Em.Object.create { name: "Rozliczenie udziałów", type: "shareSummary", multiselect: false }
+      Em.Object.create { name: "Lista zmian w JR", type: "change", multiselect: true }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+    ]
+    jrl: [
+      Em.Object.create { name: "Wypis z RL", type: "rl", multiselect: true }
+      Em.Object.create { name: "Rozliczenie udziałów", type: "shareSummary", multiselect: false }
+      Em.Object.create { name: "Lista zmian w JR", type: "change", multiselect: true }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+    ]
+    jrg: [
+      Em.Object.create { name: "Wypis z RG", type: "rg", multiselect: true }
+      Em.Object.create { name: "Wypis z KL", type: "kl", multiselect: true }
+      Em.Object.create { name: "Rozliczenie udziałów", type: "shareSummary", multiselect: false }
+      Em.Object.create { name: "Lista zmian w JR", type: "change", multiselect: true }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+    ]
+    lot: [
+      Em.Object.create { name: "Wypis pełny z RG", type: "prg", multiselect: true }
+      Em.Object.create { name: "Wypis uproszczony z RG", type: "urg", multiselect: true }
+      Em.Object.create { name: "Zestawienie klasoużytków", type: "terrainCategoryReport", multiselect: true }
+      Em.Object.create { name: "Lista zmian oczekujących", type: "change", multiselect: true }
+      Em.Object.create { name: "Rezerwacja numerów", type: "reservation", multiselect: false }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+    ]
+    building: [
+      Em.Object.create { name: "Wypis z RB", type: "rb", multiselect: true }
+      Em.Object.create { name: "Wypis z KL", type: "kl", multiselect: true }
+      Em.Object.create { name: "Rezerwacja numerów", type: "reservation", multiselect: false }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+    ]
+    local: [
+      Em.Object.create { name: "Wypis z RL", type: "rl", multiselect: true }
+    ]
+    individual: [
+      Em.Object.create { name: "Wypis pełny z RG", type: "prg", multiselect: true }
+      Em.Object.create { name: "Wypis uproszczony z RG", type: "prg", multiselect: true }
+      Em.Object.create { name: "Zestawienie klasoużytków", type: "terrainCategoryReport", multiselect: true }
+      Em.Object.create { name: "Lista zmian oczekujących", type: "change", multiselect: true }
+      Em.Object.create { name: "Działki", type: "lot", multiselect: true }
+      Em.Object.create { name: "Budynki", type: "building", multiselect: true }
+      Em.Object.create { name: "Lokale", type: "local", multiselect: true }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+    ]
+    institution: [
+      Em.Object.create { name: "Wypis pełny z RG", type: "prg", multiselect: true }
+      Em.Object.create { name: "Wypis uproszczony z RG", type: "urg", multiselect: true }
+      Em.Object.create { name: "Zestawienie klasoużytków", type: "terrainCategoryReport", multiselect: true }
+      Em.Object.create { name: "Lista zmian oczekujących", type: "change", multiselect: true }
+      Em.Object.create { name: "Działki", type: "lot", multiselect: true }
+      Em.Object.create { name: "Budynki", type: "building", multiselect: true }
+      Em.Object.create { name: "Lokale", type: "local", multiselect: true }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+    ]
+    group: [
+      Em.Object.create { name: "Wypis pełny z RG", type: "prg", multiselect: true }
+      Em.Object.create { name: "Wypis uproszczony z RG", type: "urg", multiselect: true }
+      Em.Object.create { name: "Zestawienie klasoużytków", type: "terrainCategoryReport", multiselect: true }
+      Em.Object.create { name: "Lista zmian oczekujących", type: "change", multiselect: true }
+      Em.Object.create { name: "Działki", type: "lot", multiselect: true }
+      Em.Object.create { name: "Budynki", type: "building", multiselect: true }
+      Em.Object.create { name: "Lokale", type: "local", multiselect: true }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+    ]
+    document: [
+      Em.Object.create { name: "Skan", type: "scan", multiselect: false }
+      Em.Object.create { name: "Działki", type: "lot", multiselect: false }
+      Em.Object.create { name: "Budynki", type: "building", multiselect: false }
+      Em.Object.create { name: "Lokale", type: "local", multiselect: false }
+      Em.Object.create { name: "Zmiany", type: "change", multiselect: false }
+    ]
+    change: [
+      Em.Object.create { name: "Dokumenty", type: "document", multiselect: false }
+      Em.Object.create { name: "Działki", type: "lot", multiselect: false }
+      Em.Object.create { name: "Zawiadomienie o zmianie", type: "changeNotification", multiselect: false }
+      Em.Object.create { name: "Różnice", type: "difference", multiselect: false }
+      Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
+    ]
+
 
   getObject: (objectType, objectName) ->
-    @objects.filterProperty("objectName", objectName).findProperty("objectType", objectType)
+    @get("objectList").filterProperty("objectName", objectName).findProperty("objectType", objectType)
 
   showObject: (objectType, objectName) ->
     object = @getObject objectType, objectName
@@ -12,13 +105,13 @@ App.EgbilController = Em.Controller.extend
     Em.assert "Cannot close object without type & name", objectType? && objectName?
     object = @getObject objectType, objectName
     if !Em.empty object
-      idx = @objects.indexOf object
-      @objects.removeObject object
+      idx = @get("objectList").indexOf object
+      @get("objectList").removeObject object
       currentStateObjectName =  App.router.get("currentState.objectName")
       if currentStateObjectName == objectName
-        if @objects.length > 0
-          idx-- while idx >= @objects.length
-          @get("target").send "goToObject", @objects[idx]
+        if @get("objectList").length > 0
+          idx-- while idx >= @get("objectList").length
+          @get("target").send "goToObject", @get("objectList.#{idx}")
         else if @get("target").egbilListController.content
           @get("target").transitionTo "egbil.list"
         else
@@ -54,7 +147,7 @@ App.EgbilController = Em.Controller.extend
               objectType: objectType
               objectName: objectName
               groupName: @getGroupName objectType
-            @objects.addObject object
+            @get("objectList").addObject object
             @showObject objectType, objectName
           else
             alert "Nie znaleziono rekordu"  #TODO: Error handling
@@ -70,104 +163,122 @@ App.EgbilController = Em.Controller.extend
       when "lot" then "Działka"
       when "building" then "Budynek"
       when "local" then "Lokal samodzielny"
-      when "doc" then "Dokument"
+      when "document" then "Dokument"
       when "person" then "Osoba fizyczna"
       when "institution" then "Instytucja"
       when "group" then "Podmiot grupowy"
       when "landCommunity" then "Zarząd wspólnoty grupowej"
 
-  rightPanelData: Em.Object.create
-    jrgib: [
-      { name: "Wypis pełny z RG", multiselect: true }
-      { name: "Wypis uproszczony z RG", multiselect: true }
-      { name: "Wypis z RB", multiselect: true }
-      { name: "Wypis z KB", multiselect: true }
-      { name: "Zestawienie klasoużytków", multiselect: true }
-      { name: "Rozliczenie udziałów", multiselect: false }
-      { name: "Raport dowolny", multiselect: true }
-      { name: "Dzierżawy", multiselect: false }
-    ]
-    jrb: [
-      { name: "Wypis z RB", multiselect: true }
-      { name: "Wypis z KL", multiselect: true }
-      { name: "Rozliczenie udziałów", multiselect: false }
-      { name: "Lista zmian w JR", multiselect: true }
-      { name: "Raport dowolny", multiselect: true }
-    ]
-    jrl: [
-      { name: "Wypis z RL", multiselect: true }
-      { name: "Rozliczenie udziałów", multiselect: false }
-      { name: "Lista zmian w JR", multiselect: true }
-      { name: "Raport dowolny", multiselect: true }
-    ]
-    jrg: [
-      { name: "Wypis z RG", multiselect: true }
-      { name: "Wypis z KL", multiselect: true }
-      { name: "Rozliczenie udziałów", multiselect: false }
-      { name: "Lista zmian w JR", multiselect: true }
-      { name: "Raport dowolny", multiselect: true }
-    ]
-    lots: [
-      { name: "Wypis pełny z RG", multiselect: true }
-      { name: "Wypis uproszczony z RG", multiselect: true }
-      { name: "Zestawienie klasoużytków", multiselect: true }
-      { name: "Lista zmian oczekujących", multiselect: true }
-      { name: "Rezerwacja numerów", multiselect: false }
-      { name: "Raport dowolny", multiselect: true }
-    ]
-    buildings: [
-      { name: "Wypis z RB", multiselect: true }
-      { name: "Wypis z KL", multiselect: true }
-      { name: "Rezerwacja numerów", multiselect: false }
-      { name: "Raport dowolny", multiselect: true }
-    ]
-    locals: [
-      { name: "Wypis z RL", multiselect: true}
-    ]
-    individuals: [
-      { name: "Wypis pełny z RG" , multiselect: true}
-      { name: "Wypis uproszczony z RG" , multiselect: true}
-      { name: "Zestawienie klasoużytków" , multiselect: true}
-      { name: "Lista zmian oczekujących" , multiselect: true}
-      { name: "Raport dowolny" , multiselect: true}
-      { name: "Działki" , multiselect: true}
-      { name: "Budynki" , multiselect: true}
-      { name: "Lokale" , multiselect: true}
-      { name: "Raport dowolny" , multiselect: true}
-    ]
-    institutions: [
-      { name: "Wypis pełny z RG" , multiselect: true}
-      { name: "Wypis uproszczony z RG" , multiselect: true}
-      { name: "Zestawienie klasoużytków" , multiselect: true}
-      { name: "Lista zmian oczekujących" , multiselect: true}
-      { name: "Raport dowolny" , multiselect: true}
-      { name: "Działki" , multiselect: true}
-      { name: "Budynki" , multiselect: true}
-      { name: "Lokale" , multiselect: true}
-      { name: "Raport dowolny" , multiselect: true}
-    ]
-    groups: [
-      { name: "Wypis pełny z RG" , multiselect: true}
-      { name: "Wypis uproszczony z RG" , multiselect: true}
-      { name: "Zestawienie klasoużytków" , multiselect: true}
-      { name: "Lista zmian oczekujących" , multiselect: true}
-      { name: "Raport dowolny" , multiselect: true}
-      { name: "Działki" , multiselect: true}
-      { name: "Budynki" , multiselect: true}
-      { name: "Lokale" , multiselect: true}
-      { name: "Raport dowolny" , multiselect: true}
-    ]
-    documents: [
-      { name: "Skan", multiselect: false}
-      { name: "Działki", multiselect: false}
-      { name: "Budynki", multiselect: false}
-      { name: "Lokale", multiselect: false}
-      { name: "Zmiany", multiselect: false}
-    ]
-    changes: [
-      { name: "Dokumenty", multiselect: false}
-      { name: "Działki", multiselect: false}
-      { name: "Zawiadomienie o zmianie", multiselect: false}
-      { name: "Różnice", multiselect: false}
-      { name: "Raport dowolny", multiselect: true}
-    ]
+  rightPanelAction: (action, objectList) ->
+    simpleList = (objectList) ->
+      list = []
+      for object in objectList
+        list.push
+          objectType: object.get "objectType"
+          objectName: object.get "objectName"
+      list
+    switch action
+      when "prg", "urg", "rb", "kb", "kl"
+        @showPrintExtractModal action, objectList
+      when "changeNotification"
+        @showChangeNotificationModal objectList
+      when "shareSummary"
+        @showShareSummaryModal simpleList(objectList)
+      when "customReport"
+        @showCustomReportModal simpleList(objectList)
+      when "difference"
+        @showDifferenceReportModal objectList
+      when "terrainCategoryReport"
+        @openTerrainCategoryReport simpleList(objectList)
+      when "reservation"
+        @openReservation simpleList(objectList)
+      when "scan"
+        @openScan simpleList(objectList)
+      when "lot", "building", "local", "change", "document"
+        @goToRelatedObject action, simpleList(objectList)
+
+  showPrintExtractModal: (action, objectList) ->
+    printModal = App.PrintModalView.modal()
+    if (objectList.length == 1)
+      selectedShares = objectList[0].get "selectedShares"
+      selectedLots = objectList[0].get "selectedLots"
+    else
+      selectedShares = Em.A()
+      selectedLots = Em.A()
+    printModal.set "selectedObjects", objectList
+    printModal.set "selectedShares", selectedShares
+    printModal.set "selectedLots", selectedLots
+
+  showChangeNotificationModal: (objectList) ->
+    printModal = App.PrintModalView.modal()
+    if (objectList.length == 1)
+      selectedShares = objectList[0].get "selectedShares"
+      selectedLots = objectList[0].get "selectedLots"
+    else
+      selectedShares = Em.A()
+      selectedLots = Em.A()
+    printModal.set "selectedObjects", objectList
+    printModal.set "selectedShares", selectedShares
+    printModal.set "selectedLots", selectedLots
+
+  showShareSummaryModal: (simpleList) ->
+    shareSummaryModal = App.ShareSummaryModalView.modal()
+    $.ajax
+      url: "getShareSummary.json"
+      data:
+        object: simpleList
+      success: (data) ->
+        if !Em.empty data
+          shareSummaryModal.set "columns", Em.A([ "group", "share" ])
+          shareSummaryModal.set "content", data.map(App.Common.toModel, App.ShareSummaryModel)
+        else
+          alert "Nie znaleziono rekordu"  #TODO: Error handling
+
+  showCustomReportModal: (simpleList) ->
+    customReportModal = App.CustomReportModalView.modal()
+    $.ajax
+      url: "getCustomReportData.json"
+      data:
+        object: simpleList
+      success: (data) ->
+        if !Em.empty data
+          customReportModal.set "attributeList", data.attributeList.map(((x) ->
+            @create x ? Em.Object.create(),
+              isChosen: false
+              displayValue: x.name
+            ), Em.Object)
+          customReportModal.set "configurationList", data.configurationList.map(((x) ->
+            @create x ? Em.Object.create()
+            ), Em.Object)
+          customReportModal.set "unitList", data.unitList
+        else
+          alert "Nie znaleziono rekordu"  #TODO: Error handling
+
+  showDifferenceReportModal: (objectList) ->
+    differenceReportModal = App.DifferenceReportModalView.modal()
+    differenceReportModal.set "objectName", objectList.get "0.objectName"
+    differenceReportModal.set "objectType", objectList.get "0.objectType"
+
+  openTerrainCategoryReport: (simpleList) ->
+    @get("target").send "openTerrainCategoryReport", simpleList
+
+  openReservation: (simpleList) ->
+    @get("target").send "openReservation", simpleList[0] #reservation is only avialable for single selection
+
+  openScan: (simpleList) ->
+    @get("target").send "showScan", simpleList[0]
+
+  goToRelatedObject: (action, simpleList) ->
+    $.ajax
+      url: "getRelatedObjects.json"
+      data:
+        relation: action
+        objectList: simpleList
+      success: (data) =>
+        if !Em.empty data && Em.isArray data
+          if data.length == 1
+            @get("target").send "openObject", Em.Object.create(data[0])
+          else
+            @get("target").send "openList", data
+        else
+          alert "Nie znaleziono rekordu"  #TODO: Error handling
