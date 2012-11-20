@@ -5,40 +5,22 @@ import com.sun.jna.ptr.PointerByReference;
 import integra.jna.INTEGRA_SYSTEMATIC;
 import integra.jna.IntegraJNALibrary;
 import integra.models.*;
-import play.Logger;
 
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 public class IntegraJnaImplementation implements Integra {
-    private Pointer integraConnection;
-
-    private String AnsiPszToString(byte[] psz)
-    {
-        int len = 0;
-        while (psz[len] != '\0' && len < psz.length) { len++; };
-        return new String(psz, 0, len, Charset.forName("windows-1250"));
-    }
+    private IntegraJnaConnectionPool integraJnaConnectionPool;
 
     public IntegraJnaImplementation()
     {
-        PointerByReference refIntegraConnection = new PointerByReference();
-        PointerByReference refError = new PointerByReference();
-        int err = IntegraJNALibrary.IntegraJnaConnect(IntegraServer.integraOdbcName,
-                IntegraServer.integraOdbcUser, IntegraServer.integraOdbcPass,
-                IntegraServer.integraUser, IntegraServer.integraPass, refIntegraConnection, refError);
-        if (err != 0)
-        {
-            Logger.error(AnsiPszToString(refError.getValue().getByteArray(0, 1024)));
-            IntegraJNALibrary.IntegraJnaFree(refError.getValue());
-        }
-        else
-        {
-            integraConnection = refIntegraConnection.getValue();
-        }
+        integraJnaConnectionPool = new IntegraJnaConnectionPool();
+        //shutdown hook to cleanup integra connections
+        IntegraJnaImplementationShutdownHook shutdownHook = new IntegraJnaImplementationShutdownHook();
+        shutdownHook.integraJnaConnectionPool = integraJnaConnectionPool;
+        Runtime.getRuntime().addShutdownHook(shutdownHook);
     }
 
     @Override
@@ -93,10 +75,10 @@ public class IntegraJnaImplementation implements Integra {
 
     @Override
     public List<Systematic> getSystematics(long[] parentIdList) {
-        List<Systematic> list = new ArrayList<Systematic>();
-        IntBuffer lengthBuffer = IntBuffer.allocate(1);
-        LongBuffer parentIdListBuffer;
-        int parentIdListLength;
+        final List<Systematic> list = new ArrayList<Systematic>();
+        final IntBuffer lengthBuffer = IntBuffer.allocate(1);
+        final LongBuffer parentIdListBuffer;
+        final int parentIdListLength;
         if (parentIdList != null) {
             parentIdListBuffer = LongBuffer.wrap(parentIdList);
             parentIdListLength = parentIdList.length;
@@ -105,23 +87,29 @@ public class IntegraJnaImplementation implements Integra {
             parentIdListBuffer = null;
             parentIdListLength = 0;
         }
-        PointerByReference systematicListRef = new PointerByReference(Pointer.NULL);
-        int err = IntegraJNALibrary.IntegraJnaGetSystematicList(integraConnection, parentIdListBuffer, parentIdListLength, systematicListRef, lengthBuffer);
-        if (err == 0) {
-            int length = lengthBuffer.get(0);
-            if (length > 0) {
-                INTEGRA_SYSTEMATIC[] systematicList = (INTEGRA_SYSTEMATIC[]) new INTEGRA_SYSTEMATIC(systematicListRef.getValue()).toArray(length);
-                for (INTEGRA_SYSTEMATIC systematic : systematicList) {
-                    Systematic item = new Systematic();
-                    item.parentId = systematic.uiParentId;
-                    item.id = systematic.uiId;
-                    item.name = AnsiPszToString(systematic.szName);
-                    item.desc = AnsiPszToString(systematic.szDesc);
-                    list.add(item);
+
+        new IntegraJnaConnectionWorker(integraJnaConnectionPool) {
+            @Override
+            public void run(Pointer integraConnectionPtr) {
+                PointerByReference systematicListRef = new PointerByReference();
+                int err = IntegraJNALibrary.IntegraJnaGetSystematicList(integraConnectionPtr, parentIdListBuffer, parentIdListLength, systematicListRef, lengthBuffer);
+                if (err == 0) {
+                    int length = lengthBuffer.get(0);
+                    if (length > 0) {
+                        INTEGRA_SYSTEMATIC[] systematicList = (INTEGRA_SYSTEMATIC[]) new INTEGRA_SYSTEMATIC(systematicListRef.getValue()).toArray(length);
+                        for (INTEGRA_SYSTEMATIC systematic : systematicList) {
+                            Systematic item = new Systematic();
+                            item.parentId = systematic.uiParentId;
+                            item.id = systematic.uiId;
+                            item.name = IntegraJna.AnsiPszToString(systematic.szName);
+                            item.desc = IntegraJna.AnsiPszToString(systematic.szDesc);
+                            list.add(item);
+                        }
+                        IntegraJNALibrary.IntegraJnaFree(systematicListRef.getValue());
+                    }
                 }
-                IntegraJNALibrary.IntegraJnaFree(systematicListRef.getValue());
             }
-        }
+        };
         return list;
     }
 
