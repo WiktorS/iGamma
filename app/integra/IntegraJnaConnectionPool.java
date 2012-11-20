@@ -101,8 +101,8 @@ public class IntegraJnaConnectionPool {
                                 Logger.debug("[%x] Failed to close idle connecion(%i)", Thread.currentThread().getId(), i);
                             }
                             //We remove close-failed connection too - some thing is wrong with them! (although it shouldn't happen)
-                            Logger.debug("[%x] Removed idle connecion [%d/%d]", Thread.currentThread().getId(), connectionPool.size(),IntegraServer.integraPoolMaxSize);
                             connectionPool.remove(i);
+                            Logger.debug("[%x] Removed idle connecion [%d/%d]", Thread.currentThread().getId(), connectionPool.size(),IntegraServer.integraPoolMaxSize);
                             break;  //close only one connection to minimize delay caused by releasing resources
                         }
                     }
