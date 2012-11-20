@@ -6,7 +6,8 @@ import play.Play;
 public class IntegraServer {
     public static final int integraPoolMinSize = getIntProperty("integra.poll.minSize");
     public static final int integraPoolMaxSize = getIntProperty("integra.poll.maxSize");
-    public static final int integraPoolConnectionMaxValidTime = getIntProperty("integra.poll.connectionMaxValidTime");
+    //Time in minutes, after which connection will be outdated and closed when possible
+    public static final int integraPoolOutdatedTime = getIntProperty("integra.poll.outdatedTime");
 
     public static final String integraSource = getProperty("integra.source");
 
