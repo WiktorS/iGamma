@@ -11,7 +11,13 @@ public class IntegraJna {
         return new String(psz, 0, len, Charset.forName("windows-1250"));
     }
 
+    public static final String AnsiPszToString(Pointer psz, int maxLength) {
+        int len = 0;
+        while (psz.getByte(len) != '\0' && len < maxLength) { len++; };
+        return new String(psz.getByteArray(0,len), Charset.forName("windows-1250"));
+    }
+
     public static final String AnsiPszToString(Pointer psz) {
-        return new String(psz.getString(0).getBytes(), Charset.forName("windows-1250"));
+        return AnsiPszToString(psz, 1024);
     }
 }
