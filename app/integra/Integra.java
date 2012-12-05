@@ -5,18 +5,18 @@ import integra.models.*;
 import java.util.List;
 
 public interface Integra {
-    List<RegisterUnit> getRegisterUnits(String type);
-    List<Lot> getLotsByNumber(String number);
-    List<Building> getBuildingByNumber(String numberB);
-    List<Local> getLocalByNumber(String numberL);
-    List<Person> getPersonByPesel(String pesel);
-    List<Institution> getInstitutionByNip(String nip);
-    List<Group> getGroupByNip(String nip);
-    List<LandCommunity> getLandCommunities(String name);
-    EgbilObject getEgbilObject(String type, String name);
-    List<EgbilDocument> getDocuments();
-    List<Systematic> getSystematics(long[] parentIdList);
-    List<ShareSummary> getShareSummary();
-    CustomReportData getCustomReportData(String type, String name);
-    List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList);
+    List<RegisterUnit> getRegisterUnits(String type) throws Exception;
+    List<Lot> getLotsByNumber(String number) throws Exception;
+    List<Building> getBuildingByNumber(String numberB) throws Exception;
+    List<Local> getLocalByNumber(String numberL) throws Exception;
+    List<Person> getPersonByPesel(String pesel) throws Exception;
+    List<Institution> getInstitutionByNip(String nip) throws Exception;
+    List<Group> getGroupByNip(String nip) throws Exception;
+    List<LandCommunity> getLandCommunities(String name) throws Exception;
+    EgbilObject getEgbilObject(String type, String name) throws Exception;
+    List<EgbilDocument> getDocuments() throws Exception;
+    List<Systematic> getSystematics(long[] parentIdList) throws Exception;
+    List<ShareSummary> getShareSummary() throws Exception;
+    CustomReportData getCustomReportData(String type, String name) throws Exception;
+    List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) throws Exception;
 }
