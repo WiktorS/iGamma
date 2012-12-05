@@ -4,16 +4,20 @@ import com.sun.jna.Pointer;
 
 public abstract class IntegraJnaConnectionWorker {
 
-    public IntegraJnaConnectionWorker(IntegraJnaConnectionPool integraJnaConnectionPool) {
+    public IntegraJnaConnectionWorker(IntegraJnaConnectionPool integraJnaConnectionPool) throws Exception {
         IntegraJnaConnection integraConnection = integraJnaConnectionPool.GetAvailableConnection();
         try {
+            Pointer integraConnectionPtr = null;
             if (integraConnection != null) {
-                Pointer integraConnectionPtr = integraConnection.GetIntegraConnection();
-                if (integraConnectionPtr != null) {
-                    synchronized (integraConnectionPtr) {
-                        run(integraConnectionPtr);
-                    }
+                integraConnectionPtr = integraConnection.GetIntegraConnection();
+            }
+            if (integraConnection != null && integraConnectionPtr != null) {
+                synchronized (integraConnectionPtr) {
+                    run(integraConnectionPtr);
                 }
+            }
+            else {
+                throw new Exception("Failed to initialize connection with Integra");
             }
         }
         finally {

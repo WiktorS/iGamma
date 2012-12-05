@@ -74,7 +74,7 @@ public class IntegraJnaImplementation implements Integra {
     }
 
     @Override
-    public List<Systematic> getSystematics(long[] parentIdList) {
+    public List<Systematic> getSystematics(long[] parentIdList) throws Exception {
         final List<Systematic> list = new ArrayList<Systematic>();
         final IntBuffer lengthBuffer = IntBuffer.allocate(1);
         final LongBuffer parentIdListBuffer;
