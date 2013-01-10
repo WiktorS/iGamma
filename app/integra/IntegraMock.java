@@ -11,10 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Modifier;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 public class IntegraMock implements Integra {
 
@@ -131,7 +128,7 @@ public class IntegraMock implements Integra {
     @Override
     public List<Systematic> getSystematics(long[] parentIdList) {
         TypeToken<List<Systematic>> typeToken = new TypeToken<List<Systematic>>() {};
-        return getMockJsonData("getSystematics", typeToken, String.valueOf(parentIdList));
+        return getMockJsonData("getSystematics", typeToken, Arrays.toString(parentIdList));
     }
 
     @Override
