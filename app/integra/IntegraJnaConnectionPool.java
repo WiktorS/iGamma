@@ -2,7 +2,7 @@ package integra;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
-import integra.jna.IntegraJNALibrary;
+import integra.jna.IGammaJNALibrary;
 import play.Logger;
 
 import java.util.ArrayList;
@@ -14,13 +14,13 @@ public class IntegraJnaConnectionPool {
     private Pointer NewConnection() {
         PointerByReference refIntegraConnection = new PointerByReference();
         PointerByReference refErrorMsg = new PointerByReference();
-        int errCode = IntegraJNALibrary.IntegraJnaConnect(IntegraServer.integraOdbcName,
+        int errCode = IGammaJNALibrary.iGammaJnaConnect(IntegraServer.integraOdbcName,
                 IntegraServer.integraOdbcUser, IntegraServer.integraOdbcPass,
                 IntegraServer.integraUser, IntegraServer.integraPass, refIntegraConnection, refErrorMsg);
         if (errCode != 0) {
             Pointer errorMsg = refErrorMsg.getValue();
             Logger.error(IntegraJna.AnsiPszToString(errorMsg));
-            IntegraJNALibrary.IntegraJnaFree(errorMsg);
+            IGammaJNALibrary.iGammaJnaFree(errorMsg);
         }
         return refIntegraConnection.getValue();
     }
@@ -29,12 +29,12 @@ public class IntegraJnaConnectionPool {
         boolean result = false;
         if (connection != null) {
             synchronized (connection) {
-                int errCode = IntegraJNALibrary.IntegraJnaDisconnect(connection);
+                int errCode = IGammaJNALibrary.iGammaJnaDisconnect(connection);
                 result = (errCode == 0);
             }
             if (!result) {
-                Logger.debug("Failed to close Integra connection");
-            }
+                Logger.debug("Failed to close iGamma connection");
+        }
         }
         return result;
     }

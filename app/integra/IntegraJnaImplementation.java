@@ -2,8 +2,8 @@ package integra;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
-import integra.jna.INTEGRA_SYSTEMATIC;
-import integra.jna.IntegraJNALibrary;
+import integra.jna.IGAMMA_SYSTEMATIC;
+import integra.jna.IGammaJNALibrary;
 import integra.models.*;
 
 import java.nio.IntBuffer;
@@ -92,12 +92,12 @@ public class IntegraJnaImplementation implements Integra {
             @Override
             public void run(Pointer integraConnectionPtr) {
                 PointerByReference systematicListRef = new PointerByReference();
-                int err = IntegraJNALibrary.IntegraJnaGetSystematicList(integraConnectionPtr, parentIdListBuffer, parentIdListLength, systematicListRef, lengthBuffer);
+                int err = IGammaJNALibrary.iGammaJnaGetSystematicList(integraConnectionPtr, parentIdListBuffer, parentIdListLength, systematicListRef, lengthBuffer);
                 if (err == 0) {
                     int length = lengthBuffer.get(0);
                     if (length > 0) {
-                        INTEGRA_SYSTEMATIC[] systematicList = (INTEGRA_SYSTEMATIC[]) new INTEGRA_SYSTEMATIC(systematicListRef.getValue()).toArray(length);
-                        for (INTEGRA_SYSTEMATIC systematic : systematicList) {
+                        IGAMMA_SYSTEMATIC[] systematicList = (IGAMMA_SYSTEMATIC[]) new IGAMMA_SYSTEMATIC(systematicListRef.getValue()).toArray(length);
+                        for (IGAMMA_SYSTEMATIC systematic : systematicList) {
                             Systematic item = new Systematic();
                             item.parentId = systematic.uiParentId;
                             item.id = systematic.uiId;
@@ -105,7 +105,7 @@ public class IntegraJnaImplementation implements Integra {
                             item.desc = IntegraJna.AnsiPszToString(systematic.szDesc);
                             list.add(item);
                         }
-                        IntegraJNALibrary.IntegraJnaFree(systematicListRef.getValue());
+                        IGammaJNALibrary.iGammaJnaFree(systematicListRef.getValue());
                     }
                 }
             }
