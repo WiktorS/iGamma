@@ -21,3 +21,6 @@ server.pid
 iGamma.iml
 iGamma.ipr
 iGamma.iws
+
+# VSS
+*.*scc
