@@ -21,23 +21,20 @@ App.SystematicModalView = App.ModalView.extend
     idList = Em.A()
     for id in (@get("systematics").findProperty("id", parentId)?.get("children") ? Em.A())
       idList.addObject id
-    $.ajax
-      url: "/getSystematics.json"
-      data:
-        parentIdList: idList
-      success: (data) =>
-        if data?
-          for node in data
-            if node
-              parentNode = @get("systematics").findProperty("id", node.parentId)
-              Em.assert "Systematic of ID: #{node.parentId} does'nt exist", parentNode
+    if (parentId == 0 || !Em.empty(idList))
+      App.get("Cache.systematics").getSystematics idList, =>
+        for node in App.get("Cache.systematics.cache").filter((item, index, enumerable) =>
+          item.parentId? && (Em.empty(idList) || idList.contains(item.parentId))
+        )
+          if node?
+            parentNode = @get("systematics").findProperty("id", node.parentId)
+            Em.assert "Systematic of ID: #{node.parentId} does'nt exist", parentNode
 
-              parentNode.set("children", Em.A()) if !Em.isArray(parentNode.get "children")
-              parentNode.get("children").addObject node.id
+            parentNode.set("children", Em.A()) if !Em.isArray(parentNode.get "children")
+            parentNode.get("children").addObject node.id
 
-              if !@get("systematics").findProperty("id", node.id)
-                @get("systematics").addObject App.SystematicModel.create
-                  id: node.id
-                  name: node.name
-                  desc: node.desc
-        return
+            if !@get("systematics").findProperty("id", node.id)
+              @get("systematics").addObject App.SystematicModel.create
+                id: node.id
+                name: node.name
+                desc: node.desc
