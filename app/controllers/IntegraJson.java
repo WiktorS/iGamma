@@ -2,13 +2,31 @@ package controllers;
 
 import integra.Integra;
 import integra.IntegraServer;
+import integra.QueryEntry;
 import integra.models.*;
 import play.mvc.Controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class IntegraJson extends Controller {
     private static Integra integra = IntegraServer.createServer();
+
+    //Transform params to QueryEntryList (exclude params which are not needed)
+    private static List<QueryEntry> getQueryEntryList() {
+        Map<String, String> paramsMap = params.allSimple();
+        List<QueryEntry> queryEntryList = new ArrayList<QueryEntry>();
+        List<String> excludeList = Arrays.asList("type", "body");
+        for (Map.Entry<String, String> entry : paramsMap.entrySet()){
+            if (!excludeList.contains(entry.getKey()))
+            {
+                queryEntryList.add(new QueryEntry(entry.getKey(), entry.getValue()));
+            }
+        }
+        return queryEntryList;
+    }
 
     public static void getRegisterUnits(String type) throws Exception {
         List<RegisterUnit> result = integra.getRegisterUnits(type);
@@ -20,8 +38,8 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
-    public static void getBuildingByNumber(String numberB) throws Exception {
-        List<Building> result = integra.getBuildingByNumber(numberB);
+    public static void getBuildings(String type) throws Exception {
+        List<Building> result = integra.getBuildings(getQueryEntryList());
         renderJSON(result);
     }
 
