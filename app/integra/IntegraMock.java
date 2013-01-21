@@ -64,6 +64,23 @@ public class IntegraMock implements Integra {
         return result;
     }
 
+    private String queryEntryListToString(List<QueryEntry> queryEntryList) {
+        Collections.sort(queryEntryList, new Comparator<QueryEntry>() {
+            @Override
+            public int compare(QueryEntry o1, QueryEntry o2) {
+                return o1.name.compareTo(o2.name);
+            }
+        });
+        StringBuilder sb = new StringBuilder();
+        String loopDelim = "";
+        for (QueryEntry entry : queryEntryList){
+            sb.append(loopDelim);
+            sb.append(entry.name + "=" + entry.value);
+            loopDelim = "_";
+        }
+        return sb.toString();
+    }
+
 
     @Override
     public List<RegisterUnit> getRegisterUnits(String type) {
@@ -78,9 +95,9 @@ public class IntegraMock implements Integra {
     }
 
     @Override
-    public List<Building> getBuildingByNumber(String numberB) {
+    public List<Building> getBuildings(List<QueryEntry> queryEntryList) {
         TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
-        return getMockJsonData("getBuildingByNumber", typeToken, numberB);
+        return getMockJsonData("getBuildings", typeToken, queryEntryListToString(queryEntryList));
     }
 
     @Override
