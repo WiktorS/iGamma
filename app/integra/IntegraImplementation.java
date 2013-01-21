@@ -45,8 +45,8 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
-    public List<Building> getBuildingByNumber(String numberB) {
-        JsonElement jsonResult = invokeMethodJson("getBuildingByNumber");
+    public List<Building> getBuildings(List<QueryEntry> queryEntryList) {
+        JsonElement jsonResult = invokeMethodJson("getBuildings");
         TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }

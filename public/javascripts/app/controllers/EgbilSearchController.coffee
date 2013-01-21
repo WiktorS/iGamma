@@ -8,7 +8,7 @@ App.EgbilSearchController = Em.Controller.extend
     @get "searchMethodData.#{type}"
     ).property("type")
   searchMethodData:
-    building: "getBuildingByNumber"
+    building: "getBuildings"
     document: "getDocuments"
     group: "getGroupByNip"
     individual: "getPersonByPesel"

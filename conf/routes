@@ -8,7 +8,7 @@ GET     /                                         Application.index
 #Integra json interface
 GET     /getRegisterUnits.json                    IntegraJson.getRegisterUnits
 GET     /getLotsByNumber.json                     IntegraJson.getLotsByNumber
-GET     /getBuildingByNumber.json                 IntegraJson.getBuildingByNumber
+GET     /getBuildings.json                        IntegraJson.getBuildings
 GET     /getLocalByNumber.json                    IntegraJson.getLocalByNumber
 GET     /getPersonByPesel.json                    IntegraJson.getPersonByPesel
 GET     /getInstitutionByNip.json                 IntegraJson.getInstitutionByNip
