@@ -64,19 +64,19 @@ public class IntegraMock implements Integra {
         return result;
     }
 
-    private String queryEntryListToString(List<QueryEntry> queryEntryList) {
-        Collections.sort(queryEntryList, new Comparator<QueryEntry>() {
-            @Override
-            public int compare(QueryEntry o1, QueryEntry o2) {
-                return o1.name.compareTo(o2.name);
-            }
-        });
+    private String queryEntryListToString(QueryEntry[] queryEntryList) {
         StringBuilder sb = new StringBuilder();
         String loopDelim = "";
-        for (QueryEntry entry : queryEntryList){
-            sb.append(loopDelim);
-            sb.append(entry.name + "=" + entry.value);
-            loopDelim = "_";
+        if (queryEntryList != null)
+        {
+            for (QueryEntry entry : queryEntryList){
+                if (entry != null)
+                {
+                    sb.append(loopDelim);
+                    sb.append(entry.name + "=" + entry.value);
+                    loopDelim = "_";
+                }
+            }
         }
         return sb.toString();
     }
@@ -95,7 +95,7 @@ public class IntegraMock implements Integra {
     }
 
     @Override
-    public List<Building> getBuildings(List<QueryEntry> queryEntryList) {
+    public List<Building> getBuildings(QueryEntry[] queryEntryList) {
         TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
         return getMockJsonData("getBuildings", typeToken, queryEntryListToString(queryEntryList));
     }
@@ -164,5 +164,10 @@ public class IntegraMock implements Integra {
     public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
         TypeToken<List<EgbilObjectData>> typeToken = new TypeToken<List<EgbilObjectData>>() {};
         return getMockJsonData("getRelatedObjects", typeToken, relation, objectList.toString());
+    }
+
+    @Override
+    public List<Long> findObjects(String queryName, QueryEntry[] queryEntryList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }
