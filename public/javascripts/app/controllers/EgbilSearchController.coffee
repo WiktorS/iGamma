@@ -3,12 +3,12 @@ App.EgbilSearchController = Em.Controller.extend
     @get "target.currentState.name"
     ).property("target.currentState.name")
 
-  searchMethod: (->
+  queryName: (->
     type = @get "type"
-    @get "searchMethodData.#{type}"
+    @get "queryNameData.#{type}"
     ).property("type")
-  searchMethodData:
-    building: "getBuildings"
+  queryNameData:
+    building: "6. 2 Budynek na punktach graficznych"
     document: "getDocuments"
     group: "getGroupByNip"
     individual: "getPersonByPesel"
@@ -22,13 +22,18 @@ App.EgbilSearchController = Em.Controller.extend
     lot: "getLotsByNumber"
 
   doSearch: (searchArgs) ->
-    jsonMethod = @get "searchMethod"
     $.ajax
-      url: "#{jsonMethod}.json"
-      data: searchArgs
+      type: "POST"
+      url: "findObjects.json"
+      data:
+        queryName: @get "queryName"
+        queryArgs: searchArgs
       success: (data) =>
-        @set "target.egbilListController.type", @get("type")
-        @set "target.egbilListController.content", Em.A(data.map(App.Common.toModel, App.EgbilListModel))
-        @get("target").send "goToList"
+        if data?
+          @set "target.egbilListController.type", @get("type")
+          @set "target.egbilListController.content", Em.A(data.map(App.Common.toModel, App.EgbilListModel))
+          @get("target").send "goToList"
+        else
+          alert "Brak wyników" #TODO: error handling
       error: (jqXHR, textStatus, errorThrown) ->
         alert errorThrown #TODO: error handling
