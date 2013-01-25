@@ -45,7 +45,7 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
-    public List<Building> getBuildings(List<QueryEntry> queryEntryList) {
+    public List<Building> getBuildings(QueryEntry[] queryEntryList) {
         JsonElement jsonResult = invokeMethodJson("getBuildings");
         TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
@@ -116,5 +116,10 @@ public class IntegraImplementation implements Integra{
     @Override
     public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
         return null;  //TODO
+    }
+
+    @Override
+    public List<Long> findObjects(String queryName, QueryEntry[] queryEntryList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

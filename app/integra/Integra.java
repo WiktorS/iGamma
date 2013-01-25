@@ -5,9 +5,11 @@ import integra.models.*;
 import java.util.List;
 
 public interface Integra {
+    List<Long> findObjects(String queryName, QueryEntry[] queryArgs) throws Exception;
+
     List<RegisterUnit> getRegisterUnits(String type) throws Exception;
     List<Lot> getLotsByNumber(String number) throws Exception;
-    List<Building> getBuildings(List<QueryEntry> queryEntryList);
+    List<Building> getBuildings(QueryEntry[] queryEntryList) throws Exception;
     List<Local> getLocalByNumber(String numberL) throws Exception;
     List<Person> getPersonByPesel(String pesel) throws Exception;
     List<Institution> getInstitutionByNip(String nip) throws Exception;

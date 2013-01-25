@@ -6,6 +6,7 @@
 GET     /                                         Application.index
 
 #Integra json interface
+POST    /findObjects.json                         IntegraJson.findObjects
 GET     /getRegisterUnits.json                    IntegraJson.getRegisterUnits
 GET     /getLotsByNumber.json                     IntegraJson.getLotsByNumber
 GET     /getBuildings.json                        IntegraJson.getBuildings

@@ -19,13 +19,17 @@ public class IntegraJson extends Controller {
         Map<String, String> paramsMap = params.allSimple();
         List<QueryEntry> queryEntryList = new ArrayList<QueryEntry>();
         List<String> excludeList = Arrays.asList("type", "body");
-        for (Map.Entry<String, String> entry : paramsMap.entrySet()){
-            if (!excludeList.contains(entry.getKey()))
-            {
+        for (Map.Entry<String, String> entry : paramsMap.entrySet()) {
+            if (!excludeList.contains(entry.getKey())) {
                 queryEntryList.add(new QueryEntry(entry.getKey(), entry.getValue()));
             }
         }
         return queryEntryList;
+    }
+
+    public static void findObjects(String queryName, QueryEntry[] queryArgs) throws Exception {
+        List<Long> result = integra.findObjects(queryName, queryArgs);
+        renderJSON(result);
     }
 
     public static void getRegisterUnits(String type) throws Exception {
@@ -38,8 +42,8 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
-    public static void getBuildings(String type) throws Exception {
-        List<Building> result = integra.getBuildings(getQueryEntryList());
+    public static void getBuildings(String type, QueryEntry[] query) throws Exception {
+        List<Building> result = integra.getBuildings(query);
         renderJSON(result);
     }
 
