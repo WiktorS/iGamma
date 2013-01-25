@@ -20,4 +20,8 @@ public class IntegraJna {
     public static final String AnsiPszToString(Pointer psz) {
         return AnsiPszToString(psz, 1024);
     }
+
+    public static final byte[] StringToAnsiPsz(String s) {
+        return s.getBytes(Charset.forName("windows-1250"));
+    }
 }
