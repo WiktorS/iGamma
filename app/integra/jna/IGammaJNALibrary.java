@@ -1,14 +1,10 @@
 package integra.jna;
 import com.sun.jna.Library;
-import java.util.Arrays;
-import java.util.List;
-import com.sun.jna.Pointer;
 import com.sun.jna.Native;
 import com.sun.jna.NativeLibrary;
 import com.sun.jna.Pointer;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.LongByReference;
 import com.sun.jna.ptr.PointerByReference;
+
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 /**
@@ -25,36 +21,53 @@ public class IGammaJNALibrary implements Library {
 	}
 	/**
 	 * Original signature : <code>void iGammaJnaFree(void*)</code><br>
-	 * <i>native declaration : iGammaJNAiGammaJNA.h:23</i>
+	 * <i>native declaration : iGammaJNAiGammaJNA.h:36</i>
 	 */
 	public static native void iGammaJnaFree(Pointer p);
 	/**
 	 * Original signature : <code>int iGammaJnaConnect(const char*, const char*, const char*, const char*, const char*, void**, char**)</code><br>
-	 * <i>native declaration : iGammaJNAiGammaJNA.h:25</i><br>
+	 * <i>native declaration : iGammaJNAiGammaJNA.h:38</i><br>
 	 * @deprecated use the safer methods {@link #iGammaJnaConnect(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.sun.jna.ptr.PointerByReference, com.sun.jna.ptr.PointerByReference)} and {@link #iGammaJnaConnect(com.sun.jna.Pointer, com.sun.jna.Pointer, com.sun.jna.Pointer, com.sun.jna.Pointer, com.sun.jna.Pointer, com.sun.jna.ptr.PointerByReference, com.sun.jna.ptr.PointerByReference)} instead
 	 */
 	//@Deprecated 
 	//public static native int iGammaJnaConnect(Pointer pszDBMSName, Pointer pszDBMSUserName, Pointer pszDBMSPass, Pointer pszDBUserName, Pointer pszDBPass, PointerByReference ppGamma, PointerByReference ppszError);
 	/**
 	 * Original signature : <code>int iGammaJnaConnect(const char*, const char*, const char*, const char*, const char*, void**, char**)</code><br>
-	 * <i>native declaration : iGammaJNAiGammaJNA.h:25</i>
+	 * <i>native declaration : iGammaJNAiGammaJNA.h:38</i>
 	 */
 	public static native int iGammaJnaConnect(String pszDBMSName, String pszDBMSUserName, String pszDBMSPass, String pszDBUserName, String pszDBPass, PointerByReference ppGamma, PointerByReference ppszError);
 	/**
 	 * Original signature : <code>int iGammaJnaDisconnect(void*)</code><br>
-	 * <i>native declaration : iGammaJNAiGammaJNA.h:27</i>
+	 * <i>native declaration : iGammaJNAiGammaJNA.h:40</i>
 	 */
 	public static native int iGammaJnaDisconnect(Pointer pGamma);
 	/**
+	 * Original signature : <code>int iGammaJnaGetLastError(void*, char**)</code><br>
+	 * <i>native declaration : iGammaJNAiGammaJNA.h:41</i>
+	 */
+	public static native int iGammaJnaGetLastError(Pointer pGamma, PointerByReference ppszErrorMsg);
+	/**
+	 * Original signature : <code>int iGammaJnaFindObjects(void*, const char*, IGAMMA_QUERYENTRY*, int, IGAMMA_QUERYRESULTS**, int*)</code><br>
+	 * <i>native declaration : iGammaJNAiGammaJNA.h:43</i><br>
+	 * @deprecated use the safer methods {@link #iGammaJnaFindObjects(com.sun.jna.Pointer, java.lang.String, integra.jna.IGAMMA_QUERYENTRY, int, com.sun.jna.ptr.PointerByReference, java.nio.IntBuffer)} and {@link #iGammaJnaFindObjects(com.sun.jna.Pointer, com.sun.jna.Pointer, integra.jna.IGAMMA_QUERYENTRY, int, com.sun.jna.ptr.PointerByReference, com.sun.jna.ptr.IntByReference)} instead
+	 */
+	//@Deprecated 
+	//public static native int iGammaJnaFindObjects(Pointer pGamma, Pointer pszQueryName, IGAMMA_QUERYENTRY pQueryEntryList, int iEntryCount, PointerByReference ppResultList, IntByReference piResultCount);
+	/**
+	 * Original signature : <code>int iGammaJnaFindObjects(void*, const char*, IGAMMA_QUERYENTRY*, int, IGAMMA_QUERYRESULTS**, int*)</code><br>
+	 * <i>native declaration : iGammaJNAiGammaJNA.h:43</i>
+	 */
+	public static native int iGammaJnaFindObjects(Pointer pGamma, String pszQueryName, IGAMMA_QUERYENTRY pQueryEntryList, int iEntryCount, PointerByReference ppResultList, IntBuffer piResultCount);
+	/**
 	 * Original signature : <code>int iGammaJnaGetSystematicList(void*, ULONGLONG*, int, IGAMMA_SYSTEMATIC**, int*)</code><br>
-	 * <i>native declaration : iGammaJNAiGammaJNA.h:29</i><br>
+	 * <i>native declaration : iGammaJNAiGammaJNA.h:45</i><br>
 	 * @deprecated use the safer methods {@link #iGammaJnaGetSystematicList(com.sun.jna.Pointer, java.nio.LongBuffer, int, com.sun.jna.ptr.PointerByReference, java.nio.IntBuffer)} and {@link #iGammaJnaGetSystematicList(com.sun.jna.Pointer, com.sun.jna.ptr.LongByReference, int, com.sun.jna.ptr.PointerByReference, com.sun.jna.ptr.IntByReference)} instead
 	 */
 	//@Deprecated 
 	//public static native int iGammaJnaGetSystematicList(Pointer pGamma, LongByReference pIdArray, int iIdArrayLength, PointerByReference ppSystematicList, IntByReference piLength);
 	/**
 	 * Original signature : <code>int iGammaJnaGetSystematicList(void*, ULONGLONG*, int, IGAMMA_SYSTEMATIC**, int*)</code><br>
-	 * <i>native declaration : iGammaJNAiGammaJNA.h:29</i>
+	 * <i>native declaration : iGammaJNAiGammaJNA.h:45</i>
 	 */
 	public static native int iGammaJnaGetSystematicList(Pointer pGamma, LongBuffer pIdArray, int iIdArrayLength, PointerByReference ppSystematicList, IntBuffer piLength);
 }
