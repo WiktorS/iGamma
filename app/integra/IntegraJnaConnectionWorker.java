@@ -31,5 +31,5 @@ public abstract class IntegraJnaConnectionWorker {
         }
     }
 
-    public abstract void run(Pointer integraConnectionPtr);
+    public abstract void run(Pointer integraConnectionPtr) throws Exception;
 }
