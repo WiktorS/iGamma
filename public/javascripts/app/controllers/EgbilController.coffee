@@ -56,6 +56,8 @@ App.EgbilController = Em.Controller.extend
             content.members = data.members.map(App.Common.toModel, App.EgbilObjectMemberModel)
             content.changes = data.changes.map(App.Common.toModel, App.EgbilObjectChangeModel)
             content.documents = data.documents.map(App.Common.toModel, App.EgbilObjectDocumentModel)
+            content.useClasses = data.useClasses.map(App.Common.toModel, App.EgbilObjectUseClassModel)
+            content.premises = data.premises.map(App.Common.toModel, App.EgbilObjectPremiseModel)
             object = Em.Object.create content,
               objectType: objectType
               objectName: objectName
