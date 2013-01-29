@@ -9,6 +9,8 @@ App.EgbilObjectModel = Em.Object.extend
   locals: null
   changes: null
   documents: null
+  useClasses: null
+  premises: null
 
   init: ->
     @_super()
@@ -25,6 +27,8 @@ App.EgbilObjectModel = Em.Object.extend
     @locals = Em.A()
     @changes = Em.A()
     @documents = Em.A()
+    @useClasses = Em.A()
+    @premises = Em.A()
 
 
 App.EgbilObjectRegisterUnitModel = Em.Object.extend
@@ -746,3 +750,26 @@ App.EgbilObjectChangeModel = Em.Object.extend
       label: "Status zmiany"
     @description = App.StandardTableCellModel.create
       label: "Opis zmiany"
+
+App.EgbilObjectUseClassModel = Em.Object.extend
+  type: null
+  area: null
+
+  init: ->
+    @type = App.StandardTableCellModel.create
+      label: "Rodzaj"
+    @area = App.StandardTableCellModel.create
+      label: "Powierzchnia [ha]"
+
+App.EgbilObjectPremiseModel = Em.Object.extend
+  building: null
+  type: null
+  area: null
+
+  init: ->
+    @building = App.StandardTableCellModel.create
+      label: "Budynek"
+    @type = App.StandardTableCellModel.create
+      label: "Rodzaj"
+    @area = App.StandardTableCellModel.create
+      label: "Powierzchnia [m2]"

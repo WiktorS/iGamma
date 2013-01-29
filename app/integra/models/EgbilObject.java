@@ -21,4 +21,6 @@ public class EgbilObject implements IntegraModel {
     public List<EgbilMember> members;
     public List<EgbilRight> rights;
     public List<EgbilDocument> documents;
+    public List<EgbilUseClass> useClasses;
+    public List<EgbilPremise> premises;
 }

@@ -7,7 +7,7 @@ App.EgbilObjectLotController = Em.Controller.extend
     ["jrgNumber", "addresses"]
   documentColumns:
     ["type", "sygnature"]
-  useclassColumns:
+  useClassColumns:
     ["type", "area"]
   buildingColumns:
     ["show","marker","buildingNumber","type","jrbNumber"]
