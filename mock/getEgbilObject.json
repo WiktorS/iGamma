@@ -30,18 +30,7 @@
     "notes": "9",
     "jrgNumber": "G163",
     "addresses" : [
-        "adres1",
-        "adres2"
-    ],
-    "useClasses":[
-      {
-        "useClassType" : "E",
-        "useClassArea" : "R"
-      },
-      {
-        "useClassType" : "E",
-        "useClassArea" : "R"
-      }
+        "adres1","adres2"
     ]
   },
   "building": {
@@ -85,17 +74,7 @@
     "remarks" : "I",
     "notes": "9",
     "jrgNumber": "q",
-    "jrlNumber": "w",
-    "documents":[
-      {
-        "type":"rodzaj1",
-        "signature":"sygnatura1"
-      },
-      {
-        "type":"rodzaj2",
-        "signature":"sygnatura2"
-      }
-    ]
+    "jrlNumber": "w"
   },
   "person": {
     "pesel": "1",
@@ -406,6 +385,33 @@
     {
     "type" : "1-Księga wieczysta",
     "sygnature": "25477"
+    }
+  ],
+  "useClasses":[
+    {
+    "type" : "B",
+    "area" : "0.0400"
+    },
+    {
+    "type" : "Bi",
+    "area" : "0.0300"
+    }
+  ],
+  "premises":[
+    {
+    "building" : "",
+    "type" : "pomieszczenie gospodarcze",
+    "area" : "23.7"
+    },
+    {
+    "building" : "",
+    "type" : "komórka",
+    "area" : "6.63"
+    },
+    {
+    "building" : "145.2",
+    "type" : "garaż",
+    "area" : "17.1"
     }
   ]
 }
