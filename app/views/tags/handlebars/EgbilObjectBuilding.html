@@ -1,0 +1,17 @@
+<script type="text/x-handlebars" data-template-name="egbilObjectBuilding">
+  <div>
+    {{view App.ModelValueTableView contentBinding="controller.content.building" columnsBinding="controller.buildingColumns"}}
+  </div>
+  <div>
+    {{view App.ModelValueTableView contentBinding="controller.content.building" columnsBinding="controller.buildingColumns1"}}
+    Działki
+    {{view App.ModelTableView contentBinding="controller.content.lots" columnsBinding="controller.lotColumns"}}
+    {{view App.ModelValueTableView contentBinding="controller.content.building" columnsBinding="controller.buildingColumns2"}}
+    Dokumenty
+    {{view App.ModelTableView contentBinding="controller.content.documents" columnsBinding="controller.documentColumns"}}
+  </div>
+  <div>
+    Lokale
+    {{view App.ModelTableView contentBinding="controller.content.locals" columnsBinding="controller.localColumns"}}
+  </div>
+</script>

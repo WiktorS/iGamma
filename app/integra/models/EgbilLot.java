@@ -1,11 +1,13 @@
 package integra.models;
 
+import java.util.List;
+
 public class EgbilLot implements IntegraModel {
     public String marker;
     public String g5;
     public String registeredArea;
     public String geodesicArea;
-    public String addresses;
+    public List<String> addresses;
     public String documentsSygnature;
     public String useClassType;
     public String useClassArea;
@@ -17,6 +19,9 @@ public class EgbilLot implements IntegraModel {
     public String value;
     public String valuationDate;
     public String remarks;
+    public String notes;
+    public List<EgbilBuilding> buildings;
+    public List<EgbilDocument> documents;
 
     public String lotNumber;
     public String jrgNumber;

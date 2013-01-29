@@ -1,11 +1,14 @@
 App.EgbilObjectModel = Em.Object.extend
   attributes: null
   registerUnit: null
+  lot: null
+  building: null
   shares: null
   lots: null
   buildings: null
   locals: null
   changes: null
+  documents: null
 
   init: ->
     @_super()
@@ -13,11 +16,15 @@ App.EgbilObjectModel = Em.Object.extend
     @person = App.EgbilObjectPersonModel.create()
     @institution = App.EgbilObjectInstitutionModel.create()
     @document = App.EgbilObjectDocumentModel.create()
+    @lot = App.EgbilObjectLotModel.create()
+    @building = App.EgbilObjectBuildingModel.create()
+    @local= App.EgbilObjectLocalModel.create()
     @shares = Em.A()
     @lots = Em.A()
     @buildings = Em.A()
     @locals = Em.A()
     @changes = Em.A()
+    @documents = Em.A()
 
 
 App.EgbilObjectRegisterUnitModel = Em.Object.extend
@@ -280,7 +287,7 @@ App.EgbilObjectMemberModel = Em.Object.extend
 
 App.EgbilObjectDocumentModel = Em.Object.extend
   type: null
-  sygnture: null
+  sygnature: null
   source: null
   creationDate: null
   receiptDate: null
@@ -288,6 +295,7 @@ App.EgbilObjectDocumentModel = Em.Object.extend
   designation: null
   relatedType: null
   relatedSygnature: null
+  locals: null
 
   init: ->
     @type = App.StandardTableCellModel.create
@@ -310,6 +318,8 @@ App.EgbilObjectDocumentModel = Em.Object.extend
       label: "Sygnatura dokumentu związanego"
       viewClass: App.EgbilListTableCellButtonView
       valueType: "doc"
+    @locals = App.StandardTableCellModel.create
+      label: "Lokale"
 
 
 App.EgbilObjectShareModel = Em.Object.extend
@@ -370,6 +380,8 @@ App.EgbilObjectLotModel = Em.Object.extend
   check: null
   show: null
   marker: null
+  precinct: null
+  lotNumber: null
   g5: null
   registeredArea: null
   geodesicArea: null
@@ -385,6 +397,8 @@ App.EgbilObjectLotModel = Em.Object.extend
   value: null
   valuationDate: null
   remarks: null
+  notes: null
+  jrgNumber: null
 
   init: ->
     @_super()
@@ -399,6 +413,10 @@ App.EgbilObjectLotModel = Em.Object.extend
     @marker = App.StandardTableCellModel.create
       label: "Oznaczenie"
       viewClass: App.EgbilListTableCellMarkerView
+    @precinct = App.StandardTableCellModel.create
+      label: "Systematyka"
+    @lotNumber = App.StandardTableCellModel.create
+      label: "Numer"
     @g5 = App.StandardTableCellModel.create
       label: "Identyfikator G5"
       viewClass: App.EgbilListTableCellButtonView
@@ -436,6 +454,10 @@ App.EgbilObjectLotModel = Em.Object.extend
       label: "Data wyceny"
     @remarks = App.StandardTableCellModel.create
       label: "Uwagi"
+    @notes = App.StandardTableCellModel.create
+      label: "Notatki"
+    @jrgNumber = App.StandardTableCellModel.create
+      label: "JRG"
 
 
 App.EgbilObjectBuildingModel = Em.Object.extend
@@ -444,6 +466,9 @@ App.EgbilObjectBuildingModel = Em.Object.extend
   show: null
   marker: null
   g5: null
+  precinct: null
+  buildingNumber: null
+  jrgNumber: null
   jrbNumber: null
   documentsSygnature: null
   buildUpArea: null
@@ -453,19 +478,25 @@ App.EgbilObjectBuildingModel = Em.Object.extend
   classType: null
   highestLevel: null
   lowestLevel: null
+  numberOfLevels: null
   addresses: null
   lotNumber: null
   lotArea: null
+  lots: null
+  documents: null
   constructionFinishDate: null
+  constructionFinishDateCertainty: null
   reconstructionFinishDate: null
+  reconstructionFinishDateCertainty: null
   reconstructionScope: null
-  exterioWallsMaterial: null
+  exteriorWallsMaterial: null
   numberOfUnits: null
   monumentRegister: null
   cadastralValue: null
   valuationDate: null
   manyJRG: null
   remarks: null
+  notes: null
 
   init: ->
     @_super()
@@ -484,6 +515,12 @@ App.EgbilObjectBuildingModel = Em.Object.extend
       label: "Identyfikator G5"
       viewClass: App.EgbilListTableCellButtonView
       valueType: "g5"
+    @precinct = App.StandardTableCellModel.create
+      label: "Systematyka"
+    @buildingNumber = App.StandardTableCellModel.create
+      label: "Numer"
+    @jrgNumber = App.StandardTableCellModel.create
+      label: "JRG"
     @jrbNumber = App.StandardTableCellModel.create
       label: "JRB"
     @documentsSygnature = App.StandardTableCellModel.create
@@ -491,23 +528,31 @@ App.EgbilObjectBuildingModel = Em.Object.extend
       viewClass: App.EgbilListTableCellButtonView
       valueType: "doc"
     @buildUpArea = App.StandardTableCellModel.create
-      label: "Powierzchnia zabudowy"
+      label: "Powierzchnia zabudowy [m2]"
       help: "[m2]"
     @usableArea = App.StandardTableCellModel.create
-      label: "Powierzchnia użytkowa "
+      label: "Powierzchnia użytkowa [m2]"
       help: "[m2]"
     @status = App.StandardTableCellModel.create
-      label: "Status"
+      label: "Status budynku"
     @type = App.StandardTableCellModel.create
-      label: "Rodzaj"
+      label: "Rodzaj budynku"
     @classType = App.StandardTableCellModel.create
-      label: "Klasa"
+      label: "Klasa budynku"
     @highestLevel = App.StandardTableCellModel.create
       label: "Nr najwyższej kondygn."
     @lowestLevel = App.StandardTableCellModel.create
       label: "Nr najniższej kondygn."
+    @numberOfLevels = App.StandardTableCellModel.create
+      label: "Łączna liczba kondygnacji"
+    @lots = App.StandardTableCellModel.create
+      label: "Działki"
     @addresses = App.StandardTableCellModel.create
       label: "Adresy"
+    @documents = App.StandardTableCellModel.create
+      label: "Dokumenty"
+    @locals = App.StandardTableCellModel.create
+      label: "Lokale"
     @lotNumber = App.StandardTableCellModel.create
       label: "Działki/Numer"
       viewClass: App.EgbilListTableCellButtonView
@@ -516,11 +561,15 @@ App.EgbilObjectBuildingModel = Em.Object.extend
       label: "Działki/Powierzchnia ewidencyjna"
     @constructionFinishDate = App.StandardTableCellModel.create
       label: "Data zakończenia budowy"
+    @constructionFinishDateCertainty = App.StandardTableCellModel.create
+      label: "Pewność daty zakończenia budowy"
     @reconstructionFinishDate = App.StandardTableCellModel.create
       label: "Data zakończenia przebudowy"
+    @reconstructionFinishDateCertainty = App.StandardTableCellModel.create
+      label: "Pewność daty zakończenia przebudowy"
     @reconstructionScope = App.StandardTableCellModel.create
       label: "Zakres przebudowy"
-    @exterioWallsMaterial = App.StandardTableCellModel.create
+    @exteriorWallsMaterial = App.StandardTableCellModel.create
       label: "Materiał ścian zewnętrznych"
     @numberOfUnits = App.StandardTableCellModel.create
       label: "Liczba wszystkich lokali"
@@ -534,7 +583,30 @@ App.EgbilObjectBuildingModel = Em.Object.extend
       label: "Wiele JRG"
     @remarks = App.StandardTableCellModel.create
       label: "Uwagi"
+    @notes = App.StandardTableCellModel.create
+      label: "Notatki"
 
+
+App.EgbilObjectRightModel = Em.Object.extend
+  entity: null
+  address: null
+  landShares: null
+  buildingShares: null
+  localShares: null
+
+  init: ->
+    @entity = App.StandardTableCellModel.create
+      label: "Podmiot"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "entity"
+    @address = App.StandardTableCellModel.create
+      label: "Adres"
+    @landShares = App.StandardTableCellModel.create
+      label: "Udział w gruncie"
+    @buildingShares = App.StandardTableCellModel.create
+      label: "Udział w budynku"
+    @localShares = App.StandardTableCellModel.create
+      label: "Udział w lokalu"
 
 App.EgbilObjectLocalModel = Em.Object.extend
   isCheckedBinding: "check.value"
@@ -542,11 +614,15 @@ App.EgbilObjectLocalModel = Em.Object.extend
   show: null
   marker: null
   g5: null
+  precinct: null
+  number: null
+  jrgNumber: null
   jrlNumber: null
   address: null
   documentsSygnature: null
   usableArea: null
-  localType: null
+  type: null
+  level: null
   associatedPremisesBuilding: null
   associatedPremisesType: null
   associatedPremisesArea: null
@@ -556,9 +632,11 @@ App.EgbilObjectLocalModel = Em.Object.extend
   commonPropertyShare: null
   lot: null
   building: null
+  documents: null
   cadastralValue: null
   valuationDate: null
   remarks: null
+  notes: null
 
   init: ->
     @_super()
@@ -577,12 +655,22 @@ App.EgbilObjectLocalModel = Em.Object.extend
       label: "Identyfikator G5"
       viewClass: App.EgbilListTableCellButtonView
       valueType: "g5"
+    @precinct = App.StandardTableCellModel.create
+      label: "Systematyka"
+    @number = App.StandardTableCellModel.create
+      label: "Numer ewidencyjny"
+    @jrgNumber = App.StandardTableCellModel.create
+      label: "JRG"
+      viewClass: App.EgbilListTableCellButtonView
+      valueType: "jrg"
     @jrlNumber = App.StandardTableCellModel.create
       label: "JRL"
       viewClass: App.EgbilListTableCellButtonView
       valueType: "jrl"
     @address = App.StandardTableCellModel.create
       label: "Adres"
+    @level = App.StandardTableCellModel.create
+      label: "Kondygnacja"
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
@@ -590,7 +678,7 @@ App.EgbilObjectLocalModel = Em.Object.extend
     @usableArea = App.StandardTableCellModel.create
       label: "Powierzchnia użytkowa "
       help: "[m2]"
-    @localType = App.StandardTableCellModel.create
+    @type = App.StandardTableCellModel.create
       label: "Typ lokalu"
     @associatedPremisesBuilding = App.StandardTableCellModel.create
       label: "Pomieszczenia przynależne/Budynek"
@@ -619,12 +707,16 @@ App.EgbilObjectLocalModel = Em.Object.extend
       label: "Budynek"
       viewClass: App.EgbilListTableCellButtonView
       valueType: "building"
+    @documents = App.StandardTableCellModel.create
+      label: "Dokumenty"
     @cadastralValue = App.StandardTableCellModel.create
       label: "Wartość katastralna"
     @valuationDate = App.StandardTableCellModel.create
       label: "Data wyceny"
     @remarks = App.StandardTableCellModel.create
       label: "Uwagi"
+    @notes = App.StandardTableCellModel.create
+      label: "Notatki"
 
 App.EgbilObjectChangeModel = Em.Object.extend
   isCheckedBinding: "check.value"

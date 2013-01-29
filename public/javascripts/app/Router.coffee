@@ -186,6 +186,14 @@ App.Router = Em.Router.extend
           route: "/lot/:name"
           objectOutletName: "egbilObjectLot"
 
+        building: RouteWithObjectParam.extend
+          route: "/building/:name"
+          objectOutletName: "egbilObjectBuilding"
+
+        local: RouteWithObjectParam.extend
+          route: "/local/:name"
+          objectOutletName: "egbilObjectLocal"
+
         person: RouteWithObjectParam.extend
           route: "/person/:name"
           objectOutletName: "egbilObjectPerson"
