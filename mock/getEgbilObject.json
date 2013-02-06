@@ -16,6 +16,66 @@
     "remarks" : "E",
     "notes" : "R"
   },
+  "lot":{
+    "precinct": "systematyka",
+    "lotNumber" : "ZAQ!@WSX",
+    "registeredArea" : "23",
+    "geodesicArea" : "24",
+    "monumentRegister" : "T",
+    "statisticalRegion" : "Y",
+    "listDistrict" : "U",
+    "validFrom" : "A",
+    "validTo" : "S",
+    "remarks" : "I",
+    "notes": "9",
+    "jrgNumber": "G163",
+    "addresses" : [
+        "adres1","adres2"
+    ]
+  },
+  "building": {
+    "precinct": "systematyka",
+    "buildingNumber" : "ZAQ!@WSX",
+    "buildUpArea" : "23",
+    "usableArea" : "24",
+    "status" : "wybudowany",
+    "type" : "mieszkalny",
+    "classType" : "budynek o dwóch mieszkaniach",
+    "highestLevel" : "3",
+    "lowestLevel" : "1",
+    "numberOfLevels" : "3",
+    "constructionFinishDate" : "02-02-2002",
+    "constructionFinishDateCertainty" : "data wynika z dokumentu",
+    "reconstructionFinishDate" : "03-03-2003",
+    "reconstructionFinishDateCertainty" : "data wynika z dokumentu",
+    "reconstructionScope" : "Y",
+    "exteriorWallsMaterial" : "U",
+    "monumentRegister" : "I",
+    "manyJRG" : "nie",
+    "remarks" : "I",
+    "notes": "9",
+    "jrgNumber": "G163",
+    "jrbNumber": "B70",
+    "addresses" : [
+      "adres1","adres2"
+    ]
+  },
+  "local": {
+    "precinct": "systematyka",
+    "number" : "ZAQ!@WSX",
+    "lot" : "23",
+    "building" : "23",
+    "usableArea" : "24",
+    "type" : "E",
+    "roomsNumber" : "3",
+    "address" : "I",
+    "level" : "3",
+    "commonPropertyShare" : "O",
+    "remarks" : "I",
+    "notes": "9",
+    "jrgNumber": "q",
+    "jrlNumber": "w"
+  },
   "person": {
     "pesel": "1",
     "surname": "2",
@@ -114,9 +174,11 @@
     {
       "marker" : "!",
       "g5" : "ZAQ!@WSX",
+      "precinct": "systematyka",
+      "lotNumber": "numer",
       "registeredArea" : "23",
       "geodesicArea" : "24",
-      "addresses" : "Q",
+      "addresses" : ["Q"],
       "documentsSygnature" : "W",
       "terrainCategoryType" : "E",
       "terrainCategoryArea" : "R",
@@ -132,9 +194,11 @@
     {
       "marker" : "!2",
       "g5" : "ZAQ!@WSX2",
+      "precinct": "systematyka",
+      "lotNumber": "numer",
       "registeredArea" : "232",
       "geodesicArea" : "242",
-      "addresses" : "Q2",
+      "addresses" : ["Q2"],
       "documentsSygnature" : "W2",
       "terrainCategoryType" : "E2",
       "terrainCategoryArea" : "R2",
@@ -152,6 +216,7 @@
     {
       "marker" : "@",
       "g5" : "CDE#$RFV",
+      "buildingNumber" : "145.1",
       "jrbNumber" : "B123",
       "documentsSygnature" : "Q",
       "buildUpArea" : "23",
@@ -161,13 +226,15 @@
       "classType" : "R",
       "highestLevel" : "3",
       "lowestLevel" : "1",
-      "addresses" : "T",
+      "addresses" : [
+        "adres1","adres2"
+      ],
       "lotNumber" : "4",
       "lotArea" : "34",
       "constructionFinishDate" : "02-02-2002",
       "reconstructionFinishDate" : "03-03-2003",
       "reconstructionScope" : "Y",
-      "exterioWallsMaterial" : "U",
+      "exteriorWallsMaterial" : "U",
       "numberOfUnits" : "12",
       "monumentRegister" : "I",
       "cadastralValue" : "345",
@@ -178,6 +245,7 @@
     {
       "marker" : "@2",
       "g5" : "CDE#$RFV2",
+      "buildingNumber" : "145.2",
       "jrbNumber" : "B1232",
       "documentsSygnature" : "Q2",
       "buildUpArea" : "232",
@@ -187,13 +255,15 @@
       "classType" : "R2",
       "highestLevel" : "32",
       "lowestLevel" : "12",
-      "addresses" : "T2",
+      "addresses" : [
+        "adres1","adres2"
+      ],
       "lotNumber" : "42",
       "lotArea" : "342",
       "constructionFinishDate" : "02-02-20022",
       "reconstructionFinishDate" : "03-03-20032",
       "reconstructionScope" : "Y2",
-      "exterioWallsMaterial" : "U2",
+      "exteriorWallsMaterial" : "U2",
       "numberOfUnits" : "122",
       "monumentRegister" : "I2",
       "cadastralValue" : "3452",
@@ -202,15 +272,25 @@
       "remarks" : "P2"
     }
   ],
+  "rights":[
+    {
+      "entity" : "Q",
+      "address" : "W",
+      "landShares" : "L",
+      "buildingShares" : "B",
+      "localShares" : "S"
+    }
+  ],
   "locals":[
     {
       "marker" : "!2",
       "g5" : "ZAQ!@WSX2",
+      "number" : "1",
       "jrlNumber" : "L1232",
       "address" : "Q2",
       "documentsSygnature" : "W2",
       "usableArea" : "542",
-      "localType" : "R2",
+      "type" : "R2",
       "associatedPremisesBuilding" : "T2",
       "associatedPremisesType" : "Y2",
       "associatedPremisesArea" : "U2",
@@ -227,6 +307,7 @@
     {
       "marker" : "!",
       "g5" : "ZAQ!@WSX",
+      "number" : "1",
       "jrlNumber" : "L123",
       "address" : "Q",
       "documentsSygnature" : "W",
@@ -294,6 +375,43 @@
     "type" : "R2",
     "status" : "T2",
     "description" : "Y2"
+    }
+  ],
+  "documents":[
+    {
+    "type" : "1-Księga wieczysta",
+    "sygnature": "25476"
+    },
+    {
+    "type" : "1-Księga wieczysta",
+    "sygnature": "25477"
+    }
+  ],
+  "useClasses":[
+    {
+    "type" : "B",
+    "area" : "0.0400"
+    },
+    {
+    "type" : "Bi",
+    "area" : "0.0300"
+    }
+  ],
+  "premises":[
+    {
+    "building" : "",
+    "type" : "pomieszczenie gospodarcze",
+    "area" : "23.7"
+    },
+    {
+    "building" : "",
+    "type" : "komórka",
+    "area" : "6.63"
+    },
+    {
+    "building" : "145.2",
+    "type" : "garaż",
+    "area" : "17.1"
     }
   ]
 }

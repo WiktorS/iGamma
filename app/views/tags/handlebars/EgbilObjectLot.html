@@ -1,4 +1,18 @@
 <script type="text/x-handlebars" data-template-name="egbilObjectLot">
+  <div>
+    {{view App.ModelValueTableView contentBinding="controller.content.lot" columnsBinding="controller.lotColumns"}}
+  </div>
+  <div>
+    {{view App.ModelValueTableView contentBinding="controller.content.lot" columnsBinding="controller.lotColumns1"}}
+    Dokumenty
+    {{view App.ModelTableView contentBinding="controller.content.documents" columnsBinding="controller.documentColumns"}}
+  </div>
+  <div>
+    Klasoużytki
+    {{view App.ModelTableView contentBinding="controller.content.useClasses" columnsBinding="controller.useClassColumns"}}
+    Budynki
+    {{view App.ModelTableView contentBinding="controller.content.buildings" columnsBinding="controller.buildingColumns"}}
+  </div>
   <div class="accordion">
     {{#view classNames="accordion-group"}}
     {{view App.AccordionHeaderView label="Udziały"}}
