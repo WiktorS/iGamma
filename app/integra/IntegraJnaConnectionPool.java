@@ -42,6 +42,18 @@ public class IntegraJnaConnectionPool {
     public IntegraJnaConnectionPool() {
     }
 
+    @Override
+    protected void finalize() throws Throwable
+    {
+        try {
+            //This is naive, but it might free resources in some cases
+            FreeConnections();
+        }
+        finally {
+            super.finalize();    
+        }
+    }
+
     public void FreeConnections() {
         synchronized (connectionPool) {
             for (IntegraJnaConnection connection : connectionPool) {
