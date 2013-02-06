@@ -35,6 +35,7 @@ App.EgbilListModel = Em.Object.extend
   lots: null
   buildings: null
   locals: null
+  documents: null
   changes: null
 
   jrgNumberJrgib: ( ->
@@ -104,7 +105,7 @@ App.EgbilListModel = Em.Object.extend
     @buildingNumber = App.StandardTableCellModel.create
       label: "Numer budynku"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "build_number"
+      valueType: "building"
     @finishYear = App.StandardTableCellModel.create
       label: "Rok zakończenia budowy"
     @type = App.StandardTableCellModel.create
@@ -116,7 +117,7 @@ App.EgbilListModel = Em.Object.extend
     @localNumber = App.StandardTableCellModel.create
       label: "Numer ewidencyjny"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "evid_number"
+      valueType: "local"
     @surnameAndNames = App.StandardTableCellModel.create
       label: "Nazwisko i imiona"
       viewClass: App.EgbilListTableCellButtonView
@@ -152,5 +153,7 @@ App.EgbilListModel = Em.Object.extend
       label: "Budynki"
     @locals = App.StandardTableCellModel.create
       label: "Lokale"
+    @documents = App.StandardTableCellModel.create
+      label: "Dokumenty"
     @changes = App.StandardTableCellModel.create
       label: "Zmiany"

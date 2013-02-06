@@ -1,0 +1,20 @@
+<script type="text/x-handlebars" data-template-name="egbilObjectLocal">
+  <div>
+    {{view App.ModelValueTableView contentBinding="controller.content.local" columnsBinding="controller.localColumns"}}
+  </div>
+  <div>
+    {{view App.ModelValueTableView contentBinding="controller.content.local" columnsBinding="controller.localColumns1"}}
+    Dokumenty
+    {{view App.ModelTableView contentBinding="controller.content.documents" columnsBinding="controller.documentColumns"}}
+  </div>
+  <div>
+    Pomieszczenia przynależne
+    {{view App.ModelTableView contentBinding="controller.content.premises" columnsBinding="controller.premiseColumns"}}
+  </div>
+  <div class="accordion">
+    {{#view classNames="accordion-group"}}
+    {{view App.AccordionHeaderView label="Prawa związane"}}
+    {{view App.AccordionBodyView contentBinding="controller.content.rights" columnsBinding="controller.rightColumns"}}
+    {{/view}}
+  </div>
+</script>

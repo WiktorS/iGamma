@@ -136,13 +136,20 @@ App.EgbilController = Em.Controller.extend
             content.landCommunity = App.Common.toModel.call(App.EgbilObjectLandCommunityModel, data.landCommunity)
             content.document = App.Common.toModel.call(App.EgbilObjectDocumentModel, data.document)
             content.registerUnit = App.Common.toModel.call(App.EgbilObjectRegisterUnitModel, data.registerUnit)
+            content.lot =  App.Common.toModel.call(App.EgbilObjectLotModel, data.lot)
+            content.building =  App.Common.toModel.call(App.EgbilObjectBuildingModel, data.building)
+            content.local =  App.Common.toModel.call(App.EgbilObjectLocalModel, data.local)
             content.shares = data.shares.map(App.Common.toModel, App.EgbilObjectShareModel)
             content.lots = data.lots.map(App.Common.toModel, App.EgbilObjectLotModel)
             content.buildings = data.buildings.map(App.Common.toModel, App.EgbilObjectBuildingModel)
+            content.rights = data.rights.map(App.Common.toModel, App.EgbilObjectRightModel)
             content.locals = data.locals.map(App.Common.toModel, App.EgbilObjectLocalModel)
             content.landCommunities = data.landCommunities.map(App.Common.toModel, App.EgbilObjectLandCommunityModel)
             content.members = data.members.map(App.Common.toModel, App.EgbilObjectMemberModel)
             content.changes = data.changes.map(App.Common.toModel, App.EgbilObjectChangeModel)
+            content.documents = data.documents.map(App.Common.toModel, App.EgbilObjectDocumentModel)
+            content.useClasses = data.useClasses.map(App.Common.toModel, App.EgbilObjectUseClassModel)
+            content.premises = data.premises.map(App.Common.toModel, App.EgbilObjectPremiseModel)
             object = Em.Object.create content,
               objectType: objectType
               objectName: objectName

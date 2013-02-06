@@ -4,4 +4,4 @@ App.EgbilObjectLandCommunityController = Em.Controller.extend
   landCommunityColumns:
     ["name", "status", "address", "landCommunity", "remarks", "notes"]
   memberColumns:
-    ["show", "marker", "type", "surnameAndNames", "address", "pesel", "nip"]
+    ["check", "marker", "type", "surnameAndNames", "address", "pesel", "nip"]
