@@ -42,8 +42,8 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
-    public static void getBuildings(String type, QueryEntry[] query) throws Exception {
-        List<Building> result = integra.getBuildings(query);
+    public static void getBuildings(long idList[]) throws Exception {
+        List<Building> result = integra.getBuildings(idList);
         renderJSON(result);
     }
 

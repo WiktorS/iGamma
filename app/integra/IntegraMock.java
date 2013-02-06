@@ -65,10 +65,17 @@ public class IntegraMock implements Integra {
     }
 
     private String queryEntryListToString(QueryEntry[] queryEntryList) {
-        StringBuilder sb = new StringBuilder();
-        String loopDelim = "";
         if (queryEntryList != null)
         {
+            StringBuilder sb = new StringBuilder();
+            String loopDelim = "";
+            //Sort by params by name to preserve order
+            Arrays.sort(queryEntryList, new Comparator<QueryEntry>() {
+                @Override
+                public int compare(QueryEntry o1, QueryEntry o2) {
+                    return o1.name.compareTo(o2.name);
+                }
+            });
             for (QueryEntry entry : queryEntryList){
                 if (entry != null)
                 {
@@ -77,8 +84,9 @@ public class IntegraMock implements Integra {
                     loopDelim = "_";
                 }
             }
+            return sb.toString();
         }
-        return sb.toString();
+        return null;
     }
 
 
@@ -95,9 +103,10 @@ public class IntegraMock implements Integra {
     }
 
     @Override
-    public List<Building> getBuildings(QueryEntry[] queryEntryList) {
+    public List<Building> getBuildings(long idList[]) throws Exception {
         TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
-        return getMockJsonData("getBuildings", typeToken, queryEntryListToString(queryEntryList));
+        Arrays.sort(idList);
+        return getMockJsonData("getBuildings", typeToken, Arrays.toString(idList));
     }
 
     @Override
@@ -168,6 +177,7 @@ public class IntegraMock implements Integra {
 
     @Override
     public List<Long> findObjects(String queryName, QueryEntry[] queryEntryList) throws Exception {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        TypeToken<List<Long>> typeToken = new TypeToken<List<Long>>() {};
+        return getMockJsonData("findObjects", typeToken, queryName, queryEntryListToString(queryEntryList));
     }
 }

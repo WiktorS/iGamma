@@ -9,7 +9,7 @@ public interface Integra {
 
     List<RegisterUnit> getRegisterUnits(String type) throws Exception;
     List<Lot> getLotsByNumber(String number) throws Exception;
-    List<Building> getBuildings(QueryEntry[] queryEntryList) throws Exception;
+    List<Building> getBuildings(long idList[]) throws Exception;
     List<Local> getLocalByNumber(String numberL) throws Exception;
     List<Person> getPersonByPesel(String pesel) throws Exception;
     List<Institution> getInstitutionByNip(String nip) throws Exception;

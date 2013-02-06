@@ -2,14 +2,13 @@ package integra;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
+import integra.jna.IGAMMA_BUILDING;
 import integra.jna.IGAMMA_QUERYENTRY;
-import integra.jna.IGAMMA_QUERYRESULTS;
 import integra.jna.IGAMMA_SYSTEMATIC;
 import integra.jna.IGammaJNALibrary;
 import integra.models.*;
 
 import java.nio.IntBuffer;
-import java.nio.LongBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +18,6 @@ public class IntegraJnaImplementation implements Integra {
     public IntegraJnaImplementation()
     {
         integraJnaConnectionPool = new IntegraJnaConnectionPool();
-        //shutdown hook to cleanup integra connections
-        IntegraJnaImplementationShutdownHook shutdownHook = new IntegraJnaImplementationShutdownHook();
-        shutdownHook.integraJnaConnectionPool = integraJnaConnectionPool;
-        Runtime.getRuntime().addShutdownHook(shutdownHook);
     }
 
     @Override
@@ -36,48 +31,46 @@ public class IntegraJnaImplementation implements Integra {
     }
 
     @Override
-    public List<Building> getBuildings(QueryEntry[] queryEntryList) throws Exception {
+    public List<Building> getBuildings(final long idList[]) throws Exception {
         final List<Building> list = new ArrayList<Building>();
-//        IGAMMA_QUERYENTRY jnaQueryEntry = new IGAMMA_QUERYENTRY();
-//        final IGAMMA_QUERYENTRY[] jnaQueryEntryList = (IGAMMA_QUERYENTRY[])jnaQueryEntry.toArray(queryEntryList.length);//new IGAMMA_QUERYENTRY.ByValue[queryEntryList.size()];
-//        for (int i = 0; i < queryEntryList.length; i++)
-//        {
-//            jnaQueryEntryList[i].iSize = jnaQueryEntryList[i].size();
-//            if (queryEntryList[i] != null)
-//            {
-//                jnaQueryEntryList[i].szName = IntegraJna.StringToAnsiPsz(queryEntryList[i].name);
-//                jnaQueryEntryList[i].szValue = IntegraJna.StringToAnsiPsz(queryEntryList[i].value);
-//            }
-//        }
-//
-//        new IntegraJnaConnectionWorker(integraJnaConnectionPool) {
-//            @Override
-//            public void run(Pointer integraConnectionPtr) throws Exception {
-//                PointerByReference resultListRef = new PointerByReference();
-//                final IntBuffer resultCountBuffer = IntBuffer.allocate(1);
-//                int err = IGammaJNALibrary.iGammaJnaFindObjects(integraConnectionPtr, "6. 2 Budynek na punktach graficznych", jnaQueryEntryList[0], jnaQueryEntryList.length, resultListRef, resultCountBuffer);
-//                if (err == 0) {
-//                    int length = resultCountBuffer.get(0);
-//                    if (length > 0) {
-//                        try {
-//                            IGAMMA_QUERYRESULTS[] resultList = (IGAMMA_QUERYRESULTS[]) new IGAMMA_QUERYRESULTS(resultListRef.getValue()).toArray(length);
-//                            for (IGAMMA_QUERYRESULTS result : resultList) {
-//                                if (result.iSize != result.size())
-//                                    throw new Exception("Nie poprawny rozmiar struktury wyników");
-//                                Systematic item = new Systematic();
-//                                item.parentId = systematic.uiParentId;
-//                                item.id = systematic.uiId;
-//                                item.name = IntegraJna.AnsiPszToString(systematic.szName);
-//                                item.desc = IntegraJna.AnsiPszToString(systematic.szDesc);
-//                                list.add(item);
-//                            }
-//                        } finally {
-//                            IGammaJNALibrary.iGammaJnaFree(resultListRef.getValue());
-//                        }
-//                    }
-//                }
-//            }
-//        };
+
+        if (idList == null || idList.length == 0)
+            throw new Exception("Parameters expected");
+
+        new IntegraJnaConnectionWorker(integraJnaConnectionPool) {
+            @Override
+            public void run(Pointer integraConnectionPtr) throws Exception {
+                PointerByReference resultListRef = new PointerByReference();
+                final IntBuffer resultCountBuffer = IntBuffer.allocate(1);
+                int err = IGammaJNALibrary.iGammaJnaGetBuildingsData(integraConnectionPtr, idList, idList.length, resultListRef, resultCountBuffer);
+                if (err == 0) {
+                    int length = resultCountBuffer.get(0);
+                    if (length > 0) {
+                        try {
+                            IGAMMA_BUILDING[] buildingList = (IGAMMA_BUILDING[]) new IGAMMA_BUILDING(resultListRef.getValue()).toArray(length);
+                            for (IGAMMA_BUILDING building : buildingList) {
+                                if (building.iSize != building.size())
+                                    throw new Exception("Nie poprawny rozmiar struktury budynków");
+                                Building item = new Building();
+                                item.id = building.iID;
+                                item.buildingNumber = IntegraJna.AnsiPszToString(building.buildingNumber);
+                                item.lotNumber = IntegraJna.AnsiPszToString(building.lotNumber);
+                                item.jrgNumber = IntegraJna.AnsiPszToString(building.jrgNumber);
+                                item.jrbNumber = IntegraJna.AnsiPszToString(building.jrbNumber);
+                                item.precinct = IntegraJna.AnsiPszToString(building.precinct);
+                                item.cadastralUnit = IntegraJna.AnsiPszToString(building.cadastralUnit);
+                                item.finishYear = IntegraJna.AnsiPszToString(building.finishYear);
+                                item.type = IntegraJna.AnsiPszToString(building.type);
+                                item.buildUpArea = IntegraJna.AnsiPszToString(building.buildUpArea);
+                                list.add(item);
+                            }
+                        } finally {
+                            IGammaJNALibrary.iGammaJnaFree(resultListRef.getValue());
+                        }
+                    }
+                }
+            }
+        };
         return list;
     }
 
@@ -117,25 +110,16 @@ public class IntegraJnaImplementation implements Integra {
     }
 
     @Override
-    public List<Systematic> getSystematics(long[] parentIdList) throws Exception {
+    public List<Systematic> getSystematics(final long[] parentIdList) throws Exception {
         final List<Systematic> list = new ArrayList<Systematic>();
         final IntBuffer lengthBuffer = IntBuffer.allocate(1);
-        final LongBuffer parentIdListBuffer;
-        final int parentIdListLength;
-        if (parentIdList != null) {
-            parentIdListBuffer = LongBuffer.wrap(parentIdList);
-            parentIdListLength = parentIdList.length;
-        }
-        else {
-            parentIdListBuffer = null;
-            parentIdListLength = 0;
-        }
+        final int parentIdListLength = parentIdList != null ? parentIdList.length : 0;
 
         new IntegraJnaConnectionWorker(integraJnaConnectionPool) {
             @Override
             public void run(Pointer integraConnectionPtr) throws Exception {
                 PointerByReference systematicListRef = new PointerByReference();
-                int err = IGammaJNALibrary.iGammaJnaGetSystematicList(integraConnectionPtr, parentIdListBuffer, parentIdListLength, systematicListRef, lengthBuffer);
+                int err = IGammaJNALibrary.iGammaJnaGetSystematicsData(integraConnectionPtr, parentIdList, parentIdListLength, systematicListRef, lengthBuffer);
                 if (err == 0) {
                     int length = lengthBuffer.get(0);
                     if (length > 0) {
@@ -212,11 +196,10 @@ public class IntegraJnaImplementation implements Integra {
                     int length = resultCountBuffer.get(0);
                     if (length > 0) {
                         try {
-                            IGAMMA_QUERYRESULTS[] resultList = (IGAMMA_QUERYRESULTS[]) new IGAMMA_QUERYRESULTS(resultListRef.getValue()).toArray(length);
-                            for (IGAMMA_QUERYRESULTS result : resultList) {
-                                if (result.iSize != result.size())
-                                    throw new Exception("Nie poprawny rozmiar struktury wyników");
-                                list.add(result.iObjectID);
+                            long[] resultList = resultListRef.getValue().getLongArray(0, length);
+                            //TODO: Since we know the length of resultList wh could force list to allocate needed amount of memory, but how?
+                            for (long objectID : resultList) {
+                                list.add(objectID);
                             }
                         } finally {
                             IGammaJNALibrary.iGammaJnaFree(resultListRef.getValue());
