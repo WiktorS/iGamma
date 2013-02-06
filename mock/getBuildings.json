@@ -28,5 +28,381 @@
   {
     "id"  : 5,
     "buildingNumber" : "B5"
+  },
+  {
+    "id"  : 6,
+    "buildingNumber" : "B6"
+  },
+  {
+    "id"  : 7,
+    "buildingNumber" : "B7"
+  },
+  {
+    "id"  : 8,
+    "buildingNumber" : "B8"
+  },
+  {
+    "id"  : 9,
+    "buildingNumber" : "B9"
+  },
+  {
+    "id"  : 10,
+    "buildingNumber" : "B10"
+  },
+  {
+    "id"  : 11,
+    "buildingNumber" : "B11"
+  },
+  {
+    "id"  : 12,
+    "buildingNumber" : "B12"
+  },
+  {
+    "id"  : 13,
+    "buildingNumber" : "B13"
+  },
+  {
+    "id"  : 14,
+    "buildingNumber" : "B14"
+  },
+  {
+    "id"  : 15,
+    "buildingNumber" : "B15"
+  },
+  {
+    "id"  : 16,
+    "buildingNumber" : "B16"
+  },
+  {
+    "id"  : 17,
+    "buildingNumber" : "B17"
+  },
+  {
+    "id"  : 18,
+    "buildingNumber" : "B18"
+  },
+  {
+    "id"  : 19,
+    "buildingNumber" : "B19"
+  },
+  {
+    "id"  : 20,
+    "buildingNumber" : "B20"
+  },
+  {
+    "id"  : 21,
+    "buildingNumber" : "B21"
+  },
+  {
+    "id"  : 22,
+    "buildingNumber" : "B22"
+  },
+  {
+    "id"  : 23,
+    "buildingNumber" : "B23"
+  },
+  {
+    "id"  : 24,
+    "buildingNumber" : "B24"
+  },
+  {
+    "id"  : 25,
+    "buildingNumber" : "B25"
+  },
+  {
+    "id"  : 26,
+    "buildingNumber" : "B26"
+  },
+  {
+    "id"  : 27,
+    "buildingNumber" : "B27"
+  },
+  {
+    "id"  : 28,
+    "buildingNumber" : "B28"
+  },
+  {
+    "id"  : 29,
+    "buildingNumber" : "B29"
+  },
+  {
+    "id"  : 30,
+    "buildingNumber" : "B30"
+  },
+  {
+    "id"  : 31,
+    "buildingNumber" : "B31"
+  },
+  {
+    "id"  : 32,
+    "buildingNumber" : "B32"
+  },
+  {
+    "id"  : 33,
+    "buildingNumber" : "B33"
+  },
+  {
+    "id"  : 34,
+    "buildingNumber" : "B34"
+  },
+  {
+    "id"  : 35,
+    "buildingNumber" : "B35"
+  },
+  {
+    "id"  : 36,
+    "buildingNumber" : "B36"
+  },
+  {
+    "id"  : 37,
+    "buildingNumber" : "B37"
+  },
+  {
+    "id"  : 38,
+    "buildingNumber" : "B38"
+  },
+  {
+    "id"  : 39,
+    "buildingNumber" : "B39"
+  },
+  {
+    "id"  : 40,
+    "buildingNumber" : "B40"
+  },
+  {
+    "id"  : 41,
+    "buildingNumber" : "B41"
+  },
+  {
+    "id"  : 42,
+    "buildingNumber" : "B42"
+  },
+  {
+    "id"  : 43,
+    "buildingNumber" : "B43"
+  },
+  {
+    "id"  : 44,
+    "buildingNumber" : "B44"
+  },
+  {
+    "id"  : 45,
+    "buildingNumber" : "B45"
+  },
+  {
+    "id"  : 46,
+    "buildingNumber" : "B46"
+  },
+  {
+    "id"  : 47,
+    "buildingNumber" : "B47"
+  },
+  {
+    "id"  : 48,
+    "buildingNumber" : "B48"
+  },
+  {
+    "id"  : 49,
+    "buildingNumber" : "B49"
+  },
+  {
+    "id"  : 50,
+    "buildingNumber" : "B50"
+  },
+  {
+    "id"  : 51,
+    "buildingNumber" : "B51"
+  },
+  {
+    "id"  : 52,
+    "buildingNumber" : "B52"
+  },
+  {
+    "id"  : 53,
+    "buildingNumber" : "B53"
+  },
+  {
+    "id"  : 54,
+    "buildingNumber" : "B54"
+  },
+  {
+    "id"  : 55,
+    "buildingNumber" : "B55"
+  },
+  {
+    "id"  : 56,
+    "buildingNumber" : "B56"
+  },
+  {
+    "id"  : 57,
+    "buildingNumber" : "B57"
+  },
+  {
+    "id"  : 58,
+    "buildingNumber" : "B58"
+  },
+  {
+    "id"  : 59,
+    "buildingNumber" : "B59"
+  },
+  {
+    "id"  : 60,
+    "buildingNumber" : "B60"
+  },
+  {
+    "id"  : 61,
+    "buildingNumber" : "B61"
+  },
+  {
+    "id"  : 62,
+    "buildingNumber" : "B62"
+  },
+  {
+    "id"  : 63,
+    "buildingNumber" : "B63"
+  },
+  {
+    "id"  : 64,
+    "buildingNumber" : "B64"
+  },
+  {
+    "id"  : 65,
+    "buildingNumber" : "B65"
+  },
+  {
+    "id"  : 66,
+    "buildingNumber" : "B66"
+  },
+  {
+    "id"  : 67,
+    "buildingNumber" : "B67"
+  },
+  {
+    "id"  : 68,
+    "buildingNumber" : "B68"
+  },
+  {
+    "id"  : 69,
+    "buildingNumber" : "B69"
+  },
+  {
+    "id"  : 70,
+    "buildingNumber" : "B70"
+  },
+  {
+    "id"  : 71,
+    "buildingNumber" : "B71"
+  },
+  {
+    "id"  : 72,
+    "buildingNumber" : "B72"
+  },
+  {
+    "id"  : 73,
+    "buildingNumber" : "B73"
+  },
+  {
+    "id"  : 74,
+    "buildingNumber" : "B74"
+  },
+  {
+    "id"  : 75,
+    "buildingNumber" : "B75"
+  },
+  {
+    "id"  : 76,
+    "buildingNumber" : "B76"
+  },
+  {
+    "id"  : 77,
+    "buildingNumber" : "B77"
+  },
+  {
+    "id"  : 78,
+    "buildingNumber" : "B78"
+  },
+  {
+    "id"  : 79,
+    "buildingNumber" : "B79"
+  },
+  {
+    "id"  : 80,
+    "buildingNumber" : "B80"
+  },
+  {
+    "id"  : 81,
+    "buildingNumber" : "B81"
+  },
+  {
+    "id"  : 82,
+    "buildingNumber" : "B82"
+  },
+  {
+    "id"  : 83,
+    "buildingNumber" : "B83"
+  },
+  {
+    "id"  : 84,
+    "buildingNumber" : "B84"
+  },
+  {
+    "id"  : 85,
+    "buildingNumber" : "B85"
+  },
+  {
+    "id"  : 86,
+    "buildingNumber" : "B86"
+  },
+  {
+    "id"  : 87,
+    "buildingNumber" : "B87"
+  },
+  {
+    "id"  : 88,
+    "buildingNumber" : "B88"
+  },
+  {
+    "id"  : 89,
+    "buildingNumber" : "B89"
+  },
+  {
+    "id"  : 90,
+    "buildingNumber" : "B90"
+  },
+  {
+    "id"  : 91,
+    "buildingNumber" : "B91"
+  },
+  {
+    "id"  : 92,
+    "buildingNumber" : "B92"
+  },
+  {
+    "id"  : 93,
+    "buildingNumber" : "B93"
+  },
+  {
+    "id"  : 94,
+    "buildingNumber" : "B94"
+  },
+  {
+    "id"  : 95,
+    "buildingNumber" : "B95"
+  },
+  {
+    "id"  : 96,
+    "buildingNumber" : "B96"
+  },
+  {
+    "id"  : 97,
+    "buildingNumber" : "B97"
+  },
+  {
+    "id"  : 98,
+    "buildingNumber" : "B98"
+  },
+  {
+    "id"  : 99,
+    "buildingNumber" : "B99"
   }
 ]
