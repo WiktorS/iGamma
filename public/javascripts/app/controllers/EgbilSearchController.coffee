@@ -29,9 +29,14 @@ App.EgbilSearchController = Em.Controller.extend
         queryName: @get "queryName"
         queryArgs: searchArgs
       success: (data) =>
-        if data?
+        if Em.isArray data
           @set "target.egbilListController.type", @get("type")
-          @set "target.egbilListController.content", Em.A(data.map(App.Common.toModel, App.EgbilListModel))
+          list = Em.A(data.map(App.Common.toModel, App.EgbilListModel))
+          #set all rows to IDLE state with just ID
+          for own k,v of data
+            list.set "#{k}.id", v
+            list.set "#{k}.rowState", App.RowState.IDLE
+          @set "target.egbilListController.content", list
           @get("target").send "goToList"
         else
           alert "Brak wyników" #TODO: error handling

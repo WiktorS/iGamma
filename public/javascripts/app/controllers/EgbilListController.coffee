@@ -38,6 +38,51 @@ App.EgbilListController = Em.ArrayController.extend
     local: "Lokale"
     lot: "Działki"
 
+  fetchMethod:
+    building: "getBuildings"
+    document: "getDocuments"
+    group: "getGroups"
+    individual: "getIndividual"
+    institution: "getInstitution"
+    jrb: "getJrb"
+    jrg: "getJrg"
+    jrgib: "getJrgib"
+    jrl: "getJrl"
+    landCommunity: "getLandCommunities"
+    local: "getLocals"
+    lot: "getLots"
+
+  #dataProvider for result table methods
+  fetchData: (fetchQueue)->
+    type = @get "type"
+    jsonMethod = @get "fetchMethod.#{type}"
+    Em.assert "fetchMethod undefinned for type: #{type}", jsonMethod
+    idList = fetchQueue.map( (x)-> x.get "id")
+    $.ajax
+      url: "#{jsonMethod}.json"
+      data:
+        idList: idList
+      success: (data) =>
+        if Em.isArray data
+          content = @get "content"
+          for dataItem in data
+            contentItem = content.find((item, index, enumerable) => dataItem.id == item.get "id")
+            if contentItem?
+              for own key,value of dataItem
+                tableCell = contentItem.get(key)
+                if tableCell? && tableCell instanceof App.StandardTableCellModel
+                  tableCell.set "value", value
+              contentItem.set "rowState", App.RowState.READY
+        return
+      complete: (jqXHR, textStatus) =>
+        #check for requested but not received rows
+        content = @get "content"
+        for idListItem in idList
+          contentItem = content.find((item, index, enumerable) => idListItem == item.get "id")
+          if contentItem? && App.RowState.READY != contentItem.get "rowState"
+            contentItem.set "rowState", App.RowState.ERROR
+        return
+
   checkedList: (->
     @get("content").filterProperty "isChecked"
     ).property("content.@each.isChecked")
