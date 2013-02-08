@@ -3,7 +3,7 @@
     <span class="field-label span2">{{view.field.label}}</span>
     <span class="help-inline">{{#if view.field.help}}{{view.field.help}}{{/if}}</span>
     <span class="input-append">
-      od {{view Em.TextField valueBinding="view.field.value" class="asRange allRound"}} do {{view Em.TextField valueBinding="view.field.alternateValue" class="asRange"}}<a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
+      od {{view Em.TextField valueBinding="view.field.value" class="asRange allRound"}} do {{view Em.TextField valueBinding="view.field.alternateValue" class="asRange"}}<a {{action "checkRange" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
     </span>
   </div>
 </script>
