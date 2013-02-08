@@ -13,5 +13,3 @@ App.EgbilObjectBuildingController = Em.Controller.extend
     ["type", "sygnature"]
   localColumns:
     ["number","address","jrlNumber"]
-
-

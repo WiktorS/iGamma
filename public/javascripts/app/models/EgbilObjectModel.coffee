@@ -321,7 +321,7 @@ App.EgbilObjectDocumentModel = Em.Object.extend
     @relatedSygnature = App.StandardTableCellModel.create
       label: "Sygnatura dokumentu związanego"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
+      valueType: "document"
     @locals = App.StandardTableCellModel.create
       label: "Lokale"
 
@@ -391,8 +391,8 @@ App.EgbilObjectLotModel = Em.Object.extend
   geodesicArea: null
   addresses: null
   documentsSygnature: null
-  useClassType: null
-  useClassArea: null
+  terrainCategoryType: null
+  terrainCategoryArea: null
   monumentRegister: null
   statisticalRegion: null
   listDistrict: null
@@ -436,10 +436,10 @@ App.EgbilObjectLotModel = Em.Object.extend
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
-    @useClassType = App.StandardTableCellModel.create
+      valueType: "document"
+    @terrainCategoryType = App.StandardTableCellModel.create
       label: "Klasoużytki/Rodzaj"
-    @useClassArea = App.StandardTableCellModel.create
+    @terrainCategoryArea = App.StandardTableCellModel.create
       label: "Klasoużytki/Powierzchnia"
       help: "[ha]"
     @monumentRegister = App.StandardTableCellModel.create
@@ -530,7 +530,7 @@ App.EgbilObjectBuildingModel = Em.Object.extend
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
+      valueType: "document"
     @buildUpArea = App.StandardTableCellModel.create
       label: "Powierzchnia zabudowy [m2]"
       help: "[m2]"
@@ -625,7 +625,7 @@ App.EgbilObjectLocalModel = Em.Object.extend
   address: null
   documentsSygnature: null
   usableArea: null
-  type: null
+  localType: null
   level: null
   associatedPremisesBuilding: null
   associatedPremisesType: null
@@ -678,11 +678,11 @@ App.EgbilObjectLocalModel = Em.Object.extend
     @documentsSygnature = App.StandardTableCellModel.create
       label: "Dokumenty/Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
+      valueType: "document"
     @usableArea = App.StandardTableCellModel.create
       label: "Powierzchnia użytkowa "
       help: "[m2]"
-    @type = App.StandardTableCellModel.create
+    @localType = App.StandardTableCellModel.create
       label: "Typ lokalu"
     @associatedPremisesBuilding = App.StandardTableCellModel.create
       label: "Pomieszczenia przynależne/Budynek"

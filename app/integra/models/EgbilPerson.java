@@ -1,12 +1,5 @@
 package integra.models;
 
-/**
- * Created with IntelliJ IDEA.
- * User: pchmielarz
- * Date: 09.10.12
- * Time: 02:18
- * To change this template use File | Settings | File Templates.
- */
 public class EgbilPerson  implements IntegraModel {
     public String pesel;
     public String surname;

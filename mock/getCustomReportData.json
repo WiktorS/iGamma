@@ -1,0 +1,58 @@
+{
+  "attributeList": [
+    {
+      "name": "Test1",
+      "type": "",
+      "precision": "1",
+      "unit": "m2",
+      "sumUp": false,
+      "dictionaryLegend": false
+    },
+    {
+      "name": "Test2",
+      "type": "",
+      "precision": "2",
+      "unit": "a",
+      "sumUp": true,
+      "dictionaryLegend": false
+    },
+    {
+      "name": "Test3",
+      "type": "",
+      "precision": "3",
+      "unit": "ha",
+      "sumUp": false,
+      "dictionaryLegend": true
+    },
+    {
+      "name": "Test4",
+      "type": "",
+      "precision": "4",
+      "unit": "km2",
+      "sumUp": true,
+      "dictionaryLegend": true
+    }
+  ],
+  "unitList": [
+    "m2",
+    "a",
+    "ha",
+    "km2"
+  ],
+  "configurationList": [
+    {
+      "name": "Config1",
+      "selectedAttributeList": [
+        {
+          "name": "Test1",
+          "displayValue": "QWERTY"
+        },
+        {
+          "name": "Test4",
+          "precision": "2",
+          "unit": "a"
+        }
+      ]
+    }
+  ]
+}

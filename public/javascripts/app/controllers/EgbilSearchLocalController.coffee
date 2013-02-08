@@ -1,0 +1,1 @@
+App.EgbilSearchLocalController = App.EgbilSearchCommonController.extend()

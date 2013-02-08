@@ -1,0 +1,56 @@
+<script type="text/x-handlebars" data-template-name="differenceReportModal">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">&times;</button>
+    <h3>Parametry raportu różnic</h3>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <fieldset class="span5">
+        <legend>Rodzaj</legend>
+        <label class="control-group">
+          <div class="btn-group span5">
+            <button class="btn dropdown-toggle" data-toggle="dropdown">{{view.selectedReportTypeTitle}} <i class="icon-caret-down"></i></button>
+            <ul class="dropdown-menu">
+              {{#each view.reportTypeList}}
+              <li><a {{action "selectReportType" name target="view"}}>{{title}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
+        </label>
+      </fieldset>
+    </div>
+    <div class="row">
+      <fieldset class="span5">
+        <legend>Treść</legend>
+        <label class="control-group">
+          {{view Em.Checkbox disabledBinding="view.attributeDisabled" checkedBinding="view.attributeValue"}}
+          <span class="field-label">Atrybuty</span>
+        </label>
+        <label class="control-group">
+          {{view Em.Checkbox disabledBinding="view.registerUnitDisabled" checkedBinding="view.registerUnitValue"}}
+          <span class="field-label">Jednostki Rejestrowe</span>
+        </label>
+        <label class="control-group">
+          {{view Em.Checkbox disabledBinding="view.shareDisabled" checkedBinding="view.shareValue"}}
+          <span class="field-label">Udziały</span>
+        </label>
+        <label class="control-group">
+          {{view Em.Checkbox disabledBinding="view.lotDisabled" checkedBinding="view.lotValue"}}
+          <span class="field-label">Działki</span>
+        </label>
+        <label class="control-group">
+          {{view Em.Checkbox disabledBinding="view.buildingDisabled" checkedBinding="view.buildingValue"}}
+          <span class="field-label">Budynki</span>
+        </label>
+        <label class="control-group">
+          {{view Em.Checkbox disabledBinding="view.localDisabled" checkedBinding="view.localValue"}}
+          <span class="field-label">Lokale</span>
+        </label>
+      </fieldset>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" {{action "onPrint" target="view"}}>Wydruk</button>
+    <button class="btn" data-dismiss="modal">Zamknij</button>
+  </div>
+</script>

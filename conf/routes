@@ -18,6 +18,16 @@ GET     /getRegisterUnitsByJrg.json               IntegraJson.getRegisterUnitsBy
 GET     /getEgbilObject.json                      IntegraJson.getEgbilObject
 GET     /getDocuments.json                        IntegraJson.getDocuments
 GET     /getSystematics.json                      IntegraJson.getSystematics
+GET     /getShareSummary.json                     IntegraJson.getShareSummary
+GET     /getRelatedObjects.json                   IntegraJson.getRelatedObjects
+GET     /getCustomReportData.json                 IntegraJson.getCustomReportData
+
+#Integra documents
+GET     /getTerrainCategorySummary                IntegraJson.getTerrainCategorySummary
+GET     /getReservation                           IntegraJson.getReservation
+GET     /getCustomReport                          IntegraJson.getCustomReport
+GET     /getDifferenceReport                      IntegraJson.getDifferenceReport
+GET     /getScan                                  IntegraJson.getScan
 
 #Integra mock
 GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits

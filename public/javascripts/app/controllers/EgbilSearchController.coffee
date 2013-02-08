@@ -1,26 +1,34 @@
 App.EgbilSearchController = Em.Controller.extend
-  search: (view) ->
-    searchArgs = getSearchArgs(view)
-    jsonMethod = view.get "controller.jsonMethod"
+  type: (->
+    @get "target.currentState.name"
+    ).property("target.currentState.name")
+
+  searchMethod: (->
+    type = @get "type"
+    @get "searchMethodData.#{type}"
+    ).property("type")
+  searchMethodData:
+    building: "getBuildingByNumber"
+    document: "getDocuments"
+    group: "getGroupByNip"
+    individual: "getPersonByPesel"
+    institution: "getInstitutionByNip"
+    jrb: "getRegisterUnits"
+    jrg: "getRegisterUnits"
+    jrgib: "getRegisterUnits"
+    jrl: "getRegisterUnits"
+    landCommunity: "getLandCommunities"
+    local: "getLocalByNumber"
+    lot: "getLotsByNumber"
+
+  doSearch: (searchArgs) ->
+    jsonMethod = @get "searchMethod"
     $.ajax
       url: "#{jsonMethod}.json"
       data: searchArgs
       success: (data) =>
-        context = Em.Object.create
-          columns: view.get "controller.columns"
-          content: Em.A(data.map(App.Common.toModel, App.EgbilListModel))
-          type: view.get "controller.type"
-          title: view.get "controller.title"
-        @get("target").send "goToList", context
+        @set "target.egbilListController.type", @get("type")
+        @set "target.egbilListController.content", Em.A(data.map(App.Common.toModel, App.EgbilListModel))
+        @get("target").send "goToList"
       error: (jqXHR, textStatus, errorThrown) ->
         alert errorThrown #TODO: error handling
-
-getSearchArgs = (view) ->
-  result = {}
-  result["type"] = view.get("controller.type") if view.get("controller.type")?
-  for field in view.formFields
-    name = field.get "name"
-    value = field.get "value"
-    if !Em.empty(name) && !Em.empty(value)
-      result[name] = value
-  result

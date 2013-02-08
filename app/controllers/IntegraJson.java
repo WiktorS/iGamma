@@ -46,7 +46,7 @@ public class IntegraJson extends Controller {
     }
 
     public static void getLandCommunities(String name) {
-        List<LandCommunities> result = integra.getLandCommunities(name);
+        List<LandCommunity> result = integra.getLandCommunities(name);
         renderJSON(result);
     }
 
@@ -61,7 +61,43 @@ public class IntegraJson extends Controller {
     }
 
     public static void getSystematics() {
-        List<Systematics> result = integra.getSystematics();
+        List<Systematic> result = integra.getSystematics();
         renderJSON(result);
     }
+
+    public static void getShareSummary() {
+        List<ShareSummary> result = integra.getShareSummary();
+        renderJSON(result);
+    }
+
+    public static void getCustomReportData(String type, String name) {
+        CustomReportData result = integra.getCustomReportData(type, name);
+        renderJSON(result);
+    }
+
+    public static void getRelatedObjects(String relation, EgbilObjectData[] objectList) {
+        List<EgbilObjectData> result = integra.getRelatedObjects(relation, objectList);
+        renderJSON(result);
+    }
+
+    public static void getTerrainCategorySummary(String objectType, String objectName) {
+        renderText("ZESTAWIENIE KLASOUŻYTKÓW");
+    }
+
+    public static void getReservation(String objectType, String objectName) {
+        renderText("REZERWACJA NUMERÓW");
+    }
+
+    public static void getCustomReport(Boolean attributeLegend, String lineBreak, String fileFormat, CustomReportAttribute[] attributeList) {
+        renderText("RAPORT DOWOLNY");
+    }
+
+    public static void getDifferenceReport(String reportType, Boolean attribute, Boolean registerUnit, Boolean share, Boolean lot, Boolean building, Boolean local) {
+        renderText("RAPORT RÓŻNIC");
+    }
+
+    public static void getScan(String objectType, String objectName) {
+        renderText("SKAN");
+    }
+
 }

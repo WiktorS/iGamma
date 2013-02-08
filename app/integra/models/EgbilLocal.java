@@ -12,7 +12,7 @@ public class EgbilLocal implements IntegraModel {
     public String address;
     public String documentsSygnature;
     public String usableArea;
-    public String type;
+    public String localType;
     public String level;
     public String associatedPremisesBuilding;
     public String associatedPremisesType;

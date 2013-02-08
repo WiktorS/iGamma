@@ -99,7 +99,7 @@ App.EgbilListModel = Em.Object.extend
     @document = App.StandardTableCellModel.create
       label: "Dokument/sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
+      valueType: "document"
     @cadastralArea = App.StandardTableCellModel.create
       label: "Powierzchnia ewidencyjna [ha]"
     @buildingNumber = App.StandardTableCellModel.create
@@ -144,7 +144,7 @@ App.EgbilListModel = Em.Object.extend
     @sygnature  = App.StandardTableCellModel.create
       label: "Sygnatura"
       viewClass: App.EgbilListTableCellButtonView
-      valueType: "doc"
+      valueType: "document"
     @scan = App.StandardTableCellModel.create
       label: "Skan"
     @lots = App.StandardTableCellModel.create

@@ -2,7 +2,7 @@
   {
     "id"  : 1,
     "marker" : "X",
-    "surnameAndNames" : "B1",
+    "surnameAndNames" : "imię i nazwisko",
     "address" : "adres",
     "pesel" : "pesel",
     "identityDoc" : "ozn. dok. tożsamości"
