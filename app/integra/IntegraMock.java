@@ -6,10 +6,7 @@ import integra.models.*;
 import play.Logger;
 import play.Play;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.Reader;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
@@ -69,13 +66,19 @@ public class IntegraMock implements Integra {
     }
 
     private <T> T getMockJsonData(String methodName, TypeToken<T> typeToken, String... params) throws Exception{
-        BufferedReader bufferedReader;
         T result = null;
-        bufferedReader = new BufferedReader(new FileReader(getMockFile(methodName, params)));
-        //Test if JSON and Type fields are matching
-        mockIntegrityChecker(typeToken.getType(), bufferedReader);
-        result = gson.fromJson(bufferedReader, typeToken.getType());
-        bufferedReader.close();
+        File mockFile = getMockFile(methodName, params);
+        {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(mockFile));
+            //Test if JSON and Type fields are matching
+            mockIntegrityChecker(typeToken.getType(), bufferedReader);
+            bufferedReader.close();
+        }
+        {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(mockFile));
+            result = gson.fromJson(bufferedReader, typeToken.getType());
+            bufferedReader.close();
+        }
         return result;
     }
 
