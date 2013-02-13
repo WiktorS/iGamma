@@ -18,22 +18,22 @@ public class IntegraMock implements Integra {
     private static final Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
 
     private void mockIntegrityChecker(Type type, Reader json) throws Exception{
-        checkElement(new JsonParser().parse(json), type);
+        checkElement(new JsonParser().parse(json), type, "");
     }
 
-    private void checkElement(JsonElement jsonElement, Type type) throws Exception {
+    private void checkElement(JsonElement jsonElement, Type type, String parent) throws Exception {
         if (jsonElement.isJsonArray()) {
-            checkArray(jsonElement.getAsJsonArray(), type);
+            checkArray(jsonElement.getAsJsonArray(), type, parent);
         }
         else if (jsonElement.isJsonObject()) {
-            checkObject(jsonElement.getAsJsonObject(), type);
+            checkObject(jsonElement.getAsJsonObject(), type, parent);
         }
-        else if  (jsonElement.isJsonPrimitive()) {
-            checkPrimitive(jsonElement.getAsJsonPrimitive(), type);
-        }
+//        else if  (jsonElement.isJsonPrimitive()) {
+//            checkPrimitive(jsonElement.getAsJsonPrimitive(), type, parent);
+//        }
     }
 
-    private void checkObject(JsonObject jsonObject, Type type) throws Exception {
+    private void checkObject(JsonObject jsonObject, Type type, String parent) throws Exception {
         for (Map.Entry<String, JsonElement> stringJsonElementEntry : jsonObject.entrySet()) {
             String fieldName = stringJsonElementEntry.getKey();
             Field field;
@@ -41,32 +41,34 @@ public class IntegraMock implements Integra {
                 field =((Class)type).getField(fieldName);
             }
             catch (NoSuchFieldException e) {
-                throw new Exception("Java class '"+((Class) type).getName()+"' is missing field: '"+fieldName+"'");
+                throw new Exception("Field '"+fieldName+"' is defined in JSON '"+parent+"' but not in Java class '"+((Class) type).getName()+"'");
             }
-            checkElement(stringJsonElementEntry.getValue(), field.getGenericType());
+            checkElement(stringJsonElementEntry.getValue(), field.getGenericType(), parent + "/" + fieldName);
         }
         for (Field field : ((Class) type).getFields()) {
             String fieldName = field.getName();
             if (jsonObject.get(fieldName) == null)
-                throw new Exception("JSON object has field '"+fieldName+"' which is not defined in class '"+((Class) type).getName()+"'");
+                throw new Exception("Field '"+fieldName+"' is defined in Java class '"+((Class) type).getName()+"' but not in JSON '"+parent+"'");
         }
 
     }
 
-    private void checkArray(JsonArray jsonArray, Type type) throws Exception {
+    private void checkArray(JsonArray jsonArray, Type type, String parent) throws Exception {
         ParameterizedType parametrisedType = (ParameterizedType)type;
+        int i=0;
         for (JsonElement arrayElement : jsonArray) {
             Type[] actualTypeArguments = parametrisedType.getActualTypeArguments();
-            checkElement(arrayElement, actualTypeArguments[0]);
+            checkElement(arrayElement, actualTypeArguments[0], parent + "["+String.valueOf(i)+"]");
+            i++;
         }
     }
 
-    private void checkPrimitive(JsonPrimitive jsonPrimitive, Type type) throws Exception {
-        //TODO: Check primitive types?
-    }
+//    private void checkPrimitive(JsonPrimitive jsonPrimitive, Type type, String parent) throws Exception {
+//        //TODO: Check primitive types?
+//    }
 
     private <T> T getMockJsonData(String methodName, TypeToken<T> typeToken, String... params) throws Exception{
-        T result = null;
+        T result;
         File mockFile = getMockFile(methodName, params);
         {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(mockFile));
@@ -159,9 +161,9 @@ public class IntegraMock implements Integra {
         TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
         if (idList == null)
             throw new Exception("List is null");
-        if (idList.length == 0)
+        else if (idList.length == 0)
             throw new Exception("List is empty");
-        if (idList != null) {
+        else { //if (idList != null) {
             for (long item: idList) {
                 if (item < 0)
                     throw new Exception("Wrong identifier");
