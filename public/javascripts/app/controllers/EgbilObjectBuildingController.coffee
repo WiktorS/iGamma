@@ -1,15 +1,15 @@
-App.EgbilObjectBuildingController = Em.Controller.extend
-  content: null
+App.EgbilObjectBuildingController = App.EgbilObjectCommonController.extend
+  columnsOrder:
+    address: ["address"]
+    buildingLeft: ["precinct", "building","buildingArea","usableArea","buildingStatus","buildingKind","buildingClass","highestLevel","lowestLevel","numberOfLevels","constructionFinishDate","constructionFinishDateCertainty","reconstructionFinishDate","reconstructionFinishDateCertainty","reconstructionScope","exteriorWallsMaterial","monumentRegister","manyJRG", "remarks", "notes"]
+    buildingMiddle: ["jrg","jrb"]
+    document: ["documentKind", "document"]
+    local: ["local","address","jrl"]
+    lot: ["show","marker","precinct","lot","cadastralArea"]
 
-  buildingColumns:
-    ["precinct", "buildingNumber","buildUpArea","usableArea","status","type","classType","highestLevel","lowestLevel","numberOfLevels","constructionFinishDate","constructionFinishDateCertainty","reconstructionFinishDate","reconstructionFinishDateCertainty","reconstructionScope","exteriorWallsMaterial","monumentRegister","manyJRG", "remarks", "notes"]
-  buildingColumns1:
-    ["jrgNumber","jrbNumber"]
-  lotColumns:
-    ["show","marker","precinct","lotNumber","registeredArea"]
-  buildingColumns2:
-    ["addresses"]
-  documentColumns:
-    ["type", "sygnature"]
-  localColumns:
-    ["number","address","jrlNumber"]
+  addressColumns: (-> App.columnsData.getColumns(@get "columnsOrder.address")).property()
+  buildingLeftColumns: (-> App.columnsData.getColumns(@get "columnsOrder.buildingLeft")).property()
+  buildingMiddleColumns: (-> App.columnsData.getColumns(@get "columnsOrder.buildingMiddle")).property()
+  documentColumns: (-> App.columnsData.getColumns(@get "columnsOrder.document")).property()
+  localColumns: (-> App.columnsData.getColumns(@get "columnsOrder.local")).property()
+  lotColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lot")).property()

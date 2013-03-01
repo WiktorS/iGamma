@@ -1,7 +1,7 @@
 App.EgbilController = Em.Controller.extend
   objectList: Em.A()
   rightPanelData:
-    jrgib: [
+    jrg: [
       Em.Object.create { name: "Wypis pełny z RG", type: "prg", multiselect: true }
       Em.Object.create { name: "Wypis uproszczony z RG", type: "urg", multiselect: true }
       Em.Object.create { name: "Wypis z RB", type: "rb", multiselect: true }
@@ -24,7 +24,7 @@ App.EgbilController = Em.Controller.extend
       Em.Object.create { name: "Lista zmian w JR", type: "change", multiselect: true }
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
-    jrg: [
+    oldJrg: [
       Em.Object.create { name: "Wypis z RG", type: "rg", multiselect: true }
       Em.Object.create { name: "Wypis z KL", type: "kl", multiselect: true }
       Em.Object.create { name: "Rozliczenie udziałów", type: "shareSummary", multiselect: false }
@@ -48,7 +48,7 @@ App.EgbilController = Em.Controller.extend
     local: [
       Em.Object.create { name: "Wypis z RL", type: "rl", multiselect: true }
     ]
-    individual: [
+    person: [
       Em.Object.create { name: "Wypis pełny z RG", type: "prg", multiselect: true }
       Em.Object.create { name: "Wypis uproszczony z RG", type: "prg", multiselect: true }
       Em.Object.create { name: "Zestawienie klasoużytków", type: "terrainCategoryReport", multiselect: true }
@@ -92,97 +92,126 @@ App.EgbilController = Em.Controller.extend
       Em.Object.create { name: "Różnice", type: "difference", multiselect: false }
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
+  fetchMethod:
+    building: "getBuildings"
+    document: "getDocuments"
+    group: "getGroups"
+    person: "getPersons"
+    institution: "getInstitutions"
+    jrg: "getJrg"
+    jrb: "getJrb"
+    jrl: "getJrl"
+    oldJrg: "getOldJrg"
+    landCommunity: "getLandCommunities"
+    local: "getLocals"
+    lot: "getLots"
+    address: "getAddresses"
+    share: "getShares"
+    change: "getChanges"
+  objectModel:
+    building: App.EgbilObjectBuildingModel
+    document: App.EgbilObjectDocumentModel
+    group: App.EgbilObjectGroupModel
+    person: App.EgbilObjectPersonModel
+    institution: App.EgbilObjectInstitutionModel
+    jrg: App.EgbilObjectRegisterUnitModel
+    jrb: App.EgbilObjectRegisterUnitModel
+    jrl: App.EgbilObjectRegisterUnitModel
+    oldJrg: App.EgbilObjectRegisterUnitModel
+    landCommunity: App.EgbilObjectLandCommunityModel
+    local: App.EgbilObjectLocalModel
+    lot: App.EgbilObjectLotModel
+    address: App.EgbilObjectAddressModel
+    share: App.EgbilObjectShareModel
+    change: App.EgbilObjectChangeModel
 
+  getObject: (objectId, objectType) ->
+    @get("objectList").filterProperty("_objectId", objectId).findProperty("_objectType", objectType)
 
-  getObject: (objectType, objectName) ->
-    @get("objectList").filterProperty("objectName", objectName).findProperty("objectType", objectType)
-
-  showObject: (objectType, objectName) ->
-    object = @getObject objectType, objectName
+  showObject: (objectId, objectType) ->
+    object = @getObject objectId, objectType
     @get("target").send "goToObject", object if !Em.empty object
 
-  closeObject: (objectType, objectName) ->
-    Em.assert "Cannot close object without type & name", objectType? && objectName?
-    object = @getObject objectType, objectName
-    if !Em.empty object
-      idx = @get("objectList").indexOf object
-      @get("objectList").removeObject object
-      currentStateObjectName =  App.router.get("currentState.objectName")
-      if currentStateObjectName == objectName
-        if @get("objectList").length > 0
-          idx-- while idx >= @get("objectList").length
-          @get("target").send "goToObject", @get("objectList.#{idx}")
-        else if @get("target").egbilListController.content
-          @get("target").transitionTo "egbil.list"
-        else
-          @get("target").transitionTo "egbil.search"
+  closeObject: (objectId, objectType) ->
+    Em.assert "Cannot close object without type", objectType?
+    Em.assert "Cannot close object without id", objectId?
+    object = @getObject objectId, objectType
+    Em.assert "Object to close not found ('#{objectType}:#{objectId}')", object
+    idx = @get("objectList").indexOf object
+    @get("objectList").removeObject object
+    currentStateObjectId =  App.router.get("currentState.objectId")
+    if currentStateObjectId == objectId
+      if @get("objectList").length > 0
+        idx-- while idx >= @get("objectList").length
+        @get("target").send "goToObject", @get("objectList.#{idx}")
+      else if @get("target").egbilListController.content
+        @get("target").transitionTo "egbil.list"
+      else
+        @get("target").transitionTo "egbil.search"
 
-  openObject: (objectType, objectName) ->
-    Em.assert "Can't open object of undefined type", objectType?
-    Em.assert "Can't open object of undefined name", objectName?
-    object = @getObject objectType, objectName
-    if Em.empty object
+  openObject: (objectId, objectType) ->
+    Em.assert "Can't open object of undefined id", !!objectId
+    Em.assert "Can't open object of undefined type", !!objectType
+    object = @getObject objectId, objectType
+    if !object
+      jsonMethod = @get "fetchMethod.#{objectType}"
+      Em.assert "fetchMethod is undefinned for object type: '#{objectType}'", !!jsonMethod
       $.ajax
-        url: "/getEgbilObject.json"
+        url: "/#{jsonMethod}.json"
         data:
-          type: objectType
-          name: objectName
+          idList: [objectId]
         success: (data) =>
-          if !Em.empty data
-            content = App.EgbilObjectModel.create()
-            content.person = App.Common.toModel.call(App.EgbilObjectPersonModel, data.person)
-            content.institution = App.Common.toModel.call(App.EgbilObjectInstitutionModel, data.institution)
-            content.group = App.Common.toModel.call(App.EgbilObjectGroupModel, data.group)
-            content.landCommunity = App.Common.toModel.call(App.EgbilObjectLandCommunityModel, data.landCommunity)
-            content.document = App.Common.toModel.call(App.EgbilObjectDocumentModel, data.document)
-            content.registerUnit = App.Common.toModel.call(App.EgbilObjectRegisterUnitModel, data.registerUnit)
-            content.lot =  App.Common.toModel.call(App.EgbilObjectLotModel, data.lot)
-            content.building =  App.Common.toModel.call(App.EgbilObjectBuildingModel, data.building)
-            content.local =  App.Common.toModel.call(App.EgbilObjectLocalModel, data.local)
-            content.shares = data.shares.map(App.Common.toModel, App.EgbilObjectShareModel)
-            content.lots = data.lots.map(App.Common.toModel, App.EgbilObjectLotModel)
-            content.buildings = data.buildings.map(App.Common.toModel, App.EgbilObjectBuildingModel)
-            content.rights = data.rights.map(App.Common.toModel, App.EgbilObjectRightModel)
-            content.locals = data.locals.map(App.Common.toModel, App.EgbilObjectLocalModel)
-            content.landCommunities = data.landCommunities.map(App.Common.toModel, App.EgbilObjectLandCommunityModel)
-            content.members = data.members.map(App.Common.toModel, App.EgbilObjectMemberModel)
-            content.changes = data.changes.map(App.Common.toModel, App.EgbilObjectChangeModel)
-            content.documents = data.documents.map(App.Common.toModel, App.EgbilObjectDocumentModel)
-            content.useClasses = data.useClasses.map(App.Common.toModel, App.EgbilObjectUseClassModel)
-            content.premises = data.premises.map(App.Common.toModel, App.EgbilObjectPremiseModel)
-            object = Em.Object.create content,
-              objectType: objectType
-              objectName: objectName
-              groupName: @getGroupName objectType
-            @get("objectList").addObject object
-            @showObject objectType, objectName
+          if Em.isArray data
+            Em.assert "Should receive data for 1 object, but got #{data.length}", data.length == 1
+            contentClass = @get "objectModel.#{objectType}"
+            mappedData = data.map(App.Common.toModel, contentClass)
+            item.set "_dataStatus", App.EgbilObjectStatus.READY for item in mappedData
+            Em.run.sync() #sync bindings!
+            @get("objectList").addObject mappedData[0]
+            @showObject objectId, objectType
           else
             alert "Nie znaleziono rekordu"  #TODO: Error handling
     else
-      @showObject objectType, objectName
+      @showObject objectId, objectType
 
-  getGroupName: (group) ->
-    switch group
-      when "jrgib" then "Jednostka Rejestrowa Gruntów i Budynków"
-      when "jrb" then "Jednostka Rejestrowa Budynków"
-      when "jrl" then "Jednostka Rejestrowa Lokali"
-      when "jrg" then "Stara Jednostka Rejestrowa Gruntów"
-      when "lot" then "Działka"
-      when "building" then "Budynek"
-      when "local" then "Lokal samodzielny"
-      when "document" then "Dokument"
-      when "person" then "Osoba fizyczna"
-      when "institution" then "Instytucja"
-      when "group" then "Podmiot grupowy"
-      when "landCommunity" then "Zarząd wspólnoty grupowej"
+  fetchDataCallback: (fetchQueue, type)->
+    jsonMethod = @get "target.egbilController.fetchMethod.#{type}"
+    Em.assert "fetchMethod undefinned for type: #{type}", jsonMethod
+    idList = fetchQueue.map( (x)-> x.get "id")
+    $.ajax
+      url: "#{jsonMethod}.json"
+      data:
+        idList: idList
+      success: (data) =>
+        if Em.isArray data
+          for item in data
+            contentItems = fetchQueue.filter((x) -> item.id == x.get "id")
+            Em.assert "Received data for item with id '#{item.id}', but did not found it in list content!", !!contentItems
+            for contentItem in contentItems            
+              contentClass = @get "objectModel.#{type}"
+              mappedItem = App.Common.toModel.call(contentClass, item)
+              Em.run.sync() #sync bindings!
+              for own key,value of mappedItem
+                # Em.assert "Model '#{(contentItem.get "constructor").toString()}' does not define member '#{key}'", "undefined" != typeof contentItem.get(key)
+                contentItem.set key, value
+              contentItem.set "_dataStatus", App.EgbilObjectStatus.READY
+        return
+      complete: (jqXHR, textStatus) =>
+        #check for requested but not received rows
+        for id in idList
+          contentItems = fetchQueue.filter((x) -> id == x.get "id")
+          for contentItem in contentItems
+            if App.EgbilObjectStatus.READY != contentItem.get "_dataStatus"
+              contentItem.set "_dataStatus", App.EgbilObjectStatus.ERROR
+        return
 
   rightPanelAction: (action, objectList) ->
     simpleList = (objectList) ->
       list = []
-      for object in objectList
-        list.push
-          objectType: object.get "objectType"
-          objectName: object.get "objectName"
+#      for object in objectList
+#        list.push
+#          objectType: object.get "objectType"
+#          objectName: object.get "objectName"
       list
     switch action
       when "prg", "urg", "rb", "kb", "kl"
@@ -263,8 +292,8 @@ App.EgbilController = Em.Controller.extend
 
   showDifferenceReportModal: (objectList) ->
     differenceReportModal = App.DifferenceReportModalView.modal()
-    differenceReportModal.set "objectName", objectList.get "0.objectName"
-    differenceReportModal.set "objectType", objectList.get "0.objectType"
+#    differenceReportModal.set "objectName", objectList.get "0.objectName"
+#    differenceReportModal.set "objectType", objectList.get "0.objectType"
 
   openTerrainCategoryReport: (simpleList) ->
     @get("target").send "openTerrainCategoryReport", simpleList

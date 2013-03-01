@@ -1,13 +1,13 @@
-App.EgbilObjectDocumentController = Em.Controller.extend
-  content: null
+App.EgbilObjectDocumentController = App.EgbilObjectCommonController.extend
+  columnsOrder:
+    document: [ "documentKind", "document", "documentSource", "creationDate", "receiptDate", "description", "designation", "relatedDocumentKind", "relatedDocument" ]
+    lot: [ "check", "show", "marker", "lot", "precinct", "cadastralUnit", "jrg", "address", "cadastralArea" ]
+    building: [ "check","show","marker","building","lots","precinct","cadastralUnit","jrg","jrb","buildingKind","constructionFinishDate","buildingArea" ]
+    local: [ "check","show","marker","local","address","documents","precinct","cadastralUnit","jrg","jrl","usableArea","lot","building" ]
+    change: [ "check", "change", "changeYear", "applicationYear", "changeKind", "changeStatus", "changeDescription" ]
 
-  documentColumns:
-    ["type", "sygnature", "source", "creationDate", "receiptDate", "description", "designation", "relatedType", "relatedSygnature"]
-  lotColumns:
-    ["check", "show", "marker", "g5", "registeredArea", "geodesicArea", "addresses", "documentsSygnature", "terrainCategoryType", "terrainCategoryArea", "monumentRegister", "statisticalRegion", "listDistrict", "validFrom", "validTo", "value", "valuationDate", "remarks"]
-  buildingColumns:
-    ["check", "show", "marker", "g5", "jrbNumber", "documentsSygnature", "buildUpArea", "usableArea", "status", "type", "classType", "highestLevel", "lowestLevel", "addresses", "lotNumber", "lotArea", "constructionFinishDate", "reconstructionFinishDate", "reconstructionScope", "exteriorWallsMaterial", "numberOfUnits", "monumentRegister", "cadastralValue", "valuationDate", "manyJRG", "remarks"]
-  localColumns:
-    ["check", "show", "marker", "g5", "jrlNumber", "address", "documentsSygnature", "usableArea", "localType", "associatedPremisesBuilding", "associatedPremisesType", "associatedPremisesArea", "associatedPremisesNumber", "roomsNumber", "tier", "commonPropertyShare", "lot", "building", "cadastralValue", "valuationDate", "remarks"]
-  changeColumns:
-    ["check", "changeNumber", "registerDate", "entryDate", "type", "status", "description"]
+  documentColumns: (-> App.columnsData.getColumns(@get "columnsOrder.document")).property()
+  lotColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lot")).property()
+  buildingColumns: (-> App.columnsData.getColumns(@get "columnsOrder.building")).property()
+  localColumns: (-> App.columnsData.getColumns(@get "columnsOrder.local")).property()
+  changeColumns: (-> App.columnsData.getColumns(@get "columnsOrder.change")).property()

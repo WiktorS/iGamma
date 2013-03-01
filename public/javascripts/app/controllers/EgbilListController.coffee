@@ -2,23 +2,26 @@ App.EgbilListController = Em.ArrayController.extend
   content: null
   type: null
 
-  columns: (->
+  columns: (-> 
     type = @get "type"
-    @get "columnsData.#{type}"
+    columnsOrder = @get "columnsOrder.#{type}"
+    Em.assert "Column order in #{@get("constructor").toString()} is not defined for type '#{type}'", columnsOrder
+    App.get("columnsData").getColumns(columnsOrder)
     ).property("type")
-  columnsData:
-    building: [ "check","show","marker","buildingNumber","lotNumber","precinct","cadastralUnit","jrgNumber","jrbNumber","type","finishYear","buildUpArea" ]
-    document: [ "check","marker","sygnature","type","scan","lots","buildings","locals","changes" ]
-    group: [ "check","show","marker","groupName","address","regon","nip" ]
-    individual: [ "check","show","marker","surnameAndNames","address","pesel","identityDoc" ]
-    institution: [ "check","show","marker","name","address","regon","nip" ]
-    jrb: [ "check","show","marker","jrbNumber","precinct","cadastralUnit","creationProof","creationDate" ]
-    jrg: [ "check","show","marker","jrgNumber","precinct","cadastralUnit","creationProof","creationDate" ]
-    jrgib: [ "check","show","marker","jrgNumberJrgib","jrbNumberJrgib","precinct","cadastralUnit","creationProof","creationDate","regon" ]
-    jrl: [ "check","show","marker","jrlNumber","precinct","cadastralUnit","creationProof","creationDate" ]
-    landCommunity: [ "check","show","marker","landCommunityName","address" ]
-    local:[ "check","show","marker","localNumber","address","document","precinct","cadastralUnit","jrgNumber","jrlNumber","usableArea","lotNumber","buildingNumber" ]
-    lot: [ "check","show","marker","lotNumber","precinct","cadastralSheet","cadastralUnit","jrgNumber","address","document","cadastralArea" ]
+  columnsOrder:
+    building: [ "check","show","marker","building","lots","precinct","cadastralUnit","jrg","jrb","buildingKind","constructionFinishDate","buildingArea" ]
+    document: [ "check","marker","document","documentKind","documentScan","documentLots","documentBuildings","documentLocals","documentChanges" ]
+    group: [ "check","show","marker","group","address","regon","nip" ]
+    person: [ "check","show","marker","person","address","pesel","identityDocument" ]
+    institution: [ "check","show","marker","institution","address","regon","nip" ]
+    jrg: [ "check","show","marker","jrg","jrb","precinct","cadastralUnit","creationProof","creationDate","regon" ]
+    jrb: [ "check","show","marker","jrb","precinct","cadastralUnit","creationProof","creationDate" ]
+    jrl: [ "check","show","marker","jrl","precinct","cadastralUnit","creationProof","creationDate" ]
+    oldJrg: [ "check","show","marker","jrg","precinct","cadastralUnit","creationProof","creationDate" ]
+    landCommunity: [ "check","show","marker","landCommunity","address" ]
+    local: [ "check","show","marker","local","address","documents","precinct","cadastralUnit","jrg","jrl","usableArea","lot","building" ]
+    lot: [ "check","show","marker","lot","precinct","cadastralUnit","jrg","addresses","documents","cadastralArea" ]
+    #change: [ "check", "change", "changeYear", "applicationYear", "changeKind", "changeStatus", "changeDescription" ]
 
   title: (->
     type = @get "type"
@@ -28,64 +31,22 @@ App.EgbilListController = Em.ArrayController.extend
     building: "Budynki"
     document: "Dokumenty"
     group: "Podmioty grupowe"
-    individual: "Osoby fizyczne"
+    person: "Osoby fizyczne"
     institution: "Instytucje"
+    jrg: "Jednostki Rejestrowe Gruntów i Budynków"
     jrb: "Jednostki Rejestrowe Budynków"
-    jrg: "Stare Jednostki Rejestrowe Gruntów"
-    jrgib: "Jednostki Rejestrowe Gruntów i Budynków"
     jrl: "Jednostki Rejestrowe Lokali"
+    oldJrg: "Stare Jednostki Rejestrowe Gruntów"
     landCommunity: "Zarządy wspólnot gruntowych"
     local: "Lokale"
     lot: "Działki"
 
-  fetchMethod:
-    building: "getBuildings"
-    document: "getDocuments"
-    group: "getGroups"
-    individual: "getIndividual"
-    institution: "getInstitution"
-    jrb: "getJrb"
-    jrg: "getJrg"
-    jrgib: "getJrgib"
-    jrl: "getJrl"
-    landCommunity: "getLandCommunities"
-    local: "getLocals"
-    lot: "getLots"
-
-  #dataProvider for result table methods
-  fetchData: (fetchQueue)->
-    type = @get "type"
-    jsonMethod = @get "fetchMethod.#{type}"
-    Em.assert "fetchMethod undefinned for type: #{type}", jsonMethod
-    idList = fetchQueue.map( (x)-> x.get "id")
-    $.ajax
-      url: "#{jsonMethod}.json"
-      data:
-        idList: idList
-      success: (data) =>
-        if Em.isArray data
-          content = @get "content"
-          for dataItem in data
-            contentItem = content.find((item, index, enumerable) => dataItem.id == item.get "id")
-            if contentItem?
-              for own key,value of dataItem
-                tableCell = contentItem.get(key)
-                if tableCell? && tableCell instanceof App.StandardTableCellModel
-                  tableCell.set "value", value
-              contentItem.set "rowState", App.RowState.READY
-        return
-      complete: (jqXHR, textStatus) =>
-        #check for requested but not received rows
-        content = @get "content"
-        for idListItem in idList
-          contentItem = content.find((item, index, enumerable) => idListItem == item.get "id")
-          if contentItem? && App.RowState.READY != contentItem.get "rowState"
-            contentItem.set "rowState", App.RowState.ERROR
-        return
+  fetchDataCallback: (fetchQueue, type) -> 
+    @get("target.egbilController").fetchDataCallback(fetchQueue, type)
 
   checkedList: (->
-    @get("content").filterProperty "isChecked"
-    ).property("content.@each.isChecked")
+    @get("content").filterProperty "check"
+    ).property("content.@each.check")
   isAnyChecked: (->
     !Em.empty @get("checkedList")
     ).property("checkedList")
@@ -135,8 +96,10 @@ App.EgbilListController = Em.ArrayController.extend
         objectList: objectList
       success: (data) =>
         if !Em.empty data && Em.isArray data
+          objectModel = @get "target.egbilController.objectModel.#{type}"
+          Em.assert "Could not find model for object '#{type}'", objectModel
           @set "target.egbilListController.type", type
-          @set "target.egbilListController.content", Em.A(data.map(App.Common.toModel, App.EgbilListModel))
+          @set "target.egbilListController.content", data.map(App.Common.toModel, objectModel)
           @get("target").send "goToList"
         else
           alert "Nie znaleziono rekordu"  #TODO: Error handling

@@ -1,14 +1,27 @@
 App.EgbilObjectController = Em.ObjectController.extend
   content: null
+  objectTypeName:
+    jrg: "Jednostka Rejestrowa Gruntów i Budynków"
+    jrb: "Jednostka Rejestrowa Budynków"
+    jrl: "Jednostka Rejestrowa Lokali"
+    oldJrg: "Stara Jednostka Rejestrowa Gruntów"
+    lot: "Działka"
+    building : "Budynek"
+    local: "Lokal samodzielny"
+    document : "Dokument"
+    person : "Osoba fizyczna"
+    institution: "Instytucja"
+    group: "Podmiot grupowy"
+    landCommunity: "Zarząd wspólnoty grupowej"
+
   title: (->
-    groupName = @get "content.groupName"
-    cadastralUnit = @get "content.registerUnit.cadastralUnit.value"
-    precinct = @get "content.registerUnit.precinct.value"
-    g5 = @get "content.registerUnit.g5.value"
-    "#{groupName}: JE #{cadastralUnit}, Obręb #{precinct}, ID #{g5}"
-    ).property("content")
+    objectType = @get "content._objectType"
+    objectTypeName = @get "objectTypeName.#{objectType}"
+    objectDescription = @get "content._objectDescription"
+    "#{objectTypeName}: #{objectDescription}"    
+    ).property("content._objectType", "content._objectDescription")
   rightPanelContent: (->
-    data = @get ["target.egbilController.rightPanelData", @get "content.objectType"].join(".")
+    data = @get ["target.egbilController.rightPanelData", @get "content._objectType"].join(".")
     ).property("content.objectType")
   rightPanelSelectedObjects: ( ->
     object = Em.Object.create @get("content"),

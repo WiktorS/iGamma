@@ -1,7 +1,7 @@
-App.EgbilObjectLandCommunityController = Em.Controller.extend
-  content: null
+App.EgbilObjectLandCommunityController = App.EgbilObjectCommonController.extend
+  columnsOrder:
+    landCommunity: ["landCommunity", "status", "address", "landCommunityInstitution", "remarks", "notes"]
+    member: ["check", "marker", "personKind", "memberEntity", "memberAddress", "memberPeselRegon", "memberNip"]
 
-  landCommunityColumns:
-    ["name", "status", "address", "landCommunity", "remarks", "notes"]
-  memberColumns:
-    ["check", "marker", "type", "surnameAndNames", "address", "pesel", "nip"]
+  landCommunityColumns: (-> App.columnsData.getColumns(@get "columnsOrder.landCommunity")).property()
+  memberColumns: (-> App.columnsData.getColumns(@get "columnsOrder.member")).property()

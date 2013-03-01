@@ -1,13 +1,13 @@
-App.EgbilObjectInstitutionController = Em.Controller.extend
-  content: null
+App.EgbilObjectInstitutionController = App.EgbilObjectCommonController.extend
+  columnsOrder:
+    institution: ["fullName", "shortName", "status", "regon", "nip", "address", "registerName", "registerNumber", "registerCourt", "remarks", "notes"]
+    lot: ["check", "show", "marker", "personKind", "jrg", "lot", "sheet", "precinct", "cadastralUnit", "cadastralArea", "lotShareCharacter", "lotShareGroup", "lotShareValue"]
+    building: ["check", "show", "marker", "personKind", "jrg", "jrb", "building", "lot", "sheet", "precinct", "cadastralUnit", "buildingKind", "highestLevel"]
+    local: ["check", "show", "marker", "personKind", "jrg", "jrl", "local", "address", "document", "localKind"]
+    landCommunity: ["check","marker", "landCommunity", "address", "landCommunityInstitution"]
 
-  institutionColumns:
-    ["fullname", "shortname", "status", "regon", "nip", "address", "registername", "registernumber", "registercourt", "remarks", "notes"]
-  lotColumns:
-    ["check","show", "marker", "g5", "registeredArea", "geodesicArea", "addresses", "documentsSygnature", "useClassType", "useClassArea", "monumentRegister", "statisticalRegion", "listDistrict", "validFrom", "validTo", "value", "valuationDate", "remarks"]
-  buildingColumns:
-    ["check","show", "marker", "g5", "jrbNumber", "documentsSygnature", "buildUpArea", "usableArea", "status", "type", "classType", "highestLevel", "lowestLevel", "addresses", "lotNumber", "lotArea", "constructionFinishDate", "reconstructionFinishDate", "reconstructionScope", "exteriorWallsMaterial", "numberOfUnits", "monumentRegister", "cadastralValue", "valuationDate", "manyJRG", "remarks"]
-  localColumns:
-    ["check","show", "marker", "g5", "jrlNumber", "address", "documentsSygnature", "usableArea", "localType", "associatedPremisesBuilding", "associatedPremisesType", "associatedPremisesArea", "associatedPremisesNumber", "roomsNumber", "tier", "commonPropertyShare", "lot", "building", "cadastralValue", "valuationDate", "remarks"]
-  landCommunitiesColumns:
-    ["check","marker", "name", "address", "landCommunity"]
+  institutionColumns: (-> App.columnsData.getColumns(@get "columnsOrder.institution")).property()
+  lotColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lot")).property()
+  buildingColumns: (-> App.columnsData.getColumns(@get "columnsOrder.building")).property()
+  localColumns: (-> App.columnsData.getColumns(@get "columnsOrder.local")).property()
+  landCommunityColumns: (-> App.columnsData.getColumns(@get "columnsOrder.landCommunity")).property()
