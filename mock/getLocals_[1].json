@@ -44,6 +44,7 @@
                 "id": 0,
                 "entityID": 1,
                 "entityName": "Podmiot",
+                "entityType": "person",
                 "addressID": 1,
                 "addressName": "Adres",
                 "shareG": "Udział w Jednostce Rejestrowej Gruntów",
