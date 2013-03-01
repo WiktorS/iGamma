@@ -1,5 +1,10 @@
 App.ModelTableCellView = Em.View.extend
   tagName: "td"
-  displayValue: (-> @get "content.displayValue").property("content.displayValue")
+  displayValue: (->
+    content = @get "content"
+    content.get(@get "column.name")
+    ).property("content", "column.name")
   defaultTemplate: Em.Handlebars.compile "{{view.displayValue}}"
+
   content: null
+  column: null

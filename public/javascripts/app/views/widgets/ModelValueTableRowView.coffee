@@ -6,11 +6,11 @@ App.ModelValueTableRowView = Em.View.extend
     content = @get "content"
     result = ""
     if content?
-        cell = content.get column
-        Ember.assert "Cell must inherit from App.StandardTableCellModel",cell instanceof App.StandardTableCellModel
+        cell = content.get(column.get "name")
+#        Ember.assert "Cell must inherit from App.StandardTableCellModel",cell instanceof App.StandardTableCellModel
 
-        result += "<td class=\"header\">#{cell.label}</td>"
-        cellClass = cell.get("viewClass") ? "App.ModelTableCellView"
-        result += "{{view #{cellClass} contentBinding=\"view.content.#{column}\"}}"
+        result += "<td class=\"header\">#{column.get "data.label"}</td>"
+        cellClass = (column.get("data.viewClass") ? "App.ModelTableCellView").toString()
+        result += "{{view #{cellClass} contentBinding=\"view.content\" columnBinding=\"view.column\"}}"
     Em.Handlebars.compile result
-  ).property("columns.@each", "content.@each")
+  ).property("column", "content")

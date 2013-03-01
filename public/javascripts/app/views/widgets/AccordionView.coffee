@@ -14,3 +14,4 @@ App.AccordionBodyView = Em.View.extend
   templateName: "accordionBody"
   content: null
   columns: null
+  fetchFunctionName: null
