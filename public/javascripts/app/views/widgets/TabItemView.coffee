@@ -14,12 +14,13 @@ App.TabItemView = Em.View.extend
 App.ObjectTabItemView = App.TabItemView.extend
   object: null
   templateName: "objectTabItem"
-  stateName: (-> @get "object.objectType").property("object.objectType")
-  displayName: (-> @get "object.objectName").property("object.objectName")
+  stateName: (-> @get "object._objectType").property("object._objectType")
+  displayName: (-> @get "object._objectName").property("object._objectName")
   currentStateObjectNameBinding: "controller.target.currentState.objectName"
   click: (e) ->
     App.router.send "showObject", @get("object")
   active: ( ->
+    #TODO: match objectId not objectName
     @get("currentStatePath").match("\\." + @get("stateName")+"(\\.|$)") != null &&
       @get("currentStateObjectName") == @get("displayName")
   ).property("currentStatePath", "currentStateObjectName", "stateName", "displayName")
