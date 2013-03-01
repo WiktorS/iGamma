@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "shortName": "Nazwa skrócona",
+        "fullName" : "Nazwa pełna",
+        "status"   : "Status podmiotu",
+        "regon": "Numer REGON",
+        "nip"  : "Numer NIP",
+        "addressID": 1,
+        "addressName": "Adres",
+        "registerName" : "Nazwa rejestru osób prawnych",
+        "registerNumber"   : "Numer rejestru osób prawnych",
+        "registerCourt": "Nazwa sądu rejestrowego",
+        "remarks"  : "Uwagi",
+        "notes": "Notatki",
+        "lots" : [
+            {
+                "id": 1
+            }
+        ],
+        "buildings" : [
+            {
+                "id": 1
+            }
+        ],
+        "locals" : [
+            {
+                "id": 1
+            }
+        ],
+        "members" : [
+            {
+                "id": 1,
+                "entityType": "person"
+            },
+            {
+                "id": 1,
+                "entityType": "institution"
+            }
+        ],
+        "lotsShare" : [
+            {
+                "id": 0,
+                "entityID": 1,
+                "entityType": "Typ podmiotu",
+                "shareValue": "Udział podmiotu"
+            }
+        ],
+        "buildingsShare" : [
+            {
+                "id": 0,
+                "entityID": 1,
+                "entityType": "Typ podmiotu",
+                "shareValue": "Udział podmiotu"
+            }
+        ],
+        "localsShare" : [
+            {
+                "id": 0,
+                "entityID": 1,
+                "entityType": "Typ podmiotu",
+                "shareValue": "Udział podmiotu"
+            }
+        ]
+    }
+]

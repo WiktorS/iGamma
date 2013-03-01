@@ -1,0 +1,23 @@
+[
+  {
+    "id"  : 1,
+    "landCommunityName" : "Nazwa spółki",
+    "status": "Status podmiotu",
+    "addressID": 1,
+    "addressName": "Adres",
+    "landCommunityInstitutionID": 1,
+    "landCommunityInstitutionName": "Wspólnota gruntowa",
+    "remarks": "Uwagi",
+    "notes": "Notatki",
+    "members": [
+      {
+        "id": 1,
+        "entityType": "person"
+      },
+      {
+        "id": 1,
+        "entityType": "institution"
+      }
+    ]
+  }
+]

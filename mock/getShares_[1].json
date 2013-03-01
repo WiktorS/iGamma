@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "jrgID": 1,
+    "jrbID": 1,
+    "jrlID": 1,
+    "characterG": "Charakter władania G",
+    "characterB": "Charakter władania B",
+    "characterL": "Charakter władania L",
+    "shareValue": "Udział",
+    "registerGroupG": "Grupa rejestrowa G",
+    "registerGroupB": "Grupa rejestrowa B",
+    "registerGroupL": "Grupa rejestrowa L",
+    "entityID": 1,
+    "entityName": "Podmiot",
+    "entityType": "person",
+    "peselRegon": "PESEL/REGON",
+    "addressID": 1,
+    "addressName": "Adres",
+    "shareRemarks": "Udział.Uwagi",
+    "personRemarks": "Osoba.Uwagi"
+  }
+]

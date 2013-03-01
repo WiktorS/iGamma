@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,    
+        "systematics": "Systematyka",
+        "changeYear": "Rok zmiany",
+        "changeName": "Numer zmiany",
+        "applicationYear": "Rok zgłoszenia",
+        "applicationNumber": "Numer zgłoszenia /Numer kancelaryjny/",
+        "stockKerg": "Numer zasobu lub KERG",
+        "applicationKind": "Typ wniosku",
+        "changeKind": "Rodzaj zmiany",
+        "changeStatus": "Status zmiany",
+        "changeDescription": "Opis zmiany",
+        "lotsAndLandRegister": "Działki i KW",
+        "applicationEntityID": 1,
+        "applicationEntityName": "Podmiot zgłaszający zmianę",
+        "applicationEntityType": "person",
+        "remarks": "Uwagi",
+        "notes": "Notatki",
+        "registeredBy": "Zarejestrował",
+        "introducedBy": "Wprowadził",
+        "acceptedBy": "Zaakceptował"
+    }
+]

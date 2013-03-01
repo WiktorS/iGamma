@@ -1,0 +1,43 @@
+[
+    {
+        "id": 1,
+        "registerUnitType": "jrl",
+        "jrgID": 1,
+        "jrgName": "Numer JRG",
+        "jrbID": 1,
+        "jrbName": "Numer JRB",
+        "jrlID": 1,
+        "jrlName": "Numer JRL",
+        "precinct": "Obręb",
+        "cadastralUnit": "Jednostka ewidencyjna",
+        "creationProof": "Dowód założenia",
+        "creationDate": "Data założenia",
+        "landRegister": "KW",
+        "cadastralArea": "Powierzchnia ewidencyjna",
+        "householdKind": "Rodzaj gospodarstwa",
+        "regon" : "REGON",
+        "shareGroup": "Grupa rejestrowa",
+        "shares": [
+            {
+                "id": 1
+            }
+        ],
+        "lots": [
+            {
+                "id": 1
+            }
+        ],
+        "buildings": [
+            {
+                "id": 1
+            }
+        ],
+        "locals": [
+            {
+                "id": 1
+            }
+        ],
+        "remarks": "Uwagi",
+        "notes": "Notatki"
+    }
+]

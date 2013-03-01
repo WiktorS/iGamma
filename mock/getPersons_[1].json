@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "pesel": "Numer PESEL",
+        "surname": "Nazwisko",
+        "firstName": "Pierwsze imię",
+        "secondName": "Drugie imię",
+        "sex": "Płeć",
+        "fatherName": "Imię ojca",
+        "motherName": "Imię matki",
+        "citizenship": "Obywatelstwo",
+        "status": "Status podmiotu",
+        "nip": "Numer NIP",
+        "identityDocument": "Oznaczenie dokumentu tożsamości",
+        "addressID": 1,
+        "addressName": "Adres zamieszkania",
+        "mailingAddressID": 1,
+        "mailingAddressName": "Adres korespondencyjny",
+        "alive": "Żyje",
+        "remarks": "Uwagi",
+        "notes": "Notatki",
+        "lots" : [
+            {
+                "id": 1
+            }
+        ],
+        "buildings" : [
+            {
+                "id": 1
+            }
+        ],
+        "locals" : [
+            {
+                "id": 1
+            }
+        ],
+        "lotsShare" : [
+            {
+                "id": 0,
+                "entityID": 1,
+                "entityType": "Typ podmiotu",
+                "shareValue": "Udział podmiotu"
+            }
+        ],
+        "buildingsShare" : [
+            {
+                "id": 0,
+                "entityID": 1,
+                "entityType": "Typ podmiotu",
+                "shareValue": "Udział podmiotu"
+            }
+        ],
+        "localsShare" : [
+            {
+                "id": 0,
+                "entityID": 1,
+                "entityType": "Typ podmiotu",
+                "shareValue": "Udział podmiotu"
+            }
+        ]
+    }
+]

@@ -1,37 +1,55 @@
 [
-  {
-    "id": 1,
-    "marker": "2",
-    "buildingID": 3,
-    "buildingNumber": "4",
-    "lotNumber": "5",
-    "jrgID": 6,
-    "jrgNumber": "7",
-    "jrbID": 8,
-    "jrbNumber": "9",
-    "precinct": "10",
-    "cadastralUnit": "11",
-    "finishYear": "12",
-    "type": "13",
-    "buildUpArea": "14",
-    "g5": "15",
-    "documentsSygnature": "16",
-    "usableArea": "17",
-    "status": "18",
-    "classType": "19",
-    "highestLevel": "20",
-    "lowestLevel": "21",
-    "addresses": "22",
-    "lotArea": "23",
-    "constructionFinishDate": "24",
-    "reconstructionFinishDate": "25",
-    "reconstructionScope": "26",
-    "exteriorWallsMaterial": "27",
-    "numberOfUnits": "28",
-    "monumentRegister": "29",
-    "cadastralValue": "30",
-    "valuationDate": "31",
-    "manyJRG": "32",
-    "remarks": "33"
-  }
+    {
+        "id": 1,
+        "buildingName": "a",
+        "jrbID": 2,
+        "jrbName": "b",
+        "jrgID": 3,
+        "jrgName": "c",
+        "jrgType": "jrg",
+        "sheet": "Arkusz",
+        "precinct": "y",
+        "cadastralUnit": "z",
+        "lots": [
+            {
+                "id": 1
+            }
+        ],
+        "buildingArea": "d",
+        "usableArea": "e",
+        "buildingStatus": "f",
+        "buildingClass": "g",
+        "highestLevel": "h",
+        "lowestLevel": "i",
+        "numberOfLevels": "j",
+        "addresses": [
+            {
+                "id": 1
+            }
+        ],
+        "documents": [
+            {
+                "id": 1
+            }
+        ],
+        "constructionFinishDate": "k",
+        "constructionFinishDateCertainty": "l",
+        "reconstructionFinishDate": "m",
+        "reconstructionFinishDateCertainty": "n",
+        "reconstructionScope": "o",
+        "exteriorWallsMaterial": "p",
+        "buildingKind": "q",
+        "numberOfLocals": "r",
+        "monumentRegister": "s",
+        "cadastralValue": "t",
+        "valuationDate": "u",
+        "manyJRG": "w",
+        "remarks": "x",
+        "notes": "A",
+        "locals": [
+            {
+                "id": 1
+            }
+        ]
+    }
 ]

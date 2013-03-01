@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "documentName": "Sygnatura (SYG)",
+    "documentKind": "Rodzaj (KDK)",
+    "documentSource": "Źródło (NSR)",
+    "creationDate": "Data sporządzenia (DTD)",
+    "receiptDate": "Data wpływu (DTP)",
+    "description": "Opis (OPD)",
+    "designation": "Oznaczenie (IDM)",
+    "relatedDocumentID": 1,
+    "relatedDocumentName": "Dokument związany",
+    "relatedDocumentKind": "Rodzaj dokumentu związanego",
+    "scan": "Skan",
+    "lots": [
+        {
+            "id": 1
+        }
+    ],
+    "buildings": [
+        {
+            "id": 1
+        }
+    ],
+    "locals": [
+        {
+            "id": 1
+        }
+    ],
+    "changes": [
+        {
+            "id": 1
+        }
+    ]
+  }
+]
