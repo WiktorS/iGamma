@@ -1,15 +1,15 @@
 <script type="text/x-handlebars" data-template-name="egbilObjectLocal">
   <div>
-    {{view App.ModelValueTableView contentBinding="controller.content.local" columnsBinding="controller.localColumns"}}
+    {{view App.ModelValueTableView contentBinding="controller.content" columnsBinding="controller.localLeftColumns"}}
   </div>
   <div>
-    {{view App.ModelValueTableView contentBinding="controller.content.local" columnsBinding="controller.localColumns1"}}
+    {{view App.ModelValueTableView contentBinding="controller.content" columnsBinding="controller.localMiddleColumns"}}
     Dokumenty
     {{view App.ModelTableView contentBinding="controller.content.documents" columnsBinding="controller.documentColumns"}}
   </div>
   <div>
     Pomieszczenia przynależne
-    {{view App.ModelTableView contentBinding="controller.content.premises" columnsBinding="controller.premiseColumns"}}
+    {{view App.ModelTableView contentBinding="controller.content.associatedPremises" columnsBinding="controller.premiseColumns"}}
   </div>
   <div class="accordion">
     {{#view classNames="accordion-group"}}

@@ -1,6 +1,6 @@
 <script type="text/x-handlebars" data-template-name="egbilObjectInstitution">
   <div class="span4">
-    {{view App.ModelValueTableView contentBinding="controller.content.institution" columnsBinding="controller.institutionColumns"}}
+    {{view App.ModelValueTableView contentBinding="controller.content" columnsBinding="controller.institutionColumns"}}
   </div>
   <div class="accordion offset4">
     {{#view classNames="accordion-group"}}
@@ -17,7 +17,7 @@
     {{/view}}
     {{#view classNames="accordion-group"}}
     {{view App.AccordionHeaderView label="Zarządy wspólnot gruntowych"}}
-    {{view App.AccordionBodyView contentBinding="controller.content.landCommunities" columnsBinding="controller.landCommunitiesColumns"}}
+    {{view App.AccordionBodyView contentBinding="controller.content.landCommunities" columnsBinding="controller.landCommunityColumns"}}
     {{/view}}
   </div>
 </script>
