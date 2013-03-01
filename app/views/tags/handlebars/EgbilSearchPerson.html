@@ -1,4 +1,4 @@
-<script type="text/x-handlebars" data-template-name="egbilSearchIndividual">
+<script type="text/x-handlebars" data-template-name="egbilSearchPerson">
   {{view App.FilterTypesView filterType="individual"}}
   <div class="tab-content">
 
@@ -6,7 +6,7 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView field=content.person.sex}}
+          {{view App.FilterEntryFieldView field=content.person.sex attrIndex=0}}
           {{view App.FilterEntryFieldView field=content.person.lastName}}
           {{view App.FilterEntryFieldView field=content.person.firstName}}
           {{view App.FilterEntryFieldView field=content.person.middleName}}

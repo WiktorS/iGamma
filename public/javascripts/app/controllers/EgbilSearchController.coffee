@@ -8,18 +8,18 @@ App.EgbilSearchController = Em.Controller.extend
     @get "queryNameData.#{type}"
     ).property("type")
   queryNameData:
-    building: "6. 2 Budynek na punktach graficznych"
-    document: "getDocuments"
-    group: "getGroupByNip"
-    individual: "getPersonByPesel"
-    institution: "getInstitutionByNip"
-    jrb: "getRegisterUnits"
-    jrg: "getRegisterUnits"
-    jrgib: "getRegisterUnits"
-    jrl: "getRegisterUnits"
-    landCommunity: "getLandCommunities"
-    local: "getLocalByNumber"
-    lot: "getLotsByNumber"
+    building: "Budynki"
+    document: "Dokumenty"
+    group: "Podmioty grupowe"
+    person: "Osoby fizyczne"
+    institution: "Instytucje"
+    jrg: "Jednostki Rejestrowe Gruntów i Budynków"
+    jrb: "Jednostki Rejestrowe Budynków"
+    jrl: "Jednostki Rejestrowe Lokali"
+    oldJrg: "Stare Jednostki Rejestrowe Gruntów"
+    landCommunity: "Zarządy wspólnot gruntowych"
+    local: "Lokale"
+    lot: "Działki"
 
   doSearch: (searchArgs) ->
     $.ajax
@@ -29,13 +29,18 @@ App.EgbilSearchController = Em.Controller.extend
         queryName: @get "queryName"
         queryArgs: searchArgs
       success: (data) =>
+        # data is array of ids
         if Em.isArray data
-          @set "target.egbilListController.type", @get("type")
-          list = Em.A(data.map(App.Common.toModel, App.EgbilListModel))
-          #set all rows to IDLE state with just ID
-          for own k,v of data
-            list.set "#{k}.id", v
-            list.set "#{k}.rowState", App.RowState.IDLE
+          type = @get "type"
+          objectModel = @get "target.egbilController.objectModel.#{type}"
+          Em.assert "Model for object '#{type}' not defined in EgbilController", objectModel
+          list = data.map(((x)-> 
+            @create().setProperties
+              _objectId: x
+              _objectType: type
+            ), objectModel)
+          Em.run.sync()
+          @set "target.egbilListController.type", type
           @set "target.egbilListController.content", list
           @get("target").send "goToList"
         else
