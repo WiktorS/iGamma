@@ -9,7 +9,6 @@ App.ModelTableView = Em.View.extend
 
   fetchQueue: null
   fetchQueueTimeout: null
-  fetchFunctionName: null
 
   init: ->
     @_super()
@@ -37,7 +36,5 @@ App.ModelTableView = Em.View.extend
       item.set "_dataStatus", App.EgbilObjectStatus.LOADING
     fetchFunction = @get("controller.fetchDataCallback")
     Em.assert "Controller #{@get("controller.constructor").toString()} does not define 'fetchDataCallback' function", fetchFunction
-    # fetchFunctionName = @get "fetch#{itemType}FunctionName"
-    # fetchFunction = @get "controller.#{fetchFunctionName}"
     Em.run.next(@, => fetchFunction.call(@get("controller"), fetchQueue, itemType))
     @set("fetchQueue.#{itemType}", Em.A())
