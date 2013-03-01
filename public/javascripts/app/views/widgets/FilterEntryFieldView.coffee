@@ -18,4 +18,4 @@ App.FilterEntryFieldView = Em.View.extend
   didInsertElement: ->
     @_super()
 #   parentView must extend EgbilSearchCommonView class
-    @get("parentView").pushFormField? @get "field"
+    @get("parentView").pushFormField? @get("field"), @get("attrIndex")
