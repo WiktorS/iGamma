@@ -1,4 +1,4 @@
-package integra;
+package integra.models;
 
 public class QueryEntry {
     public String name;

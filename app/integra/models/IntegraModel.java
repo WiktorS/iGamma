@@ -1,4 +1,5 @@
 package integra.models;
 
-public interface IntegraModel {
+public class IntegraModel {
+    public long id;
 }

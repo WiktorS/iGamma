@@ -1,8 +1,7 @@
 package integra.models;
 
-public class Systematic {
+public class Systematic extends IntegraModel{
     public long parentId;
-    public long id;
     public String name;
     public String desc;
 }
