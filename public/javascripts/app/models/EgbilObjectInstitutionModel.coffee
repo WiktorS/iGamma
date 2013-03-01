@@ -21,6 +21,7 @@ App.EgbilObjectInstitutionModel = App.EgbilObjectModel.extend
   shortName: null
   status: null
   regon: null
+  peselRegonBinding: "regon"
   nip: null
   addressID: null
   addressName: null

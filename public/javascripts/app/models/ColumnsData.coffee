@@ -104,7 +104,7 @@ App.columnsData = Em.Object.create
     label: "Adresy"
     viewClass: "App.EgbilListTableCellListView"
     value: "addresses"
-    valueType: "address"
+    valueType: "addressName"
   documentKind: App. StandardTableCellModel.create
     label: "Rodzaj dokumentu"
   documentSygnature: App. StandardTableCellModel.create
@@ -259,20 +259,24 @@ App.columnsData = Em.Object.create
     valueType: "group"
   memberEntity: App.StandardTableCellModel.create
     label: "Nazwisko Imiona (Rodzice)/Nazwa pełna"
-    viewClass: "App.EgbilListTableCellEntityView"
-    valueName: "_objectName"
+    viewClass: "App.EgbilListTableCellMemberView"
+    value: "entity"
+    memberValue: "_objectName"
   memberAddress: App.StandardTableCellModel.create
     label: "Adres zamieszkania/Adres"
-    viewClass: "App.EgbilListTableCellEntityView"
-    valueName: "address"
+    viewClass: "App.EgbilListTableCellMemberView"
+    value: "entity"
+    memberValue: "addressName"
   memberPeselRegon: App.StandardTableCellModel.create
     label: "PESEL/REGON"
-    viewClass: "App.EgbilListTableCellEntityView"
-    valueName: "peselRegon"
+    viewClass: "App.EgbilListTableCellMemberView"
+    value: "entity"
+    memberValue: "peselRegon"
   memberNip: App.StandardTableCellModel.create
     label: "NIP"
-    viewClass: "App.EgbilListTableCellEntityView"
-    valueName: "nip"
+    viewClass: "App.EgbilListTableCellMemberView"
+    value: "entity"
+    memberValue: "nip"
   #document
   document: App.StandardTableCellModel.create
     label: "Sygnatura"

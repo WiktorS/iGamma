@@ -23,6 +23,7 @@ App.EgbilObjectPersonModel = App.EgbilObjectModel.extend
     [@get("surname"), @get("firstName"), @get("secondName"), parents].join(" ")
     ).property("surname", "firstName", "secondName", "fatherName", "motherName")
   pesel: null
+  peselRegonBinding: "pesel"
   surname: null
   firstName: null
   secondName: null

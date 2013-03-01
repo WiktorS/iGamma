@@ -12,3 +12,6 @@ App.EgbilObjectIntegraEntityModel = App.EgbilObjectModel.extend
     @_super()
     #this model does not provide id to fetch data on demand, so it is assumed that data are already here
     @set "_dataStatus", App.EgbilObjectStatus.READY
+    #initialize possible entityTypes
+    @set "person", App.EgbilObjectPersonModel.create()
+    @set "institution", App.EgbilObjectInstitutionModel.create()
