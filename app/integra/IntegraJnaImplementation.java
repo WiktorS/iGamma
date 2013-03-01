@@ -21,16 +21,6 @@ public class IntegraJnaImplementation implements Integra {
     }
 
     @Override
-    public List<RegisterUnit> getRegisterUnits(String type) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public List<Lot> getLotsByNumber(String number) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
     public List<Building> getBuildings(final long idList[]) throws Exception {
         final List<Building> list = new ArrayList<Building>();
 
@@ -53,15 +43,15 @@ public class IntegraJnaImplementation implements Integra {
                                     throw new Exception("Nie poprawny rozmiar struktury budynków");
                                 Building item = new Building();
                                 item.id = building.iID;
-                                item.buildingNumber = IntegraJna.AnsiPszToString(building.buildingNumber);
-                                item.lotNumber = IntegraJna.AnsiPszToString(building.lotNumber);
-                                item.jrgNumber = IntegraJna.AnsiPszToString(building.jrgNumber);
-                                item.jrbNumber = IntegraJna.AnsiPszToString(building.jrbNumber);
-                                item.precinct = IntegraJna.AnsiPszToString(building.precinct);
-                                item.cadastralUnit = IntegraJna.AnsiPszToString(building.cadastralUnit);
-                                item.finishYear = IntegraJna.AnsiPszToString(building.finishYear);
-                                item.type = IntegraJna.AnsiPszToString(building.type);
-                                item.buildUpArea = IntegraJna.AnsiPszToString(building.buildUpArea);
+//                                item.buildingNumber = IntegraJna.AnsiPszToString(building.buildingNumber);
+//                                item.lotNumber = IntegraJna.AnsiPszToString(building.lotNumber);
+//                                item.jrgNumber = IntegraJna.AnsiPszToString(building.jrgNumber);
+//                                item.jrbNumber = IntegraJna.AnsiPszToString(building.jrbNumber);
+//                                item.precinct = IntegraJna.AnsiPszToString(building.precinct);
+//                                item.cadastralUnit = IntegraJna.AnsiPszToString(building.cadastralUnit);
+////                                item.constructionFinishDate = IntegraJna.AnsiPszToString(building.finishYear);
+//                                item.type = IntegraJna.AnsiPszToString(building.type);
+//                                item.buildUpArea = IntegraJna.AnsiPszToString(building.buildUpArea);
                                 list.add(item);
                             }
                         } finally {
@@ -75,37 +65,72 @@ public class IntegraJnaImplementation implements Integra {
     }
 
     @Override
-    public List<Local> getLocalByNumber(String numberL) {
+    public List<Document> getDocuments(long[] idList) throws Exception {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<Person> getPersonByPesel(String pesel) {
+    public List<Group> getGroups(long[] idList) throws Exception {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<Institution> getInstitutionByNip(String nip) {
+    public List<Person> getPersons(long[] idList) throws Exception {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<Group> getGroupByNip(String nip) {
+    public List<Institution> getInstitutions(long[] idList) throws Exception {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<LandCommunity> getLandCommunities(String name) {
+    public List<RegisterUnit> getJrg(long[] idList) throws Exception {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public EgbilObject getEgbilObject(String type, String name) {
+    public List<RegisterUnit> getJrb(long[] idList) throws Exception {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<EgbilDocument> getDocuments() {
+    public List<RegisterUnit> getJrl(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<RegisterUnit> getOldJrg(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<LandCommunity> getLandCommunities(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Local> getLocals(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Lot> getLots(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Address> getAddresses(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Share> getShares(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Change> getChanges(long[] idList) throws Exception {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
@@ -142,24 +167,24 @@ public class IntegraJnaImplementation implements Integra {
         };
         return list;
     }
+//
+//    @Override
+//    public List<ShareSummary> getShareSummary() {
+//        return null;  //To change body of implemented methods use File | Settings | File Templates.
+//    }
+//
+//    @Override
+//    public CustomReportData getCustomReportData(String type, String name) {
+//        return null;  //To change body of implemented methods use File | Settings | File Templates.
+//    }
+//
+//    @Override
+//    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
+//        return null;  //To change body of implemented methods use File | Settings | File Templates.
+//    }
 
     @Override
-    public List<ShareSummary> getShareSummary() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public CustomReportData getCustomReportData(String type, String name) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public List<Long> findObjects(final String queryName, QueryEntry[] queryEntryList) throws Exception {
+    public List<Long> findObjects(String queryName, QueryEntry[] queryEntryList) throws Exception {
         final List<Long> list = new ArrayList<Long>();
 
         if (queryEntryList != null && queryEntryList.length > 0)
@@ -177,12 +202,13 @@ public class IntegraJnaImplementation implements Integra {
                 }
             }
 
+            final String finalQueryName = queryName;
             new IntegraJnaConnectionWorker(integraJnaConnectionPool) {
                 @Override
                 public void run(Pointer integraConnectionPtr) throws Exception {
                     PointerByReference resultListRef = new PointerByReference();
                     final IntBuffer resultCountBuffer = IntBuffer.allocate(1);
-                    int err = IGammaJNALibrary.iGammaJnaFindObjects(integraConnectionPtr, queryName, jnaQueryEntryList[0], jnaQueryEntryList.length, resultListRef, resultCountBuffer);
+                    int err = IGammaJNALibrary.iGammaJnaFindObjects(integraConnectionPtr, finalQueryName, jnaQueryEntryList[0], jnaQueryEntryList.length, resultListRef, resultCountBuffer);
                     if (err != 0) {
                         String errorMessage = "Unexpected error";
                         PointerByReference refErrorMsg = new PointerByReference();

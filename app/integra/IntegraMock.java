@@ -143,22 +143,7 @@ public class IntegraMock implements Integra {
         return null;
     }
 
-
-    @Override
-    public List<RegisterUnit> getRegisterUnits(String type) throws Exception {
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return getMockJsonData("getRegisterUnits", typeToken, type);
-    }
-
-    @Override
-    public List<Lot> getLotsByNumber(String number) throws Exception {
-        TypeToken<List<Lot>> typeToken = new TypeToken<List<Lot>>() {};
-        return getMockJsonData("getLotsByNumber", typeToken, number);
-    }
-
-    @Override
-    public List<Building> getBuildings(long idList[]) throws Exception {
-        TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
+    private void checkIdListArgument(long idList[]) throws Exception {
         if (idList == null)
             throw new Exception("List is null");
         else if (idList.length == 0)
@@ -169,50 +154,127 @@ public class IntegraMock implements Integra {
                     throw new Exception("Wrong identifier");
             }
         }
+    }
+
+
+    @Override
+    public List<Building> getBuildings(long idList[]) throws Exception {
+        TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
+        checkIdListArgument(idList);
         Arrays.sort(idList);
         return getMockJsonData("getBuildings", typeToken, Arrays.toString(idList));
     }
 
     @Override
-    public List<Local> getLocalByNumber(String numberL) throws Exception {
-        TypeToken<List<Local>> typeToken = new TypeToken<List<Local>>() {};
-        return getMockJsonData("getLocalByNumber", typeToken, numberL);
+    public List<Document> getDocuments(long[] idList) throws Exception {
+        TypeToken<List<Document>> typeToken = new TypeToken<List<Document>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getDocuments", typeToken, Arrays.toString(idList));
     }
 
     @Override
-    public List<Person> getPersonByPesel(String pesel) throws Exception {
-        TypeToken<List<Person>> typeToken = new TypeToken<List<Person>>() {};
-        return getMockJsonData("getPersonByPesel", typeToken, pesel);
-    }
-
-    @Override
-    public List<Institution> getInstitutionByNip(String nip) throws Exception {
-        TypeToken<List<Institution>> typeToken = new TypeToken<List<Institution>>() {};
-        return getMockJsonData("getInstitutionByNip", typeToken, nip);
-    }
-
-    @Override
-    public List<Group> getGroupByNip(String nip) throws Exception {
+    public List<Group> getGroups(long[] idList) throws Exception {
         TypeToken<List<Group>> typeToken = new TypeToken<List<Group>>() {};
-        return getMockJsonData("getGroupByNip", typeToken, nip);
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getGroups", typeToken, Arrays.toString(idList));
     }
 
     @Override
-    public List<LandCommunity> getLandCommunities(String name) throws Exception {
+    public List<Person> getPersons(long[] idList) throws Exception {
+        TypeToken<List<Person>> typeToken = new TypeToken<List<Person>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getPersons", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<Institution> getInstitutions(long[] idList) throws Exception {
+        TypeToken<List<Institution>> typeToken = new TypeToken<List<Institution>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getInstitutions", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<RegisterUnit> getJrg(long[] idList) throws Exception {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getJrg", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<RegisterUnit> getJrb(long[] idList) throws Exception {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getJrb", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<RegisterUnit> getJrl(long[] idList) throws Exception {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getJrl", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<RegisterUnit> getOldJrg(long[] idList) throws Exception {
+        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getOldJrg", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<LandCommunity> getLandCommunities(long[] idList) throws Exception {
         TypeToken<List<LandCommunity>> typeToken = new TypeToken<List<LandCommunity>>() {};
-        return getMockJsonData("getLandCommunities", typeToken, name);
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getLandCommunities", typeToken, Arrays.toString(idList));
     }
 
     @Override
-    public EgbilObject getEgbilObject(String type, String name) throws Exception {
-        TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
-        return getMockJsonData("getEgbilObject", typeToken, type, name);
+    public List<Local> getLocals(long[] idList) throws Exception {
+        TypeToken<List<Local>> typeToken = new TypeToken<List<Local>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getLocals", typeToken, Arrays.toString(idList));
     }
 
     @Override
-    public List<EgbilDocument> getDocuments() throws Exception {
-        TypeToken<List<EgbilDocument>> typeToken = new TypeToken<List<EgbilDocument>>() {};
-        return getMockJsonData("getDocuments", typeToken);
+    public List<Lot> getLots(long[] idList) throws Exception {
+        TypeToken<List<Lot>> typeToken = new TypeToken<List<Lot>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getLots", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<Address> getAddresses(long[] idList) throws Exception {
+        TypeToken<List<Address>> typeToken = new TypeToken<List<Address>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getAddresses", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<Share> getShares(long[] idList) throws Exception {
+        TypeToken<List<Share>> typeToken = new TypeToken<List<Share>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getShares", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<Change> getChanges(long[] idList) throws Exception {
+        TypeToken<List<Change>> typeToken = new TypeToken<List<Change>>() {};
+        checkIdListArgument(idList);
+        Arrays.sort(idList);
+        return getMockJsonData("getChanges", typeToken, Arrays.toString(idList));
     }
 
     @Override
@@ -220,24 +282,24 @@ public class IntegraMock implements Integra {
         TypeToken<List<Systematic>> typeToken = new TypeToken<List<Systematic>>() {};
         return getMockJsonData("getSystematics", typeToken, Arrays.toString(parentIdList));
     }
-
-    @Override
-    public List<ShareSummary> getShareSummary() throws Exception {
-        TypeToken<List<ShareSummary>> typeToken = new TypeToken<List<ShareSummary>>() {};
-        return getMockJsonData("getShareSummary", typeToken);
-    }
-
-    @Override
-    public CustomReportData getCustomReportData(String type, String name) throws Exception {
-        TypeToken<CustomReportData> typeToken = new TypeToken<CustomReportData>() {};
-        return getMockJsonData("getCustomReportData", typeToken, type, name);
-    }
-
-    @Override
-    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) throws Exception {
-        TypeToken<List<EgbilObjectData>> typeToken = new TypeToken<List<EgbilObjectData>>() {};
-        return getMockJsonData("getRelatedObjects", typeToken, relation, objectList.toString());
-    }
+//
+//    @Override
+//    public List<ShareSummary> getShareSummary() throws Exception {
+//        TypeToken<List<ShareSummary>> typeToken = new TypeToken<List<ShareSummary>>() {};
+//        return getMockJsonData("getShareSummary", typeToken);
+//    }
+//
+//    @Override
+//    public CustomReportData getCustomReportData(String type, String name) throws Exception {
+//        TypeToken<CustomReportData> typeToken = new TypeToken<CustomReportData>() {};
+//        return getMockJsonData("getCustomReportData", typeToken, type, name);
+//    }
+//
+//    @Override
+//    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) throws Exception {
+//        TypeToken<List<EgbilObjectData>> typeToken = new TypeToken<List<EgbilObjectData>>() {};
+//        return getMockJsonData("getRelatedObjects", typeToken, relation, objectList.toString());
+//    }
 
     @Override
     public List<Long> findObjects(String queryName, QueryEntry[] queryEntryList) throws Exception {
