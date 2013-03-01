@@ -2,9 +2,9 @@
     {
         "id": 1,
         "buildingName": "a",
-        "jrbID": 2,
+        "jrbID": 1,
         "jrbName": "b",
-        "jrgID": 3,
+        "jrgID": 1,
         "jrgName": "c",
         "jrgType": "jrg",
         "sheet": "Arkusz",
