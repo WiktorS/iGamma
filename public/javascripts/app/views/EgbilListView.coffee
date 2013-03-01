@@ -82,24 +82,38 @@ App.EgbilListTableCellButtonView = App.ModelTableCellView.extend
 App.EgbilListTableCellListView = App.ModelTableCellView.extend
   templateName: "egbilListTableCellList"
   valueList: (-> @get "content.#{@get "column.data.value"}").property("content", "column.data.value")
-  valueListName: (-> 
-    list = @get "valueList"
-    name = @get("column.data.valueName") ? "_objectName"
-    x.get name for x in (list ? [])
+  valueListButton: (-> 
+    list = @get("valueList") ? []
+    valueName = @get("column.data.valueName") ? "_objectName"
+    valueType = @get("column.data.valueType")
+    value = "#{@get "column.data.valueType"}ID" if valueType
+    output = list.map (x)->
+      Em.Object.create
+        content: App.EgbilObjectModel.create().setProperties
+          _objectType: valueType
+          _objectNameBinding: "valueName" 
+          id: x.get(value) if value
+          valueName: x.get valueName
+        column: Em.Object.create
+          data: Em.Object.create
+            value: "id"
+            valueType: valueType
+            valueName: "valueName"
+    Em.run.sync()
+    output
     ).property("valueList", "column.data.valueName")
-
+  isValueTypeDefined: (-> 
+    !Em.empty @get("column.data.valueType")
+    ).property("column.data.valueType")
   isIdle: (->
     @get("valueList")?.everyProperty "_dataStatus", App.EgbilObjectStatus.IDLE
     ).property("valueList.@each._dataStatus")
-
   isLoading: (->
     @get("valueList")?.everyProperty "_dataStatus", App.EgbilObjectStatus.LOADING
     ).property("valueList.@each._dataStatus")
-
   isReady: (->
     @get("valueList")?.everyProperty "_dataStatus", App.EgbilObjectStatus.READY
     ).property("valueList.@each._dataStatus")
-
   isError: (->
     !@get("isIdle") && !@get("isLoading") && !@get("isReady")
     ).property("isIdle", "isLoading", "isReady")
@@ -118,8 +132,52 @@ App.EgbilListTableCellListView = App.ModelTableCellView.extend
         tableView.fetchQueueAppend value for value in (@get("valueList") ? Em.A())
 
 
-App.EgbilListTableCellEntityView = App.ModelTableCellView.extend
-  template: Em.Handlebars.compile "TODO"
+App.EgbilListTableCellMemberView = App.ModelTableCellView.extend
+  template: Em.Handlebars.compile "{{view.memberValue}}"
+  member: (->
+    memberType = @get "content.#{@get "column.data.value"}Type"
+    @get "content.#{memberType}"
+    ).property("content", "column.data.value", "member._dataStatus") 
+  #Referencing itself in dependencies looks strange but it works 
+  #Using member._dataStatus cuz we need to know when the data is available and it will change when the data are ready 
+  memberValue: (->
+    @get "member.#{@get "column.data.memberValue"}"
+    ).property("member", "column.data.memberValue")
+
+  isIdle: (->
+    App.EgbilObjectStatus.IDLE == @get "member._dataStatus"
+    ).property("member._dataStatus")
+
+  isLoading: (->
+    App.EgbilObjectStatus.LOADING == @get "member._dataStatus"
+    ).property("member._dataStatus")
+
+  isReady: (->
+    App.EgbilObjectStatus.READY == @get "member._dataStatus"
+    ).property("member._dataStatus")
+
+  isError: (->
+    !@get("isIdle") && !@get("isLoading") && !@get("isReady")
+    ).property("isIdle", "isLoading", "isReady")
+
+  didInsertElement: ->
+    if !@get("isReady")
+      tableView = @get "parentView.parentView"
+      if tableView instanceof App.ModelTableView
+        value = @get "member"
+        value.set "id", @get("content.id")
+        Em.run.sync()
+        tableView.fetchQueueAppend value
+
+  retryFetch: ->
+    if @get("isError")
+      tableView = @get "parentView.parentView"
+      if tableView instanceof App.ModelTableView
+        #use fetchQueue mechanism, but maybe its better to call directly - its unlike to fetch several records this way
+        value = @get "member"
+        value.set "id", @get("content.id")
+        Em.run.sync()
+        tableView.fetchQueueAppend value
 
 
 App.EgbilListTableCellSubTableView = App.ModelTableCellView.extend

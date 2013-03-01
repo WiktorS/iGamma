@@ -8,8 +8,12 @@
     {{view App.SpinnerView tagName="p"}}
   {{/if}}
   {{#if view.isReady}}
-    {{#each view.valueListName}}
-      <p>{{this}}</p>
+    {{#each item in view.valueListButton}}
+      {{#if view.isValueTypeDefined}}
+        {{view App.EgbilListTableCellButtonView tagName="p" contentBinding="item.content" columnBinding="item.column"}}
+      {{else}}
+        <p>{{item.content.valueName}}</p>
+      {{/if}}
     {{/each}}
   {{/if}}
   {{#if view.isError}}
