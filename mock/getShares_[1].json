@@ -13,7 +13,7 @@
     "registerGroupL": "Grupa rejestrowa L",
     "entityID": 1,
     "entityName": "Podmiot",
-    "entityType": "person",
+    "entityType": "group",
     "peselRegon": "PESEL/REGON",
     "addressID": 1,
     "addressName": "Adres",

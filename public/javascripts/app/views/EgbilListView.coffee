@@ -190,7 +190,42 @@ App.EgbilListTableCellSubTableView = App.ModelTableCellView.extend
 
 
 App.EgbilListTableCellGroupKindView = App.ModelTableCellView.extend
-  template: Em.Handlebars.compile "TODO"
+  template: (->
+    result  = "{{#if view.isGroup}}G{{/if}}"
+    result += "{{#if view.isMarriage}}M{{/if}}"
+    Em.Handlebars.compile result
+    ).property()
+  value: (-> 
+      @get "content.#{@get "column.data.value"}Type"
+    ).property("content.entityType", "column.data.value")
+  isGroup: (-> @get("isFirstInSet") && "group" == @get "value").property("value")
+  isMarriage: (-> @get("isFirstInSet") && "marriage" == @get "value").property("value")
+  isFirstInSet: (-> true).property() #TODO: how to know it?
+
+
+App.EgbilListTableCellPersonKindView = App.ModelTableCellView.extend
+  template: (->
+    result  = "{{#if view.isGroup}}G{{/if}}"
+    result += "{{#if view.isPerson}}F{{/if}}"
+    result += "{{#if view.isMarriage}}M{{/if}}"
+    result += "{{#if view.isInstitution}}I{{/if}}"
+    Em.Handlebars.compile result
+    ).property()
+  value: (-> 
+    id = @get "content.id"
+    type = @get "column.data.valueType"
+    if type == "member"
+      @get "content._objectType"
+    else
+      shares = Em.A(@get "controller.content.#{type}sShare")
+      share = shares.find((x) -> x.get("id") == id)
+      if share
+        share.get "entityType"
+    ).property("content", "column.data.value")
+  isGroup: (-> "group" == @get "value").property("value")
+  isPerson: (-> "person" == @get "value").property("value")
+  isMarriage: (-> "marriage" == @get "value").property("value")
+  isInstitution: (-> "institution" == @get "value").property("value")
 
 
 App.EgbilListTableCellValueView = App.ModelTableCellView.extend
@@ -204,5 +239,5 @@ App.EgbilListTableCellValueView = App.ModelTableCellView.extend
 
 
 App.EgbilListTableCellIsValueView = App.ModelTableCellView.extend
-  template: Em.Handlebars.compile "{{#if view.isNotEmptyValue}}V{{/if}}"
-  isNotEmptyValue: (-> !Ember.empty(@get "column.data.value")).property("column.data.value")
+  template: Em.Handlebars.compile "{{#unless view.isEmptyValue}}<i class=\"icon-white icon-ok\"></i>{{/unless}}"
+  isEmptyValue: (-> Ember.empty(@get "column.data.value")).property("column.data.value")

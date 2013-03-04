@@ -35,25 +35,25 @@
         ],
         "lotsShare" : [
             {
-                "id": 0,
+                "id": 1,
                 "entityID": 1,
-                "entityType": "Typ podmiotu",
+                "entityType": "institution",
                 "shareValue": "Udział podmiotu"
             }
         ],
         "buildingsShare" : [
             {
-                "id": 0,
+                "id": 1,
                 "entityID": 1,
-                "entityType": "Typ podmiotu",
+                "entityType": "institution",
                 "shareValue": "Udział podmiotu"
             }
         ],
         "localsShare" : [
             {
-                "id": 0,
+                "id": 1,
                 "entityID": 1,
-                "entityType": "Typ podmiotu",
+                "entityType": "institution",
                 "shareValue": "Udział podmiotu"
             }
         ]

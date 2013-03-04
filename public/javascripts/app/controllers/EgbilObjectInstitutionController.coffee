@@ -1,9 +1,9 @@
 App.EgbilObjectInstitutionController = App.EgbilObjectCommonController.extend
   columnsOrder:
     institution: ["fullName", "shortName", "status", "regon", "nip", "address", "registerName", "registerNumber", "registerCourt", "remarks", "notes"]
-    lot: ["check", "show", "marker", "personKind", "jrg", "lot", "sheet", "precinct", "cadastralUnit", "cadastralArea", "lotShareCharacter", "lotShareGroup", "lotShareValue"]
-    building: ["check", "show", "marker", "personKind", "jrg", "jrb", "building", "lots", "sheet", "precinct", "cadastralUnit", "buildingKind", "highestLevel"]
-    local: ["check", "show", "marker", "personKind", "jrg", "jrl", "local", "address", "documents", "localKind"]
+    lot: ["check", "show", "marker", "lotPersonKind", "jrg", "lot", "sheet", "precinct", "cadastralUnit", "cadastralArea", "lotShareCharacter", "lotShareGroup", "lotShareValue"]
+    building: ["check", "show", "marker", "buildingPersonKind", "jrg", "jrb", "building", "lots", "sheet", "precinct", "cadastralUnit", "buildingKind", "highestLevel"]
+    local: ["check", "show", "marker", "localPersonKind", "jrg", "jrl", "local", "address", "documents", "localKind"]
     landCommunity: ["check","marker", "landCommunity", "address", "landCommunityInstitution"]
 
   institutionColumns: (-> App.columnsData.getColumns(@get "columnsOrder.institution")).property()

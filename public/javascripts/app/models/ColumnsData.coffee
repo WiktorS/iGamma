@@ -143,7 +143,8 @@ App.columnsData = Em.Object.create
     label: "Grupa rejestrowa G"
   groupKind: App.StandardTableCellModel.create
     label: "Wyróżnik grupy"
-    viewClass: "App.EgbilListTableCellGroupKindView"  #TODO
+    viewClass: "App.EgbilListTableCellGroupKindView"
+    value: "entity"
   entity: App.StandardTableCellModel.create
     label: "Podmiot"
     viewClass: "App.EgbilListTableCellButtonView"
@@ -207,9 +208,22 @@ App.columnsData = Em.Object.create
     valueName: "mailingAddressName"
   alive: App.StandardTableCellModel.create
     label: "Żyje"
-  personKind: App.StandardTableCellModel.create
+  lotPersonKind: App.StandardTableCellModel.create
     label: "Rodzaj osoby"
-    viewClass: "App.EgbilListTableCellListView" #TODO: Special class for this field
+    viewClass: "App.EgbilListTableCellPersonKindView"
+    valueType: "lot"
+  buildingPersonKind: App.StandardTableCellModel.create
+    label: "Rodzaj osoby"
+    viewClass: "App.EgbilListTableCellPersonKindView"
+    valueType: "building"
+  localPersonKind: App.StandardTableCellModel.create
+    label: "Rodzaj osoby"
+    viewClass: "App.EgbilListTableCellPersonKindView"
+    valueType: "local"
+  memberPersonKind: App.StandardTableCellModel.create
+    label: "Rodzaj osoby"
+    viewClass: "App.EgbilListTableCellPersonKindView"
+    valueType: "member"
   lotShareCharacter: App.StandardTableCellModel.create
     label: "Charakter władania"
     viewClass: "App.EgbilListTableCellListView"
