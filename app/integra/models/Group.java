@@ -8,7 +8,7 @@ public class Group extends IntegraModel {
     public String status;                       //Status podmiotu
     public String regon;                        //Numer REGON
     public String nip;                          //Numer NIP
-    public String addressID;                    //Adres
+    public long addressID;                      //Adres
     public String addressName;
     public String registerName;                 //Nazwa rejestru osób prawnych
     public String registerNumber;               //Numer rejestru osób prawnych

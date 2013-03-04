@@ -3,18 +3,18 @@ package integra.models;
 import java.util.List;
 
 public class Institution extends IntegraModel {
-    public String shortName;                      //Nazwa skrócona
-    public String fullName;                       //Nazwa pełna
-    public String status;                         //Status podmiotu
-    public String regon;                          //Numer REGON
-    public String nip;                            //Numer NIP
-    public String addressID;                      //Adres
+    public String shortName;                    //Nazwa skrócona
+    public String fullName;                     //Nazwa pełna
+    public String status;                       //Status podmiotu
+    public String regon;                        //Numer REGON
+    public String nip;                          //Numer NIP
+    public long addressID;                      //Adres
     public String addressName;
-    public String registerName;                   //Nazwa rejestru osób prawnych
-    public String registerNumber;                 //Numer rejestru osób prawnych
-    public String registerCourt;                  //Nazwa sądu rejestrowego
-    public String remarks;                        //Uwagi
-    public String notes;                          //Notatki
+    public String registerName;                 //Nazwa rejestru osób prawnych
+    public String registerNumber;               //Numer rejestru osób prawnych
+    public String registerCourt;                //Nazwa sądu rejestrowego
+    public String remarks;                      //Uwagi
+    public String notes;                        //Notatki
     public List<IntegraModel> lots;             //Działki
     public List<IntegraModel> buildings;        //Budynki
     public List<IntegraModel> locals;           //Lokale
