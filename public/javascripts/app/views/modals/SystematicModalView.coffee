@@ -1,25 +1,40 @@
 App.SystematicModalView = App.ModalView.extend
   templateName: "systematicModal"
-  systematics: Em.A()
+  systematics: null
   selectedSystematic: null
   selectSystematic: (systematicsArray) ->
     @set "selectedSystematic", systematicsArray
+  rootSystematics: (->
+    idList = @get("systematics")?.findProperty("id", 0).get("children")
+    for id in (idList ? [])
+      @get("systematics").findProperty("id",id)
+    ).property("systematics.@each")
 
   onShow: ->
+    @set "systematics", Em.A()
+    @get("systematics").addObject App.SystematicModel.create
+      id: 0
+      name: "root"
     @fetchSystematics()
 
-  fetchSystematics: ->
-    @set "systematics", Em.A()
-    $.ajax
-      url: "/getSystematics.json"
-      success: (data) =>
-        processNodes = (nodes) ->
-          result = Em.A()
-          if nodes?
-            $.each nodes, (i,node) =>
-              result.pushObject App.SystematicModel.create
+  fetchSystematics: (parentId = 0) ->
+    idList = Em.A()
+    for id in (@get("systematics").findProperty("id", parentId)?.get("children") ? Em.A())
+      idList.addObject id
+    if (parentId == 0 || !Em.empty(idList))
+      App.get("Cache.systematics").getSystematics idList, =>
+        for node in App.get("Cache.systematics.cache").filter((item, index, enumerable) =>
+          item.parentId? && (Em.empty(idList) || idList.contains(item.parentId))
+        )
+          if node?
+            parentNode = @get("systematics").findProperty("id", node.parentId)
+            Em.assert "Systematic of ID: #{node.parentId} does'nt exist", parentNode
+
+            parentNode.set("children", Em.A()) if !Em.isArray(parentNode.get "children")
+            parentNode.get("children").addObject node.id
+
+            if !@get("systematics").findProperty("id", node.id)
+              @get("systematics").addObject App.SystematicModel.create
+                id: node.id
                 name: node.name
-                children: processNodes(node.children)
-              true
-          result
-        @set "systematics", processNodes data
+                desc: node.desc

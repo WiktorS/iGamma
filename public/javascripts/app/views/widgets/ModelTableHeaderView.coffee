@@ -1,9 +1,4 @@
 App.ModelTableHeaderView = Em.View.extend
+  template: Em.Handlebars.compile("{{view.column.data.label}}")
   tagName: "th"
-
   column: null
-  content: null
-
-  template: (->
-    Em.Handlebars.compile( @get("content.0")?.get(@get "column")?.label ? "")
-  ).property("content", "column")

@@ -31,90 +31,104 @@ public class IntegraImplementation implements Integra{
     }
 
     @Override
-    public List<RegisterUnit> getRegisterUnits(String type) {
-        JsonElement jsonResult = invokeMethodJson("getRegisterUnits");
-        TypeToken<List<RegisterUnit>> typeToken = new TypeToken<List<RegisterUnit>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
-    }
-
-    @Override
-    public List<Lot> getLotsByNumber(String number) {
-        JsonElement jsonResult = invokeMethodJson("getLotsByNumber");
-        TypeToken<List<Lot>> typeToken = new TypeToken<List<Lot>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
-    }
-
-    @Override
-    public List<Building> getBuildingByNumber(String numberB) {
-        JsonElement jsonResult = invokeMethodJson("getBuildingByNumber");
+    public List<Building> getBuildings(long idList[]) {
+        JsonElement jsonResult = invokeMethodJson("getBuildings");
         TypeToken<List<Building>> typeToken = new TypeToken<List<Building>>() {};
         return gson.fromJson(jsonResult, typeToken.getType());
     }
 
     @Override
-    public List<Local> getLocalByNumber(String numberL) {
-        JsonElement jsonResult = invokeMethodJson("getLocalByNumber");
-        TypeToken<List<Local>> typeToken = new TypeToken<List<Local>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
+    public List<Document> getDocuments(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<Person> getPersonByPesel(String pesel) {
-        JsonElement jsonResult = invokeMethodJson("getPersonByPesel");
-        TypeToken<List<Person>> typeToken = new TypeToken<List<Person>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
+    public List<Group> getGroups(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<Institution> getInstitutionByNip(String nip) {
-        JsonElement jsonResult = invokeMethodJson("getInstitutionByNip");
-        TypeToken<List<Institution>> typeToken = new TypeToken<List<Institution>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
+    public List<Person> getPersons(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<Group> getGroupByNip(String nip) {
-        JsonElement jsonResult = invokeMethodJson("getGroupByNip");
-        TypeToken<List<Group>> typeToken = new TypeToken<List<Group>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
+    public List<Institution> getInstitutions(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<LandCommunity> getLandCommunities(String name) {
-        JsonElement jsonResult = invokeMethodJson("getLandCommunities");
-        TypeToken<List<LandCommunity>> typeToken = new TypeToken<List<LandCommunity>>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
+    public List<RegisterUnit> getJrg(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public EgbilObject getEgbilObject(String type, String name) {
-        JsonElement jsonResult = invokeMethodJson("getEgbilObject");
-        TypeToken<EgbilObject> typeToken = new TypeToken<EgbilObject>() {};
-        return gson.fromJson(jsonResult, typeToken.getType());
+    public List<RegisterUnit> getJrb(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public List<EgbilDocument> getDocuments() {
+    public List<RegisterUnit> getJrl(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<RegisterUnit> getOldJrg(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<LandCommunity> getLandCommunities(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Local> getLocals(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Lot> getLots(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Address> getAddresses(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Share> getShares(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Change> getChanges(long[] idList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public List<Systematic> getSystematics(long[] parentIdList) {
         return null;  //TODO
     }
+//
+//    @Override
+//    public List<ShareSummary> getShareSummary() {
+//        return null;  //TODO
+//    }
+//
+//    @Override
+//    public CustomReportData getCustomReportData(String type, String name) {
+//        return null;  //TODO
+//    }
+//
+//    @Override
+//    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
+//        return null;  //TODO
+//    }
 
     @Override
-    public List<Systematic> getSystematics() {
-        return null;  //TODO
-    }
-
-    @Override
-    public List<ShareSummary> getShareSummary() {
-        return null;  //TODO
-    }
-
-    @Override
-    public CustomReportData getCustomReportData(String type, String name) {
-        return null;  //TODO
-    }
-
-    @Override
-    public List<EgbilObjectData> getRelatedObjects(String relation, EgbilObjectData[] objectList) {
-        return null;  //TODO
+    public List<Long> findObjects(String queryName, QueryEntry[] queryEntryList) throws Exception {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

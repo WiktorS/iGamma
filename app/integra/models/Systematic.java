@@ -1,8 +1,7 @@
 package integra.models;
 
-import java.util.List;
-
-public class Systematic {
+public class Systematic extends IntegraModel{
+    public long parentId;
     public String name;
-    public List<Systematic> children;
+    public String desc;
 }

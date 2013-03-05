@@ -1,0 +1,45 @@
+[
+    {
+        "id": 1,
+        "lotName": "Number działki",
+        "precinct": "Obręb",
+        "sheet": "Arkusz",
+        "cadastralUnit": "z",
+        "jrgID": 1,
+        "jrgName": "Numer JRG",
+        "jrgType": "jrg",
+        "cadastralArea": "Powierzchnia ewidencyjna",
+        "geodesicArea": "Powierzchnia geodezyjna",
+        "addresses": [
+            {
+                "id": 1
+            }
+        ],
+        "documents": [
+            {
+                "id": 1
+            }
+        ],
+        "terrainCategories": [
+            {
+                "id": 0,
+                "terrainCategoryKind": "Klasoużytki/Rodzaj",
+                "terrainCategoryArea": "Klasoużytki/Powierzchnia"
+            }
+        ],
+        "shares": [
+            {
+                "id": 1
+            }
+        ],
+        "monumentRegister": "Rejestr zabytków",
+        "statisticalRegion": "Rejon statystyczny",
+        "listDistrict": "Obwód spisowy",
+        "validFrom": "Ważność od ",
+        "validTo": "Ważność do - Data upływu prawa",
+        "cadastralValue": "Wartość katastralna",
+        "valuationDate": "Data wyceny",
+        "remarks": "Uwagi",
+        "notes": "Notatki"
+    }
+]

@@ -14,7 +14,7 @@ App.CustomReportModalView = App.ModalView.extend
   fileFormatList: null
 
   _attributeListChanged: (->
-    @fillSort()
+    @fillAttributeListSort()
     ).observes("attributeList")
 
   possibleAttributeList: (->
@@ -40,8 +40,8 @@ App.CustomReportModalView = App.ModalView.extend
   selectedChosenAttribute: (->
     #only if one is selected
     if @get("selectedChosenAttributeList").length == 1
-      @get("selectedChosenAttributeList.0")
-    ).property("selectedChosenAttributeList.0")
+      @get("selectedChosenAttributeList")[0]
+    ).property("selectedChosenAttributeList.@each")
 
   disableAttributeEdit: (->
     Em.empty @get("selectedChosenAttribute")
@@ -53,7 +53,7 @@ App.CustomReportModalView = App.ModalView.extend
       idx == 0
     else
       true
-    ).property("selectedChosenAttributeList.length", "chosenAttributeList.length")
+    ).property("selectedChosenAttributeList.@each.sort", "chosenAttributeList.length")
 
   disableMoveDownSelectedChosenAttribute: (->
     if @get("selectedChosenAttributeList").length == 1
@@ -61,7 +61,7 @@ App.CustomReportModalView = App.ModalView.extend
       idx == @get("chosenAttributeList").length - 1
     else
       true
-    ).property("selectedChosenAttributeList.length", "chosenAttributeList.length")
+    ).property("selectedChosenAttributeList.@each.sort", "chosenAttributeList.length")
 
   anyConfigurationSelected: (->
     @get("selectedConfigurationList").length > 0
@@ -95,12 +95,14 @@ App.CustomReportModalView = App.ModalView.extend
     $.each(@get("selectedPossibleAttributeList"), (key, value) ->
       value.set "isChosen", true
     )
+    #need to set to empty array to refresh buttons status
     @set "selectedPossibleAttributeList", Em.A()
 
   onDelAttribute: ->
     $.each(@get("selectedChosenAttributeList"), (key, value) ->
       value.set "isChosen", false
     )
+    #need to set to empty array to refresh buttons status
     @set "selectedChosenAttributeList", Em.A()
 
   onUpAttribute: ->
@@ -151,12 +153,12 @@ App.CustomReportModalView = App.ModalView.extend
       App.router.send "openCustomReport", configuration
       @hideModal()
 
-  fillSort: ->
+  fillAttributeListSort: ->
     $.each(@get("attributeList"), (key, value) ->
       value.set "sort", key
       )
 
-  swapSortOnAttributeList: (item1, item2, property) ->
+  swapSortOnAttributeList: (item1, item2) ->
     item1Idx = @get("attributeList").indexOf item1
     item2Idx = @get("attributeList").indexOf item2
     sort = @get("attributeList")[item1Idx].get "sort"

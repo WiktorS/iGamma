@@ -1,11 +1,11 @@
-App.EgbilObjectPersonController = Em.Controller.extend
-  content: null
+App.EgbilObjectPersonController = App.EgbilObjectCommonController.extend
+  columnsOrder:
+    person: ["pesel", "surname", "firstName", "secondName", "sex", "fatherName", "motherName", "citizenship", "status", "nip", "identityDocument", "address", "mailingAddress", "alive", "remarks", "notes"]
+    lot: ["check", "show", "marker", "lotPersonKind", "jrg", "lot", "sheet", "precinct", "cadastralUnit", "cadastralArea", "lotShareCharacter", "lotShareGroup", "lotShareValue"]
+    building: ["check", "show", "marker", "buildingPersonKind", "jrg", "jrb", "building", "lots", "sheet", "precinct", "cadastralUnit", "buildingKind", "highestLevel"]
+    local: ["check", "show", "marker", "localPersonKind", "jrg", "jrl", "local", "address", "documents", "localKind"]
 
-  personColumns:
-    ["pesel", "surname", "firstname", "secondname", "sex", "fathername", "mothername", "nationality", "status", "nip", "document", "address", "mailaddress", "alive", "remarks", "notes"]
-  lotColumns:
-    ["show", "marker", "g5", "registeredArea", "geodesicArea", "addresses", "documentsSygnature", "useClassType", "useClassArea", "monumentRegister", "statisticalRegion", "listDistrict", "validFrom", "validTo", "value", "valuationDate", "remarks"]
-  buildingColumns:
-    ["show", "marker", "g5", "jrbNumber", "documentsSygnature", "buildUpArea", "usableArea", "status", "type", "classType", "highestLevel", "lowestLevel", "addresses", "lotNumber", "lotArea", "constructionFinishDate", "reconstructionFinishDate", "reconstructionScope", "exterioWallsMaterial", "numberOfUnits", "monumentRegister", "cadastralValue", "valuationDate", "manyJRG", "remarks"]
-  localColumns:
-    ["show", "marker", "g5", "jrlNumber", "address", "documentsSygnature", "usableArea", "localType", "associatedPremisesBuilding", "associatedPremisesType", "associatedPremisesArea", "associatedPremisesNumber", "roomsNumber", "tier", "commonPropertyShare", "lot", "building", "cadastralValue", "valuationDate", "remarks"]
+  personColumns: (-> App.columnsData.getColumns(@get "columnsOrder.person")).property()
+  lotColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lot")).property()
+  buildingColumns: (-> App.columnsData.getColumns(@get "columnsOrder.building")).property()
+  localColumns: (-> App.columnsData.getColumns(@get "columnsOrder.local")).property()

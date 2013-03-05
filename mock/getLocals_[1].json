@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "precinct": "Obręb - lista",
+        "cadastralUnit": "Jednostka ewidencyjna",
+        "localName": "Numer lokalu",
+        "jrgID": 1,
+        "jrgName": "Numer JRG",
+        "jrgType": "jrg",
+        "jrlID": 1,
+        "jrlName": "Numer JRL",
+        "addressID": 1,
+        "addressName": "Adres",
+        "documents": [
+            {
+                "id": 1
+            }
+        ],
+        "usableArea": "Powierzchnia użytkowa",
+        "localKind": "Typ lokalu",
+        "localLevel": "Kondygnacja",
+        "associatedPremises": [
+            {
+                "id": 0,
+                "buildingID": 1,
+                "buildingName": "Budynek",
+                "premiseKind": "Rodzaj",
+                "premiseArea": "Powierzchnia"
+            }
+        ],
+        "associatedPremisesAreaSum": "Łączna powierzchnia pomieszczeń przynależnych",
+        "roomsNumber": "Liczba izb",
+        "commonPropertyShare": "Udział w nieruchomości wspólnej ",
+        "lotID": 1,
+        "lotName": "Działka",
+        "buildingID": 1,
+        "buildingName": "Budynek",
+        "cadastralValue": "Wartość katastralna",
+        "valuationDate": "Data wyceny",
+        "remarks": "Uwagi",
+        "notes": "Notatki",
+        "rights": [
+            {
+                "id": 0,
+                "entityID": 1,
+                "entityName": "Podmiot",
+                "entityType": "person",
+                "addressID": 1,
+                "addressName": "Adres",
+                "shareG": "Udział w Jednostce Rejestrowej Gruntów",
+                "shareB": "Udział w Jednostce Rejestrowej Budynków",
+                "shareL": "Udział w Jednostce Rejestrowej Lokali"
+            }
+        ]
+    }
+]

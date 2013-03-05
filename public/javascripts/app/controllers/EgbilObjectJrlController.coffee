@@ -1,15 +1,11 @@
-App.EgbilObjectJrlController = Em.Controller.extend
-  content: null
+App.EgbilObjectJrlController = App.EgbilObjectCommonController.extend
+  registerUnitContent: (-> Em.makeArray(@get "content")).property("content")
 
-  registerUnitContent: (-> Em.makeArray(@get "content.registerUnit")).property("content.registerUnit")
+  columnsOrder:
+    registerUnit: ["show", "jrl", "landRegister", "creationProof", "creationDate", "remarks", "notes" ]
+    share: ["check","marker", "characterB", "shareValue", "registerGroupB", "groupKind", "entity", "peselRegon", "address", "shareRemarks", "personRemarks"]
+    local: ["check","show", "marker", "local", "jrl", "address", "documents", "usableArea", "localKind", "associatedPremises", "associatedPremisesAreaSum", "roomsNumber", "localLevel", "commonPropertyShare", "lot", "building", "cadastralValue", "valuationDate", "remarks"]
 
-  registerUnitColumns:
-    ["show", "jrlNumber", "kw", "creationProof", "creationDate", "remarks", "notes"]
-  shareColumns:
-    ["marker", "characterB", "value", "registerGroupB", "groupType", "entity", "peselOrRegon", "address", "shareRemarks", "personRemarks"]
-  lotColumns:
-    ["show", "marker", "g5", "registeredArea", "geodesicArea", "addresses", "documentsSygnature", "terrainCategoryType", "terrainCategoryArea", "monumentRegister", "statisticalRegion", "listDistrict", "validFrom", "validTo", "value", "valuationDate", "remarks"]
-  buildingColumns:
-    ["show", "marker", "g5", "jrbNumber", "documentsSygnature", "buildUpArea", "usableArea", "status", "type", "classType", "highestLevel", "lowestLevel", "addresses", "lotNumber", "lotArea", "constructionFinishDate", "reconstructionFinishDate", "reconstructionScope", "exterioWallsMaterial", "numberOfUnits", "monumentRegister", "cadastralValue", "valuationDate", "manyJRG", "remarks"]
-  localColumns:
-    ["show", "marker", "g5", "jrlNumber", "address", "documentsSygnature", "usableArea", "localType", "associatedPremisesBuilding", "associatedPremisesType", "associatedPremisesArea", "associatedPremisesNumber", "roomsNumber", "tier", "commonPropertyShare", "lot", "building", "cadastralValue", "valuationDate", "remarks"]
+  registerUnitColumns: (-> App.columnsData.getColumns(@get "columnsOrder.registerUnit")).property()
+  shareColumns: (-> App.columnsData.getColumns(@get "columnsOrder.share")).property()
+  localColumns: (-> App.columnsData.getColumns(@get "columnsOrder.local")).property()

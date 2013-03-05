@@ -6,21 +6,25 @@
 GET     /                                         Application.index
 
 #Integra json interface
-GET     /getRegisterUnits.json                    IntegraJson.getRegisterUnits
-GET     /getLotsByNumber.json                     IntegraJson.getLotsByNumber
-GET     /getBuildingByNumber.json                 IntegraJson.getBuildingByNumber
-GET     /getLocalByNumber.json                    IntegraJson.getLocalByNumber
-GET     /getPersonByPesel.json                    IntegraJson.getPersonByPesel
-GET     /getInstitutionByNip.json                 IntegraJson.getInstitutionByNip
-GET     /getGroupByNip.json                       IntegraJson.getGroupByNip
-GET     /getLandCommunities.json                  IntegraJson.getLandCommunities
-GET     /getRegisterUnitsByJrg.json               IntegraJson.getRegisterUnitsByJrg
-GET     /getEgbilObject.json                      IntegraJson.getEgbilObject
+POST    /findObjects.json                         IntegraJson.findObjects
+
+GET     /getBuildings.json                        IntegraJson.getBuildings
 GET     /getDocuments.json                        IntegraJson.getDocuments
+GET     /getGroups.json                           IntegraJson.getGroups
+GET     /getPersons.json                          IntegraJson.getPersons
+GET     /getInstitutions.json                     IntegraJson.getInstitutions
+GET     /getJrg.json                              IntegraJson.getJrg
+GET     /getJrb.json                              IntegraJson.getJrb
+GET     /getJrl.json                              IntegraJson.getJrl
+GET     /getOldJrg.json                           IntegraJson.getOldJrg
+GET     /getLandCommunities.json                  IntegraJson.getLandCommunities
+GET     /getLocals.json                           IntegraJson.getLocals
+GET     /getLots.json                             IntegraJson.getLots
+GET     /getAddresses.json                        IntegraJson.getAddresses
+GET     /getShares.json                           IntegraJson.getShares
+GET     /getChanges.json                          IntegraJson.getChanges
+
 GET     /getSystematics.json                      IntegraJson.getSystematics
-GET     /getShareSummary.json                     IntegraJson.getShareSummary
-GET     /getRelatedObjects.json                   IntegraJson.getRelatedObjects
-GET     /getCustomReportData.json                 IntegraJson.getCustomReportData
 
 #Integra documents
 GET     /getTerrainCategorySummary                IntegraJson.getTerrainCategorySummary
@@ -28,11 +32,6 @@ GET     /getReservation                           IntegraJson.getReservation
 GET     /getCustomReport                          IntegraJson.getCustomReport
 GET     /getDifferenceReport                      IntegraJson.getDifferenceReport
 GET     /getScan                                  IntegraJson.getScan
-
-#Integra mock
-GET     /integraMock/getRegisterUnits.json        IntegraMockJson.getRegisterUnits
-GET     /integraMock/getRegisterUnitsByJrb.json   IntegraMockJson.getRegisterUnitsByJrb
-GET     /integraMock/getRegisterUnitsByJrg.json   IntegraMockJson.getRegisterUnitsByJrg
 
 # Ignore favicon requests
 GET     /favicon.ico                              404

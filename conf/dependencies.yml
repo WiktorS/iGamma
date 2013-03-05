@@ -4,3 +4,11 @@ require:
     - play
     - play -> coffee 1.0
     - play -> less 0.9.1
+    - jna -> jna 3.5.1
+
+repositories:
+    - jna:
+        type: http
+        artifact: "https://github.com/twall/[module]/blob/[revision]/dist/[module].jar?raw=true"
+        contains:
+            - jna -> *

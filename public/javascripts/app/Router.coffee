@@ -3,20 +3,26 @@ RouteWithParentMemory = Em.Route.extend
 
 
 RouteWithObjectParam = Em.Route.extend
-  objectName: null
+  objectId: null
   objectType: (-> @get "name").property("name")
+  objectName: null
   objectOutletName: null
   deserialize: (router, params) ->
-    Em.Object.create
-      objectName: params.name
-      objectType: @get "objectType"
+    object = App.EgbilObjectModel.create().setProperties
+      _objectId: parseInt(params.id)
+      _objectType: @get "objectType"
+      _objectName: params.name
+    Em.run.sync() 
+    object
   serialize: (router, context) ->
     Em.Object.create
-      name: context.get "objectName"
+      id: context.get "_objectId"
+      name: context.get "_objectName"
   connectOutlets: (router, context) ->
-    Em.assert "Object type doesn't match state type", @get("objectType") == context.get("objectType")
-    @set "objectName", context.get "objectName"
-    object = router.get("egbilController").getObject @get("objectType"), @get("objectName")
+    Em.assert "Object type doesn't match state type", @get("objectType") == context.get("_objectType")
+    @set "objectId", context.get "_objectId"
+    @set "objectName", context.get "_objectName"
+    object = router.get("egbilController").getObject @get("objectId"), @get("objectType")
     if !Em.empty object
       router.get("egbilController").connectOutlet(
         outletName: "egbil"
@@ -29,9 +35,7 @@ RouteWithObjectParam = Em.Route.extend
         context: object
       )
     else
-      router.send "openObject", Em.Object.create
-         objectType: @get "objectType"
-         objectName: @get "objectName"
+      router.send "openObject", context
 
 
 App.Router = Em.Router.extend
@@ -41,7 +45,7 @@ App.Router = Em.Router.extend
 
     index: Em.Route.extend
       route: "/"
-      redirectsTo: "egbil.search.jrgib"
+      redirectsTo: "egbil.search.jrg"
 
     egbil: Em.Route.extend
       route: "/egbil"
@@ -64,14 +68,14 @@ App.Router = Em.Router.extend
         router.get("egbilSearchController").doSearch searchArgs
       search: RouteWithParentMemory.extend
         route: "/szukaj"
-        initialState: "jrgib"
+        initialState: "jrg"
         connectOutlets: (router) ->
           router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilSearch"})
 
-        jrgib: RouteWithParentMemory.extend
-          route: "/jrgib"
+        jrg: RouteWithParentMemory.extend
+          route: "/jrg"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrgib"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrg"})
 
         jrb: RouteWithParentMemory.extend
           route: "/jrb"
@@ -83,10 +87,10 @@ App.Router = Em.Router.extend
           connectOutlets: (router) ->
             router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrl"})
 
-        jrg: RouteWithParentMemory.extend
-          route: "/jrg"
+        oldJrg: RouteWithParentMemory.extend
+          route: "/OldJrg"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchJrg"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchOldJrg"})
 
         lot: RouteWithParentMemory.extend
           route: "/dzialki"
@@ -103,10 +107,10 @@ App.Router = Em.Router.extend
           connectOutlets: (router) ->
             router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchLocal"})
 
-        individual: RouteWithParentMemory.extend
+        person: RouteWithParentMemory.extend
           route: "/osoby_fizyczne"
           connectOutlets: (router) ->
-            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchIndividual"})
+            router.get("egbilSearchController").connectOutlet({outletName: "egbilSearch", name: "egbilSearchPerson"})
 
         institution: RouteWithParentMemory.extend
           route: "/instytucje"
@@ -147,16 +151,16 @@ App.Router = Em.Router.extend
 
       openObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        router.get("egbilController").openObject context.get("objectType"), context.get("objectName")
+        router.get("egbilController").openObject context.get("_objectId"), context.get("_objectType")
       closeObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        router.get("egbilController").closeObject context.get("objectType"), context.get("objectName")
+        router.get("egbilController").closeObject context.get("_objectId"), context.get("_objectType")
       showObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        router.get("egbilController").showObject context.get("objectType"), context.get("objectName")
+        router.get("egbilController").showObject context.get("_objectId"), context.get("_objectType")
       goToObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        objectType = context.get("objectType")
+        objectType = context.get("_objectType")
         Em.assert "Can't go to object of undefined type", objectType?
         router.transitionTo ["object", objectType].join("."), context
       object: Em.Route.extend
@@ -166,44 +170,52 @@ App.Router = Em.Router.extend
           route: "/"
           redirectsTo: "egbil.search"
 
-        jrgib: RouteWithObjectParam.extend
-          route: "/jrgib/:name"
-          objectOutletName: "egbilObjectJrgib"
+        jrg: RouteWithObjectParam.extend
+          route: "/jrg/:name/:id"
+          objectOutletName: "egbilObjectJrg"
 
         jrb: RouteWithObjectParam.extend
-          route: "/jrb/:name"
+          route: "/jrb/:name/:id"
           objectOutletName: "egbilObjectJrb"
 
         jrl: RouteWithObjectParam.extend
-          route: "/jrl/:name"
+          route: "/jrl/:name/:id"
           objectOutletName: "egbilObjectJrl"
 
-        jrg: RouteWithObjectParam.extend
-          route: "/jrg/:name"
-          objectOutletName: "egbilObjectJrg"
+        oldJrg: RouteWithObjectParam.extend
+          route: "/oldJrg/:name/:id"
+          objectOutletName: "egbilObjectOldJrg"
 
         document: RouteWithObjectParam.extend
-          route: "/dokument/:name"
+          route: "/dokument/:name/:id"
           objectOutletName: "egbilObjectDocument"
 
         lot: RouteWithObjectParam.extend
-          route: "/lot/:name"
+          route: "/lot/:name/:id"
           objectOutletName: "egbilObjectLot"
 
+        building: RouteWithObjectParam.extend
+          route: "/building/:name/:id"
+          objectOutletName: "egbilObjectBuilding"
+
+        local: RouteWithObjectParam.extend
+          route: "/local/:name/:id"
+          objectOutletName: "egbilObjectLocal"
+
         person: RouteWithObjectParam.extend
-          route: "/person/:name"
+          route: "/person/:name/:id"
           objectOutletName: "egbilObjectPerson"
 
         institution: RouteWithObjectParam.extend
-          route: "/institution/:name"
+          route: "/institution/:name/:id"
           objectOutletName: "egbilObjectInstitution"
 
         group: RouteWithObjectParam.extend
-          route: "/group/:name"
+          route: "/group/:name/:id"
           objectOutletName: "egbilObjectGroup"
 
         landCommunity: RouteWithObjectParam.extend
-          route: "/landCommunity/:name"
+          route: "/landCommunity/:name/:id"
           objectOutletName: "egbilObjectLandCommunity"
           
       openTerrainCategoryReport: (router, context) ->

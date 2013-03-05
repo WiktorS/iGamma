@@ -44,7 +44,7 @@ App.EgbilSearchModel = Em.Object.extend
     type: App.StandardFilterElementModel.create
       label: "Rodzaj"
       type: "select"
-      name: "buildingType"
+      name: "buildingKind"
     highestLevel: App.StandardFilterElementModel.create
       label: "Nr najwyższej kondygn."
       type: "range"
@@ -66,7 +66,7 @@ App.EgbilSearchModel = Em.Object.extend
       name: "localArea"
     type: App.StandardFilterElementModel.create
       label: "Typ lokalu"
-      name: "localType"
+      name: "localKind"
     roomsCount: App.StandardFilterElementModel.create
       label: "Liczba izb"
       name: "localRooms"
@@ -190,7 +190,7 @@ App.EgbilSearchModel = Em.Object.extend
   document:
     type: App.StandardFilterElementModel.create
       label: "Rodzaj"
-      name: "documentType"
+      name: "documentKind"
     signature: App.StandardFilterElementModel.create
       label: "Sygnatura"
       help: "[%]"

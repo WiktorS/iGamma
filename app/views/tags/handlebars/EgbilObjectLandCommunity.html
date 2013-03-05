@@ -1,10 +1,11 @@
-<script type="text/x-handlebars" data-template-name="egbilObjectLandCommunity"><div class="span4">
-  {{view App.ModelValueTableView contentBinding="controller.content.landCommunity" columnsBinding="controller.landCommunityColumns"}}
-</div>
-<div class="accordion offset4">
-  {{#view classNames="accordion-group"}}
-  {{view App.AccordionHeaderView label="Skład"}}
-  {{view App.AccordionBodyView contentBinding="controller.content.members" columnsBinding="controller.memberColumns"}}
-  {{/view}}
-</div>
+<script type="text/x-handlebars" data-template-name="egbilObjectLandCommunity">
+  <div class="span4">
+    {{view App.ModelValueTableView contentBinding="controller.content" columnsBinding="controller.landCommunityColumns"}}
+  </div>
+  <div class="accordion offset4">
+    {{#view classNames="accordion-group"}}
+    {{view App.AccordionHeaderView label="Skład"}}
+    {{view App.AccordionBodyView contentBinding="controller.content.members" columnsBinding="controller.memberColumns"}}
+    {{/view}}
+  </div>
 </script>

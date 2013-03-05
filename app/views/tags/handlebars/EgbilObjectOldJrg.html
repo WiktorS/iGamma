@@ -1,0 +1,13 @@
+<script type="text/x-handlebars" data-template-name="egbilObjectOldJrg">
+  {{view App.ModelTableView contentBinding="controller.registerUnitContent" columnsBinding="controller.registerUnitColumns"}}
+  <div class="accordion">
+    {{#view classNames="accordion-group"}}
+      {{view App.AccordionHeaderView label="Udziały"}}
+      {{view App.AccordionBodyView contentBinding="controller.content.shares" columnsBinding="controller.shareColumns"}}
+    {{/view}}
+    {{#view classNames="accordion-group"}}
+      {{view App.AccordionHeaderView label="Działki"}}
+      {{view App.AccordionBodyView contentBinding="controller.content.lots" columnsBinding="controller.lotColumns"}}
+    {{/view}}
+  </div>
+</script>

@@ -6,6 +6,7 @@
 
 # Ignore Play! working directory #
 modules
+lib
 db
 eclipse
 log
@@ -20,3 +21,6 @@ server.pid
 iGamma.iml
 iGamma.ipr
 iGamma.iws
+
+# VSS
+*.*scc

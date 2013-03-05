@@ -8,7 +8,7 @@ App.FilterSystematicView = Em.View.extend
 
   didInsertElement: ->
     @_super()
-    @get("parentView").pushFormField? @get "field"
+    @get("parentView").pushFormField? @get("field"), @get("attrIndex")
 
   chooseSystematic: (e) ->
     systematicModal = App.SystematicModalView.modal()

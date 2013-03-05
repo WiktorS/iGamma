@@ -1,17 +1,17 @@
 <script type="text/x-handlebars" data-template-name="egbilObjectJrb">
-  {{view App.ModelTableView contentBinding="controller.registerUnitContent" columnsBinding="controller.registerUnitColumns"}}
+  {{view App.ModelTableView contentBinding="controller.registerUnitContent" columnsBinding="controller.registerUnitColumns" }}
   <div class="accordion">
     {{#view classNames="accordion-group"}}
-    {{view App.AccordionHeaderView label="Udziały"}}
-    {{view App.AccordionBodyView contentBinding="controller.content.shares" columnsBinding="controller.shareColumns"}}
+      {{view App.AccordionHeaderView label="Udziały"}}
+      {{view App.AccordionBodyView contentBinding="controller.content.shares" columnsBinding="controller.shareColumns"}}
     {{/view}}
     {{#view classNames="accordion-group"}}
-    {{view App.AccordionHeaderView label="Budynki"}}
-    {{view App.AccordionBodyView contentBinding="controller.content.buildings" columnsBinding="controller.buildingColumns"}}
+      {{view App.AccordionHeaderView label="Budynki"}}
+      {{view App.AccordionBodyView contentBinding="controller.content.buildings" columnsBinding="controller.buildingColumns"}}}
     {{/view}}
     {{#view classNames="accordion-group"}}
-    {{view App.AccordionHeaderView label="Lokale"}}
-    {{view App.AccordionBodyView contentBinding="controller.content.locals" columnsBinding="controller.localColumns"}}
+      {{view App.AccordionHeaderView label="Lokale"}}
+      {{view App.AccordionBodyView contentBinding="controller.content.locals" columnsBinding="controller.localColumns"}}}
     {{/view}}
   </div>
 </script>

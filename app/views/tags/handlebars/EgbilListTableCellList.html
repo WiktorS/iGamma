@@ -1,0 +1,23 @@
+<script type="text/x-handlebars" data-template-name="egbilListTableCellList">
+  {{#if view.isIdle}}
+  {{! TODO: Probably can be removed}}
+    <p>IDLE</p>
+  {{/if}}
+  {{#if view.isLoading}}
+  {{! TODO: Check is everything ok}}
+    {{view App.SpinnerView tagName="p"}}
+  {{/if}}
+  {{#if view.isReady}}
+    {{#each item in view.valueListButton}}
+      {{#if view.isValueTypeDefined}}
+        {{view App.EgbilListTableCellButtonView tagName="p" contentBinding="item.content" columnBinding="item.column"}}
+      {{else}}
+        <p>{{item.content.valueName}}</p>
+      {{/if}}
+    {{/each}}
+  {{/if}}
+  {{#if view.isError}}
+  {{! TODO: Does refetch work?}}
+  <p class="error">Błąd pobierania danych. <a {{action retryFetch target="view"}}>Ponów próbę</a></p>
+  {{/if}}
+</script>
