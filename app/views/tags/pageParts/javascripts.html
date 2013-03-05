@@ -33,6 +33,7 @@
   <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilObjectIntegraEntityModel.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilObjectChangeModel.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilObjectRegisterUnitModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/ChangeSearchModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/SystematicModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/ShareSummaryModel.coffee'}"></script>
 
@@ -68,6 +69,8 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectInstitutionController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectGroupController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectLandCommunityController.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangeController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangeSearchController.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/TabItemView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTypesView.coffee'}"></script>
@@ -124,6 +127,7 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectLandCommunityView.coffee'}"></script>
      <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilRightPanelView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangeView.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangeSearchView.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintView.coffee'}"></script>
 
 #{get 'moreScripts' /}
@@ -164,6 +168,7 @@
       #{handlebars.EgbilObjectDocument /}
     #{handlebars.EgbilRightPanel /}
   #{handlebars.Change /}
+    #{handlebars.ChangeSearch /}
   #{handlebars.Print /}
 
 #{handlebars.widgets.FilterTextField /}

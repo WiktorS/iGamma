@@ -250,8 +250,18 @@ App.Router = Em.Router.extend
 
     changes: Em.Route.extend
       route: "/zmiany"
+      initialState: "search"
       connectOutlets: (router) ->
         router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "change"})
+
+      doSearch: (router, context) ->
+        Em.assert "doSearch context must be jQuery.Event", context instanceof jQuery.Event
+        searchArgs = context.view.getSearchArgs()
+        router.get("changeSearchController").doSearch searchArgs
+      search: RouteWithParentMemory.extend
+        route: "/szukaj"
+        connectOutlets: (router) ->
+          router.get("changeController").connectOutlet({outletName: "change", name: "changeSearch"})
 
     prints: Em.Route.extend
       route: "/wydruki"
