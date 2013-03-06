@@ -151,7 +151,10 @@ App.Router = Em.Router.extend
           if Em.empty router.get("egbilListController.content")
             router.transitionTo "egbil.search"
           else
-            router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
+            router.get("egbilController").connectOutlet
+              outletName: "egbil"
+              viewClass: App.get "GammaListView"
+              controller: router.get "egbilListController"
 
       openObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
@@ -270,16 +273,19 @@ App.Router = Em.Router.extend
       goToList: (router, context) ->
         context = context.context if context instanceof jQuery.Event
         if (context instanceof Em.Object)
-          router.set "egbilListController.type", context.get("type")
-          router.set "egbilListController.content", context.get("list")
+          router.set "changeListController.type", context.get("type")
+          router.set "changeListController.content", context.get("list")
         router.transitionTo "list"
       list: RouteWithParentMemory.extend
         route: "/lista"
         connectOutlets: (router) ->
-          if Em.empty router.get("egbilListController.content")
-            router.transitionTo "egbil.search"
+          if Em.empty router.get("changeListController.content")
+            router.transitionTo "changes.search"
           else
-            router.get("egbilController").connectOutlet({outletName: "change", name: "gammaList"})
+            router.get("changeController").connectOutlet
+              outletName: "change"
+              viewClass: App.get "GammaListView"
+              controller: router.get "changeListController"
 
     prints: Em.Route.extend
       route: "/wydruki"

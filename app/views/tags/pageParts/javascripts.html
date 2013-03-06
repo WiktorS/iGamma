@@ -40,6 +40,7 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
   *{ common controllers code}*
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaSearchController.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaListController.coffee'}"></script>
   *{ controllers }*
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilMapController.coffee'}"></script>
@@ -74,6 +75,7 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilObjectLandCommunityController.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangeController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangeSearchController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangeListController.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/TabItemView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTypesView.coffee'}"></script>
@@ -100,6 +102,8 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationMenuView.coffee'}"></script>
   *{ common views code}*
   <script type="text/javascript" src="@{'/public/javascripts/app/views/GammaSearchView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/GammaListView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/GammaListTableCellViews.coffee'}"></script>
   *{ views }*
   <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilMapView.coffee'}"></script>
@@ -116,7 +120,6 @@
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchGroupView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchLandCommunityView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilSearchDocumentView.coffee'}"></script>
-    <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilListView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectJrgView.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/views/EgbilObjectJrbView.coffee'}"></script>
@@ -139,6 +142,11 @@
 
 #{handlebars.Application /}
 #{handlebars.ApplicationMenu /}
+  #{handlebars.GammaList /}
+    #{handlebars.GammaListTableCellShow /}
+    #{handlebars.GammaListTableCellButton /}
+    #{handlebars.GammaListTableCellList /}
+    #{handlebars.GammaListTableCellSubTable /}
   #{handlebars.Egbil /}
     #{handlebars.EgbilMap /}
     #{handlebars.EgbilSearch /}
@@ -153,11 +161,6 @@
       #{handlebars.EgbilSearchInstitutionOrGroup /}
       #{handlebars.EgbilSearchLandCommunity /}
       #{handlebars.EgbilSearchDocument /}
-    #{handlebars.EgbilList /}
-      #{handlebars.EgbilListTableCellShow /}
-      #{handlebars.EgbilListTableCellButton /}
-      #{handlebars.EgbilListTableCellList /}
-      #{handlebars.EgbilListTableCellSubTable /}
     #{handlebars.EgbilObject /}
       #{handlebars.EgbilObjectJrg /}
       #{handlebars.EgbilObjectJrb /}
