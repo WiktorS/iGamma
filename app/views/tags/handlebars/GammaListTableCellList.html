@@ -1,4 +1,4 @@
-<script type="text/x-handlebars" data-template-name="egbilListTableCellList">
+<script type="text/x-handlebars" data-template-name="gammaListTableCellList">
   {{#if view.isIdle}}
   {{! TODO: Probably can be removed}}
     <p>IDLE</p>
@@ -10,7 +10,7 @@
   {{#if view.isReady}}
     {{#each item in view.valueListButton}}
       {{#if view.isValueTypeDefined}}
-        {{view App.EgbilListTableCellButtonView tagName="p" contentBinding="item.content" columnBinding="item.column"}}
+        {{view App.GammaListTableCellButtonView tagName="p" contentBinding="item.content" columnBinding="item.column"}}
       {{else}}
         <p>{{item.content.valueName}}</p>
       {{/if}}
