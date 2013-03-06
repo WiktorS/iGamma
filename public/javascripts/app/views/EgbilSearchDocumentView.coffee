@@ -1,2 +1,2 @@
-App.EgbilSearchDocumentView = App.EgbilSearchCommonView.extend
+App.EgbilSearchDocumentView = App.GammaSearchView.extend
   templateName: "egbilSearchDocument"
