@@ -1,4 +1,4 @@
-App.EgbilObjectJrlController = App.EgbilObjectCommonController.extend
+App.EgbilObjectJrlController = App.GammaObjectCommonController.extend
   registerUnitContent: (-> Em.makeArray(@get "content")).property("content")
 
   columnsOrder:

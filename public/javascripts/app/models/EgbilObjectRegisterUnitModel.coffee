@@ -1,7 +1,7 @@
 App.EgbilObjectRegisterUnitModel = App.EgbilObjectModel.extend
   # _objectType: (-> @get "registerUnitType").property("registerUnitType")
   _objectTypeBinding: "registerUnitType"
-  _objectName: (-> @get "#{@get "registerUnitType"}Name").property("registerUnitType")
+  _objectNameBinding: "registerUnitName"
   _objectDescription: (-> "JE #{@get "cadastralUnit"}, Obręb #{@get "precinct"}, ID #{@get "_objectName"}").property("cadastralUnit", "precinct", "_objectName")
   _internalMaps: (->
     {
@@ -14,6 +14,8 @@ App.EgbilObjectRegisterUnitModel = App.EgbilObjectModel.extend
 
   check: null
   marker: null
+  registerUnitIDBinding: "id"
+  registerUnitName: (-> @get "#{@get "registerUnitType"}Name").property("registerUnitType")
   registerUnitType: null
 
   jrgID: null
