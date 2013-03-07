@@ -2,8 +2,7 @@ package integra.models;
 
 import java.util.List;
 
-public class RegisterUnit extends IntegraModel {
-    public String registerUnitType;
+public class RegisterUnit extends RegisterUnitBase {
     public long jrgID;                          //Numer JRG
     public String jrgName;
     public long jrbID;                          //Numer JRB
