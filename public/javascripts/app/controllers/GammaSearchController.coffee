@@ -31,8 +31,8 @@ App.GammaSearchController = Em.Controller.extend
         # data is array of ids
         if Em.isArray data
           type = @get "type"
-          objectModel = @get "target.egbilController.objectModel.#{type}"
-          Em.assert "Model for object '#{type}' not defined in EgbilController", objectModel
+          objectModel = @get "target.gammaController.objectModel.#{type}"
+          Em.assert "Model for object '#{type}' not defined in GammaController", objectModel
           list = data.map(((x)-> 
             @create().setProperties
               _objectId: x

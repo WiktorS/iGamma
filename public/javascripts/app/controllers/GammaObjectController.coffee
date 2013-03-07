@@ -1,4 +1,4 @@
-App.EgbilObjectController = Em.ObjectController.extend
+App.GammaObjectController = Em.Controller.extend
   content: null
   objectTypeName:
     jrg: "Jednostka Rejestrowa Gruntów i Budynków"
@@ -13,6 +13,7 @@ App.EgbilObjectController = Em.ObjectController.extend
     institution: "Instytucja"
     group: "Podmiot grupowy"
     landCommunity: "Zarząd wspólnoty grupowej"
+    change: "Zmiana"
 
   title: (->
     objectType = @get "content._objectType"
@@ -21,7 +22,7 @@ App.EgbilObjectController = Em.ObjectController.extend
     "#{objectTypeName}: #{objectDescription}"    
     ).property("content._objectType", "content._objectDescription")
   rightPanelContent: (->
-    data = @get ["target.egbilController.rightPanelData", @get "content._objectType"].join(".")
+    data = @get ["target.gammaController.rightPanelData", @get "content._objectType"].join(".")
     ).property("content.objectType")
   rightPanelSelectedObjects: ( ->
     object = Em.Object.create @get("content"),

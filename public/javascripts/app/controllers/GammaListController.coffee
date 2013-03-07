@@ -42,7 +42,7 @@ App.GammaListController = Em.Controller.extend
     lot: "Działki"
 
   fetchDataCallback: (fetchQueue, type) -> 
-    @get("target.egbilController").fetchDataCallback(fetchQueue, type)
+    @get("target.gammaController").fetchDataCallback(fetchQueue, type)
 
   checkedList: (->
     @get("content")?.filterProperty "check"
@@ -55,11 +55,11 @@ App.GammaListController = Em.Controller.extend
     ).property("checkedList")
   canShowRightPanel: (->
     type = @get "type"
-    Em.A(@get "target.egbilController.rightPanelData.#{type}").length > 0
+    Em.A(@get "target.gammaController.rightPanelData.#{type}").length > 0
     ).property("type")
   rightPanelContent: (->
     type = @get "type"
-    data = @get "target.egbilController.rightPanelData.#{type}"
+    data = @get "target.gammaController.rightPanelData.#{type}"
     if @get("isAnyChecked") && @get("canShowRightPanel")
       if @get "isMultipleChecked"
         data.filterProperty "multiselect", true
@@ -96,7 +96,7 @@ App.GammaListController = Em.Controller.extend
         objectList: objectList
       success: (data) =>
         if !Em.empty data && Em.isArray data
-          objectModel = @get "target.egbilController.objectModel.#{type}"
+          objectModel = @get "target.gammaController.objectModel.#{type}"
           Em.assert "Could not find model for object '#{type}'", objectModel
 #          @set "target.egbilListController.type", type
 #          @set "target.egbilListController.content", data.map(App.Common.toModel, objectModel)
