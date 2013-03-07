@@ -1,4 +1,4 @@
-App.ChangeSearchModel = Em.Object.extend
+App.ChangesSearchModel = Em.Object.extend
   systematics: App.StandardFilterElementModel.create
     label: "Systematyka"
     name: "systematics"
