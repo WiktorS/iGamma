@@ -199,6 +199,7 @@ App.GammaListTableCellPersonKindView = App.ModelTableCellView.extend
   isInstitution: (-> "institution" == @get "value").property("value")
 
 
+#TODO: remove after cleaning up address in model
 App.GammaListTableCellValueView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{view.displayValue}}"
   displayValue: (->
@@ -212,3 +213,13 @@ App.GammaListTableCellValueView = App.ModelTableCellView.extend
 App.GammaListTableCellIsValueView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{#unless view.isEmptyValue}}<i class=\"icon-white icon-ok\"></i>{{/unless}}"
   isEmptyValue: (-> Ember.empty(@get "column.data.value")).property("column.data.value")
+
+App.GammaListTableCellJRChangeView = App.ModelTableCellView.extend
+  template: Em.Handlebars.compile "{{view.displayValue}}"
+  displayValue: (->
+    value = @get "column.data.value"
+    valueName = @get "column.data.valueName"
+    list = @get "controller.content.#{value}"
+    valueItem = list?.findProperty("id", @get "content.id")
+    valueItem?.get valueName
+    ).property("controller.content", "content.id", "column.data.valueName", "column.data.value")

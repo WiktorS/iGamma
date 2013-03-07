@@ -34,18 +34,6 @@ App.columnsData = Em.Object.create
     viewClass: "App.GammaListTableCellListView"
     value: "lots"
     valueType: "lot"
-  jrb: App.StandardTableCellModel.create
-    label: "Number JRB"
-    viewClass: "App.GammaListTableCellButtonView"
-    valueType: "jrb"
-  jrg: App.StandardTableCellModel.create
-    label: "Numer JRG"
-    viewClass: "App.GammaListTableCellButtonView"
-    valueType: "jrg"
-  jrl: App.StandardTableCellModel.create
-    label: "Numer JRL"
-    viewClass: "App.GammaListTableCellButtonView"
-    valueType: "jrl"
   buildingArea: App.StandardTableCellModel.create
     label: "Powierzchnia zabudowy"
   usableArea: App.StandardTableCellModel.create
@@ -401,3 +389,51 @@ App.columnsData = Em.Object.create
 
   shareGroup: App.StandardTableCellModel.create #oldJrg
     label: "Grupa rejestrowa"
+
+  #change
+  registerUnit: App.StandardTableCellModel.create
+    label: "JR"
+    viewClass: "App.GammaListTableCellButtonView"
+    valueType: "registerUnit"
+  registerUnitChangeBefore:
+    label: "Numer przed zmianą"
+    viewClass: "App.GammaListTableCellJRChangeView"
+    value: "registerUnitChanges"
+    valueName: "before"
+  registerUnitChangeAfter:
+    label: "Numer po zmianie"
+    viewClass: "App.GammaListTableCellJRChangeView"
+    value: "registerUnitChanges"
+    valueName: "after"
+  systematics: App.StandardTableCellModel.create
+    label: "Systematyka"
+  changeYear: App.StandardTableCellModel.create
+    label: "Rok zmiany"
+  changeName: App.StandardTableCellModel.create
+    label: "Numer zmiany"
+  applicationYear: App.StandardTableCellModel.create
+    label: "Rok zgłoszenia"
+  applicationNumber: App.StandardTableCellModel.create
+    label: "Numer zgłoszenia"
+  stockKerg: App.StandardTableCellModel.create
+    label: "Numer zasobu lub KERG"
+  applicationKind: App.StandardTableCellModel.create
+    label: "Typ wniosku"
+  changeKind: App.StandardTableCellModel.create
+    label: "Rodzaj zmiany"
+  changeStatus: App.StandardTableCellModel.create
+    label: "Status zmiany"
+  changeDescription: App.StandardTableCellModel.create
+    label: "Opis zmiany"
+  lotsAndLandRegister: App.StandardTableCellModel.create
+    label: "Działki i KW"
+  applicationEntity: App.StandardTableCellModel.create
+    label: "Podmiot zgłaszający zmianę"
+    viewClass: "App.GammaListTableCellButtonView"
+    valueType: "applicationEntity"
+  registeredBy: App.StandardTableCellModel.create
+    label: "Zarejestrował"
+  introducedBy: App.StandardTableCellModel.create
+    label: "Wprowadził"
+  acceptedBy: App.StandardTableCellModel.create
+    label: "Zaakceptował"
