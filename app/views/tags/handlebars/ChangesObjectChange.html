@@ -1,0 +1,21 @@
+<script type="text/x-handlebars" data-template-name="changesObjectChange">
+  {{view App.ModelValueTableView contentBinding="controller.content" columnsBinding="controller.changeColumns"}}
+  <div class="accordion">
+    {{#view classNames="accordion-group"}}
+      {{view App.AccordionHeaderView label="Dokumenty"}}
+      {{view App.AccordionBodyView contentBinding="controller.content.documents" columnsBinding="controller.documentColumns"}}
+    {{/view}}
+    {{#view classNames="accordion-group"}}
+      {{view App.AccordionHeaderView label="Działki zarejestrowane w Zmianie"}}
+      {{view App.AccordionBodyView contentBinding="controller.content.lots" columnsBinding="controller.lotColumns"}}
+    {{/view}}
+    {{#view classNames="accordion-group"}}
+      {{view App.AccordionHeaderView label="Osoby zarejestrowane w Zmianie"}}
+      {{view App.AccordionBodyView contentBinding="controller.content.members" columnsBinding="controller.memberColumns"}}
+    {{/view}}
+    {{#view classNames="accordion-group"}}
+      {{view App.AccordionHeaderView label="Jednostki Rejestrowe objęte Zmianą"}}
+      {{view App.AccordionBodyView contentBinding="controller.content.registerUnits" columnsBinding="controller.registerUnit"}}
+    {{/view}}
+  </div>
+</script>
