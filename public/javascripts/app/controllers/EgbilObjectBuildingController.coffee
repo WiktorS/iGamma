@@ -1,4 +1,4 @@
-App.EgbilObjectBuildingController = App.EgbilObjectCommonController.extend
+App.EgbilObjectBuildingController = App.GammaObjectCommonController.extend
   columnsOrder:
     address: ["address"]
     buildingLeft: ["precinct", "building","buildingArea","usableArea","buildingStatus","buildingKind","buildingClass","highestLevel","lowestLevel","numberOfLevels","constructionFinishDate","constructionFinishDateCertainty","reconstructionFinishDate","reconstructionFinishDateCertainty","reconstructionScope","exteriorWallsMaterial","monumentRegister","manyJRG", "remarks", "notes"]

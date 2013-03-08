@@ -1,14 +1,16 @@
 App.EgbilObjectChangeModel = App.EgbilObjectModel.extend
   _objectType: "change"
   _objectName: (-> @get "changeName").property("changeName")
-#  _internalMaps: (->
-#    {
-#      addresses: App.EgbilObjectAddressModel
-#      documents: App.EgbilObjectDocumentModel
-#      terrainCategories: App.EgbilObjectTerrainCategoryModel
-#      shares: App.EgbilObjectShareModel
-#    }
-#    ).property()
+  _objectDescription: (-> "#{@get "_objectName"}").property("_objectName")
+  _internalMaps: (->
+    {
+      documents: App.EgbilObjectDocumentModel
+      lots: App.EgbilObjectLotModel
+      members: App.EgbilObjectIntegraEntityModel
+      registerUnits: App.EgbilObjectRegisterUnitModel
+      registerUnitChanges: App.EgbilObjectRegisterUnitChangeModel
+    }
+    ).property()
 
   check: null
   show: null
@@ -34,3 +36,9 @@ App.EgbilObjectChangeModel = App.EgbilObjectModel.extend
   registeredBy: null
   introducedBy: null
   acceptedBy: null
+
+  documents: null
+  lots: null
+  members: null
+  registerUnits: null
+  registerUnitChanges: null

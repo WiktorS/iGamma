@@ -1,4 +1,4 @@
-App.EgbilObjectLotController = App.EgbilObjectCommonController.extend
+App.EgbilObjectLotController = App.GammaObjectCommonController.extend
   columnsOrder:
     lotLeft: ["precinct", "lot", "cadastralArea", "geodesicArea", "monumentRegister", "statisticalRegion", "listDistrict", "validFrom", "validTo", "remarks", "notes"]
     lotMiddle: ["jrg"]

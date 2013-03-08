@@ -1,9 +1,9 @@
-<script type="text/x-handlebars" data-template-name="egbil">
+<script type="text/x-handlebars" data-template-name="changes">
   <div class="tabbable">
     <ul class="nav nav-pills">
       {{view App.TabItemView stateName="map" displayName="Pokaż mapę"}}
       {{view App.TabItemView stateName="search" displayName="Wybór obiektów"}}
-      {{#if App.router.egbilListController.content}}
+      {{#if App.router.changesListController.content}}
         {{view App.TabItemView stateName="list" displayName="Lista obiektów"}}
       {{/if}}
       {{#each controller.objectList}}

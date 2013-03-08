@@ -1,4 +1,4 @@
-App.EgbilObjectGroupController = App.EgbilObjectCommonController.extend
+App.EgbilObjectGroupController = App.GammaObjectCommonController.extend
   columnsOrder:
     group: ["fullName", "shortName", "status", "regon", "nip", "address", "registerName", "registerNumber", "registerCourt", "remarks", "notes"]
     lot: ["check", "show", "marker", "lotPersonKind", "jrg", "lot", "sheet", "precinct", "cadastralUnit", "cadastralArea", "lotShareCharacter", "lotShareGroup", "lotShareValue"]

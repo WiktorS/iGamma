@@ -1,4 +1,4 @@
-App.EgbilObjectDocumentController = App.EgbilObjectCommonController.extend
+App.EgbilObjectDocumentController = App.GammaObjectCommonController.extend
   columnsOrder:
     document: [ "documentKind", "document", "documentSource", "creationDate", "receiptDate", "description", "designation", "relatedDocumentKind", "relatedDocument" ]
     lot: [ "check", "show", "marker", "lot", "precinct", "cadastralUnit", "jrg", "address", "cadastralArea" ]

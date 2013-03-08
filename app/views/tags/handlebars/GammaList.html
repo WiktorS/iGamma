@@ -1,0 +1,13 @@
+<script type="text/x-handlebars" data-template-name="gammaList">
+  <div class="ui-layout-center">
+    <div class="btn-primary">
+      {{title}}
+    </div>
+    {{#if content}}
+      {{view App.ModelTableView contentBinding="content" columnsBinding="columns"}}
+    {{else}}
+      Brak wyników do pokazania
+    {{/if}}
+  </div>
+  {{view App.EgbilRightPanelView contentBinding="rightPanelContent"}}
+</script>

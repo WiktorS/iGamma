@@ -19,6 +19,36 @@
         "notes": "Notatki",
         "registeredBy": "Zarejestrował",
         "introducedBy": "Wprowadził",
-        "acceptedBy": "Zaakceptował"
+        "acceptedBy": "Zaakceptował",
+        "documents": [
+            {
+                "id": 1
+            }
+        ],
+        "lots": [
+            {
+                "id": 1
+            }
+        ],
+        "members": [
+            {
+                "id": 1,
+                "entityType": "person"
+            }
+        ],
+        "registerUnits": [
+            {
+                "id": 1,
+                "registerUnitType": "jrg"
+            }
+        ],
+        "registerUnitChanges": [
+            {
+                "id": 1,
+                "registerUnitType": "jrg",
+                "before": "Przed zmianą",
+                "after": "Po zmianie"
+            }
+        ]
     }
 ]

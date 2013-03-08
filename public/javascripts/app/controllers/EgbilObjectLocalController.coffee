@@ -1,4 +1,4 @@
-App.EgbilObjectLocalController = App.EgbilObjectCommonController.extend
+App.EgbilObjectLocalController = App.GammaObjectCommonController.extend
   columnsOrder:
     localLeft: ["precinct", "local","lot","building","usableArea","localKind","roomsNumber","address","localLevel","commonPropertyShare","remarks","notes"]
     localMiddle: ["jrg","jrl"]

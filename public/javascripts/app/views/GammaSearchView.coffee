@@ -1,4 +1,4 @@
-App.EgbilSearchCommonView = Em.View.extend
+App.GammaSearchView = Em.View.extend
   formFields: Em.A()
 
   
