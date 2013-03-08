@@ -1,6 +1,6 @@
 <script type="text/x-handlebars" data-template-name="filterSystematic">
-<label class="control-group">
-    <span class="control-label">Systematyka</span>
+<div class="control-group filter-systematic"  style="border: 1px solid red;">
+    <label class="control-label">Systematyka</label>
     <div class="controls">
         <span class="input-append">
             {{view Em.TextField valueBinding="view.field.value" class="asSystematics"}}
@@ -8,5 +8,5 @@
             <a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
         </span>
     </div>
-</label>
+</div>
 </script>

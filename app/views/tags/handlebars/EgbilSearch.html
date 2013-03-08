@@ -1,6 +1,6 @@
 <script type="text/x-handlebars" data-template-name="egbilSearch">
 <div class="tabbable tabs-left">
-    <ul class="nav nav-tabs nav-stacked">
+    <ul class="nav nav-tabs">
     {{view App.TabItemView stateName="jrg" displayName="Jednostki Rejestrowe Gruntów i Budynków"}}
     {{view App.TabItemView stateName="jrb" displayName="Jednostki Rejestrowe Budynków"}}
     {{view App.TabItemView stateName="jrl" displayName="Jednostki Rejestrowe Lokali"}}
@@ -14,6 +14,6 @@
     {{view App.TabItemView stateName="landCommunity" displayName="Zarządy wspólnot gruntowych"}}
     {{view App.TabItemView stateName="document" displayName="Dokumenty"}}
     </ul>
-    <div id="egbil-search" class="tab-content well">{{outlet egbilSearch}}</div>
+    <div id="egbil-search" class="tab-content well span10">{{outlet egbilSearch}}</div>
 </div>
 </script>
