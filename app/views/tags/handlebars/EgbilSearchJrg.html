@@ -1,33 +1,32 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrg">
-  {{view App.FilterTypesView}}
-  <div class="tab-content">
+{{view App.FilterTypesView}}
 
-    <form id="filter-subject" class="tab-pane active">
-      {{view App.FilterSystematicView field=content.systematics attrIndex=0}}
-      <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView field=content.registerUnit.jrg}}
-          {{view App.FilterEntryFieldView field=content.registerUnit.jrb}}
-          {{view App.FilterEntryFieldView field=content.lot.number}}
-          {{view App.FilterEntryFieldView field=content.building.number}}
+<form id="filter-subject" class="tab-pane active form-horizontal">
+{{view App.FilterSystematicView field=content.systematics attrIndex=0}}
+    <div class="row">
+        <fieldset class="span3">
+            <legend>&nbsp;</legend>
+            {{view App.FilterEntryFieldView field=content.registerUnit.jrg}}
+            {{view App.FilterEntryFieldView field=content.registerUnit.jrb}}
+            {{view App.FilterEntryFieldView field=content.lot.number}}
+            {{view App.FilterEntryFieldView field=content.building.number}}
         </fieldset>
-        <fieldset class="span5">
-          <legend>Adres działki</legend>
-          {{view App.FilterEntryFieldView field=content.address.town}}
-          {{view App.FilterEntryFieldView field=content.address.street}}
-          {{view App.FilterEntryFieldView field=content.address.houseNumber}}
+        <fieldset class="span3">
+            <legend>Adres działki</legend>
+            {{view App.FilterEntryFieldView field=content.address.town}}
+            {{view App.FilterEntryFieldView field=content.address.street}}
+            {{view App.FilterEntryFieldView field=content.address.houseNumber}}
         </fieldset>
-      </div>
-      <div class="row">
-        <fieldset class="span5">
-          <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterEntryFieldView field=content.signature.lot}}
-          {{view App.FilterEntryFieldView field=content.signature.building}}
-          {{view App.FilterEntryFieldView field=content.signature.local}}
+    </div>
+    <div class="row">
+        <fieldset class="span3">
+            <legend>Sygnatura dokumentu</legend>
+            {{view App.FilterEntryFieldView field=content.signature.lot}}
+            {{view App.FilterEntryFieldView field=content.signature.building}}
+            {{view App.FilterEntryFieldView field=content.signature.local}}
         </fieldset>
-      </div>
-    </form>
+    </div>
+</form>
 
     <form id="filter-individual" class="tab-pane">
       <div class="row">
@@ -93,5 +92,4 @@
       <button class="btn" type="button"><i class="icon-ban-circle"></i> Wyczyść</button>
       <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
     </div>
-  </div>
 </script>
