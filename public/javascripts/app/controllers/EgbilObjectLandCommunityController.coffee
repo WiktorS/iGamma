@@ -1,4 +1,4 @@
-App.EgbilObjectLandCommunityController = App.EgbilObjectCommonController.extend
+App.EgbilObjectLandCommunityController = App.GammaObjectCommonController.extend
   columnsOrder:
     landCommunity: ["landCommunity", "status", "address", "landCommunityInstitution", "remarks", "notes"]
     member: ["check", "marker", "memberPersonKind", "memberEntity", "memberAddress", "memberPeselRegon", "memberNip"]

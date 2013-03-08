@@ -10,15 +10,15 @@ App.columnsData = Em.Object.create
 
   check: App.StandardTableCellModel.create
     label: ""
-    viewClass: "App.EgbilListTableCellCheckBoxView"
+    viewClass: "App.GammaListTableCellCheckBoxView"
     sortable: false
   show: App.StandardTableCellModel.create
     label: "Pokaż"
-    viewClass: "App.EgbilListTableCellShowMapView"
+    viewClass: "App.GammaListTableCellShowMapView"
     sortable: false
   marker: App.StandardTableCellModel.create
     label: "Oznaczenie"
-    viewClass: "App.EgbilListTableCellMarkerView"
+    viewClass: "App.GammaListTableCellMarkerView"
   precinct: App.StandardTableCellModel.create
     label: "Obręb"
   sheet: App.StandardTableCellModel.create
@@ -27,25 +27,13 @@ App.columnsData = Em.Object.create
     label: "Jednostka ewidencyjna"
   building: App.StandardTableCellModel.create
     label: "Numer budynku"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "building"
   lots: App.StandardTableCellModel.create
     label: "Działki"
-    viewClass: "App.EgbilListTableCellListView"
+    viewClass: "App.GammaListTableCellListView"
     value: "lots"
     valueType: "lot"
-  jrb: App.StandardTableCellModel.create
-    label: "Number JRB"
-    viewClass: "App.EgbilListTableCellButtonView"
-    valueType: "jrb"
-  jrg: App.StandardTableCellModel.create
-    label: "Numer JRG"
-    viewClass: "App.EgbilListTableCellButtonView"
-    valueType: "jrg"
-  jrl: App.StandardTableCellModel.create
-    label: "Numer JRL"
-    viewClass: "App.EgbilListTableCellButtonView"
-    valueType: "jrl"
   buildingArea: App.StandardTableCellModel.create
     label: "Powierzchnia zabudowy"
   usableArea: App.StandardTableCellModel.create
@@ -86,11 +74,11 @@ App.columnsData = Em.Object.create
     label: "Notatki"
   address: App.StandardTableCellModel.create
     label: "Adres"
-    viewClass: "App.EgbilListTableCellValueView"
+    viewClass: "App.GammaListTableCellValueView"
     valueType: "address"
   local: App.StandardTableCellModel.create
     label: "Numer ewidencyjny"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "local"
   geodesicArea: App.StandardTableCellModel.create
     label: "Powierzchnia geodezyjna"
@@ -102,7 +90,7 @@ App.columnsData = Em.Object.create
     label: "Ważność do"
   addresses: App.StandardTableCellModel.create
     label: "Adresy"
-    viewClass: "App.EgbilListTableCellListView"
+    viewClass: "App.GammaListTableCellListView"
     value: "addresses"
     valueType: "addressName"
   documentKind: App. StandardTableCellModel.create
@@ -111,11 +99,11 @@ App.columnsData = Em.Object.create
     label: "Sygnatura dokumentu"
   lot: App.StandardTableCellModel.create
     label: "Numer działki"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "lot"
   documents: App.StandardTableCellModel.create
     label: "Dokumenty"
-    viewClass: "App.EgbilListTableCellListView"
+    viewClass: "App.GammaListTableCellListView"
     value: "documents"
     valueType: "document"
   cadastralArea: App.StandardTableCellModel.create
@@ -124,7 +112,7 @@ App.columnsData = Em.Object.create
     label: "Rejon statystyczny"
   terrainCategory: App.StandardTableCellModel.create
     label: "Klasoużytki"
-    viewClass: "App.EgbilListTableCellSubTableView"
+    viewClass: "App.GammaListTableCellSubTableView"
     value: "terrainCategories"
     columns: (=> App.get("columnsData").getColumns ["terrainCategoryKind", "terrainCategoryArea"]).property()
   terrainCategoryKind: App.StandardTableCellModel.create
@@ -143,11 +131,11 @@ App.columnsData = Em.Object.create
     label: "Grupa rejestrowa G"
   groupKind: App.StandardTableCellModel.create
     label: "Wyróżnik grupy"
-    viewClass: "App.EgbilListTableCellGroupKindView"
+    viewClass: "App.GammaListTableCellGroupKindView"
     value: "entity"
   entity: App.StandardTableCellModel.create
     label: "Podmiot"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "entity"
   peselRegon: App.StandardTableCellModel.create
     label: "Numer PESEL/REGON"
@@ -176,7 +164,7 @@ App.columnsData = Em.Object.create
   #person
   person: App.StandardTableCellModel.create
     label: "Nazwisko Imiona (Imiona rodziców)"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "person"
   pesel: App.StandardTableCellModel.create
     label: "PESEL"
@@ -202,7 +190,7 @@ App.columnsData = Em.Object.create
     label: "Oznaczenie dokumentu tożsamości"
   mailingAddress: App.StandardTableCellModel.create
     label: "Adres korespondencyjny"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     value: "mailingAddressID"
     valueType: "address"
     valueName: "mailingAddressName"
@@ -210,39 +198,39 @@ App.columnsData = Em.Object.create
     label: "Żyje"
   lotPersonKind: App.StandardTableCellModel.create
     label: "Rodzaj osoby"
-    viewClass: "App.EgbilListTableCellPersonKindView"
+    viewClass: "App.GammaListTableCellPersonKindView"
     valueType: "lot"
   buildingPersonKind: App.StandardTableCellModel.create
     label: "Rodzaj osoby"
-    viewClass: "App.EgbilListTableCellPersonKindView"
+    viewClass: "App.GammaListTableCellPersonKindView"
     valueType: "building"
   localPersonKind: App.StandardTableCellModel.create
     label: "Rodzaj osoby"
-    viewClass: "App.EgbilListTableCellPersonKindView"
+    viewClass: "App.GammaListTableCellPersonKindView"
     valueType: "local"
   memberPersonKind: App.StandardTableCellModel.create
     label: "Rodzaj osoby"
-    viewClass: "App.EgbilListTableCellPersonKindView"
+    viewClass: "App.GammaListTableCellPersonKindView"
     valueType: "member"
   lotShareCharacter: App.StandardTableCellModel.create
     label: "Charakter władania"
-    viewClass: "App.EgbilListTableCellListView"
+    viewClass: "App.GammaListTableCellListView"
     value: "shares"
     valueName: "characterG"
   lotShareGroup: App.StandardTableCellModel.create
     label: "Grupa rejestrowa"
-    viewClass: "App.EgbilListTableCellListView"
+    viewClass: "App.GammaListTableCellListView"
     value: "shares"
     valueName: "registerGroupG"
   lotShareValue: App.StandardTableCellModel.create
     label: "Udział"
-    viewClass: "App.EgbilListTableCellListView"
+    viewClass: "App.GammaListTableCellListView"
     value: "shares"
     valueName: "shareValue"
   #institution
   institution: App.StandardTableCellModel.create
     label: "Nazwa pełna"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "institution"
   shortName: App.StandardTableCellModel.create
     label: "Nazwa skrócona"
@@ -258,65 +246,65 @@ App.columnsData = Em.Object.create
     label: "Numer REGON"
   landCommunity: App.StandardTableCellModel.create
     label: "Nazwa spółki"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "landCommunity"
   landCommunityInstitution: App.StandardTableCellModel.create
     label: "Wspólnota gruntowa"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     value: "landCommunityInstitutionID"
     valueType: "institution"
     valueName: "landCommunityInstitutionName"
   #group
   group: App.StandardTableCellModel.create
     label: "Nazwa pełna"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "group"
   memberEntity: App.StandardTableCellModel.create
     label: "Nazwisko Imiona (Rodzice)/Nazwa pełna"
-    viewClass: "App.EgbilListTableCellMemberView"
+    viewClass: "App.GammaListTableCellMemberView"
     value: "entity"
     memberValue: "_objectName"
   memberAddress: App.StandardTableCellModel.create
     label: "Adres zamieszkania/Adres"
-    viewClass: "App.EgbilListTableCellMemberView"
+    viewClass: "App.GammaListTableCellMemberView"
     value: "entity"
     memberValue: "addressName"
   memberPeselRegon: App.StandardTableCellModel.create
     label: "PESEL/REGON"
-    viewClass: "App.EgbilListTableCellMemberView"
+    viewClass: "App.GammaListTableCellMemberView"
     value: "entity"
     memberValue: "peselRegon"
   memberNip: App.StandardTableCellModel.create
     label: "NIP"
-    viewClass: "App.EgbilListTableCellMemberView"
+    viewClass: "App.GammaListTableCellMemberView"
     value: "entity"
     memberValue: "nip"
   #document
   document: App.StandardTableCellModel.create
     label: "Sygnatura"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "document"
   documentType: App.StandardTableCellModel.create
     label: "Rodzaj"
   documentScan: App.StandardTableCellModel.create
     label: "Skan"
-    viewClass: "App.EgbilListTableCellIsValueView"
+    viewClass: "App.GammaListTableCellIsValueView"
     value: "scan"
   documentLots: App.StandardTableCellModel.create
     label: "Działki"
-    viewClass: "App.EgbilListTableCellIsValueView"
+    viewClass: "App.GammaListTableCellIsValueView"
     value: "lots"
   documentBuildings: App.StandardTableCellModel.create
     label: "Budynki"
-    viewClass: "App.EgbilListTableCellIsValueView"
+    viewClass: "App.GammaListTableCellIsValueView"
     value: "buildings"
   documentLocals: App.StandardTableCellModel.create
     label: "Lokale"
-    viewClass: "App.EgbilListTableCellIsValueView"
+    viewClass: "App.GammaListTableCellIsValueView"
     value: "locals"
   documentChanges: App.StandardTableCellModel.create
     label: "Zmiany"
-    viewClass: "App.EgbilListTableCellIsValueView"
+    viewClass: "App.GammaListTableCellIsValueView"
     value: "changes"
   documentSource: App.StandardTableCellModel.create
     label: "Źródło"
@@ -332,7 +320,7 @@ App.columnsData = Em.Object.create
     label: "Rodzaj dokumentu związanego"
   relatedDocument: App.StandardTableCellModel.create
     label: "Sygnatura dokumentu związanego"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "document"
     value: "relatedDocumentID"
     valueName: "relatedDocumentName"
@@ -340,7 +328,7 @@ App.columnsData = Em.Object.create
   #change
   change: App.StandardTableCellModel.create
     label: "Numer zmiany"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "change"
   changeYear: App.StandardTableCellModel.create
     label: "Rok zmiany"
@@ -356,19 +344,19 @@ App.columnsData = Em.Object.create
   #jr
   jrg: App.StandardTableCellModel.create
     label: "Numer JRG"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "jrg"
   jrb: App.StandardTableCellModel.create
     label: "Numer JRB"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "jrb"
   jrl: App.StandardTableCellModel.create
     label: "Numer JRL"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "jrl"
   oldJrg: App.StandardTableCellModel.create
     label: "Numer JRG"
-    viewClass: "App.EgbilListTableCellButtonView"
+    viewClass: "App.GammaListTableCellButtonView"
     valueType: "oldJrg"
   landRegister: App.StandardTableCellModel.create
     label: "Księga Wieczysta"
@@ -386,7 +374,7 @@ App.columnsData = Em.Object.create
 
   associatedPremises: App.StandardTableCellModel.create
     label: "Pomieszczenia przynależne"
-    viewClass: "App.EgbilListTableCellSubTableView"
+    viewClass: "App.GammaListTableCellSubTableView"
     value: "associatedPremises"
     columns: (=> App.get("columnsData").getColumns ["building", "premiseKind", "premiseArea"]).property()
   associatedPremisesAreaSum: App.StandardTableCellModel.create
@@ -394,10 +382,58 @@ App.columnsData = Em.Object.create
 
   lotsJR: App.StandardTableCellModel.create
     label: "Działki"
-    viewClass: "App.EgbilListTableCellSubTableView"
+    viewClass: "App.GammaListTableCellSubTableView"
     value: "lots"
     valueType: "lot"
     columns: (=> App.get("columnsData").getColumns ["lot", "cadastralArea"]).property()
 
   shareGroup: App.StandardTableCellModel.create #oldJrg
     label: "Grupa rejestrowa"
+
+  #change
+  registerUnit: App.StandardTableCellModel.create
+    label: "JR"
+    viewClass: "App.GammaListTableCellButtonView"
+    valueType: "registerUnit"
+  registerUnitChangeBefore:
+    label: "Numer przed zmianą"
+    viewClass: "App.GammaListTableCellJRChangeView"
+    value: "registerUnitChanges"
+    valueName: "before"
+  registerUnitChangeAfter:
+    label: "Numer po zmianie"
+    viewClass: "App.GammaListTableCellJRChangeView"
+    value: "registerUnitChanges"
+    valueName: "after"
+  systematics: App.StandardTableCellModel.create
+    label: "Systematyka"
+  changeYear: App.StandardTableCellModel.create
+    label: "Rok zmiany"
+  changeName: App.StandardTableCellModel.create
+    label: "Numer zmiany"
+  applicationYear: App.StandardTableCellModel.create
+    label: "Rok zgłoszenia"
+  applicationNumber: App.StandardTableCellModel.create
+    label: "Numer zgłoszenia"
+  stockKerg: App.StandardTableCellModel.create
+    label: "Numer zasobu lub KERG"
+  applicationKind: App.StandardTableCellModel.create
+    label: "Typ wniosku"
+  changeKind: App.StandardTableCellModel.create
+    label: "Rodzaj zmiany"
+  changeStatus: App.StandardTableCellModel.create
+    label: "Status zmiany"
+  changeDescription: App.StandardTableCellModel.create
+    label: "Opis zmiany"
+  lotsAndLandRegister: App.StandardTableCellModel.create
+    label: "Działki i KW"
+  applicationEntity: App.StandardTableCellModel.create
+    label: "Podmiot zgłaszający zmianę"
+    viewClass: "App.GammaListTableCellButtonView"
+    valueType: "applicationEntity"
+  registeredBy: App.StandardTableCellModel.create
+    label: "Zarejestrował"
+  introducedBy: App.StandardTableCellModel.create
+    label: "Wprowadził"
+  acceptedBy: App.StandardTableCellModel.create
+    label: "Zaakceptował"

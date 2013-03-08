@@ -1,4 +1,4 @@
-App.EgbilController = Em.Controller.extend
+App.GammaController = Em.Controller.extend
   objectList: Em.A()
   rightPanelData:
     jrg: [
@@ -175,7 +175,7 @@ App.EgbilController = Em.Controller.extend
       @showObject objectId, objectType
 
   fetchDataCallback: (fetchQueue, type)->
-    jsonMethod = @get "target.egbilController.fetchMethod.#{type}"
+    jsonMethod = @get "fetchMethod.#{type}"
     Em.assert "fetchMethod undefinned for type: #{type}", jsonMethod
     idList = fetchQueue.map( (x)-> x.get "id")
     $.ajax

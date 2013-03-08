@@ -1,2 +1,2 @@
-App.EgbilSearchPersonView = App.EgbilSearchCommonView.extend
+App.EgbilSearchPersonView = App.GammaSearchView.extend
   templateName: "egbilSearchPerson"

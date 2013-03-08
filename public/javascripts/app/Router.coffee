@@ -22,20 +22,26 @@ RouteWithObjectParam = Em.Route.extend
     Em.assert "Object type doesn't match state type", @get("objectType") == context.get("_objectType")
     @set "objectId", context.get "_objectId"
     @set "objectName", context.get "_objectName"
-    object = router.get("egbilController").getObject @get("objectId"), @get("objectType")
+    object = router.get("gammaController").getObject @get("objectId"), @get("objectType")
     if !Em.empty object
-      router.get("egbilController").connectOutlet(
-        outletName: "egbil"
-        name: "egbilObject"
+      router.get("gammaController").connectOutlet
+        outletName: "content"
+        name: "gammaObject"
         context: object
-      )
-      router.get("egbilObjectController").connectOutlet(
-        outletName: "egbilObject"
+      router.get("gammaObjectController").connectOutlet
+        outletName: "gammaObject"
         name: @get("objectOutletName")
         context: object
-      )
     else
       router.send "openObject", context
+
+
+#Ember redirectsTo does not pass context
+RouteWithObjectParamRedirect = RouteWithObjectParam.extend
+  redirectPath: null
+  connectOutlets: (router, context) ->
+    Em.assert "Object type doesn't match state type", @get("objectType") == context.get("_objectType")
+    router.transitionTo @get("redirectPath"), context
 
 
 App.Router = Em.Router.extend
@@ -51,12 +57,15 @@ App.Router = Em.Router.extend
       route: "/egbil"
       initialState: "search"
       connectOutlets: (router) ->
-        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "egbil"})
+        router.get("applicationController").connectOutlet
+          outletName: "applicationPage"
+          viewClass: App.get "EgbilView"
+          controller: router.get "gammaController"
 
       doRightPanelAction: (router, context) ->
         action = context.context.get("type")
         objectList = context.view.get("controller.rightPanelSelectedObjects")
-        router.get("egbilController").rightPanelAction action, objectList
+        router.get("gammaController").rightPanelAction action, objectList
 
       showChange: (router, context) ->
         context = context.context if context instanceof jQuery.Event
@@ -70,7 +79,7 @@ App.Router = Em.Router.extend
         route: "/szukaj"
         initialState: "jrg"
         connectOutlets: (router) ->
-          router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilSearch"})
+          router.get("gammaController").connectOutlet({outletName: "content", name: "egbilSearch"})
 
         jrg: RouteWithParentMemory.extend
           route: "/jrg"
@@ -135,11 +144,17 @@ App.Router = Em.Router.extend
       map: RouteWithParentMemory.extend
         route: "/mapa"
         connectOutlets: (router) ->
-          router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilMap"})
+          router.get("gammaController").connectOutlet
+            outletName: "content"
+            name: "egbilMap"
 
       openList: (router, context) ->
         router.get("egbilListController").openList context
       goToList: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        if (context instanceof Em.Object)
+          router.set "egbilListController.type", context.get("type")
+          router.set "egbilListController.content", context.get("list")
         router.transitionTo "list"
       list: RouteWithParentMemory.extend
         route: "/lista"
@@ -147,17 +162,20 @@ App.Router = Em.Router.extend
           if Em.empty router.get("egbilListController.content")
             router.transitionTo "egbil.search"
           else
-            router.get("egbilController").connectOutlet({outletName: "egbil", name: "egbilList"})
+            router.get("gammaController").connectOutlet
+              outletName: "content"
+              viewClass: App.get "GammaListView"
+              controller: router.get "egbilListController"
 
       openObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        router.get("egbilController").openObject context.get("_objectId"), context.get("_objectType")
+        router.get("gammaController").openObject context.get("_objectId"), context.get("_objectType")
       closeObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        router.get("egbilController").closeObject context.get("_objectId"), context.get("_objectType")
+        router.get("gammaController").closeObject context.get("_objectId"), context.get("_objectType")
       showObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
-        router.get("egbilController").showObject context.get("_objectId"), context.get("_objectType")
+        router.get("gammaController").showObject context.get("_objectId"), context.get("_objectType")
       goToObject: (router, context) ->
         context = context.context if context instanceof jQuery.Event
         objectType = context.get("_objectType")
@@ -171,19 +189,19 @@ App.Router = Em.Router.extend
           redirectsTo: "egbil.search"
 
         jrg: RouteWithObjectParam.extend
-          route: "/jrg/:name/:id"
+          route: "/jednostka rejestrowa gruntów i budynków/:name/:id"
           objectOutletName: "egbilObjectJrg"
 
         jrb: RouteWithObjectParam.extend
-          route: "/jrb/:name/:id"
+          route: "/jednostka rejestrowa budynków/:name/:id"
           objectOutletName: "egbilObjectJrb"
 
         jrl: RouteWithObjectParam.extend
-          route: "/jrl/:name/:id"
+          route: "/jednostka rejestrowa lokali/:name/:id"
           objectOutletName: "egbilObjectJrl"
 
         oldJrg: RouteWithObjectParam.extend
-          route: "/oldJrg/:name/:id"
+          route: "/stara jednostka rejestrowa gruntów/:name/:id"
           objectOutletName: "egbilObjectOldJrg"
 
         document: RouteWithObjectParam.extend
@@ -191,32 +209,36 @@ App.Router = Em.Router.extend
           objectOutletName: "egbilObjectDocument"
 
         lot: RouteWithObjectParam.extend
-          route: "/lot/:name/:id"
+          route: "/działka/:name/:id"
           objectOutletName: "egbilObjectLot"
 
         building: RouteWithObjectParam.extend
-          route: "/building/:name/:id"
+          route: "/budynek/:name/:id"
           objectOutletName: "egbilObjectBuilding"
 
         local: RouteWithObjectParam.extend
-          route: "/local/:name/:id"
+          route: "/lokal/:name/:id"
           objectOutletName: "egbilObjectLocal"
 
         person: RouteWithObjectParam.extend
-          route: "/person/:name/:id"
+          route: "/osoba fizyczne/:name/:id"
           objectOutletName: "egbilObjectPerson"
 
         institution: RouteWithObjectParam.extend
-          route: "/institution/:name/:id"
+          route: "/instytucja/:name/:id"
           objectOutletName: "egbilObjectInstitution"
 
         group: RouteWithObjectParam.extend
-          route: "/group/:name/:id"
+          route: "/podmiot grupowy/:name/:id"
           objectOutletName: "egbilObjectGroup"
 
         landCommunity: RouteWithObjectParam.extend
-          route: "/landCommunity/:name/:id"
+          route: "/zarząd wspólnoty gruntowej/:name/:id"
           objectOutletName: "egbilObjectLandCommunity"
+
+        change: RouteWithObjectParamRedirect.extend
+          route: "/zmiana/:name/:id"
+          redirectPath: "changes.object.change"
           
       openTerrainCategoryReport: (router, context) ->
         context = context.context if context instanceof jQuery.Event
@@ -250,8 +272,111 @@ App.Router = Em.Router.extend
 
     changes: Em.Route.extend
       route: "/zmiany"
+      initialState: "search"
       connectOutlets: (router) ->
-        router.get("applicationController").connectOutlet({outletName: "applicationPage", name: "change"})
+        router.get("applicationController").connectOutlet
+          outletName: "applicationPage"
+          viewClass: App.get "ChangesView"
+          controller: router.get "gammaController"
+
+      doSearch: (router, context) ->
+        Em.assert "doSearch context must be jQuery.Event", context instanceof jQuery.Event
+        searchArgs = context.view.getSearchArgs()
+        router.get("changesSearchController").doSearch searchArgs
+      search: RouteWithParentMemory.extend
+        route: "/szukaj"
+        connectOutlets: (router) ->
+          router.get("gammaController").connectOutlet({outletName: "content", name: "changesSearch"})
+
+      goToList: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        if (context instanceof Em.Object)
+          router.set "changesListController.type", context.get("type")
+          router.set "changesListController.content", context.get("list")
+        router.transitionTo "list"
+      list: RouteWithParentMemory.extend
+        route: "/lista"
+        connectOutlets: (router) ->
+          if Em.empty router.get("changesListController.content")
+            router.transitionTo "changes.search"
+          else
+            router.get("gammaController").connectOutlet
+              outletName: "content"
+              viewClass: App.get "GammaListView"
+              controller: router.get "changesListController"
+
+      openObject: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        router.get("gammaController").openObject context.get("_objectId"), context.get("_objectType")
+      closeObject: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        router.get("gammaController").closeObject context.get("_objectId"), context.get("_objectType")
+      showObject: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        router.get("gammaController").showObject context.get("_objectId"), context.get("_objectType")
+      goToObject: (router, context) ->
+        context = context.context if context instanceof jQuery.Event
+        objectType = context.get("_objectType")
+        Em.assert "Can't go to object of undefined type", objectType?
+        router.transitionTo ["object", objectType].join("."), context
+      object: Em.Route.extend
+        route: "/obiekt"
+
+        index: Em.Route.extend
+          route: "/"
+          redirectsTo: "change.search"
+
+        jrg: RouteWithObjectParamRedirect.extend
+          route: "/jednostka rejestrowa gruntów i budynków/:name/:id"
+          redirectPath: "egbil.object.jrg"
+
+        jrb: RouteWithObjectParamRedirect.extend
+          route: "/jednostka rejestrowa budynków/:name/:id"
+          redirectPath: "egbil.object.jrb"
+
+        jrl: RouteWithObjectParamRedirect.extend
+          route: "/jednostka rejestrowa lokali/:name/:id"
+          redirectPath: "egbil.object.jrl"
+
+        oldJrg: RouteWithObjectParamRedirect.extend
+          route: "/stara jednostka rejestrowa gruntów/:name/:id"
+          redirectPath: "egbil.object.oldJrg"
+
+        document: RouteWithObjectParamRedirect.extend
+          route: "/dokument/:name/:id"
+          redirectPath: "egbil.object.document"
+
+        lot: RouteWithObjectParamRedirect.extend
+          route: "/działka/:name/:id"
+          redirectPath: "egbil.object.lot"
+
+        building: RouteWithObjectParamRedirect.extend
+          route: "/budynek/:name/:id"
+          redirectPath: "egbil.object.building"
+
+        local: RouteWithObjectParamRedirect.extend
+          route: "/lokal/:name/:id"
+          redirectPath: "egbil.object.local"
+
+        person: RouteWithObjectParamRedirect.extend
+          route: "/osoba fizyczne/:name/:id"
+          redirectPath: "egbil.object.person"
+
+        institution: RouteWithObjectParamRedirect.extend
+          route: "/instytucja/:name/:id"
+          redirectPath: "egbil.object.institution"
+
+        group: RouteWithObjectParamRedirect.extend
+          route: "/podmiot grupowy/:name/:id"
+          redirectPath: "egbil.object.group"
+
+        landCommunity: RouteWithObjectParamRedirect.extend
+          route: "/zarząd wspólnoty gruntowej/:name/:id"
+          redirectPath: "egbil.object.landCommunity"
+
+        change: RouteWithObjectParam.extend
+          route: "/zmiana/:name/:id"
+          objectOutletName: "changesObjectChange"
 
     prints: Em.Route.extend
       route: "/wydruki"

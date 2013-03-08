@@ -1,4 +1,4 @@
-App.EgbilObjectPersonController = App.EgbilObjectCommonController.extend
+App.EgbilObjectPersonController = App.GammaObjectCommonController.extend
   columnsOrder:
     person: ["pesel", "surname", "firstName", "secondName", "sex", "fatherName", "motherName", "citizenship", "status", "nip", "identityDocument", "address", "mailingAddress", "alive", "remarks", "notes"]
     lot: ["check", "show", "marker", "lotPersonKind", "jrg", "lot", "sheet", "precinct", "cadastralUnit", "cadastralArea", "lotShareCharacter", "lotShareGroup", "lotShareValue"]

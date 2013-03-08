@@ -1,5 +1,5 @@
-App.EgbilObjectView = Em.View.extend
-  templateName: "egbilObject"
+App.GammaObjectView = Em.View.extend
+  templateName: "gammaObject"
   layout: null
   didInsertElement: ->
     @set "layout", @$().layout

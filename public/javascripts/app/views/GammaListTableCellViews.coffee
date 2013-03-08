@@ -1,38 +1,9 @@
-App.EgbilListView = Em.View.extend
-  templateName: "egbilList"
-  layout: null
-  didInsertElement: ->
-    @set "layout", @$().layout
-      defaults:
-        resizable: false
-        slidable: false
-        closable: true
-      east:
-        initClosed: !(@get("controller.isAnyChecked") && @get("controller.canShowRightPanel"))
-    layout = @get "layout"
-    #disable closable here (force hide) - don't do it in options above, because we do need "toggle" later
-    if layout.east.state.isClosed && layout.east.options.closable
-      layout.disableClosable("east", true)
-  _checkedItemsCountChanged: (->
-    layout = @get("layout")
-    if layout?
-      if @get("controller.isAnyChecked")  && @get("controller.canShowRightPanel")
-        if !layout.east.options.closable
-          layout.enableClosable("east")
-          layout.open "east"
-      else
-        layout.close "east"
-        if layout.east.options.closable
-          layout.disableClosable("east", true)
-    ).observes("controller.isAnyChecked", "controller.canShowRightPanel")
-
-
-App.EgbilListTableCellCheckBoxView = App.ModelTableCellView.extend
+App.GammaListTableCellCheckBoxView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{view Ember.Checkbox checkedBinding=\"view.content.check\"}}"
 
 
-App.EgbilListTableCellShowMapView = App.ModelTableCellView.extend
-  templateName: "egbilListTableCellShow"
+App.GammaListTableCellShowMapView = App.ModelTableCellView.extend
+  templateName: "gammaListTableCellShow"
   didInsertElement: ->
     this.$("a").tooltip
       placement: "bottom"
@@ -42,7 +13,7 @@ App.EgbilListTableCellShowMapView = App.ModelTableCellView.extend
   map: -> App.router.transitionTo "egbil.map"
 
 
-App.EgbilListTableCellMarkerView = App.ModelTableCellView.extend
+App.GammaListTableCellMarkerView = App.ModelTableCellView.extend
   tooltip: null
   template: Em.Handlebars.compile "<span title=\"{{tooltip}}\">{{view.displayValue}}</span>"
   didInsertElement: ->
@@ -53,8 +24,8 @@ App.EgbilListTableCellMarkerView = App.ModelTableCellView.extend
         hide: 300
 
 
-App.EgbilListTableCellButtonView = App.ModelTableCellView.extend
-  templateName: "egbilListTableCellButton"
+App.GammaListTableCellButtonView = App.ModelTableCellView.extend
+  templateName: "gammaListTableCellButton"
   displayValue: (->
     if valueName = @get "column.data.valueName"
       @get "content.#{valueName}"
@@ -67,7 +38,7 @@ App.EgbilListTableCellButtonView = App.ModelTableCellView.extend
     else
       @get "content.#{@get "column.data.valueType"}ID"
     ).property("content", "column.data.value", "column.data.valueType")
-  valueType: (->    
+  valueType: (->
     @get("content.#{@get "column.data.valueType"}Type") ? @get "column.data.valueType"
     ).property("content", "column.data.valueType")
   openObject: ->
@@ -79,10 +50,10 @@ App.EgbilListTableCellButtonView = App.ModelTableCellView.extend
     @get("controller.target").send "openObject", object
 
 
-App.EgbilListTableCellListView = App.ModelTableCellView.extend
-  templateName: "egbilListTableCellList"
+App.GammaListTableCellListView = App.ModelTableCellView.extend
+  templateName: "gammaListTableCellList"
   valueList: (-> @get "content.#{@get "column.data.value"}").property("content", "column.data.value")
-  valueListButton: (-> 
+  valueListButton: (->
     list = @get("valueList") ? []
     valueName = @get("column.data.valueName") ? "_objectName"
     valueType = @get("column.data.valueType")
@@ -91,7 +62,7 @@ App.EgbilListTableCellListView = App.ModelTableCellView.extend
       Em.Object.create
         content: App.EgbilObjectModel.create().setProperties
           _objectType: valueType
-          _objectNameBinding: "valueName" 
+          _objectNameBinding: "valueName"
           id: x.get(value) if value
           valueName: x.get valueName
         column: Em.Object.create
@@ -102,7 +73,7 @@ App.EgbilListTableCellListView = App.ModelTableCellView.extend
     Em.run.sync()
     output
     ).property("valueList", "column.data.valueName")
-  isValueTypeDefined: (-> 
+  isValueTypeDefined: (->
     !Em.empty @get("column.data.valueType")
     ).property("column.data.valueType")
   isIdle: (->
@@ -132,14 +103,14 @@ App.EgbilListTableCellListView = App.ModelTableCellView.extend
         tableView.fetchQueueAppend value for value in (@get("valueList") ? Em.A())
 
 
-App.EgbilListTableCellMemberView = App.ModelTableCellView.extend
+App.GammaListTableCellMemberView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{view.memberValue}}"
   member: (->
     memberType = @get "content.#{@get "column.data.value"}Type"
     @get "content.#{memberType}"
-    ).property("content", "column.data.value", "member._dataStatus") 
-  #Referencing itself in dependencies looks strange but it works 
-  #Using member._dataStatus cuz we need to know when the data is available and it will change when the data are ready 
+    ).property("content", "column.data.value", "member._dataStatus")
+  #Referencing itself in dependencies looks strange but it works
+  #Using member._dataStatus cuz we need to know when the data is available and it will change when the data are ready
   memberValue: (->
     @get "member.#{@get "column.data.memberValue"}"
     ).property("member", "column.data.memberValue")
@@ -180,22 +151,22 @@ App.EgbilListTableCellMemberView = App.ModelTableCellView.extend
         tableView.fetchQueueAppend value
 
 
-App.EgbilListTableCellSubTableView = App.ModelTableCellView.extend
-  templateName: "egbilListTableCellSubTable"
+App.GammaListTableCellSubTableView = App.ModelTableCellView.extend
+  templateName: "gammaListTableCellSubTable"
   valueList: (-> @get "content.#{@get "column.data.value"}").property()
   valueColumnsBinding: "column.data.columns"
-  valueType: (->    
+  valueType: (->
     @get("content.#{@get "column.data.valueType"}Type") ? @get "column.data.valueType"
     ).property("content", "column.data.valueType")
 
 
-App.EgbilListTableCellGroupKindView = App.ModelTableCellView.extend
+App.GammaListTableCellGroupKindView = App.ModelTableCellView.extend
   template: (->
     result  = "{{#if view.isGroup}}G{{/if}}"
     result += "{{#if view.isMarriage}}M{{/if}}"
     Em.Handlebars.compile result
     ).property()
-  value: (-> 
+  value: (->
       @get "content.#{@get "column.data.value"}Type"
     ).property("content.entityType", "column.data.value")
   isGroup: (-> @get("isFirstInSet") && "group" == @get "value").property("value")
@@ -203,7 +174,7 @@ App.EgbilListTableCellGroupKindView = App.ModelTableCellView.extend
   isFirstInSet: (-> true).property() #TODO: how to know it?
 
 
-App.EgbilListTableCellPersonKindView = App.ModelTableCellView.extend
+App.GammaListTableCellPersonKindView = App.ModelTableCellView.extend
   template: (->
     result  = "{{#if view.isGroup}}G{{/if}}"
     result += "{{#if view.isPerson}}F{{/if}}"
@@ -211,7 +182,7 @@ App.EgbilListTableCellPersonKindView = App.ModelTableCellView.extend
     result += "{{#if view.isInstitution}}I{{/if}}"
     Em.Handlebars.compile result
     ).property()
-  value: (-> 
+  value: (->
     id = @get "content.id"
     type = @get "column.data.valueType"
     if type == "member"
@@ -228,7 +199,8 @@ App.EgbilListTableCellPersonKindView = App.ModelTableCellView.extend
   isInstitution: (-> "institution" == @get "value").property("value")
 
 
-App.EgbilListTableCellValueView = App.ModelTableCellView.extend
+#TODO: remove after cleaning up address in model
+App.GammaListTableCellValueView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{view.displayValue}}"
   displayValue: (->
     if valueName = @get "column.data.valueName"
@@ -238,6 +210,16 @@ App.EgbilListTableCellValueView = App.ModelTableCellView.extend
     ).property("content", "column.data.valueName", "column.data.valueType")
 
 
-App.EgbilListTableCellIsValueView = App.ModelTableCellView.extend
+App.GammaListTableCellIsValueView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{#unless view.isEmptyValue}}<i class=\"icon-white icon-ok\"></i>{{/unless}}"
   isEmptyValue: (-> Ember.empty(@get "column.data.value")).property("column.data.value")
+
+App.GammaListTableCellJRChangeView = App.ModelTableCellView.extend
+  template: Em.Handlebars.compile "{{view.displayValue}}"
+  displayValue: (->
+    value = @get "column.data.value"
+    valueName = @get "column.data.valueName"
+    list = @get "controller.content.#{value}"
+    valueItem = list?.findProperty("id", @get "content.id")
+    valueItem?.get valueName
+    ).property("controller.content", "content.id", "column.data.valueName", "column.data.value")

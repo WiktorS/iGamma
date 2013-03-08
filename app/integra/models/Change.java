@@ -1,5 +1,7 @@
 package integra.models;
 
+import java.util.List;
+
 public class Change extends IntegraModel {
     public String systematics;                  //Systematyka
     public String changeYear;                   //Rok zmiany
@@ -20,4 +22,10 @@ public class Change extends IntegraModel {
     public String registeredBy;                 //Zarejestrował
     public String introducedBy;                 //Wprowadził
     public String acceptedBy;                   //Zaakceptował
+
+    public List<IntegraModel> documents;        //Dokumenty
+    public List<IntegraModel> lots;             //Działki zarejestrowane w Zmianie
+    public List<IntegraEntity> members;         //Osoby zarejestrowane w Zmianie
+    public List<RegisterUnitBase> registerUnits; //Jednostki Rejestrowe objęte Zmianą
+    public List<RegisterUnitChange> registerUnitChanges;
 }
