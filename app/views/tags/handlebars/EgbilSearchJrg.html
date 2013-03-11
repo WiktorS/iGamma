@@ -1,5 +1,5 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrg">
-<div class="tab-pane">
+<div class="tab-pane" style="border: 1px solid blue;">
 
   {{view App.FilterTypesView}}
 
@@ -8,7 +8,7 @@
     <form id="filter-subject" class="tab-pane form-horizontal">
       {{view App.FilterSystematicView field=content.systematics attrIndex=0}}
       <div class="row">
-        <fieldset class="span4">
+        <fieldset class="span6">
           <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView field=content.registerUnit.jrg}}
           {{view App.FilterEntryFieldView field=content.registerUnit.jrb}}
@@ -32,7 +32,7 @@
       </div>
     </form>
 
-    <form id="filter-individual" class="tab-pane">
+    <form id="filter-individual" class="tab-pane form-horizontal">
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>

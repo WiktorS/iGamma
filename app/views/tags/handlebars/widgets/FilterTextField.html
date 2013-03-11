@@ -1,9 +1,11 @@
 <script type="text/x-handlebars" data-template-name="filterTextField">
-  <label class="control-group">
-    <span class="field-label span2">{{view.field.label}}</span>
-    <span class="help-inline">{{#if view.field.help}}{{view.field.help}}{{/if}}</span>
-    <span class="input-append">
-      {{view Em.TextField valueBinding="view.field.value" class="span2"}}<a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
-    </span>
+  <label class="control-group span filter-text-field">
+    <span class="control-label">{{view.field.label}}</span>
+    <div class="controls">
+      <span class="help-inline">{{#if view.field.help}}{{view.field.help}}{{/if}}</span>
+      <span class="input-append">
+        {{view Em.TextField valueBinding="view.field.value" class="span2"}}<a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
+      </span>
+    </div>
   </label>
 </script>
