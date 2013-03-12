@@ -38,7 +38,10 @@ body {
   .controls {
     margin-left: 0;
   }
-  .filter-text-field, .filter-select, .filter-calendar {
+  .help-inline {
+    padding-right: 5px;
+  }
+  .filter-text-field, .filter-select, .filter-calendar, .filter-range {
     margin-left: 0;
     .controls {
       width: 415px;
@@ -46,6 +49,10 @@ body {
     }
   }
   .filter-systematic {
+    .controls {
+      width: 855px;
+      text-align: right;
+    }
     .control-label {
       width: 100px;
     }
@@ -61,6 +68,9 @@ body {
   }
   .filter-calendar input {
     width: 121px;
+  }
+  .filter-range input {
+    width: 40px;
   }
 }
 
