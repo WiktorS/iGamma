@@ -2,7 +2,7 @@
   <label class="control-group span filter-select">
     <span class="control-label">{{view.field.label}}</span>
     <div class="controls">
-      <span class="help-inline">{{#if view.field.help}}{{view.field.help}}{{/if}}</span><span class="input-append">{{view Em.TextField valueBinding="view.field.value" class="asSelect"}}<a class="btn"><i class="icon-external-link"></i></a><a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a></span>
+      <span class="help-inline">{{#if view.field.help}}{{view.field.help}}{{/if}}</span><span class="input-append">{{view Em.TextField valueBinding="view.field.value"}}<a class="btn"><i class="icon-external-link"></i></a><a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a></span>
     </div>
   </label>
 </script>
