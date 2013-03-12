@@ -1,5 +1,5 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrg">
-<div class="tab-pane" style="border: 1px solid blue;">
+<div class="tab-pane">
 
   {{view App.FilterTypesView}}
 
@@ -8,14 +8,14 @@
     <form id="filter-subject" class="tab-pane form-horizontal">
       {{view App.FilterSystematicView field=content.systematics attrIndex=0}}
       <div class="row">
-        <fieldset class="span6">
+        <fieldset class="span column">
           <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView field=content.registerUnit.jrg}}
           {{view App.FilterEntryFieldView field=content.registerUnit.jrb}}
           {{view App.FilterEntryFieldView field=content.lot.number}}
           {{view App.FilterEntryFieldView field=content.building.number}}
         </fieldset>
-        <fieldset class="span4">
+        <fieldset class="span column">
           <legend>Adres działki</legend>
           {{view App.FilterEntryFieldView field=content.address.town}}
           {{view App.FilterEntryFieldView field=content.address.street}}
@@ -23,7 +23,7 @@
         </fieldset>
       </div>
       <div class="row">
-        <fieldset class="span4">
+        <fieldset class="span column">
           <legend>Sygnatura dokumentu</legend>
           {{view App.FilterEntryFieldView field=content.signature.lot}}
           {{view App.FilterEntryFieldView field=content.signature.building}}
