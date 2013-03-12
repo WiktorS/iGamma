@@ -1,11 +1,14 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchPerson">
+<div class="tab-pane">
+
   {{view App.FilterTypesView filterType="individual"}}
+
   <div class="tab-content">
 
-    <form id="filter-individual" class="tab-pane active">
+    <form id="filter-individual" class="tab-pane active form-horizontal">
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView field=content.person.sex attrIndex=0}}
           {{view App.FilterEntryFieldView field=content.person.lastName}}
           {{view App.FilterEntryFieldView field=content.person.firstName}}
@@ -17,7 +20,7 @@
           {{view App.FilterEntryFieldView field=content.person.status}}
           {{view App.FilterEntryFieldView field=content.person.nationality}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Adres zamieszkania</legend>
           {{view App.FilterEntryFieldView field=content.address.postalCode}}
           {{view App.FilterEntryFieldView field=content.address.town}}
@@ -26,17 +29,19 @@
           {{view App.FilterEntryFieldView field=content.address.flatNumber}}
         </fieldset>
       </div>
-
-      <div class="row form-actions">
-        <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
-        <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
-        <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
-      </div>
     </form>
 
-    <form id="filter-advanced" class="tab-pane">
+    <form id="filter-advanced" class="tab-pane form-horizontal">
       Filtry zaawansowane w ramach poszukiwania osoby fizycznej
     </form>
 
   </div>
+
+  <div class="form-actions">
+    <label class="historicalEntries">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
+    <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+    <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
+  </div>
+
+</div>
 </script>
