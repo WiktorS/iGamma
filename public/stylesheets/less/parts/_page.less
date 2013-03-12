@@ -1,10 +1,9 @@
 body {
-  margin: 0 10px;
+  padding: 0 10px;
 }
 
 #app_header {
-  position: relative;
-  top: 10px;
+  padding-top: 10px;
   img {
     height: 50px;
   }
@@ -14,11 +13,10 @@ body {
 }
 
 #app_footer {
-  position: absolute;
-  bottom: 10px;
+  padding-bottom: 10px;
 }
 
-#egbil-search {
+#egbil-search, #changes-search {
   width: 860px;
   .filter-types {
     margin-bottom: 14px;
@@ -70,7 +68,7 @@ body {
     width: 121px;
   }
   .filter-range input {
-    width: 40px;
+    width: 49px;
   }
 }
 
@@ -78,6 +76,12 @@ body {
 .form-actions {
   .historicalEntries {
     float: left;
+    span {
+      color: @white;
+      position: relative;
+      top: 3px;
+      left: 5px;
+    }
   }
   text-align: right;
 }

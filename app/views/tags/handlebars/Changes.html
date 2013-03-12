@@ -1,17 +1,13 @@
 <script type="text/x-handlebars" data-template-name="changes">
-  <div class="tabbable">
-    <ul class="nav nav-pills">
-      {{view App.TabItemView stateName="map" displayName="Pokaż mapę"}}
-      {{view App.TabItemView stateName="search" displayName="Wybór obiektów"}}
-      {{#if App.router.changesListController.content}}
-        {{view App.TabItemView stateName="list" displayName="Lista obiektów"}}
-      {{/if}}
-      {{#each controller.objectList}}
-        {{view App.ObjectTabItemView objectBinding="this"}}
-      {{/each}}
-    </ul>
-  </div>
-  <div class="ui-layout-content">
-    {{outlet content}}
-  </div>
+<ul class="nav nav-pills">
+  {{view App.TabItemView stateName="map" displayName="Pokaż mapę"}}
+  {{view App.TabItemView stateName="search" displayName="Wybór obiektów"}}
+  {{#if App.router.changesListController.content}}
+  {{view App.TabItemView stateName="list" displayName="Lista obiektów"}}
+  {{/if}}
+  {{#each controller.objectList}}
+  {{view App.ObjectTabItemView objectBinding="this"}}
+  {{/each}}
+</ul>
+{{outlet content}}
 </script>
