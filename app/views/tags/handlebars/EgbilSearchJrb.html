@@ -1,35 +1,37 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchJrb">
+<div class="tab-pane">
+
   {{view App.FilterTypesView}}
+
   <div class="tab-content">
 
-    <form id="filter-subject" class="tab-pane active">
+    <form id="filter-subject" class="tab-pane active form-horizontal">
       {{view App.FilterSystematicView field=content.systematics attrIndex=0}}
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView field=content.registerUnit.jrb}}
           {{view App.FilterEntryFieldView field=content.building.number}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Adres budynku</legend>
           {{view App.FilterEntryFieldView field=content.address.town}}
           {{view App.FilterEntryFieldView field=content.address.street}}
           {{view App.FilterEntryFieldView field=content.address.houseNumber}}
         </fieldset>
       </div>
-
       <div class="row">
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Sygnatura dokumentu</legend>
           {{view App.FilterEntryFieldView field=content.signature.building}}
         </fieldset>
       </div>
     </form>
 
-    <form id="filter-individual" class="tab-pane">
+    <form id="filter-individual" class="tab-pane form-horizontal">
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView field=content.person.sex}}
           {{view App.FilterEntryFieldView field=content.person.lastName}}
           {{view App.FilterEntryFieldView field=content.person.firstName}}
@@ -37,7 +39,7 @@
           {{view App.FilterEntryFieldView field=content.person.document}}
           {{view App.FilterEntryFieldView field=content.person.status}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Adres zamieszkania</legend>
           {{view App.FilterEntryFieldView field=content.address.postalCode}}
           {{view App.FilterEntryFieldView field=content.address.town}}
@@ -47,7 +49,7 @@
         </fieldset>
       </div>
       <div class="row">
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Dane udziałowe</legend>
           {{view App.FilterEntryFieldView field=content.share.character}}
           {{view App.FilterEntryFieldView field=content.share.registerGroup}}
@@ -56,17 +58,17 @@
       </div>
     </form>
 
-    <form id="filter-institution" class="tab-pane">
+    <form id="filter-institution" class="tab-pane form-horizontal">
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView field=content.institution.shortName}}
           {{view App.FilterEntryFieldView field=content.institution.fullName}}
           {{view App.FilterEntryFieldView field=content.institution.status}}
           {{view App.FilterEntryFieldView field=content.institution.regon}}
           {{view App.FilterEntryFieldView field=content.institution.nip}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Adres zamieszkania</legend>
           {{view App.FilterEntryFieldView field=content.address.postalCode}}
           {{view App.FilterEntryFieldView field=content.address.town}}
@@ -76,7 +78,7 @@
         </fieldset>
       </div>
       <div class="row">
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Dane udziałowe</legend>
           {{view App.FilterEntryFieldView field=content.share.character}}
           {{view App.FilterEntryFieldView field=content.share.registerGroup}}
@@ -84,12 +86,13 @@
         </fieldset>
       </div>
     </form>
-
-    <div class="row form-actions">
-      <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
-      <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
-      <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
-    </div>
-
   </div>
+
+  <div class="row form-actions">
+    <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
+    <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+    <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
+  </div>
+
+</div>
 </script>
