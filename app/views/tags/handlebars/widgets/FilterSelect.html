@@ -3,7 +3,7 @@
     <span class="field-label span2">{{view.field.label}}</span>
     <span class="help-inline">{{#if view.field.help}}{{view.field.help}}{{/if}}</span>
     <span class="input-append">
-      {{view Em.TextField valueBinding="view.field.value" class="asSelect"}}<a class="btn"><i class="icon-external-link"></i></a><a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
+      {{view Em.Select contentBinding="view.dictionaryList" valueBinding="view.dictionary"}}<a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
     </span>
   </label>
 </script>
