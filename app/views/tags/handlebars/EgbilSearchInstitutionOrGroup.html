@@ -9,14 +9,14 @@
       <div class="row">
         <fieldset class="span column">
           <legend>Ogólne</legend>
-          {{view App.FilterEntryFieldView field=content.institution.shortName attrIndex=0}}
-          {{view App.FilterEntryFieldView field=content.institution.fullName}}
-          {{view App.FilterEntryFieldView field=content.institution.status}}
-          {{view App.FilterEntryFieldView field=content.institution.regon}}
-          {{view App.FilterEntryFieldView field=content.institution.nip}}
-          {{view App.FilterEntryFieldView field=content.institution.registerName}}
-          {{view App.FilterEntryFieldView field=content.institution.registerNumber}}
-          {{view App.FilterEntryFieldView field=content.institution.registerCourt}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.shortName" attrIndex=0}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.fullName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.status"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.regon"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.nip"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.registerName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.registerNumber"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.registerCourt"}}
         </fieldset>
         <fieldset class="span column">
           <legend>Adres</legend>

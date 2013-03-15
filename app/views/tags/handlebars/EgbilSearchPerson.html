@@ -9,16 +9,16 @@
       <div class="row">
         <fieldset class="span column">
           <legend>Ogólne</legend>
-          {{view App.FilterEntryFieldView field=content.person.sex attrIndex=0}}
-          {{view App.FilterEntryFieldView field=content.person.lastName}}
-          {{view App.FilterEntryFieldView field=content.person.firstName}}
-          {{view App.FilterEntryFieldView field=content.person.middleName}}
-          {{view App.FilterEntryFieldView field=content.person.fatherName}}
-          {{view App.FilterEntryFieldView field=content.person.motherName}}
-          {{view App.FilterEntryFieldView field=content.person.pesel}}
-          {{view App.FilterEntryFieldView field=content.person.document}}
-          {{view App.FilterEntryFieldView field=content.person.status}}
-          {{view App.FilterEntryFieldView field=content.person.nationality}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.sex" attrIndex=0}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.lastName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.firstName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.middleName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.fatherName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.motherName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.pesel"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.document"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.status"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.nationality"}}
         </fieldset>
         <fieldset class="span column">
           <legend>Adres zamieszkania</legend>
