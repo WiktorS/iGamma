@@ -6,8 +6,8 @@ App.EgbilObjectLocalController = App.GammaObjectCommonController.extend
     premise: ["building", "premiseKind", "premiseArea"]
     right: ["entity","address","shareG","shareB","shareL"]
 
-  localLeftColumns: (-> App.columnsData.getColumns(@get "columnsOrder.localLeft")).property()
-  localMiddleColumns: (-> App.columnsData.getColumns(@get "columnsOrder.localMiddle")).property()
-  documentColumns: (-> App.columnsData.getColumns(@get "columnsOrder.document")).property()
-  premiseColumns: (-> App.columnsData.getColumns(@get "columnsOrder.premise")).property()
-  rightColumns: (-> App.columnsData.getColumns(@get "columnsOrder.right")).property()
+  localLeftColumns: (-> App.Columns.getColumns(@get "columnsOrder.localLeft")).property()
+  localMiddleColumns: (-> App.Columns.getColumns(@get "columnsOrder.localMiddle")).property()
+  documentColumns: (-> App.Columns.getColumns(@get "columnsOrder.document")).property()
+  premiseColumns: (-> App.Columns.getColumns(@get "columnsOrder.premise")).property()
+  rightColumns: (-> App.Columns.getColumns(@get "columnsOrder.right")).property()

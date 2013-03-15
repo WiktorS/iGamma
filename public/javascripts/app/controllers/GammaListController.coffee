@@ -1,4 +1,6 @@
 App.GammaListController = Em.Controller.extend
+  needs: ["gamma"]
+
   content: null
   type: null
 
@@ -6,7 +8,7 @@ App.GammaListController = Em.Controller.extend
     type = @get "type"
     columnsOrder = @get "columnsOrder.#{type}"
     Em.assert "Column order in #{@get("constructor").toString()} is not defined for type '#{type}'", columnsOrder
-    App.get("columnsData").getColumns(columnsOrder)
+    App.Columns.getColumns columnsOrder
     ).property("type")
   columnsOrder:
     building: [ "check","show","marker","building","lots","precinct","cadastralUnit","jrg","jrb","buildingKind","constructionFinishDate","buildingArea" ]
@@ -40,26 +42,27 @@ App.GammaListController = Em.Controller.extend
     landCommunity: "Zarządy wspólnot gruntowych"
     local: "Lokale"
     lot: "Działki"
+    change: "Zmiany"
 
   fetchDataCallback: (fetchQueue, type) -> 
-    @get("target.gammaController").fetchDataCallback(fetchQueue, type)
+    @get("controllers.gamma").fetchDataCallback(fetchQueue, type)
 
   checkedList: (->
     @get("content")?.filterProperty "check"
     ).property("content.@each.check")
   isAnyChecked: (->
-    !Em.empty @get("checkedList")
+    !Em.isEmpty @get("checkedList")
     ).property("checkedList")
   isMultipleChecked: (->
     @get("checkedList").length > 1
     ).property("checkedList")
   canShowRightPanel: (->
     type = @get "type"
-    Em.A(@get "target.gammaController.rightPanelData.#{type}").length > 0
+    Em.A(@get "controllers.gamma.rightPanelData.#{type}").length > 0
     ).property("type")
   rightPanelContent: (->
     type = @get "type"
-    data = @get "target.gammaController.rightPanelData.#{type}"
+    data = @get "controllers.gamma.rightPanelData.#{type}"
     if @get("isAnyChecked") && @get("canShowRightPanel")
       if @get "isMultipleChecked"
         data.filterProperty "multiselect", true
@@ -88,7 +91,7 @@ App.GammaListController = Em.Controller.extend
 
   openList: (objectList)->
     type = objectList.get "0.objectType"
-    jsonMethod = @get "target.egbilSearchController.searchMethodData.#{type}"
+    jsonMethod = @get "target.egbilSearchController.searchMethodData.#{type}" #TODO
     Em.assert "SearchMethod undefinned for type: #{type}", jsonMethod
     $.ajax
       url: "#{jsonMethod}.json"
@@ -96,7 +99,7 @@ App.GammaListController = Em.Controller.extend
         objectList: objectList
       success: (data) =>
         if !Em.empty data && Em.isArray data
-          objectModel = @get "target.gammaController.objectModel.#{type}"
+          objectModel = @get "controllers.gamma.objectModel.#{type}"
           Em.assert "Could not find model for object '#{type}'", objectModel
 #          @set "target.egbilListController.type", type
 #          @set "target.egbilListController.content", data.map(App.Common.toModel, objectModel)

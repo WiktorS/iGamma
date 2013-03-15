@@ -33,7 +33,7 @@ App.ModelTableView = Em.View.extend
   fetchQueueWorker: (itemType)->
     fetchQueue = @get "fetchQueue.#{itemType}"
     for item in fetchQueue
-      item.set "_dataStatus", App.EgbilObjectStatus.LOADING
+      item.set "_dataStatus", App.GammaObjectStatus.LOADING
     fetchFunction = @get("controller.fetchDataCallback")
     Em.assert "Controller #{@get("controller.constructor").toString()} does not define 'fetchDataCallback' function", fetchFunction
     Em.run.next(@, => fetchFunction.call(@get("controller"), fetchQueue, itemType))

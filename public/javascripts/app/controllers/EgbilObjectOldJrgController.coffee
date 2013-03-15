@@ -6,6 +6,6 @@ App.EgbilObjectOldJrgController = App.GammaObjectCommonController.extend
     share: ["check","marker", "characterG", "shareValue", "groupKind", "entity", "peselRegon", "address", "shareRemarks", "personRemarks"]
     lot: ["check","show", "marker", "lot", "cadastralArea", "geodesicArea", "addresses", "documents", "terrainCategory", "monumentRegister", "statisticalRegion", "listDistrict", "validFrom", "validTo", "cadastralValue", "valuationDate", "remarks"]
 
-  registerUnitColumns: (-> App.columnsData.getColumns(@get "columnsOrder.registerUnit")).property()
-  shareColumns: (-> App.columnsData.getColumns(@get "columnsOrder.share")).property()
-  lotColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lot")).property()
+  registerUnitColumns: (-> App.Columns.getColumns(@get "columnsOrder.registerUnit")).property()
+  shareColumns: (-> App.Columns.getColumns(@get "columnsOrder.share")).property()
+  lotColumns: (-> App.Columns.getColumns(@get "columnsOrder.lot")).property()

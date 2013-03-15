@@ -5,7 +5,7 @@ App.EgbilObjectPersonController = App.GammaObjectCommonController.extend
     building: ["check", "show", "marker", "buildingPersonKind", "jrg", "jrb", "building", "lots", "sheet", "precinct", "cadastralUnit", "buildingKind", "highestLevel"]
     local: ["check", "show", "marker", "localPersonKind", "jrg", "jrl", "local", "address", "documents", "localKind"]
 
-  personColumns: (-> App.columnsData.getColumns(@get "columnsOrder.person")).property()
-  lotColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lot")).property()
-  buildingColumns: (-> App.columnsData.getColumns(@get "columnsOrder.building")).property()
-  localColumns: (-> App.columnsData.getColumns(@get "columnsOrder.local")).property()
+  personColumns: (-> App.Columns.getColumns(@get "columnsOrder.person")).property()
+  lotColumns: (-> App.Columns.getColumns(@get "columnsOrder.lot")).property()
+  buildingColumns: (-> App.Columns.getColumns(@get "columnsOrder.building")).property()
+  localColumns: (-> App.Columns.getColumns(@get "columnsOrder.local")).property()

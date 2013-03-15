@@ -3,28 +3,28 @@
   <div class="tab-content">
 
     <form id="filter-subject" class="tab-pane active">
-      {{view App.FilterSystematicView field=content.systematics attrIndex=0}}
+      {{view App.FilterSystematicView fieldBinding="content.systematics" cacheBinding="controllers.gammaCache" attrIndex=0}}
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView field=content.registerUnit.jrg}}
-          {{view App.FilterEntryFieldView field=content.registerUnit.jrb}}
-          {{view App.FilterEntryFieldView field=content.lot.number}}
-          {{view App.FilterEntryFieldView field=content.building.number}}
+          {{view App.FilterEntryFieldView fieldBinding="content.registerUnit.jrg"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.registerUnit.jrb"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.lot.number"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.building.number"}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres działki</legend>
-          {{view App.FilterEntryFieldView field=content.address.town}}
-          {{view App.FilterEntryFieldView field=content.address.street}}
-          {{view App.FilterEntryFieldView field=content.address.houseNumber}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.town"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.street"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.houseNumber"}}
         </fieldset>
       </div>
       <div class="row">
         <fieldset class="span5">
           <legend>Sygnatura dokumentu</legend>
-          {{view App.FilterEntryFieldView field=content.signature.lot}}
-          {{view App.FilterEntryFieldView field=content.signature.building}}
-          {{view App.FilterEntryFieldView field=content.signature.local}}
+          {{view App.FilterEntryFieldView fieldBinding="content.signature.lot"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.signature.building"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.signature.local"}}
         </fieldset>
       </div>
     </form>
@@ -33,28 +33,28 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView field=content.person.sex}}
-          {{view App.FilterEntryFieldView field=content.person.lastName}}
-          {{view App.FilterEntryFieldView field=content.person.firstName}}
-          {{view App.FilterEntryFieldView field=content.person.pesel}}
-          {{view App.FilterEntryFieldView field=content.person.document}}
-          {{view App.FilterEntryFieldView field=content.person.status}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.sex"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.lastName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.firstName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.pesel"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.document"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.person.status"}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres zamieszkania</legend>
-          {{view App.FilterEntryFieldView field=content.address.postalCode}}
-          {{view App.FilterEntryFieldView field=content.address.town}}
-          {{view App.FilterEntryFieldView field=content.address.street}}
-          {{view App.FilterEntryFieldView field=content.address.houseNumber}}
-          {{view App.FilterEntryFieldView field=content.address.flatNumber}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.postalCode"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.town"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.street"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.houseNumber"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.flatNumber"}}
         </fieldset>
       </div>
       <div class="row">
         <fieldset class="span5">
           <legend>Dane udziałowe</legend>
-          {{view App.FilterEntryFieldView field=content.share.character}}
-          {{view App.FilterEntryFieldView field=content.share.registerGroup}}
-          {{view App.FilterEntryFieldView field=content.share.value}}
+          {{view App.FilterEntryFieldView fieldBinding="content.share.character"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.share.registerGroup"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.share.value"}}
         </fieldset>
       </div>
     </form>
@@ -63,27 +63,27 @@
       <div class="row">
         <fieldset class="span5">
           <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView field=content.institution.shortName}}
-          {{view App.FilterEntryFieldView field=content.institution.fullName}}
-          {{view App.FilterEntryFieldView field=content.institution.status}}
-          {{view App.FilterEntryFieldView field=content.institution.regon}}
-          {{view App.FilterEntryFieldView field=content.institution.nip}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.shortName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.fullName"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.status"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.regon"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.institution.nip"}}
         </fieldset>
         <fieldset class="span5">
           <legend>Adres zamieszkania</legend>
-          {{view App.FilterEntryFieldView field=content.address.postalCode}}
-          {{view App.FilterEntryFieldView field=content.address.town}}
-          {{view App.FilterEntryFieldView field=content.address.street}}
-          {{view App.FilterEntryFieldView field=content.address.houseNumber}}
-          {{view App.FilterEntryFieldView field=content.address.flatNumber}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.postalCode"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.town"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.street"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.houseNumber"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.address.flatNumber"}}
         </fieldset>
       </div>
       <div class="row">
         <fieldset class="span5">
           <legend>Dane udziałowe</legend>
-          {{view App.FilterEntryFieldView field=content.share.character}}
-          {{view App.FilterEntryFieldView field=content.share.registerGroup}}
-          {{view App.FilterEntryFieldView field=content.share.value}}
+          {{view App.FilterEntryFieldView fieldBinding="content.share.character"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.share.registerGroup"}}
+          {{view App.FilterEntryFieldView fieldBinding="content.share.value"}}
         </fieldset>
       </div>
     </form>

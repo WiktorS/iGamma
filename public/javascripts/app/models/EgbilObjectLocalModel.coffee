@@ -1,4 +1,4 @@
-App.EgbilObjectLocalModel = App.EgbilObjectModel.extend
+App.EgbilObjectLocalModel = App.GammaObjectModel.extend
   _objectType: "local"
   _objectName: (-> @get "localName").property("localName")
   _objectDescription: (-> "JE #{@get "cadastralUnit"}, Obręb #{@get "precinct"}, ID #{@get "_objectName"}").property("cadastralUnit", "precinct", "_objectName")

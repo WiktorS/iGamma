@@ -1,4 +1,6 @@
 App.GammaController = Em.Controller.extend
+  needs: ["changesList", "egbilList"]
+
   objectList: Em.A()
   rightPanelData:
     jrg: [
@@ -130,7 +132,7 @@ App.GammaController = Em.Controller.extend
 
   showObject: (objectId, objectType) ->
     object = @getObject objectId, objectType
-    @get("target").send "goToObject", object if !Em.empty object
+    @get("target").send "goToObject", object if !Em.isEmpty object
 
   closeObject: (objectId, objectType) ->
     Em.assert "Cannot close object without type", objectType?
@@ -139,15 +141,14 @@ App.GammaController = Em.Controller.extend
     Em.assert "Object to close not found ('#{objectType}:#{objectId}')", object
     idx = @get("objectList").indexOf object
     @get("objectList").removeObject object
-    currentStateObjectId =  App.router.get("currentState.objectId")
-    if currentStateObjectId == objectId
+    if @get("target").isActive "#{object.get "_objectRoute"}", object
       if @get("objectList").length > 0
         idx-- while idx >= @get("objectList").length
         @get("target").send "goToObject", @get("objectList.#{idx}")
-      else if @get("target").egbilListController.content
+      else if @get("controllers.egbilList.content") #TODO: egbil/changes
         @get("target").transitionTo "egbil.list"
       else
-        @get("target").transitionTo "egbil.search"
+        @get("target").transitionTo "search"
 
   openObject: (objectId, objectType) ->
     Em.assert "Can't open object of undefined id", !!objectId
@@ -165,7 +166,7 @@ App.GammaController = Em.Controller.extend
             Em.assert "Should receive data for 1 object, but got #{data.length}", data.length == 1
             contentClass = @get "objectModel.#{objectType}"
             mappedData = data.map(App.Common.toModel, contentClass)
-            item.set "_dataStatus", App.EgbilObjectStatus.READY for item in mappedData
+            item.set "_dataStatus", App.GammaObjectStatus.READY for item in mappedData
             Em.run.sync() #sync bindings!
             @get("objectList").addObject mappedData[0]
             @showObject objectId, objectType
@@ -194,15 +195,15 @@ App.GammaController = Em.Controller.extend
               for own key,value of mappedItem
                 # Em.assert "Model '#{(contentItem.get "constructor").toString()}' does not define member '#{key}'", "undefined" != typeof contentItem.get(key)
                 contentItem.set key, value
-              contentItem.set "_dataStatus", App.EgbilObjectStatus.READY
+              contentItem.set "_dataStatus", App.GammaObjectStatus.READY
         return
       complete: (jqXHR, textStatus) =>
         #check for requested but not received rows
         for id in idList
           contentItems = fetchQueue.filter((x) -> id == x.get "id")
           for contentItem in contentItems
-            if App.EgbilObjectStatus.READY != contentItem.get "_dataStatus"
-              contentItem.set "_dataStatus", App.EgbilObjectStatus.ERROR
+            if App.GammaObjectStatus.READY != contentItem.get "_dataStatus"
+              contentItem.set "_dataStatus", App.GammaObjectStatus.ERROR
         return
 
   rightPanelAction: (action, objectList) ->
@@ -264,7 +265,7 @@ App.GammaController = Em.Controller.extend
       data:
         object: simpleList
       success: (data) ->
-        if !Em.empty data
+        if !Em.isEmpty data
           shareSummaryModal.set "columns", Em.A([ "group", "share" ])
           shareSummaryModal.set "content", data.map(App.Common.toModel, App.ShareSummaryModel)
         else
@@ -277,7 +278,7 @@ App.GammaController = Em.Controller.extend
       data:
         object: simpleList
       success: (data) ->
-        if !Em.empty data
+        if !Em.isEmpty data
           customReportModal.set "attributeList", data.attributeList.map(((x) ->
             @create x ? Em.Object.create(),
               isChosen: false
@@ -311,7 +312,7 @@ App.GammaController = Em.Controller.extend
         relation: action
         objectList: simpleList
       success: (data) =>
-        if !Em.empty data && Em.isArray data
+        if !Em.isEmpty data && Em.isArray data
           if data.length == 1
             @get("target").send "openObject", Em.Object.create(data[0])
           else

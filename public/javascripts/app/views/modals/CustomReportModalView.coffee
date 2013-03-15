@@ -44,7 +44,7 @@ App.CustomReportModalView = App.ModalView.extend
     ).property("selectedChosenAttributeList.@each")
 
   disableAttributeEdit: (->
-    Em.empty @get("selectedChosenAttribute")
+    Em.isEmpty @get("selectedChosenAttribute")
     ).property("selectedChosenAttribute")
 
   disableMoveUpSelectedChosenAttribute: (->

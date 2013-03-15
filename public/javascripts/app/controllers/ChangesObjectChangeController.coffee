@@ -6,8 +6,8 @@ App.ChangesObjectChangeController = App.GammaObjectCommonController.extend
     member: [ "check", "memberEntity", "memberPeselRegon", "memberAddress" ]
     registerUnit: [ "check", "cadastralUnit", "precinct", "registerUnit", "registerUnitChangeBefore", "registerUnitChangeAfter" ]
 
-  changeColumns: (-> App.columnsData.getColumns(@get "columnsOrder.change")).property()
-  documentColumns: (-> App.columnsData.getColumns(@get "columnsOrder.document")).property()
-  lotColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lot")).property()
-  memberColumns: (-> App.columnsData.getColumns(@get "columnsOrder.member")).property()
-  registerUnit: (-> App.columnsData.getColumns(@get "columnsOrder.registerUnit")).property()
+  changeColumns: (-> App.Columns.getColumns(@get "columnsOrder.change")).property()
+  documentColumns: (-> App.Columns.getColumns(@get "columnsOrder.document")).property()
+  lotColumns: (-> App.Columns.getColumns(@get "columnsOrder.lot")).property()
+  memberColumns: (-> App.Columns.getColumns(@get "columnsOrder.member")).property()
+  registerUnit: (-> App.Columns.getColumns(@get "columnsOrder.registerUnit")).property()

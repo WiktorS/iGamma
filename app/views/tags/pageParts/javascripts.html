@@ -1,21 +1,20 @@
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery-ui.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery-layout.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery-1.9.1.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery-ui-1.10.1.custom.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery.layout-rc.30.79.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery.inview.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/handlebars-1.0.rc.1.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/ember-1.0.0-pre.2.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/thirdparty/handlebars-1.0.rc.3.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/thirdparty/ember-1.0.0-rc.1.js'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/App.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/Router.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/AppCommon.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/AppCache.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/models/StandardFilterElementModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/StandardTableCellModel.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/models/ColumnsData.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/GammaObjectStatus.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/GammaObjectModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilSearchModel.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilObjectModel.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilObjectBuildingModel.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilObjectLotModel.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/models/EgbilObjectLocalModel.coffee'}"></script>
@@ -38,6 +37,8 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/models/SystematicModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/ShareSummaryModel.coffee'}"></script>
 
+<script type="text/javascript" src="@{'/public/javascripts/app/AppColumns.coffee'}"></script>
+
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
   *{ common controllers code}*
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaController.coffee'}"></script>
@@ -45,6 +46,7 @@
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaListController.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaObjectController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaObjectCommonController.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaCacheController.coffee'}"></script>
   *{ EGBiL controllers }*
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilMapController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchController.coffee'}"></script>
@@ -147,6 +149,7 @@
 
 #{handlebars.Application /}
 #{handlebars.ApplicationMenu /}
+  #{handlebars.GammaMap /}
   #{handlebars.GammaList /}
     #{handlebars.GammaListTableCellShow /}
     #{handlebars.GammaListTableCellButton /}
@@ -154,7 +157,6 @@
     #{handlebars.GammaListTableCellSubTable /}
   #{handlebars.GammaObject /}
   #{handlebars.Egbil /}
-    #{handlebars.EgbilMap /}
     #{handlebars.EgbilSearch /}
       #{handlebars.EgbilSearchJrg /}
       #{handlebars.EgbilSearchJrb /}

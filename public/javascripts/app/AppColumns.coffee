@@ -1,4 +1,4 @@
-App.columnsData = Em.Object.create
+App.Columns = Em.Object.create
   getColumns: (columnsOrder) ->
     # returns array of items defined in last line
     for columnName in columnsOrder
@@ -110,11 +110,11 @@ App.columnsData = Em.Object.create
     label: "Powierzchnia ewidencyjna"
   statisticalRegion: App.StandardTableCellModel.create
     label: "Rejon statystyczny"
-  terrainCategory: App.StandardTableCellModel.create
+  terrainCategory: App.StandardTableCellModel.createWithMixins
     label: "Klasoużytki"
     viewClass: "App.GammaListTableCellSubTableView"
     value: "terrainCategories"
-    columns: (=> App.get("columnsData").getColumns ["terrainCategoryKind", "terrainCategoryArea"]).property()
+    columns: (-> App.Columns.getColumns ["terrainCategoryKind", "terrainCategoryArea"]).property()
   terrainCategoryKind: App.StandardTableCellModel.create
     label: "Rodzaj"
   terrainCategoryArea: App.StandardTableCellModel.create
@@ -372,20 +372,20 @@ App.columnsData = Em.Object.create
   valuationDate: App.StandardTableCellModel.create
     label: "Data wyceny"
 
-  associatedPremises: App.StandardTableCellModel.create
+  associatedPremises: App.StandardTableCellModel.createWithMixins
     label: "Pomieszczenia przynależne"
     viewClass: "App.GammaListTableCellSubTableView"
     value: "associatedPremises"
-    columns: (=> App.get("columnsData").getColumns ["building", "premiseKind", "premiseArea"]).property()
+    columns: (-> App.Columns.getColumns ["building", "premiseKind", "premiseArea"]).property()
   associatedPremisesAreaSum: App.StandardTableCellModel.create
     label: "Łączna powierzchnia pomieszczeń przynależnych"
 
-  lotsJR: App.StandardTableCellModel.create
+  lotsJR: App.StandardTableCellModel.createWithMixins
     label: "Działki"
     viewClass: "App.GammaListTableCellSubTableView"
     value: "lots"
     valueType: "lot"
-    columns: (=> App.get("columnsData").getColumns ["lot", "cadastralArea"]).property()
+    columns: (-> App.Columns.getColumns ["lot", "cadastralArea"]).property()
 
   shareGroup: App.StandardTableCellModel.create #oldJrg
     label: "Grupa rejestrowa"

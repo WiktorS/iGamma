@@ -1,4 +1,4 @@
-App.EgbilObjectDocumentModel = App.EgbilObjectModel.extend
+App.EgbilObjectDocumentModel = App.GammaObjectModel.extend
   _objectType: "document"
   _objectName: (-> "#{@get "documentKind"} - #{@get "documentName"}").property("documentKind", "documentName")
   _objectDescription: (-> "#{@get "_objectName"}").property("_objectName")

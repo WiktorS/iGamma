@@ -1,5 +1,6 @@
 App.SystematicModalView = App.ModalView.extend
   templateName: "systematicModal"
+  cache: null
   systematics: null
   selectedSystematic: null
   selectSystematic: (systematicsArray) ->
@@ -21,10 +22,10 @@ App.SystematicModalView = App.ModalView.extend
     idList = Em.A()
     for id in (@get("systematics").findProperty("id", parentId)?.get("children") ? Em.A())
       idList.addObject id
-    if (parentId == 0 || !Em.empty(idList))
-      App.get("Cache.systematics").getSystematics idList, =>
-        for node in App.get("Cache.systematics.cache").filter((item, index, enumerable) =>
-          item.parentId? && (Em.empty(idList) || idList.contains(item.parentId))
+    if (parentId == 0 || !Em.isEmpty(idList))
+      @get("cache").getSystematics idList, =>
+        for node in @get("cache.systematics").filter((item, index, enumerable) =>
+          item.parentId? && (Em.isEmpty(idList) || idList.contains(item.parentId))
         )
           if node?
             parentNode = @get("systematics").findProperty("id", node.parentId)

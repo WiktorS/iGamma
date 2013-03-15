@@ -1,4 +1,4 @@
-App.EgbilObjectLotModel = App.EgbilObjectModel.extend
+App.EgbilObjectLotModel = App.GammaObjectModel.extend
   _objectType: "lot"
   _objectName: (-> @get "lotName").property("lotName")
   _objectDescription: (-> "JE #{@get "cadastralUnit"}, Obręb #{@get "precinct"}, ID #{@get "_objectName"}").property("cadastralUnit", "precinct", "_objectName")

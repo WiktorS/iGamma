@@ -1,4 +1,4 @@
-App.EgbilObjectShareModel = App.EgbilObjectModel.extend
+App.EgbilObjectShareModel = App.GammaObjectModel.extend
   _objectType: "share"
   _objectName: null #(-> @get "shareName").property("shareName")
 

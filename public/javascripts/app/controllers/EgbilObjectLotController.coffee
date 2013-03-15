@@ -8,10 +8,10 @@ App.EgbilObjectLotController = App.GammaObjectCommonController.extend
     building: ["show","marker","building","buildingKind","jrb"]
     share: ["check", "marker", "characterB", "shareValue", "registerGroupB", "groupKind", "entity", "peselRegon", "address", "shareRemarks", "personRemarks"]
 
-  lotLeftColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lotLeft")).property()
-  lotMiddleColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lotMiddle")).property()
-  addressColumns: (-> App.columnsData.getColumns(@get "columnsOrder.address")).property()
-  documentColumns: (-> App.columnsData.getColumns(@get "columnsOrder.document")).property()
-  terrainCategoryColumns: (-> App.columnsData.getColumns(@get "columnsOrder.terrainCategory")).property()
-  buildingColumns: (-> App.columnsData.getColumns(@get "columnsOrder.building")).property()
-  shareColumns: (-> App.columnsData.getColumns(@get "columnsOrder.share")).property()
+  lotLeftColumns: (-> App.Columns.getColumns(@get "columnsOrder.lotLeft")).property()
+  lotMiddleColumns: (-> App.Columns.getColumns(@get "columnsOrder.lotMiddle")).property()
+  addressColumns: (-> App.Columns.getColumns(@get "columnsOrder.address")).property()
+  documentColumns: (-> App.Columns.getColumns(@get "columnsOrder.document")).property()
+  terrainCategoryColumns: (-> App.Columns.getColumns(@get "columnsOrder.terrainCategory")).property()
+  buildingColumns: (-> App.Columns.getColumns(@get "columnsOrder.building")).property()
+  shareColumns: (-> App.Columns.getColumns(@get "columnsOrder.share")).property()

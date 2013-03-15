@@ -1,4 +1,6 @@
 App.GammaSearchController = Em.Controller.extend
+  needs: ["gamma"]
+
   type: null
 
   queryName: (->
@@ -31,7 +33,7 @@ App.GammaSearchController = Em.Controller.extend
         # data is array of ids
         if Em.isArray data
           type = @get "type"
-          objectModel = @get "target.gammaController.objectModel.#{type}"
+          objectModel = @get "controllers.gamma.objectModel.#{type}"
           Em.assert "Model for object '#{type}' not defined in GammaController", objectModel
           list = data.map(((x)-> 
             @create().setProperties

@@ -31,26 +31,26 @@ App.ModelTableRowView = Em.View.extend
   ).property("columns.@each", "content")
 
   isIdle: (->
-    App.EgbilObjectStatus.IDLE == @get "content._dataStatus"
+    App.GammaObjectStatus.IDLE == @get "content._dataStatus"
     ).property("content._dataStatus")
 
   isLoading: (->
-    App.EgbilObjectStatus.LOADING == @get "content._dataStatus"
+    App.GammaObjectStatus.LOADING == @get "content._dataStatus"
     ).property("content._dataStatus")
 
   isReady: (->
-    App.EgbilObjectStatus.READY == @get "content._dataStatus"
+    App.GammaObjectStatus.READY == @get "content._dataStatus"
     ).property("content._dataStatus")
 
   isError: (->
-    App.EgbilObjectStatus.ERROR == @get "content._dataStatus"
+    App.GammaObjectStatus.ERROR == @get "content._dataStatus"
     ).property("content._dataStatus")
 
   didInsertElement: ->
     @.$().bind "inview", (event, isInView, visiblePartX, visiblePartY) =>
       if isInView
         row = @get "content"
-        if row.get("_dataStatus") == App.EgbilObjectStatus.IDLE
+        if row.get("_dataStatus") == App.GammaObjectStatus.IDLE
           tableView = @get "parentView"
           if tableView instanceof App.ModelTableView
             tableView.fetchQueueAppend row
@@ -62,7 +62,7 @@ App.ModelTableRowView = Em.View.extend
 
   retryFetch: ->
     row = @get "content"
-    if row.get("_dataStatus") != App.EgbilObjectStatus.READY
+    if row.get("_dataStatus") != App.GammaObjectStatus.READY
       tableView = @get "parentView"
       if tableView instanceof App.ModelTableView
         #use fetchQueue mechanism, but maybe its better to call directly - its unlike to fetch several records this way

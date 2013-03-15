@@ -6,8 +6,8 @@ App.EgbilObjectDocumentController = App.GammaObjectCommonController.extend
     local: [ "check","show","marker","local","address","documents","precinct","cadastralUnit","jrg","jrl","usableArea","lot","building" ]
     change: [ "check", "change", "changeYear", "applicationYear", "changeKind", "changeStatus", "changeDescription" ]
 
-  documentColumns: (-> App.columnsData.getColumns(@get "columnsOrder.document")).property()
-  lotColumns: (-> App.columnsData.getColumns(@get "columnsOrder.lot")).property()
-  buildingColumns: (-> App.columnsData.getColumns(@get "columnsOrder.building")).property()
-  localColumns: (-> App.columnsData.getColumns(@get "columnsOrder.local")).property()
-  changeColumns: (-> App.columnsData.getColumns(@get "columnsOrder.change")).property()
+  documentColumns: (-> App.Columns.getColumns(@get "columnsOrder.document")).property()
+  lotColumns: (-> App.Columns.getColumns(@get "columnsOrder.lot")).property()
+  buildingColumns: (-> App.Columns.getColumns(@get "columnsOrder.building")).property()
+  localColumns: (-> App.Columns.getColumns(@get "columnsOrder.local")).property()
+  changeColumns: (-> App.Columns.getColumns(@get "columnsOrder.change")).property()

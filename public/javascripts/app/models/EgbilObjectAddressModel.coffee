@@ -1,4 +1,4 @@
-App.EgbilObjectAddressModel = App.EgbilObjectModel.extend
+App.EgbilObjectAddressModel = App.GammaObjectModel.extend
   _objectType: "address"
   _objectNameBinding: "addressName"
 

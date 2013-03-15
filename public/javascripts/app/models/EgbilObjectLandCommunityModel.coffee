@@ -1,4 +1,4 @@
-App.EgbilObjectLandCommunityModel = App.EgbilObjectModel.extend
+App.EgbilObjectLandCommunityModel = App.GammaObjectModel.extend
   _objectType: "landCommunity"
   _objectName: (-> @get "landCommunityName").property("landCommunityName")
   _objectDescription: (-> "#{@get "_objectName"}").property("_objectName")

@@ -1,4 +1,4 @@
-App.EgbilObjectPersonModel = App.EgbilObjectModel.extend
+App.EgbilObjectPersonModel = App.GammaObjectModel.extend
   _objectType: "person"
   _objectName: (-> @get "personName").property("personName")
   _objectDescription: (-> "#{@get "_objectName"}").property("_objectName")

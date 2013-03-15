@@ -1,4 +1,4 @@
-App.EgbilObjectRegisterUnitModel = App.EgbilObjectModel.extend
+App.EgbilObjectRegisterUnitModel = App.GammaObjectModel.extend
   # _objectType: (-> @get "registerUnitType").property("registerUnitType")
   _objectTypeBinding: "registerUnitType"
   _objectNameBinding: "registerUnitName"

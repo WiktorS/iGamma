@@ -1,10 +1,10 @@
 <script type="text/x-handlebars" data-template-name="egbil">
   <div class="tabbable">
     <ul class="nav nav-pills">
-      {{view App.TabItemView stateName="map" displayName="Pokaż mapę"}}
-      {{view App.TabItemView stateName="search" displayName="Wybór obiektów"}}
-      {{#if App.router.egbilListController.content}}
-        {{view App.TabItemView stateName="list" displayName="Lista obiektów"}}
+      {{view App.TabItemView routeName="egbil.map" displayName="Pokaż mapę"}}
+      {{view App.TabItemView routeName="search" displayName="Wybór obiektów"}}
+      {{#if controllers.egbilList.content}}
+        {{view App.TabItemView routeName="egbil.list" displayName="Lista obiektów"}}
       {{/if}}
       {{#each controller.objectList}}
         {{view App.ObjectTabItemView objectBinding="this"}}
@@ -12,6 +12,6 @@
     </ul>
   </div>
   <div class="ui-layout-content">
-    {{outlet content}}
+    {{outlet}}
   </div>
 </script>

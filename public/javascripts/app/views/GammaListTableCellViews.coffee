@@ -42,7 +42,7 @@ App.GammaListTableCellButtonView = App.ModelTableCellView.extend
     @get("content.#{@get "column.data.valueType"}Type") ? @get "column.data.valueType"
     ).property("content", "column.data.valueType")
   openObject: ->
-    object = App.EgbilObjectModel.create().setProperties
+    object = App.GammaObjectModel.create().setProperties
       _objectId: @get "value"
       _objectType: @get "valueType"
       _objectName: @get "displayValue"
@@ -60,7 +60,7 @@ App.GammaListTableCellListView = App.ModelTableCellView.extend
     value = "#{@get "column.data.valueType"}ID" if valueType
     output = list.map (x)->
       Em.Object.create
-        content: App.EgbilObjectModel.create().setProperties
+        content: App.GammaObjectModel.create().setProperties
           _objectType: valueType
           _objectNameBinding: "valueName"
           id: x.get(value) if value
@@ -74,16 +74,16 @@ App.GammaListTableCellListView = App.ModelTableCellView.extend
     output
     ).property("valueList", "column.data.valueName")
   isValueTypeDefined: (->
-    !Em.empty @get("column.data.valueType")
+    !Em.isEmpty @get("column.data.valueType")
     ).property("column.data.valueType")
   isIdle: (->
-    @get("valueList")?.everyProperty "_dataStatus", App.EgbilObjectStatus.IDLE
+    @get("valueList")?.everyProperty "_dataStatus", App.GammaObjectStatus.IDLE
     ).property("valueList.@each._dataStatus")
   isLoading: (->
-    @get("valueList")?.everyProperty "_dataStatus", App.EgbilObjectStatus.LOADING
+    @get("valueList")?.everyProperty "_dataStatus", App.GammaObjectStatus.LOADING
     ).property("valueList.@each._dataStatus")
   isReady: (->
-    @get("valueList")?.everyProperty "_dataStatus", App.EgbilObjectStatus.READY
+    @get("valueList")?.everyProperty "_dataStatus", App.GammaObjectStatus.READY
     ).property("valueList.@each._dataStatus")
   isError: (->
     !@get("isIdle") && !@get("isLoading") && !@get("isReady")
@@ -116,15 +116,15 @@ App.GammaListTableCellMemberView = App.ModelTableCellView.extend
     ).property("member", "column.data.memberValue")
 
   isIdle: (->
-    App.EgbilObjectStatus.IDLE == @get "member._dataStatus"
+    App.GammaObjectStatus.IDLE == @get "member._dataStatus"
     ).property("member._dataStatus")
 
   isLoading: (->
-    App.EgbilObjectStatus.LOADING == @get "member._dataStatus"
+    App.GammaObjectStatus.LOADING == @get "member._dataStatus"
     ).property("member._dataStatus")
 
   isReady: (->
-    App.EgbilObjectStatus.READY == @get "member._dataStatus"
+    App.GammaObjectStatus.READY == @get "member._dataStatus"
     ).property("member._dataStatus")
 
   isError: (->

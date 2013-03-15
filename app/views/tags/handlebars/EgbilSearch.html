@@ -1,17 +1,17 @@
 <script type="text/x-handlebars" data-template-name="egbilSearch">
   <ul class="span4 nav nav-tabs nav-stacked">
-  {{view App.TabItemView stateName="jrg" displayName="Jednostki Rejestrowe Gruntów i Budynków"}}
-  {{view App.TabItemView stateName="jrb" displayName="Jednostki Rejestrowe Budynków"}}
-  {{view App.TabItemView stateName="jrl" displayName="Jednostki Rejestrowe Lokali"}}
-  {{view App.TabItemView stateName="oldJrg" displayName="Stare Jednostki Rejestrowe Gruntów"}}
-  {{view App.TabItemView stateName="lot" displayName="Działki"}}
-  {{view App.TabItemView stateName="building" displayName="Budynki"}}
-  {{view App.TabItemView stateName="local" displayName="Lokale"}}
-  {{view App.TabItemView stateName="person" displayName="Osoby fizyczne"}}
-  {{view App.TabItemView stateName="institution" displayName="Instytucje"}}
-  {{view App.TabItemView stateName="group" displayName="Podmioty grupowe"}}
-  {{view App.TabItemView stateName="landCommunity" displayName="Zarządy wspólnot gruntowych"}}
-  {{view App.TabItemView stateName="document" displayName="Dokumenty"}}
+  {{view App.TabItemView routeName="search.jrg" displayName="Jednostki Rejestrowe Gruntów i Budynków"}}
+  {{view App.TabItemView routeName="search.jrb" displayName="Jednostki Rejestrowe Budynków"}}
+  {{view App.TabItemView routeName="search.jrl" displayName="Jednostki Rejestrowe Lokali"}}
+  {{view App.TabItemView routeName="search.oldJrg" displayName="Stare Jednostki Rejestrowe Gruntów"}}
+  {{view App.TabItemView routeName="search.lot" displayName="Działki"}}
+  {{view App.TabItemView routeName="search.building" displayName="Budynki"}}
+  {{view App.TabItemView routeName="search.local" displayName="Lokale"}}
+  {{view App.TabItemView routeName="search.person" displayName="Osoby fizyczne"}}
+  {{view App.TabItemView routeName="search.institution" displayName="Instytucje"}}
+  {{view App.TabItemView routeName="search.group" displayName="Podmioty grupowe"}}
+  {{view App.TabItemView routeName="search.landCommunity" displayName="Zarządy wspólnot gruntowych"}}
+  {{view App.TabItemView routeName="search.document" displayName="Dokumenty"}}
   </ul>
-  <div id="egbil-search" class="span10 well">{{outlet egbilSearch}}</div>
+  <div id="egbil-search" class="span10 well">{{outlet}}</div>
 </script>
