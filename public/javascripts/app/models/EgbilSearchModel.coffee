@@ -81,11 +81,13 @@ App.EgbilSearchModel = Em.Object.extend
       help: "[%]"
       type: "select"
       name: "addressTown"
+      dictionary: "towns"
     street: App.StandardFilterElementModel.create
       label: "Ulica"
       help: "[%]"
       type: "select"
       name: "addressStreet"
+      dictionary: "streets"
     houseNumber: App.StandardFilterElementModel.create
       label: "Numer porządkowy"
       help: "[%]"
