@@ -63,14 +63,14 @@ App.DifferenceReportModalView = App.ModalView.extend
         title: "Raport skrócony z różnicami"
     ]
     switch @get "objectType"
-      when "individual", "institution", "group"
+      when "person", "institution", "group"
         obj = list.findProperty "name", "full"
         list.removeObject obj
     list
     ).property("objectType")
   selectedReportTypeTitle: (->
     obj = @get("reportTypeList").findProperty "name", @get "reportType"
-    if Em.empty obj
+    if Em.isEmpty obj
       obj = @get "reportTypeList.0"
     obj.get "title"
     ).property("reportType")
@@ -83,7 +83,7 @@ App.DifferenceReportModalView = App.ModalView.extend
       ).property("objectType")
 
   objectDefinitions: Em.Object.create
-    jrgib: Em.Object.create
+    jrg: Em.Object.create
       attribute: true
       registerUnit: false
       share: true
@@ -104,6 +104,7 @@ App.DifferenceReportModalView = App.ModalView.extend
       lot: false
       building: false
       local: true
+    #oldJrg?
     lot: Em.Object.create
       attribute: true
       registerUnit: false
@@ -125,7 +126,7 @@ App.DifferenceReportModalView = App.ModalView.extend
       lot: true
       building: true
       local: false
-    individual: Em.Object.create
+    person: Em.Object.create
       attribute: true
       registerUnit: true
       share: false
