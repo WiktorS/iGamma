@@ -1,8 +1,6 @@
 <script type="text/x-handlebars" data-template-name="application">
-<div id="app_header" class="ui-layout-north">#{pageParts.header /}</div>
-<div id="app_page" class="ui-layout-center">
-  {{view App.ApplicationMenuView}}
-  {{outlet}}
-</div>
-<div id="app_footer" class="ui-layout-south">#{pageParts.footer /}</div>
+<div id="app_header">#{pageParts.header /}</div>
+<div id="app_menu">{{view App.ApplicationMenuView}}</div>
+<div id="app_page">{{outlet applicationPage}}</div>
+<div id="app_footer">#{pageParts.footer /}</div>
 </script>

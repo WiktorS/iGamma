@@ -1,22 +1,25 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchDocument">
+<div class="tab-pane">
+
   {{view App.FilterTypesView filterType="subject"}}
+
   <div class="tab-content">
 
-    <form id="filter-individual" class="tab-pane active">
+    <form id="filter-individual" class="tab-pane active form-horizontal">
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView fieldBinding="content.document.type" attrIndex=0}}
-          {{view App.FilterEntryFieldView fieldBinding="content.document.signature"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.document.source"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.document.creationFromDate"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.document.creationToDate"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.document.receiptFromDate"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.document.receiptToDate"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.document.designation"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.document.description"}}
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
+          {{view App.FilterEntryFieldView field=content.document.type attrIndex=0}}
+          {{view App.FilterEntryFieldView field=content.document.signature}}
+          {{view App.FilterEntryFieldView field=content.document.source}}
+          {{view App.FilterEntryFieldView field=content.document.creationFromDate}}
+          {{view App.FilterEntryFieldView field=content.document.creationToDate}}
+          {{view App.FilterEntryFieldView field=content.document.receiptFromDate}}
+          {{view App.FilterEntryFieldView field=content.document.receiptToDate}}
+          {{view App.FilterEntryFieldView field=content.document.designation}}
+          {{view App.FilterEntryFieldView field=content.document.description}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Powiązania</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.relations.scan"}}
           {{view App.FilterEntryFieldView fieldBinding="content.relations.lots"}}
@@ -25,16 +28,6 @@
           {{view App.FilterEntryFieldView fieldBinding="content.relations.changes"}}
         </fieldset>
       </div>
-
-      <div class="row form-actions">
-        <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
-        <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
-        <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
-      </div>
-    </form>
-
-    <form id="filter-advanced" class="tab-pane">
-      Filtry zaawansowane w ramach poszukiwania dokumentu
     </form>
 
   </div>

@@ -1,5 +1,87 @@
-html, body {
-  width:  100%;
-  height: 100%;
-  overflow: hidden;
+body {
+  padding: 0 10px;
+}
+
+#app_header {
+  padding-top: 10px;
+  img {
+    height: 50px;
+  }
+  h1 {
+      float: right;
+  }
+}
+
+#app_footer {
+  padding-bottom: 10px;
+}
+
+#egbil-search, #changes-search {
+  width: 860px;
+  .filter-types {
+    margin-bottom: 14px;
+  }
+  .column {
+    width: 420px;
+  }
+  legend {
+    color: @white;
+    font-style: italic;
+  }
+  .control-label {
+    text-align: left;
+    width: 150px;
+    color: @white;
+  }
+  .controls {
+    margin-left: 0;
+  }
+  .help-inline {
+    padding-right: 5px;
+  }
+  .filter-text-field, .filter-select, .filter-calendar, .filter-range {
+    margin-left: 0;
+    .controls {
+      width: 415px;
+      text-align: right;
+    }
+  }
+  .filter-systematic {
+    .controls {
+      width: 855px;
+      text-align: right;
+    }
+    .control-label {
+      width: 100px;
+    }
+    input {
+      width: 659px;
+    }
+  }
+  .filter-text-field input {
+    width: 160px;
+  }
+  .filter-select input {
+    width: 121px;
+  }
+  .filter-calendar input {
+    width: 121px;
+  }
+  .filter-range input {
+    width: 49px;
+  }
+}
+
+
+.form-actions {
+  .historicalEntries {
+    float: left;
+    span {
+      color: @white;
+      position: relative;
+      top: 3px;
+      left: 5px;
+    }
+  }
+  text-align: right;
 }

@@ -1,9 +1,8 @@
 <script type="text/x-handlebars" data-template-name="filterRange">
-  <div class="control-group">
-    <span class="field-label span2">{{view.field.label}}</span>
-    <span class="help-inline">{{#if view.field.help}}{{view.field.help}}{{/if}}</span>
-    <span class="input-append">
-      od {{view Em.TextField valueBinding="view.field.value" class="asRange allRound"}} do {{view Em.TextField valueBinding="view.field.alternateValue" class="asRange"}}<a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
-    </span>
+  <div class="control-group span filter-range">
+    <span class="control-label">{{view.field.label}}</span>
+    <div class="controls">
+      <span class="help-inline">{{#if view.field.help}}{{view.field.help}}{{/if}}</span><span> od {{view Em.TextField valueBinding="view.field.value"}} do <span class="input-append">{{view Em.TextField valueBinding="view.field.alternateValue"}}<a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a></span></span>
+    </div>
   </div>
 </script>

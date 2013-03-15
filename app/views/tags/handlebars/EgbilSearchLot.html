@@ -1,31 +1,33 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchLot">
+<div class="tab-pane">
+
   {{view App.FilterTypesView}}
+
   <div class="tab-content">
 
-    <form id="filter-subject" class="tab-pane active">
+    <form id="filter-subject" class="tab-pane active form-horizontal">
       {{view App.FilterSystematicView fieldBinding="content.systematics" cacheBinding="controllers.gammaCache" attrIndex=0}}
 
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.registerUnit.jrg"}}
           {{view App.FilterEntryFieldView fieldBinding="content.lot.number"}}
           {{view App.FilterEntryFieldView fieldBinding="content.lot.area"}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Adres działki</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.address.town"}}
           {{view App.FilterEntryFieldView fieldBinding="content.address.street"}}
           {{view App.FilterEntryFieldView fieldBinding="content.address.houseNumber"}}
         </fieldset>
       </div>
-
       <div class="row">
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Sygnatura dokumentu</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.signature.lot"}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Klasoużytki</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.terrainCategory.identifier"}}
           {{view App.FilterEntryFieldView fieldBinding="content.terrainCategory.area"}}
@@ -33,10 +35,10 @@
       </div>
     </form>
 
-    <form id="filter-individual" class="tab-pane">
+    <form id="filter-individual" class="tab-pane form-horizontal">
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.person.sex"}}
           {{view App.FilterEntryFieldView fieldBinding="content.person.lastName"}}
           {{view App.FilterEntryFieldView fieldBinding="content.person.firstName"}}
@@ -44,7 +46,7 @@
           {{view App.FilterEntryFieldView fieldBinding="content.person.document"}}
           {{view App.FilterEntryFieldView fieldBinding="content.person.status"}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Adres zamieszkania</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.address.postalCode"}}
           {{view App.FilterEntryFieldView fieldBinding="content.address.town"}}
@@ -54,7 +56,7 @@
         </fieldset>
       </div>
       <div class="row">
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Dane udziałowe</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.share.character"}}
           {{view App.FilterEntryFieldView fieldBinding="content.share.registerGroup"}}
@@ -63,17 +65,17 @@
       </div>
     </form>
 
-    <form id="filter-institution" class="tab-pane">
+    <form id="filter-institution" class="tab-pane form-horizontal">
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.institution.shortName"}}
           {{view App.FilterEntryFieldView fieldBinding="content.institution.fullName"}}
           {{view App.FilterEntryFieldView fieldBinding="content.institution.status"}}
           {{view App.FilterEntryFieldView fieldBinding="content.institution.regon"}}
           {{view App.FilterEntryFieldView fieldBinding="content.institution.nip"}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Adres zamieszkania</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.address.postalCode"}}
           {{view App.FilterEntryFieldView fieldBinding="content.address.town"}}
@@ -83,7 +85,7 @@
         </fieldset>
       </div>
       <div class="row">
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Dane udziałowe</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.share.character"}}
           {{view App.FilterEntryFieldView fieldBinding="content.share.registerGroup"}}
@@ -92,10 +94,7 @@
       </div>
     </form>
 
-    <div class="row form-actions">
-      <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
-      <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
-      <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
-    </div>
   </div>
+
+</div>
 </script>

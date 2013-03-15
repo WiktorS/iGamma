@@ -1,10 +1,8 @@
 <script type="text/x-handlebars" data-template-name="filterSystematic">
-  <fieldset class="span10">
-    <legend>&nbsp;</legend>
-    <label class="control-group">
-      <span class="field-label span2">Systematyka</span>
-      <span class="help-inline"></span>
+<label class="control-group span filter-systematic">
+    <span class="control-label">Systematyka</span>
+    <div class="controls">
       <span class="input-append">{{view Em.TextField valueBinding="view.field.value" class="asSystematics"}}<a class="btn" {{action chooseSystematic target="view"}}><i class="icon-external-link"></i></a><a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a></span>
-    </label>
-  </fieldset>
+    </div>
+</label>
 </script>

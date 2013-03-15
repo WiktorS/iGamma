@@ -1,13 +1,15 @@
 <script type="text/x-handlebars" data-template-name="changesSearch">
-<div id="egbil-search" class="span15 well">
+<div id="changes-search" class="well">
+
   {{view App.FilterTypesView filterType="subject"}}
+
   <div class="tab-content">
 
-    <form id="filter-subject" class="tab-pane active">
+    <form id="filter-subject" class="tab-pane active form-horizontal">
       {{view App.FilterSystematicView fieldBinding="content.systematics" cacheBinding="controllers.gammaCache" attrIndex=0}}
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.change.year"}}
           {{view App.FilterEntryFieldView fieldBinding="content.change.number"}}
           {{view App.FilterEntryFieldView fieldBinding="content.change.applicationYear"}}
@@ -17,7 +19,7 @@
           {{view App.FilterEntryFieldView fieldBinding="content.change.status"}}
           {{view App.FilterEntryFieldView fieldBinding="content.change.description"}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Dokument</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.document.type"}}
           {{view App.FilterEntryFieldView fieldBinding="content.document.signature"}}
@@ -28,24 +30,21 @@
           {{view App.FilterEntryFieldView fieldBinding="content.document.receiptToDate"}}
           {{view App.FilterEntryFieldView fieldBinding="content.document.description"}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Działki</legend>
           {{view App.FilterSystematicView fieldBinding="content.lot.systematics" cacheBinding="controllers.gammaCache"}}
           {{view App.FilterEntryFieldView fieldBinding="content.lot.number"}}
         </fieldset>
       </div>
-
-      <div class="row form-actions">
-        <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
-        <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
-        <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
-      </div>
-    </form>
-
-    <form id="filter-advanced" class="tab-pane">
-      Filtry zaawansowane w ramach poszukiwania zmiany
     </form>
 
   </div>
+
+  <div class="form-actions">
+    <label class="historicalEntries">{{view Ember.Checkbox}}<span>Uwzględnij wpisy historyczne</span></label>
+    <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
+    <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
+  </div>
+
 </div>
 </script>

@@ -1,21 +1,24 @@
 <script type="text/x-handlebars" data-template-name="egbilSearchInstitutionOrGroup">
+<div class="tab-pane">
+
   {{view App.FilterTypesView filterType="institution"}}
+
   <div class="tab-content">
 
-    <form id="filter-individual" class="tab-pane active">
+    <form id="filter-individual" class="tab-pane active form-horizontal">
       <div class="row">
-        <fieldset class="span5">
-          <legend>&nbsp;</legend>
-          {{view App.FilterEntryFieldView fieldBinding="content.institution.shortName" attrIndex=0}}
-          {{view App.FilterEntryFieldView fieldBinding="content.institution.fullName"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.institution.status"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.institution.regon"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.institution.nip"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.institution.registerName"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.institution.registerNumber"}}
-          {{view App.FilterEntryFieldView fieldBinding="content.institution.registerCourt"}}
+        <fieldset class="span column">
+          <legend>Ogólne</legend>
+          {{view App.FilterEntryFieldView field=content.institution.shortName attrIndex=0}}
+          {{view App.FilterEntryFieldView field=content.institution.fullName}}
+          {{view App.FilterEntryFieldView field=content.institution.status}}
+          {{view App.FilterEntryFieldView field=content.institution.regon}}
+          {{view App.FilterEntryFieldView field=content.institution.nip}}
+          {{view App.FilterEntryFieldView field=content.institution.registerName}}
+          {{view App.FilterEntryFieldView field=content.institution.registerNumber}}
+          {{view App.FilterEntryFieldView field=content.institution.registerCourt}}
         </fieldset>
-        <fieldset class="span5">
+        <fieldset class="span column">
           <legend>Adres</legend>
           {{view App.FilterEntryFieldView fieldBinding="content.address.postalCode"}}
           {{view App.FilterEntryFieldView fieldBinding="content.address.town"}}
@@ -24,17 +27,9 @@
           {{view App.FilterEntryFieldView fieldBinding="content.address.flatNumber"}}
         </fieldset>
       </div>
-
-      <div class="row form-actions">
-        <label class="historicalEntries span3">{{view Ember.Checkbox}} Uwzględnij wpisy historyczne</label>
-        <button class="btn" type="button"><i class="icon-remove-sign"></i> Wyczyść</button>
-        <button class="btn btn-primary" type="button" {{action doSearch}}><i class="icon-ok-sign"></i> Wybierz</button>
-      </div>
-    </form>
-
-    <form id="filter-advanced" class="tab-pane">
-      Filtry zaawansowane w ramach poszukiwania osoby fizycznej
     </form>
 
   </div>
+
+</div>
 </script>
