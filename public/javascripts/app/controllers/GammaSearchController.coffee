@@ -22,7 +22,7 @@ App.GammaSearchController = Em.Controller.extend
     lot: "Działki"
     change: "Zmiany"
 
-  doSearch: (searchArgs) ->
+  findObjects: (searchArgs) ->
     $.ajax
       type: "POST"
       url: "findObjects.json"

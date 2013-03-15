@@ -92,17 +92,6 @@ RouteWithParentMemory = Em.Route.extend
       if parent?
         parent.set "defaultRoute", routeName
         parent.set "defaultRouteModel", @get "context" # or maybe better @modelFor(routeName)
-  # setup: (context) ->
-  #   @_super context
-  #   if @get "isLeafRoute"
-  #     parent = @get "parent"
-  #     defaultRoute = parent.get "defaultRoute"
-  #     defaultRouteModel = parent.get "defaultRouteModel"
-  #     if !Em.isEmpty defaultRoute
-  #       if Em.isEmpty defaultRouteModel
-  #         @transitionTo defaultRoute
-  #       else
-  #         @transitionTo defaultRoute, defaultRouteModel
   redirect: ->
     if @get "isLeafRoute"
       parent = @get "parent"
@@ -172,51 +161,56 @@ App.SearchRoute = RouteWithParentMemory.extend
 
 App.SearchIndexRoute = RouteWithParentMemory.extend()
 
-App.SearchJrgRoute = RouteWithParentMemory.extend
+SearchObjectRoute = RouteWithParentMemory.extend
+  events:
+    doSearch: (context) ->
+      @controllerFor(@get "lastRenderedTemplate")?.doSearch()
+
+App.SearchJrgRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchJrg"
 
-App.SearchJrbRoute = RouteWithParentMemory.extend
+App.SearchJrbRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchJrb"
 
-App.SearchJrlRoute = RouteWithParentMemory.extend
+App.SearchJrlRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchJrl"
 
-App.SearchOldJrgRoute = RouteWithParentMemory.extend
+App.SearchOldJrgRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchOldJrg"
 
-App.SearchLotRoute = RouteWithParentMemory.extend
+App.SearchLotRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchLot"
 
-App.SearchBuildingRoute = RouteWithParentMemory.extend
+App.SearchBuildingRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchBuilding"
 
-App.SearchLocalRoute = RouteWithParentMemory.extend
+App.SearchLocalRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchLocal"
 
-App.SearchPersonRoute = RouteWithParentMemory.extend
+App.SearchPersonRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchPerson"
 
-App.SearchInstitutionRoute = RouteWithParentMemory.extend
+App.SearchInstitutionRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchInstitution"
 
-App.SearchGroupRoute = RouteWithParentMemory.extend
+App.SearchGroupRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchGroup"
 
-App.SearchLandCommunityRoute = RouteWithParentMemory.extend
+App.SearchLandCommunityRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchLandCommunity"
 
-App.SearchDocumentRoute = RouteWithParentMemory.extend
+App.SearchDocumentRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchDocument"
 

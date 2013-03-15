@@ -28,4 +28,4 @@ App.ChangesSearchController = App.GammaSearchController.extend
     result
 
   doSearch: ->
-    @_super @getSearchArgsArray()
+    @findObjects @getSearchArgsArray()

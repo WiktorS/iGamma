@@ -29,4 +29,4 @@ App.EgbilSearchCommonController = Em.Controller.extend
     result
 
   doSearch: ->
-    @get("controllers.egbilSearch").doSearch @getSearchArgsArray()
+    @get("controllers.egbilSearch").findObjects @getSearchArgsArray()
