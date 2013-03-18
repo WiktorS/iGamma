@@ -141,14 +141,24 @@ App.GammaController = Em.Controller.extend
     Em.assert "Object to close not found ('#{objectType}:#{objectId}')", object
     idx = @get("objectList").indexOf object
     @get("objectList").removeObject object
-    if @get("target").isActive "#{object.get "_objectRoute"}", object
+    objectRoute = object.get "_objectRoute"
+    if @get("target").isActive objectRoute, object
       if @get("objectList").length > 0
         idx-- while idx >= @get("objectList").length
         @get("target").send "goToObject", @get("objectList.#{idx}")
-      else if @get("controllers.egbilList.content") #TODO: egbil/changes
-        @get("target").transitionTo "egbil.list"
+      #TODO: This should be done better - more universal
+      if objectRoute.match /^egbil/
+        if @get("controllers.egbilList.content")
+          @get("target").transitionTo "egbil.egbilList"
+        else
+          @get("target").transitionTo "egbilSearch"
+      else if objectRoute.match /^changes/
+        if @get("controllers.changesList.content")
+          @get("target").transitionTo "changes.changesList"
+        else
+          @get("target").transitionTo "changesSearch"
       else
-        @get("target").transitionTo "search"
+        throw new Ember.Error "Unknown object route: #{objectRoute}"
 
   openObject: (objectId, objectType) ->
     Em.assert "Can't open object of undefined id", !!objectId

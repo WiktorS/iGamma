@@ -1,8 +1,8 @@
 App.Router.map ->
   @resource "egbil", ->
-    @route "map"
+    @route "egbilMap"
       path: "mapa"
-    @resource "search", {path: "/szukaj"}, ->
+    @resource "egbilSearch", {path: "/szukaj"}, ->
       @route "jrg",
         path: "/jednostki rejestrowe gruntów i budynków"
       @route "jrb",
@@ -27,7 +27,7 @@ App.Router.map ->
         path: "/zarządy wspolnot gruntowych"
       @route "document",
         path: "/dokumenty"
-    @route "list"
+    @route "egbilList"
       path: "/wyniki"
     @resource "egbilObject", {path: "/obiekt"}, ->
       @route "jrg",
@@ -55,11 +55,11 @@ App.Router.map ->
       @route "landCommunity",
         path: "/zarząd wspólnoty gruntowej/:name/:id"
   @resource "changes", {path: "/zmiany"}, ->
-    @route "map"
+    @route "changesMap"
       path: "/mapa"
-    @route "search"
+    @route "changesSearch"
       path: "/szukaj"
-    @route "list"
+    @route "changesList"
       path: "/wyniki"
     @resource "changesObject", {path: "/obiekt"}, ->
       @route "change",
@@ -139,107 +139,107 @@ App.ApplicationRoute = Ember.Route.extend
       window.open(url)
 
 App.EgbilRoute = RouteWithParentMemory.extend
-  defaultRoute: "search"
+  defaultRoute: "egbilSearch"
   renderTemplate: ->
     @render "egbil",
       controller: @controllerFor "gamma"
 App.EgbilIndexRoute = RouteWithParentMemory.extend()
 
-App.EgbilMapRoute = RouteWithParentMemory.extend
+App.EgbilEgbilMapRoute = RouteWithParentMemory.extend
   renderTemplate: ->
     @render "gammaMap"
 
-App.SearchRoute = RouteWithParentMemory.extend
-  defaultRoute: "search.jrg"
+App.EgbilSearchRoute = RouteWithParentMemory.extend
+  defaultRoute: "egbilSearch.jrg"
   renderTemplate: ->
     @render "egbilSearch"
   events:
     goToList: (context) ->
       @controllerFor("egbilList").set "type", context.get("type")
       @controllerFor("egbilList").set "content", context.get("list")
-      @transitionTo "egbil.list"
+      @transitionTo "egbil.egbilList"
 
-App.SearchIndexRoute = RouteWithParentMemory.extend()
+App.EgbilSearchIndexRoute = RouteWithParentMemory.extend()
 
 SearchObjectRoute = RouteWithParentMemory.extend
   events:
     doSearch: (context) ->
       @controllerFor(@get "lastRenderedTemplate")?.doSearch()
 
-App.SearchJrgRoute = SearchObjectRoute.extend
+App.EgbilSearchJrgRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchJrg"
 
-App.SearchJrbRoute = SearchObjectRoute.extend
+App.EgbilSearchJrbRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchJrb"
 
-App.SearchJrlRoute = SearchObjectRoute.extend
+App.EgbilSearchJrlRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchJrl"
 
-App.SearchOldJrgRoute = SearchObjectRoute.extend
+App.EgbilSearchOldJrgRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchOldJrg"
 
-App.SearchLotRoute = SearchObjectRoute.extend
+App.EgbilSearchLotRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchLot"
 
-App.SearchBuildingRoute = SearchObjectRoute.extend
+App.EgbilSearchBuildingRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchBuilding"
 
-App.SearchLocalRoute = SearchObjectRoute.extend
+App.EgbilSearchLocalRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchLocal"
 
-App.SearchPersonRoute = SearchObjectRoute.extend
+App.EgbilSearchPersonRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchPerson"
 
-App.SearchInstitutionRoute = SearchObjectRoute.extend
+App.EgbilSearchInstitutionRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchInstitution"
 
-App.SearchGroupRoute = SearchObjectRoute.extend
+App.EgbilSearchGroupRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchGroup"
 
-App.SearchLandCommunityRoute = SearchObjectRoute.extend
+App.EgbilSearchLandCommunityRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchLandCommunity"
 
-App.SearchDocumentRoute = SearchObjectRoute.extend
+App.EgbilSearchDocumentRoute = SearchObjectRoute.extend
   renderTemplate: ->
     @render "egbilSearchDocument"
 
-App.EgbilListRoute = RouteWithParentMemory.extend
+App.EgbilEgbilListRoute = RouteWithParentMemory.extend
   renderTemplate: ->
     @render "gammaList",
       controller: @controllerFor "egbilList"
 
 App.ChangesRoute = RouteWithParentMemory.extend
-  defaultRoute: "changes.search"
+  defaultRoute: "changes.changesSearch"
   renderTemplate: ->
     @render "changes",
       controller: @controllerFor "gamma"
 App.ChangesIndexRoute = RouteWithParentMemory.extend()
 
-App.ChangesMapRoute = RouteWithParentMemory.extend
+App.ChangesChangesMapRoute = RouteWithParentMemory.extend
   renderTemplate: ->
     @render "gammaMap"
 
-App.ChangesSearchRoute = RouteWithParentMemory.extend
+App.ChangesChangesSearchRoute = RouteWithParentMemory.extend
   renderTemplate: ->
     @render "changesSearch"
   events:
     goToList: (context) ->
       @controllerFor("changesList").set "type", context.get("type")
       @controllerFor("changesList").set "content", context.get("list")
-      @transitionTo "changes.list"
+      @transitionTo "changes.changesList"
 
-App.ChangesListRoute = RouteWithParentMemory.extend
+App.ChangesChangesListRoute = RouteWithParentMemory.extend
   renderTemplate: ->
     @render "gammaList",
       controller: @controllerFor "changesList"

@@ -1,9 +1,9 @@
 <script type="text/x-handlebars" data-template-name="changes">
 <ul class="nav nav-pills">
-    {{view App.TabItemView routeName="changes.map" displayName="Pokaż mapę"}}
-    {{view App.TabItemView routeName="changes.search" displayName="Wybór obiektów"}}
+    {{view App.TabItemView routeName="changes.changesMap" displayName="Pokaż mapę"}}
+    {{view App.TabItemView routeName="changes.changesSearch" displayName="Wybór obiektów"}}
     {{#if controllers.changesList.content}}
-        {{view App.TabItemView routeName="changes.list" displayName="Lista obiektów"}}
+        {{view App.TabItemView routeName="changes.changesList" displayName="Lista obiektów"}}
     {{/if}}
     {{#each controller.objectList}}
         {{view App.ObjectTabItemView objectBinding="this"}}
