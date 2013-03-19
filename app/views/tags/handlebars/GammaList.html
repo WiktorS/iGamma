@@ -1,5 +1,10 @@
 <script type="text/x-handlebars" data-template-name="gammaList">
-  <div class="ui-layout-center">
+  <div id="right-sidebar" class="span4 pull-right">
+    <div class="well">
+      {{view App.EgbilRightPanelView contentBinding="rightPanelContent"}}
+    </div>
+  </div>
+  <div id="list">
     <div class="btn-primary">
       {{title}}
     </div>
@@ -9,5 +14,4 @@
       Brak wyników do pokazania
     {{/if}}
   </div>
-  {{view App.EgbilRightPanelView contentBinding="rightPanelContent"}}
 </script>

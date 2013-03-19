@@ -1,27 +1,24 @@
 App.GammaListView = Em.View.extend
   templateName: "gammaList"
-  # layout: null
-  # didInsertElement: ->
-  #   @set "layout", @$().layout
-  #     defaults:
-  #       resizable: false
-  #       slidable: false
-  #       closable: true
-  #     east:
-  #       initClosed: !(@get("controller.isAnyChecked") && @get("controller.canShowRightPanel"))
-  #   layout = @get "layout"
-  #   #disable closable here (force hide) - don't do it in options above, because we do need "toggle" later
-  #   if layout.east.state.isClosed && layout.east.options.closable
-  #     layout.disableClosable("east", true)
+
   _checkedItemsCountChanged: (->
-    # layout = @get("layout")
-    # if layout?
-    #   if @get("controller.isAnyChecked")  && @get("controller.canShowRightPanel")
-    #     if !layout.east.options.closable
-    #       layout.enableClosable("east")
-    #       layout.open "east"
-    #   else
-    #     layout.close "east"
-    #     if layout.east.options.closable
-    #       layout.disableClosable("east", true)
+    @rightSideBar()
     ).observes("controller.isAnyChecked", "controller.canShowRightPanel")
+
+
+  didInsertElement: ->
+    @rightSideBar true
+
+  rightSideBar: (noAnimation = false) -> 
+      duration = if noAnimation then 0 else 'fast'
+      if sidebar = @$("#right-sidebar")
+        if @get("controller.isAnyChecked")  && @get("controller.canShowRightPanel")
+          sidebar.show
+            duration: duration
+            always: =>
+              @$("#list").css "margin-right", sidebar.outerWidth true
+        else if sidebar.is ":visible"
+          @$("#right-sidebar").hide
+            duration: duration
+            always: =>
+              @$("#list").css "margin-right", 0
