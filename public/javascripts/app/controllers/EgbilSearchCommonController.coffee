@@ -3,6 +3,7 @@ App.EgbilSearchCommonController = Em.Controller.extend
 
   content: null
   searchFields: null
+  model: null #IMPORTANT!!! By doing this we override "model" to "content" alias (which breaks views in this case)
 
 
   init: ->

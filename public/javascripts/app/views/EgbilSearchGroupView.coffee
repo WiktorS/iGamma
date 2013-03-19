@@ -1,2 +1,2 @@
 App.EgbilSearchGroupView = App.GammaSearchView.extend
-  templateName: "egbilSearchInstitutionOrGroup"
+  templateName: "egbilSearch/institutionOrGroup"

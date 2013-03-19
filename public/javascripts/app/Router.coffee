@@ -166,53 +166,18 @@ SearchObjectRoute = RouteWithParentMemory.extend
     doSearch: (context) ->
       @controllerFor(@get "lastRenderedTemplate")?.doSearch()
 
-App.EgbilSearchJrgRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchJrg"
-
-App.EgbilSearchJrbRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchJrb"
-
-App.EgbilSearchJrlRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchJrl"
-
-App.EgbilSearchOldJrgRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchOldJrg"
-
-App.EgbilSearchLotRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchLot"
-
-App.EgbilSearchBuildingRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchBuilding"
-
-App.EgbilSearchLocalRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchLocal"
-
-App.EgbilSearchPersonRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchPerson"
-
-App.EgbilSearchInstitutionRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchInstitution"
-
-App.EgbilSearchGroupRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchGroup"
-
-App.EgbilSearchLandCommunityRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchLandCommunity"
-
-App.EgbilSearchDocumentRoute = SearchObjectRoute.extend
-  renderTemplate: ->
-    @render "egbilSearchDocument"
+App.EgbilSearchJrgRoute = SearchObjectRoute.extend()
+App.EgbilSearchJrbRoute = SearchObjectRoute.extend()
+App.EgbilSearchJrlRoute = SearchObjectRoute.extend()
+App.EgbilSearchOldJrgRoute = SearchObjectRoute.extend()
+App.EgbilSearchLotRoute = SearchObjectRoute.extend()
+App.EgbilSearchBuildingRoute = SearchObjectRoute.extend()
+App.EgbilSearchLocalRoute = SearchObjectRoute.extend()
+App.EgbilSearchPersonRoute = SearchObjectRoute.extend()
+App.EgbilSearchInstitutionRoute = SearchObjectRoute.extend()
+App.EgbilSearchGroupRoute = SearchObjectRoute.extend()
+App.EgbilSearchLandCommunityRoute = SearchObjectRoute.extend()
+App.EgbilSearchDocumentRoute = SearchObjectRoute.extend()
 
 App.EgbilEgbilListRoute = RouteWithParentMemory.extend
   renderTemplate: ->
@@ -250,13 +215,13 @@ App.ChangesObjectRoute = App.EgbilObjectRoute = RouteWithParentMemory.extend
 App.ChangesObjectIndexRoute = App.EgbilObjectIndexRoute = RouteWithParentMemory.extend()
 
 
-#TODO: Rewrite!
+#TODO: Rewrite - data is not fetch in right way and sometimes we can get double transitions!
 RouteWithObjectParam = RouteWithParentMemory.extend
   objectId: null
   objectType: (-> @get("routeName").split(".")[1]).property("routeName") #TODO: Maybe this can be done better
   objectName: null
   objectOutletName: null
-  # setupController: (controller) ->
+  # setupController: (controller, model) ->
   #   debugger
   model: (params)->
     #have to use setProporties because some of set proporties are computed proporties
@@ -278,6 +243,7 @@ RouteWithObjectParam = RouteWithParentMemory.extend
     if !Em.isEmpty object
       @controllerFor("gammaObject").set "content", object
       @controllerFor(@get("objectOutletName")).set "content", object
+      # @controllerFor(@get("routeName")).set "content", object
       @render @get("objectOutletName")
     else
       @controllerFor("gamma").openObject model.get("_objectId"), model.get("_objectType")

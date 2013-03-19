@@ -1,2 +1,2 @@
-App.EgbilSearchLandCommunityView = App.GammaSearchView.extend
-  templateName: "egbilSearchLandCommunity"
+App.EgbilSearchLandCommunityView = App.GammaSearchView.extend()
+

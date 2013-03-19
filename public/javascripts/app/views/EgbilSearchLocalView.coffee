@@ -1,2 +1,2 @@
-App.EgbilSearchLocalView = App.GammaSearchView.extend
-  templateName: "egbilSearchLocal"
+App.EgbilSearchLocalView = App.GammaSearchView.extend()
+
