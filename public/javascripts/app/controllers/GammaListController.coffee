@@ -98,7 +98,7 @@ App.GammaListController = Em.Controller.extend
       data:
         objectList: objectList
       success: (data) =>
-        if !Em.empty data && Em.isArray data
+        if !Em.isEmpty data && Em.isArray data
           objectModel = @get "controllers.gamma.objectModel.#{type}"
           Em.assert "Could not find model for object '#{type}'", objectModel
 #          @set "target.egbilListController.type", type

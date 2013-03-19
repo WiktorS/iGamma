@@ -212,7 +212,7 @@ App.GammaListTableCellValueView = App.ModelTableCellView.extend
 
 App.GammaListTableCellIsValueView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{#unless view.isEmptyValue}}<i class=\"icon-white icon-ok\"></i>{{/unless}}"
-  isEmptyValue: (-> Ember.empty(@get "column.data.value")).property("column.data.value")
+  isEmptyValue: (-> Ember.isEmpty(@get "column.data.value")).property("column.data.value")
 
 App.GammaListTableCellJRChangeView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{view.displayValue}}"
