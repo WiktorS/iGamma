@@ -1,6 +1,6 @@
 <script type="text/x-handlebars" data-template-name="application">
-<div id="app_header">#{pageParts.header /}</div>
+<div id="app_header" class="navbar-fixed-top">#{pageParts.header /}</div>
 <div id="app_menu">{{view App.ApplicationMenuView}}</div>
 <div id="app_page">{{outlet}}</div>
-<div id="app_footer">#{pageParts.footer /}</div>
+<div id="app_footer" class="navbar-fixed-bottom">#{pageParts.footer /}</div>
 </script>
