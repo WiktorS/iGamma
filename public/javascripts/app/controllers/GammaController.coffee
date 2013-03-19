@@ -149,14 +149,14 @@ App.GammaController = Em.Controller.extend
       #TODO: This should be done better - more universal
       if objectRoute.match /^egbil/
         if @get("controllers.egbilList.content")
-          @get("target").transitionTo "egbil.egbilList"
+          @transitionToRoute "egbil.egbilList"
         else
-          @get("target").transitionTo "egbilSearch"
+          @transitionToRoute "egbilSearch"
       else if objectRoute.match /^changes/
         if @get("controllers.changesList.content")
-          @get("target").transitionTo "changes.changesList"
+          @transitionToRoute "changes.changesList"
         else
-          @get("target").transitionTo "changesSearch"
+          @transitionToRoute "changesSearch"
       else
         throw new Ember.Error "Unknown object route: #{objectRoute}"
 
