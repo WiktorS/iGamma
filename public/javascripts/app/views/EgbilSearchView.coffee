@@ -2,12 +2,13 @@ App.EgbilSearchView = Em.View.extend
   templateName: "egbilSearch"
 
   didInsertElement: ->
-    #add dummy div with size of sidebar to fix affix behavior
     nav = @$(".nav")
-    div = $("<div/>", {class: "span"})
-    div.outerWidth nav.outerWidth()
-    div.outerHeight nav.outerHeight()
-    nav.parent().prepend div
+    @$("#egbil-search").css "margin-left", nav.outerWidth true
+    sidebar = $("#egbil-sidebar")
     nav.affix
       offset:
-        top: 105
+        top: ->
+          Em.run.next ->
+            marginLeft = if sidebar.hasClass "affix" then "-#{$(window).scrollLeft()}px" else "0"
+            sidebar.css "margin-left", marginLeft
+          105
