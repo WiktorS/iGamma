@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "clauseText": "Treść klauzuli",
+    "clauseChecked": true
+  },
+  {
+    "id": 2,
+    "clauseText": "Dokument niniejszy jest wypisem z opisowych danych ewidencji gruntów i budynków i jest przeznaczony do dokonania wpisu w ksiedze wieczystej",
+    "clauseChecked": false
+  }
+]

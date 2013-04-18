@@ -13,7 +13,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.*;
 
-public class IntegraMock implements Integra {
+public class IntegraMockImplementation implements Integra {
 
     private static final Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
 
@@ -281,6 +281,93 @@ public class IntegraMock implements Integra {
     public List<Systematic> getSystematics(long[] parentIdList) throws Exception {
         TypeToken<List<Systematic>> typeToken = new TypeToken<List<Systematic>>() {};
         return getMockJsonData("getSystematics", typeToken, Arrays.toString(parentIdList));
+    }
+
+    @Override
+    public List<CadastralUnit> getCadastralUnits() throws Exception {
+        TypeToken<List<CadastralUnit>> typeToken = new TypeToken<List<CadastralUnit>>() {};
+        return getMockJsonData("getCadastralUnits", typeToken);
+    }
+
+    @Override
+    public List<Precinct> getPrecincts(long[] idList) throws Exception {
+        TypeToken<List<Precinct>> typeToken = new TypeToken<List<Precinct>>() {};
+        return getMockJsonData("getPrecincts", typeToken, Arrays.toString(idList));
+    }
+
+    @Override
+    public List<Clause> getPrintClauses(String printType) throws Exception {
+        TypeToken<List<Clause>> typeToken = new TypeToken<List<Clause>>() {};
+        return getMockJsonData("getPrintClauses", typeToken, printType);
+    }
+
+    @Override
+    public CustomReportData getCustomReportData(String objectType) throws Exception {
+        TypeToken<CustomReportData> typeToken = new TypeToken<CustomReportData>() {};
+        return getMockJsonData("getCustomReportData", typeToken, objectType);
+    }
+
+    @Override
+    public CustomReportData removeCustomReportConfig(String[] configList) throws Exception {
+        TypeToken<CustomReportData> typeToken = new TypeToken<CustomReportData>() {};
+        return getMockJsonData("removeCustomReportData", typeToken);
+    }
+
+    @Override
+    public CustomReportData saveCustomReportConfig(CustomReportConfiguration config) throws Exception {
+        TypeToken<CustomReportData> typeToken = new TypeToken<CustomReportData>() {};
+        return getMockJsonData("saveCustomReportData", typeToken);
+    }
+
+    @Override
+    public File printExtracts(String sort, String number, boolean shareInfo, boolean noPersonalData, boolean noPESEL,
+                              boolean chosenShares, boolean otherCadastralUnitForPersons, boolean accounted, boolean noPendingChanges,
+                              boolean eachLotIndependent, boolean lotNotes, boolean chosenLots, boolean includeClauses,
+                              String state, String stateDay, boolean extractAndSketch, boolean simpleExtractForNeighboringLots,
+                              boolean buildingIndexExtract, boolean localIndexExtract, String localIndex, boolean extractNote,
+                              String extractNoteText, boolean lotAddresses, boolean terrainCategories, boolean eachBuidingIndependent,
+                              boolean buildingNotes, boolean chosenBuildings, boolean eachLocalIndependent, boolean localNotes,
+                              boolean chosenLocals, String fileFormat, Clause[] clauses, IntegraModel[] lots, IntegraModel[] buildings,
+                              IntegraModel[] locals, IntegraModel[] shares) {
+        return Play.getFile("mock/printExtracts.pdf");
+    }
+
+    @Override
+    public File printLotIndex(String state, String stateDay, IntegraModel[] precincts) {
+        return Play.getFile("mock/printLotIndex.pdf");
+    }
+
+    @Override
+    public File printEntityIndexes(String state, String stateDay, boolean alphabeticalTable, boolean onlyManagingGovernmentLand, IntegraModel[] precincts) {
+        return Play.getFile("mock/printEntityIndexes.pdf");
+    }
+
+    @Override
+    public File printRankings(String scope, String area, String decimals, boolean saveSheet, String state, String stateDay, IntegraModel[] precincts) {
+        return Play.getFile("mock/printRankings.pdf");
+    }
+
+    @Override
+    public File printChangeNotification(String number, boolean printChanges, boolean shareInfo, String shareType, boolean onlyShares,
+                                        boolean noPESEL, boolean noNIP, boolean infoHeader, String dataType, boolean shareSummary,
+                                        boolean buildingIndex, String buildingIndexType, boolean localIndex, String localIndexType,
+                                        IntegraModel[] chosenRegisterUnits, boolean frontPage, boolean onlyChosen, boolean entities,
+                                        boolean lots, boolean buildings, boolean locals, boolean landPossesing, String personType,
+                                        IntegraEntity[] recipients, IntegraEntity[] receivers, IntegraModel[] changeRegisterUnits) {
+        return Play.getFile("mock/printChangeNotification.pdf");
+    }
+
+    @Override
+    public File printChangesApplicationReport(boolean changeRegistered, boolean changeAccepted, boolean changeCanceled,
+                                              boolean changeDenied, boolean printRegisterUnitList, String precinct, String filterDate,
+                                              String filterDateFrom, String filterDateTo, String sort, String report, String description,
+                                              IntegraModel[] precincts) {
+        return Play.getFile("mock/printChangesApplicationReport.pdf");
+    }
+
+    @Override
+    public File printCustomReport(CustomReportAttribute[] attributes, boolean attributeLegend, long lineBreak, String fileFormat) {
+        return Play.getFile("mock/printCustomReport.pdf");
     }
 //
 //    @Override

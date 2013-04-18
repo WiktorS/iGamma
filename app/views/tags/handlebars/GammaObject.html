@@ -1,9 +1,11 @@
 <script type="text/x-handlebars" data-template-name="gammaObject">
-  <div class="ui-layout-center">
-    <div class="btn-primary">
-      {{title}}
+    <div class="hide">
+        {{view App.EgbilRightPanelView contentBinding="rightPanelContent"}}
     </div>
-    {{outlet}}
-  </div>
-  {{view App.EgbilRightPanelView contentBinding="rightPanelContent"}}
+    <div>
+        <div class="btn-primary">
+            {{title}}
+        </div>
+        {{outlet}}
+    </div>
 </script>

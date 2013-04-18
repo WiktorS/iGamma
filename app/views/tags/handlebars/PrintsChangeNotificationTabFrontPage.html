@@ -1,0 +1,36 @@
+<script type="text/x-handlebars" data-template-name="changeNotificationTabFrontPage">
+    <div class="row">
+        <fieldset class="span">
+            <label>Numer sprawy</label>
+            {{view Em.TextField valueBinding="content.number.value"}}
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="span4">
+            <legend>Zmiana dotyczy:</legend>
+            {{view App.PrintCheckView valueBinding="content.entities" label="danych ewidencyjnych podmiotów ewidencyjnych"}}
+            {{view App.PrintCheckView valueBinding="content.lots" label="danych ewidencyjnych działek"}}
+            {{view App.PrintCheckView valueBinding="content.buildings" label="danych ewidencyjnych i opisowych budynków"}}
+            {{view App.PrintCheckView valueBinding="content.locals" label="danych ewidencyjnych i opisowych lokali"}}
+            {{view App.PrintCheckView valueBinding="content.landPossesing" label="danych ewidencyjnych osób władających gruntami"}}
+        </fieldset>
+        <fieldset class="span4">
+            <legend>Jednostka rejestrowa</legend>
+            {{view Em.Select contentBinding="registerUnitList" valueBinding="selectedRegisterUnit" optionLabelPath="content.g5"}}
+            {{#view App.PrintRadioGroupView valueBinding="content.personType" disabledBinding="printChangesNotChecked"}}
+                {{view App.PrintRadioView value="old" label="stan stary"}}
+                {{view App.PrintRadioView value="new" label="stan nowy"}}
+            {{/view}}
+            {{view Em.Select multiple=true contentBinding="personList" valueBinding="selectedPersonList"}}
+        </fieldset>
+*{TODO: Adresaci & Otrzymuja}*
+        <fieldset class="span4">
+            <legend>Adresaci</legend>
+            {{view App.ModelTableView contentBinding="content.recipients" columnsBinding="personColumns" header=false}}
+        </fieldset>
+        <fieldset class="span4">
+            <legend>Otrzymują</legend>
+            {{view App.ModelTableView contentBinding="content.receivers" columnsBinding="personColumns" header=false}}
+        </fieldset>
+    </div>
+</script>

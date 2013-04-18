@@ -1,76 +1,69 @@
 App.Router.map ->
   @resource "egbil", ->
-    @route "egbilMap"
-      path: "mapa"
-    @resource "egbilSearch", {path: "/szukaj"}, ->
-      @route "jrg",
-        path: "/jednostki rejestrowe gruntów i budynków"
-      @route "jrb",
-        path: "/jednostki rejestrowe budynków"
-      @route "jrl",
-        path: "/jednostki rejestrowe lokali"
-      @route "oldJrg",
-        path: "/stare jednostki rejestrowe gruntów"
-      @route "lot",
-        path: "/działki"
-      @route "building",
-        path: "/budynki"
-      @route "local",
-        path: "/lokale"
-      @route "person",
-        path: "/osoby fizyczne"
-      @route "institution",
-        path: "/instytucje"
-      @route "group",
-        path: "/podmioty grupowe"
-      @route "landCommunity",
-        path: "/zarządy wspolnot gruntowych"
-      @route "document",
-        path: "/dokumenty"
-    @route "egbilList"
-      path: "/wyniki"
-    @resource "egbilObject", {path: "/obiekt"}, ->
-      @route "jrg",
-        path: "/jednostka rejestrowa gruntów i budynków/:name/:id"
-      @route "jrb",
-        path: "/jednostka rejestrowa budynków/:name/:id"
-      @route "jrl",
-        path: "/jednostka rejestrowa lokali/:name/:id"
-      @route "oldJrg",
-        path: "/stara jednostka rejestrowa gruntów/:name/:id"
-      @route "document",
-        path: "/dokument/:name/:id"
-      @route "lot",
-        path: "/działka/:name/:id"
-      @route "building",
-        path: "/budynek/:name/:id"
-      @route "local",
-        path: "/lokal/:name/:id"
-      @route "person",
-        path: "/osoba fizyczne/:name/:id"
-      @route "institution",
-        path: "/instytucja/:name/:id"
-      @route "group",
-        path: "/podmiot grupowy/:name/:id"
-      @route "landCommunity",
-        path: "/zarząd wspólnoty gruntowej/:name/:id"
-  @resource "changes", {path: "/zmiany"}, ->
-    @route "changesMap"
-      path: "/mapa"
-    @route "changesSearch"
-      path: "/szukaj"
-    @route "changesList"
-      path: "/wyniki"
-    @resource "changesObject", {path: "/obiekt"}, ->
-      @route "change",
-        path: "/zmiana/:name/:id"
-  @route "prints"
-    path: "wydruki"
-
+    @route "egbilMap", {path: "mapa"}
+    @resource "egbilSearch", {path: "szukaj"}, ->
+      @route "jrg", {path: "jednostki rejestrowe gruntów i budynków"}
+      @route "jrb", {path: "jednostki rejestrowe budynków"}
+      @route "jrl", {path: "jednostki rejestrowe lokali"}
+      @route "oldJrg", {path: "stare jednostki rejestrowe gruntów"}
+      @route "lot", {path: "działki"}
+      @route "building", {path: "budynki"}
+      @route "local", {path: "lokale"}
+      @route "person", {path: "osoby fizyczne"}
+      @route "institution", {path: "instytucje"}
+      @route "group", {path: "podmioty grupowe"}
+      @route "landCommunity", {path: "zarządy wspolnot gruntowych"}
+      @route "document", {path: "dokumenty"}
+    @route "egbilList", {path: "wyniki"}
+    @resource "egbilObject", {path: "obiekt"}, ->
+      @route "jrg", {path: "jednostka rejestrowa gruntów i budynków/:name/:id"}
+      @route "jrb", {path: "jednostka rejestrowa budynków/:name/:id"}
+      @route "jrl", {path: "jednostka rejestrowa lokali/:name/:id"}
+      @route "oldJrg", {path: "stara jednostka rejestrowa gruntów/:name/:id"}
+      @route "document", {path: "dokument/:name/:id"}
+      @route "lot", {path: "działka/:name/:id"}
+      @route "building", {path: "budynek/:name/:id"}
+      @route "local", {path: "lokal/:name/:id"}
+      @route "person", {path: "osoba fizyczne/:name/:id"}
+      @route "institution", {path: "instytucja/:name/:id"}
+      @route "group", {path: "podmiot grupowy/:name/:id"}
+      @route "landCommunity", {path: "zarząd wspólnoty gruntowej/:name/:id"}
+  @resource "changes", {path: "zmiany"}, ->
+    @route "changesMap", {path: "mapa"}
+    @route "changesSearch", {path: "szukaj"}
+    @route "changesList", {path: "wyniki"}
+    @resource "changesObject", {path: "obiekt"}, ->
+      @route "change", {path: "zmiana/:name/:id"}
+  @resource "prints", {path: "wydruki"}, ->
+    @resource "extracts", {path: "wypisy"}, ->
+      @route "prg", {path: "wypis pełny z rejestru gruntów"}
+      @route "urg", {path: "wypis uproszczony z rejestru gruntów"}
+      @route "rb", {path: "wypis z rejestru budynków"}
+      @route "kb", {path: "wypis z kartoteki budynków"}
+      @route "rl", {path: "wypis z rejestru lokali"}
+      @route "kl", {path: "wypis z kartoteki lokali"}
+    @route "lotIndex", {path: "skorowidz działek"}
+    @resource "entityIndexes", {path: "skorowidze danych podmiotowych"}, ->
+      @route "entitiesIndex", {path: "wykaz podmiotów"}
+      @route "possesionsIndex", {path: "wykaz władających"}
+      @route "leasesIndex", {path: "wykaz dzierżawców"}
+      @route "incorrectShares", {path: "błędne udziały"}
+    @resource "rankings", {path: "wykazy i zestawienia"}, ->
+      @route "landsIndex", {path: "wykaz gruntów"}
+      @route "buildingsIndex", {path: "wykaz budynków"}
+      @route "localsIndex", {path: "wykaz lokali"}
+      @route "landsRanking", {path: "zestawienie gruntów"}
+      @route "terrainRanking", {path: "zestawienie użytków"}
+    @resource "changeNotification", {path: "zawiadomienie o zmianie"}, ->
+      @route "standardNotification" , {path: "zawiadomienie standardowe"}
+      @route "taxNotification" , {path: "zawiadomienie podatkowe"}
+      @route "taxClassification" , {path: "klasyfikacja podatkowa użytków"}
+    @route "changesApplicationReport", {path: "dziennik zgłoszeń zmian"}
+    @route "customReport", {path: "raporty dowolne"}
 
 #TODO: Rewrite to conform new router in the right way
 
-RouteWithParentMemory = Em.Route.extend
+App.Route = RouteWithParentMemory = Em.Route.extend
   defaultRoute: null
   defaultRouteModel: null
   #its rather unlikely that these computed properties will ever change
@@ -82,6 +75,12 @@ RouteWithParentMemory = Em.Route.extend
       parent = current
     null
     ).property()
+  isDynamic: (->
+    for handlerInfo in @router.router.currentHandlerInfos
+      if handlerInfo.handler == @
+        return handlerInfo.isDynamic
+    false
+    ).property()
   isLeafRoute: (-> !!@get("routeName").match(/^(index|.+\..+)$/)).property() # match index or <sth>.<sth> (don't change / to ")
   isIndexRoute: (-> !!@get("routeName").match(/(^|.+\.)index$/)).property() # match index or <sth>.index (don't change / to ")
 
@@ -91,7 +90,8 @@ RouteWithParentMemory = Em.Route.extend
       parent = @get "parent"
       if parent?
         parent.set "defaultRoute", routeName
-        parent.set "defaultRouteModel", @get "context" # or maybe better @modelFor(routeName)
+        if @get("isDynamic") #save model only is this is dynamic route
+          parent.set "defaultRouteModel", @get "context" # or maybe better @modelFor(routeName)
   redirect: ->
     if @get "isLeafRoute"
       parent = @get "parent"
@@ -229,7 +229,7 @@ RouteWithObjectParam = RouteWithParentMemory.extend
       _objectId: parseInt(params.id)
       _objectType: @get "objectType"
       _objectName: params.name
-    Em.run.sync() 
+    Em.run.sync()
     object
   serialize: (model, params) ->
     result =
@@ -274,3 +274,70 @@ App.EgbilObjectLandCommunityRoute = RouteWithObjectParam.extend
   objectOutletName: "egbilObjectLandCommunity"
 App.ChangesObjectChangeRoute = RouteWithObjectParam.extend
   objectOutletName: "changesObjectChange"
+
+
+
+App.PrintsRoute = RouteWithParentMemory.extend
+  defaultRoute: "extracts"
+App.PrintsIndexRoute = RouteWithParentMemory.extend()
+
+App.ExtractsRoute = RouteWithParentMemory.extend
+  defaultRoute: "extracts.prg"
+  model: -> App.PrintExtractsModel.create()
+  setupController: (controller, context) ->
+    @controllerFor("prints").set "content", context
+    controller.prepareModel?()
+App.ExtractsIndexRoute = RouteWithParentMemory.extend()
+App.ExtractsPrgRoute = RouteWithParentMemory.extend()
+App.ExtractsUrgRoute = RouteWithParentMemory.extend()
+App.ExtractsRbRoute = RouteWithParentMemory.extend()
+App.ExtractsKbRoute = RouteWithParentMemory.extend()
+App.ExtractsRlRoute = RouteWithParentMemory.extend()
+App.ExtractsKlRoute = RouteWithParentMemory.extend()
+
+App.PrintsLotIndexRoute = RouteWithParentMemory.extend
+  model: -> App.PrintLotIndexModel.create()
+  setupController: (controller, context) -> @controllerFor("prints").set "content", context
+
+App.EntityIndexesRoute = RouteWithParentMemory.extend
+  model: -> App.PrintEntityIndexesModel.create()
+  setupController: (controller, context) -> @controllerFor("prints").set "content", context
+App.EntityIndexesIndexRoute = RouteWithParentMemory.extend()
+App.EntityIndexesEntitiesIndexRoute = RouteWithParentMemory.extend()
+App.EntityIndexesPossesionsIndexRoute = RouteWithParentMemory.extend()
+App.EntityIndexesLeasesIndexRoute = RouteWithParentMemory.extend()
+App.EntityIndexesIncorrectSharesRoute = RouteWithParentMemory.extend()
+
+App.RankingsRoute = RouteWithParentMemory.extend
+  model: -> App.PrintRankingsModel.create()
+  setupController: (controller, context) -> @controllerFor("prints").set "content", context
+App.RankingsIndexRoute = RouteWithParentMemory.extend()
+App.RankingsLandsIndexRoute = RouteWithParentMemory.extend
+  model: -> @modelFor "rankings"
+App.RankingsBuildingsIndexRoute = RouteWithParentMemory.extend
+  model: -> @modelFor "rankings"
+App.RankingsLocalsIndexRoute = RouteWithParentMemory.extend
+  model: -> @modelFor "rankings"
+App.RankingsLandsRankingRoute = RouteWithParentMemory.extend
+  model: -> @modelFor "rankings"
+App.RankingsTerrainRankingRoute = RouteWithParentMemory.extend
+  model: -> @modelFor "rankings"
+
+App.ChangeNotificationRoute = RouteWithParentMemory.extend
+  model: -> App.PrintChangeNotificationModel.create()
+  setupController: (controller, context) -> @controllerFor("prints").set "content", context
+App.ChangeNotificationIndexRoute = RouteWithParentMemory.extend()
+App.ChangeNotificationStandardNotificationRoute = RouteWithParentMemory.extend
+  model: -> @modelFor "changeNotification"
+App.ChangeNotificationTaxNotificationRoute = RouteWithParentMemory.extend
+  model: -> @modelFor "changeNotification"
+App.ChangeNotificationTaxClassificationRoute = RouteWithParentMemory.extend
+  model: -> @modelFor "changeNotification"
+
+App.PrintsChangesApplicationReportRoute = RouteWithParentMemory.extend
+  model: -> App.PrintChangesApplicationReportModel.create()
+  setupController: (controller, context) -> @controllerFor("prints").set "content", context
+
+App.PrintsCustomReportRoute = RouteWithParentMemory.extend
+  model: -> App.PrintCustomReportModel.create()
+  setupController: (controller, context) -> @controllerFor("prints").set "content", context

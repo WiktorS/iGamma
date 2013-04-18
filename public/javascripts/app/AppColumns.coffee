@@ -123,6 +123,8 @@ App.Columns = Em.Object.create
     label: "Charakter władania B"
   characterG: App.StandardTableCellModel.create
     label: "Charakter władania G"
+  characterL: App.StandardTableCellModel.create
+    label: "Charakter władania L"
   shareValue: App.StandardTableCellModel.create
     label: "Udział"
   registerGroupB: App.StandardTableCellModel.create
@@ -437,3 +439,19 @@ App.Columns = Em.Object.create
     label: "Wprowadził"
   acceptedBy: App.StandardTableCellModel.create
     label: "Zaakceptował"
+
+  #clause
+  clauseText: App.StandardTableCellModel.create
+    label: "Treść"
+  clauseEdit: App.StandardTableCellModel.create
+    label: "Edytuj"
+    viewClass: "App.GammaListTableCellEditButtonView"
+
+  #precinct
+  name: App.StandardTableCellModel.create
+    label:  "Nazwa"
+  desc: App.StandardTableCellModel.create
+    label:  "Opis"
+
+  g5: App.StandardTableCellModel.create
+    label:  "Identyfikator G5"

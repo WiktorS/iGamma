@@ -198,7 +198,7 @@ App.GammaController = Em.Controller.extend
           for item in data
             contentItems = fetchQueue.filter((x) -> item.id == x.get "id")
             Em.assert "Received data for item with id '#{item.id}', but did not found it in list content!", !!contentItems
-            for contentItem in contentItems            
+            for contentItem in contentItems
               contentClass = @get "objectModel.#{type}"
               mappedItem = App.Common.toModel.call(contentClass, item)
               Em.run.sync() #sync bindings!
@@ -283,23 +283,6 @@ App.GammaController = Em.Controller.extend
 
   showCustomReportModal: (simpleList) ->
     customReportModal = App.CustomReportModalView.modal()
-    $.ajax
-      url: "getCustomReportData.json"
-      data:
-        object: simpleList
-      success: (data) ->
-        if !Em.isEmpty data
-          customReportModal.set "attributeList", data.attributeList.map(((x) ->
-            @create x ? Em.Object.create(),
-              isChosen: false
-              displayValue: x.name
-            ), Em.Object)
-          customReportModal.set "configurationList", data.configurationList.map(((x) ->
-            @create x ? Em.Object.create()
-            ), Em.Object)
-          customReportModal.set "unitList", data.unitList
-        else
-          alert "Nie znaleziono rekordu"  #TODO: Error handling
 
   showDifferenceReportModal: (objectList) ->
     differenceReportModal = App.DifferenceReportModalView.modal()

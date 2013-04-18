@@ -1,0 +1,124 @@
+<script type="text/x-handlebars" data-template-name="extractsTabGeneral">
+    <div class="row">
+        <fieldset class="span4">
+            {{#if isUrg}}
+            <div class="control-group">
+                <label class="control-label">Sortowanie</label>
+                <div class="controls">
+                    {{#view App.PrintRadioGroupView valueBinding="content.sort"}}
+                        {{view App.PrintRadioView value="byLot" label="wg nr działek"}}
+                        {{view App.PrintRadioView value="byCadastralUnit" label="wg nr JR"}}
+                    {{/view}}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Numer wpisu</label>
+                <div class="controls">
+                    {{view Em.TextField valueBinding="content.number"}}
+                </div>
+            </div>
+            {{/if}}
+            <div class="control-group">
+                <div class="controls">
+                    {{view App.PrintCheckView valueBinding="content.shareInfo" label="Informacje o udziałach na dokumencie"}}
+                    <div class="form-indent">
+                        {{view App.PrintCheckView valueBinding="content.noPersonalData" label="Bez danych osób fizycznych" disabledBinding="disableNoPersonalData"}}
+                        <div class="form-indent">
+                            {{view App.PrintCheckView valueBinding="content.noPESEL" label="Bez PESEL" disabledBinding="disableNoPESEL"}}
+                        </div>
+                        {{view App.PrintCheckView valueBinding="content.chosenShares" label="Wybrane udziały" disabledBinding="disableChosenShares"}}
+                        {{#if isPrg}}
+                        {{view App.PrintCheckView valueBinding="content.otherCadastralUnitForPersons" label="Wykaz pozostałych JR dla osób" disabledBinding="disableOtherCadastralUnitForPersons"}}
+                        {{/if}}
+                    </div>
+                    {{view App.PrintCheckView valueBinding="content.accounted" label="Ewidencjonowany"}}
+                    {{#if isPrg}}
+                    {{view App.PrintCheckView valueBinding="content.noPendingChanges" label="Bez zmian oczekujących"}}
+                    {{view App.PrintCheckView valueBinding="content.eachLotIndependent" label="Każda działka niezależnie"}}
+                    {{view App.PrintCheckView valueBinding="content.lotNotes" label="Uwagi działek"}}
+                    {{view App.PrintCheckView valueBinding="content.chosenLots" label="Wybrane działki"}}
+                    {{/if}}
+                    {{#unless isPrg}}
+                    {{view App.PrintCheckView valueBinding="content.inlucdeClauses" label="Klauzule"}}
+                    {{/unless}}
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="span4">
+            <div class="control-group">
+                <div class="controls">
+                    {{#view App.PrintRadioGroupView valueBinding="content.state"}}
+                        {{view App.PrintRadioView value="current" label="stan aktualny"}}
+                        {{view App.PrintRadioView value="forDay" label="stan na dzień"}}
+                    {{/view}}
+                    <span class="input-append">
+                        {{view Em.TextField valueBinding="content.stateDay"}}
+                        <a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    {{#if isPrg}}
+                    {{view App.PrintCheckView valueBinding="content.extractAndSketch" label="Wypis i wyrys"}}
+                    {{view App.PrintCheckView valueBinding="content.simpleExtractForNeighboringLots" label="Wypis uproszczony dla działek sąsiednich"}}
+                    {{view App.PrintCheckView valueBinding="content.buildingIndexExtract" label="Wyciąg z kartoteki budynków"}}
+                    {{view App.PrintCheckView valueBinding="content.localIndexExtract" label="Wyciąg z kartoteki lokali"}}
+                    <div class="controls-row">
+                        {{#view App.PrintRadioGroupView valueBinding="content.localIndex"}}
+                            {{view App.PrintRadioView value="chosenPerson" label="Lokale wybranych osób" disabledBinding="disableLocalIndex"}}
+                            {{view App.PrintRadioView value="all" label="Wszystkie lokale" disabledBinding="disableLocalIndex"}}
+                        {{/view}}
+                    </div>
+                    {{view App.PrintCheckView valueBinding="content.includeClauses" label="Klauzule"}}
+                    {{view App.PrintCheckView valueBinding="content.extractNote" label="Notatka na wypisie"}}
+                    <div class="control-group">
+                        <div class="controls">
+                            {{view Em.TextArea rows="3" valueBinding="content.extractNoteText"}}
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    {{#if isUrg}}
+                    {{view App.PrintCheckView valueBinding="content.lotAddresses" label="Adresy działek"}}
+                    {{view App.PrintCheckView valueBinding="content.noPendingChanges" label="Bez zmian oczekujących"}}
+                    {{view App.PrintCheckView valueBinding="content.eachLotIndependent" label="Każda działka niezależnie"}}
+                    {{view App.PrintCheckView valueBinding="content.terrainCategories" label="Klasoużytki"}}
+                    {{view App.PrintCheckView valueBinding="content.lotNotes" label="Uwagi działek"}}
+                    {{/if}}
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    {{#if isJrb}}
+                    {{view App.PrintCheckView valueBinding="content.eachBuidingIndependent" label="Każdy budynek niezależnie"}}
+                    {{view App.PrintCheckView valueBinding="content.buildingNotes" label="Uwagi budynków"}}
+                    {{view App.PrintCheckView valueBinding="content.chosenBuildings" label="Wybrane budynki"}}
+                    {{/if}}
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    {{#if isJrl}}
+                    {{view App.PrintCheckView valueBinding="content.eachLocalIndependent" label="Każdy local niezależnie"}}
+                    {{view App.PrintCheckView valueBinding="content.localNotes" label="Uwagi lokali"}}
+                    {{view App.PrintCheckView valueBinding="content.chosenLocals" label="Wybrane lokale"}}
+                    {{/if}}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Format pliku</label>
+                <div class="controls">
+                    {{view Em.Select contentBinding="fileFormatList"
+                        optionLabelPath="content.displayValue"
+                        optionValuePath="content.value"
+                        valueBinding="content.fileFormat"
+                    }}
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</script>

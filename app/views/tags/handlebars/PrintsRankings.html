@@ -1,0 +1,12 @@
+<script type="text/x-handlebars" data-template-name="rankings">
+    <div class="span4">
+        <span class="clearfix">Jednostka ewidencyjna:</span>
+        {{view Em.Select contentBinding="cadastralUnitList" valueBinding="selectedCadastralUnit" optionLabelPath="content._objectDescription"}}
+        <span class="clearfix">Obręby:</span>
+        {{view App.ModelTableView contentBinding="precinctList" columnsBinding="precinctColumns"}}
+    </div>
+    <div class="span8">
+        Parametry dokumentu
+        {{outlet}}
+    </div>
+</script>

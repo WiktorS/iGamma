@@ -1,0 +1,79 @@
+<script type="text/x-handlebars" data-template-name="prints/changesApplicationReport">
+    <div class="span4">
+        <span class="clearfix">Jednostka ewidencyjna:</span>
+        {{view Em.Select contentBinding="cadastralUnitList" valueBinding="selectedCadastralUnit" optionLabelPath="content._objectDescription"}}
+        <span class="clearfix">Obręby:</span>
+        {{view App.ModelTableView contentBinding="precinctList" columnsBinding="precinctColumns"}}
+    </div>
+    <div class="span8">
+        <div class="row">
+            <fieldset class="span4">
+                <legend>Rodzaje zmian<legend>
+                {{view App.PrintCheckView valueBinding="content.changeRegistered" label="Zarejestrowane"}}
+                {{view App.PrintCheckView valueBinding="content.changeAccepted" label="Zaakceptowane"}}
+                {{view App.PrintCheckView valueBinding="content.changeCanceled" label="Anulowane"}}
+                {{view App.PrintCheckView valueBinding="content.changeDenied" label="Odmowa wprowadzenia"}}
+            </fieldset>
+            <fieldset class="span4">
+                <legend>Sortowanie</legend>
+                {{#view App.PrintRadioGroupView valueBinding="content.sort"}}
+                    {{view App.PrintRadioView value="change" label="wg numeru zmiany"}}
+                    {{view App.PrintRadioView value="office" label="wg numeru kancelaryjnego"}}
+                    {{view App.PrintRadioView value="introduce" label="wg daty wprowadzenia"}}
+                    {{view App.PrintRadioView value="register" label="wg daty rejestracji"}}
+                    {{view App.PrintRadioView value="address" label="wg adresu"}}
+                {{/view}}
+            </fieldset>
+        </div>
+        <div class="row">
+            <div class="span4">
+                <div class="row">
+                    <fieldset class="span4">
+                        <legend>&nbsp;</legend>
+                        {{view App.PrintCheckView valueBinding="content.printRegisterUnitList" label="Drukuj listę JR"}}
+                    </fieldset>
+                    <fieldset class="span4">
+                        <legend>&nbsp;</legend>
+                        {{#view App.PrintRadioGroupView valueBinding="content.precinct"}}
+                            {{view App.PrintRadioView value="registeredChanges" label="wg obrębu rejestracji zmiany"}}
+                            {{view App.PrintRadioView value="changedRegisterUnits" label="wg obrębu zmienionych JR"}}
+                        {{/view}}
+                    </fieldset>
+                </div>
+            </div>
+            <fieldset class="span4">
+                <legend>Rodzaje raportu</legend>
+                {{#view App.PrintRadioGroupView valueBinding="content.report"}}
+                    {{view App.PrintRadioView value="full" label="Pełny"}}
+                    {{view App.PrintRadioView value="simple" label="Uproszczony"}}
+                    {{view App.PrintRadioView value="report" label="Zestawienie dokumentów zmian"}}
+                {{/view}}
+            </fieldset>
+        </div>
+        <div class="row">
+            <div class="span4">
+                <div class="row">
+                    <fieldset class="span4">
+                        <legend>&nbsp;</legend>
+                        {{#view App.PrintRadioGroupView valueBinding="content.filterDate"}}
+                            {{view App.PrintRadioView value="register" label="wg daty rejestracji"}}
+                            {{view App.PrintRadioView value="introduce" label="wg daty wprowadzenia"}}
+                            {{view App.PrintRadioView value="year" label="wg roki i numeru zmiany"}}
+                        {{/view}}
+                    </fieldset>
+                    <fieldset class="span4">
+                        <legend>Zakres dat</legend>
+                        <label>od</label>
+                        {{view Em.TextField valueBinding="content.filterDateFrom"}}
+                        <label>do</label>
+                        {{view Em.TextField valueBinding="content.filterDateTo"}}
+                    </fieldset>
+                </div>
+            </div>
+            <fieldset class="span4">
+                <legend>Opis wydruku</legend>
+                {{view Em.TextArea rows="5" valueBinding="content.description"}}
+            </fieldset>
+        </div>
+    </div>
+</script>

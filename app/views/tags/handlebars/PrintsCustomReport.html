@@ -1,0 +1,152 @@
+<script type="text/x-handlebars" data-template-name="prints/customReport">
+    <div class="span4">
+        {{!view App.DropDownView contentBinding="objectTypes" valueBinding="selectedObjectType"}}
+        <span class="clearfix">
+            <button class="btn btn-primary" {{action selectObjects}}>Wybierz &gt;&gt;</button>
+        </span>
+        <span class="clearfix">Obiekty:</span>
+        {{view App.ModelTableView contentBinding="objectList" columnsBinding="objectColumns"}}
+    </div>
+    <div class="span8">
+        <div class="row-fluid">
+            <div class="span5">
+                <fieldset>
+                    <legend>Atrybuty do wyboru</legend>
+                    {{view Em.Select classNames="btn-block"
+                        multiple=true
+                        size=20                                                *{TODO: Ember does not support 'size' currently}*
+                        contentBinding="possibleAttributeList"
+                        selectionBinding="selectedPossibleAttributeList"
+                        optionLabelPath="content.label"
+                        optionValuePath="content"
+                    }}
+                </fieldset>
+            </div>
+            <div class="span7">
+                <fieldset>
+                    <legend>Atrybuty wybrane</legend>
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <button {{bindAttr class=":btn :btn-block anyPossibleAttributeSelected::disabled"}} {{action "onAddAttribute"}}>Dodaj &gt;&gt;</button>
+                            <button {{bindAttr class=":btn :btn-block anyChosenAttributeSelected::disabled"}} {{action "onDelAttribute"}}>&lt;&lt; Usuń</button>
+                        </div>
+                        <div class="span8">
+                            {{view Em.Select classNames="btn-block"
+                                multiple=true
+                                contentBinding="chosenAttributeList"
+                                selectionBinding="selectedChosenAttributeList"
+                                optionLabelPath="content.label"
+                                optionValuePath="content"
+                            }}
+                        </div>
+                        <div class="span1">
+                            <button {{bindAttr class=":btn :btn-block disableMoveUpSelectedChosenAttribute:disabled"}} {{action "onUpAttribute"}}><i class="icon-arrow-up"></i></button>
+                            <button {{bindAttr class=":btn :btn-block disableMoveDownSelectedChosenAttribute:disabled"}} {{action "onDownAttribute"}}><i class="icon-arrow-down"></i></button>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-horizontal">
+                    <legend>Atrybuty</legend>
+                    <div class="control-group">
+                        <label class="control-label">Etykieta</label>
+                        <div class="controls">
+                            {{view Em.TextField valueBinding="selectedChosenAttribute.label" disabledBinding="disableAttributeEdit"}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Precyzja</label>
+                        <div class="controls">
+                            {{view Em.Select contentBinding="precisionList"
+                                valueBinding="selectedChosenAttribute.precision"
+                                optionLabelPath="content.displayValue"
+                                optionValuePath="content.value"
+                                disabledBinding="disableAttributeEdit"
+                            }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Jednostka</label>
+                        <div class="controls">
+                            {{view Em.Select contentBinding="unitList"
+                                valueBinding="selectedChosenAttribute.unit"
+                                optionLabelPath="content.displayValue"
+                                optionValuePath="content.value"
+                                disabledBinding="disableAttributeEdit"
+                            }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                {{view Em.Checkbox checkedBinding="selectedChosenAttribute.sumUp" disabledBinding="disableAttributeEdit"}}
+                                Sumowanie
+                            </label>
+                        </div>
+                        <div class="controls">
+                            <label class="checkbox">
+                                {{view Em.Checkbox checkedBinding="selectedChosenAttribute.dictionaryLegend" disabledBinding="disableAttributeEdit"}}
+                                Legenda dla słowników
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span5">
+                <fieldset>
+                    <legend>Konfiguracje</legend>
+                    <div class="row-fluid">
+                        <div class="span9">
+                            {{view Em.Select classNames="btn-block"
+                                multiple=true
+                                contentBinding="configurationList"
+                                selectionBinding="selectedConfigurationList"
+                                optionLabelPath="content.name"
+                                optionValuePath="content"
+                            }}
+                        </div>
+                        <div class="span3">
+                            <button {{bindAttr class=":btn :btn-block"}} {{action "onLoadConfig"}}>Wczytaj</button>
+                            <button {{bindAttr class=":btn :btn-block"}} {{action "onSaveConfig"}}>Zapisz</button>
+                            <button {{bindAttr class=":btn :btn-block anyConfigurationSelected::disabled"}} {{action "onRemoveConfig"}}>Usuń</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="span7">
+                <fieldset class="form-horizontal">
+                    <legend>Opcje raportu</legend>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                {{view Em.Checkbox checkedBinding="content.attributeLegend"}}
+                                Legenda nazw atrybutów
+                            </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Linia rozdzielająca</label>
+                        <div class="controls">
+                            {{view Em.Select contentBinding="lineBreakList"
+                                optionLabelPath="content.displayValue"
+                                optionValuePath="content.value"
+                                valueBinding="content.lineBreak"
+                            }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Format pliku</label>
+                        <div class="controls">
+                            {{view Em.Select contentBinding="fileFormatList"
+                                optionLabelPath="content.displayValue"
+                                optionValuePath="content.value"
+                                valueBinding="content.fileFormat"
+                            }}
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</script>

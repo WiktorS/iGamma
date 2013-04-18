@@ -25,6 +25,22 @@ GET     /getShares.json                           IntegraJson.getShares
 GET     /getChanges.json                          IntegraJson.getChanges
 
 GET     /getSystematics.json                      IntegraJson.getSystematics
+GET     /getCadastralUnits.json                   IntegraJson.getCadastralUnits
+GET     /getPrecincts.json                        IntegraJson.getPrecincts
+
+GET     /getPrintClauses.json                     IntegraJson.getPrintClauses
+GET     /getCustomReportData.json                 IntegraJson.getCustomReportData
+GET     /removeCustomReportConfig.json            IntegraJson.removeCustomReportConfig
+GET     /saveCustomReportConfig.json              IntegraJson.saveCustomReportConfig
+
+POST    /print/extracts                           IntegraJson.printExtracts
+POST    /print/lotIndex                           IntegraJson.printLotIndex
+POST    /print/entityIndexes                      IntegraJson.printEntityIndexes
+POST    /print/rankings                           IntegraJson.printRankings
+POST    /print/changeNotification                 IntegraJson.printChangeNotification
+POST    /print/changesApplicationReport           IntegraJson.printChangesApplicationReport
+POST    /print/customReport                       IntegraJson.printCustomReport
+
 
 #Integra documents
 GET     /getTerrainCategorySummary                IntegraJson.getTerrainCategorySummary

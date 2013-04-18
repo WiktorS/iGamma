@@ -1,0 +1,62 @@
+<script type="text/x-handlebars" data-template-name="rankings/buildingsIndex">
+    Parametry dokumentu
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                {{#view App.PrintRadioGroupView valueBinding="content.area"}}
+                    {{view App.PrintRadioView value="urban" label="obszar miejski"}}
+                    {{view App.PrintRadioView value="rural" label="obszar wiejski"}}
+                {{/view}}
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                {{#view App.PrintRadioGroupView valueBinding="content.state"}}
+                    {{view App.PrintRadioView value="current" label="stan aktualny"}}
+                    {{view App.PrintRadioView value="forDay" label="stan na dzień"}}
+                    <span class="input-append">
+                        {{view Em.TextField valueBinding="content.stateDay"}}
+                        <a {{action "clearField"}} class="btn"><i class="icon-ban-circle"></i></a>
+                    </span>
+                {{/view}}
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        Liczba budynków
+        <div class="control-group">
+            <label class="control-label">Miejsca dziesiętne</label>
+            <div class="controls">
+                <div class="input-append">
+                    {{view Em.TextField valueBinding="content.decimals"}}
+                    <a {{action "clearField"}} class="btn"><i class="icon-ban-circle"></i></a>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                {{view App.PrintCheckView valueBinding="content.saveSheet" label="Zapis danych do arkusza"}}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="exportFile">Plik eksportu (z GUGIK)</label>
+            <div class="controls">
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="input-append btn-group">
+                        <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div>
+                        <span class="btn btn-file">
+                            <span class="fileupload-new"><i class="icon-folder-open"></i></span>
+                            <span class="fileupload-exists"><i class="icon-folder-open"></i></span>
+                            <input type="file" id="exportFile" name="exportFile"/>
+                        </span>
+                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload"><i class="icon-remove"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</script>

@@ -14,24 +14,18 @@ App.ModalView = Em.View.extend
 
   didInsertElement: ->
     @_super()
-    @$().on "show", (e) => @onShow(e)
-    @$().on "shown", (e) => @onShown(e)
-    @$().on "hide", (e) => @onHide(e)
-    @$().on "hidden", (e) => @onHidden(e)
+    @on "show", @, (e) -> @onShow(e)
+    @on "shown", @, (e) -> @onShown(e)
+    @on "hide", @, (e) -> @onHide(e)
+    @on "hidden", @, (e) ->
+      @onHidden(e)
+      @destroy() if @get "destroyAfterHide"
     @showModal()
 
-  onShow: (e) ->
-    return
-
-  onShown: (e) ->
-    return
-
-  onHide: (e) ->
-    return
-
-  onHidden: (e) ->
-    @destroy() if @get "destroyAfterHide"
-    return
+  onShow: Em.K
+  onShown: Em.K
+  onHide: Em.K
+  onHidden: Em.K
 
 App.ModalView.reopenClass
   modal: ->

@@ -1,58 +1,62 @@
 {
-  "attributeList": [
+  "attributes": [
     {
-      "name": "Test1",
-      "type": "",
-      "precision": "1",
-      "unit": "m2",
-      "sumUp": false,
-      "dictionaryLegend": false
-    },
-    {
-      "name": "Test2",
-      "type": "",
-      "precision": "2",
-      "unit": "a",
+      "name": "a",
+      "label": "Test1",
+      "precision": 1,
+      "unit": 0,
       "sumUp": true,
+      "dictionary": true,
       "dictionaryLegend": false
     },
     {
-      "name": "Test3",
-      "type": "",
-      "precision": "3",
-      "unit": "ha",
+      "name": "b",
+      "label": "Test2",
+      "precision": 2,
+      "unit": 1,
       "sumUp": false,
+      "dictionary": false,
+      "dictionaryLegend": false
+    },
+    {
+      "name": "c",
+      "label": "Test3",
+      "precision": 3,
+      "unit": 2,
+      "sumUp": true,
+      "dictionary": true,
       "dictionaryLegend": true
     },
     {
-      "name": "Test4",
-      "type": "",
-      "precision": "4",
-      "unit": "km2",
-      "sumUp": true,
+      "name": "d",
+      "label": "Test4",
+      "precision": 4,
+      "unit": 3,
+      "sumUp": false,
+      "dictionary": true,
       "dictionaryLegend": true
     }
   ],
-  "unitList": [
-    "m2",
-    "a",
-    "ha",
-    "km2"
-  ],
-  "configurationList": [
+  "configurations": [
     {
       "name": "Config1",
-      "selectedAttributeList": [
+      "attributes": [
         {
-          "name": "Test1",
-          "displayValue": "QWERTY"
-        },
-        {
-          "name": "Test4",
-          "precision": "2",
-          "unit": "a"
+          "name": "d",
+          "label": "123",
+          "precision": 4,
+          "unit": 3,
+          "sumUp": false,
+          "dictionary": true,
+          "dictionaryLegend": true
         }
-      ]
+      ],
+      "attributeLegend": false,
+      "lineBreak": 0,
+      "fileFormat": "html"
     }
-  ]
+  ],
+  "attributeLegend": true,
+  "lineBreak": 5,
+  "fileFormat": "html"
 }

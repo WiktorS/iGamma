@@ -1,6 +1,8 @@
 App.GammaCacheController = Em.Controller.extend
   _cacheValidTime: 30 #minutes
   systematics: Em.A()
+  cadastralUnits: Em.A()
+  precincts: Em.A()
 
   init: ->
     @_super()
@@ -10,47 +12,91 @@ App.GammaCacheController = Em.Controller.extend
       id: 0
 
   getSystematics: (idList = Em.A(), callback) ->
-    cachedSystematics = @get("systematics").filter((item, index, enumerable) => idList.contains(item.id))
+    systematics = @get "systematics"
+    rootFetch = Em.isEmpty(idList)
+    if rootFetch
+      cachedSystematics = Em.makeArray(systematics.find((item) -> item.id == 0))
+    else
+      cachedSystematics = systematics.filter((item) -> idList.contains(item.id))
     validDate = new Date()
     validDate.setMinutes(validDate.getMinutes() - @get("_cacheValidTime"))
-    outdatedCachedSystematics = cachedSystematics.filter((item, index, enumerable) => !item.cacheDate? || item.cacheDate < validDate)
+    outdatedCachedSystematics = cachedSystematics.filter((item) -> !(cacheDate = item.get("_cacheDate")) || cacheDate < validDate)
     fetchIdList = Em.A()
-    if !Em.isEmpty(outdatedCachedSystematics)
+    if !Em.isEmpty(outdatedCachedSystematics) && !rootFetch
       for systematicObj in outdatedCachedSystematics
         fetchIdList.addObject systematicObj.id
-    if !Em.isEmpty(fetchIdList) || Em.isEmpty(idList)
+        systematics.removeObject systematicObj
+    if !Em.isEmpty(outdatedCachedSystematics)
       $.ajax
         url: "/getSystematics.json"
         data:
           parentIdList: fetchIdList
-        success: (data) =>
-          if data?
-            for node in data
-              if node
-                foundNode = @get("systematics").findProperty("id", node.id)
-                if foundNode?
-                  idx = @get("systematics").indexOf foundNode
-                  foundNode.set("parentId", node.parentId)
-                  foundNode.set("id", node.id)
-                  foundNode.set("name", node.name)
-                  foundNode.set("desc", node.desc)
-                else
-                  newNode = App.SystematicModel.create
-                    parentId: node.parentId
-                    id: node.id
-                    name: node.name
-                    desc: node.desc
-                  @get("systematics").addObject newNode
-
-          if Em.isEmpty fetchIdList
-            foundNode = @get("systematics").findProperty("id", 0)
-            foundNode?.set("cacheDate", new Date())
+        success: (data) ->
+          for node in (data || [])
+            if node
+              systematic = App.SystematicModel.create
+                parentId: node.parentId
+                id: node.id
+                name: node.name
+                desc: node.desc
+              systematics.removeObject oldSystematic if (oldSystematic = systematics.findProperty "id", item.id)
+              systematics.addObject systematic
+          if rootFetch
+            systematics.findProperty("id", 0)?.set "_cacheDate", new Date()
           else
             for id in fetchIdList
-              node = @get("systematics").findProperty("id", id)
-              node?.set("cacheDate", new Date())
+              systematics.findProperty("id", id)?.set "_cacheDate", new Date()
+          callback?.call callback
+    else
+      callback?.call callback
+
+  getCadastralUnits: (callback) ->
+    cadastralUnits = @get("cadastralUnits")
+    validDate = new Date()
+    validDate.setMinutes(validDate.getMinutes() - @get("_cacheValidTime"))
+    outdatedCadastralUnits = cadastralUnits.filter((item) -> !(cacheDate = item.get("_cacheDate")) || cacheDate < validDate)
+    if !Em.isEmpty(outdatedCadastralUnits)
+      for systematicObj in outdatedCadastralUnits
+        cadastralUnits.removeObject systematicObj
+    if !Em.isEmpty(outdatedCadastralUnits) || Em.isEmpty(cadastralUnits)
+      $.ajax
+        url: "/getCadastralUnits.json"
+        success: (data) ->
+          for item in (data || [])
+            if item
+              cadastralUnit = App.Common.toModel.call(App.CadastralUnitModel, item)
+              cadastralUnits.set("_cacheDate", new Date())
+              cadastralUnits.removeObject oldCadastralUnit if (oldPrecinct = cadastralUnits.findProperty "id", item.id)
+              cadastralUnits.addObject cadastralUnit
+          Em.run.sync() #sync bindings!
           callback?.call(callback)
-          return
     else
       callback?.call(callback)
 
+  getPrecincts: (idList, callback) ->
+    precincts = @get "precincts"
+    cachedPrecincts = precincts.filter((item) -> idList.contains(item.id))
+    fetchIdList = Em.makeArray idList.filter((id) -> !cachedPrecincts.someProperty("id", id))
+    validDate = new Date()
+    validDate.setMinutes(validDate.getMinutes() - @get("_cacheValidTime"))
+    outdatedCachedPrecincts = cachedPrecincts.filter((item) -> !(cacheDate = item.get("_cacheDate")) || cacheDate < validDate)
+    if !Em.isEmpty(outdatedCachedPrecincts)
+      for outdated in outdatedCachedPrecincts
+        fetchIdList.addObject outdated.id
+        precincts.removeObject outdated
+    if !Em.isEmpty(fetchIdList)
+      $.ajax
+        url: "/getPrecincts.json"
+        data:
+          idList: fetchIdList
+        success: (data) ->
+          for item in (data || [])
+            if item
+              precinct = App.Common.toModel.call(App.PrecinctModel, item)
+              precinct.set "_cacheDate", new Date()
+              precincts.removeObject oldPrecinct if (oldPrecinct = precincts.findProperty "id", item.id)
+              precincts.addObject precinct
+          Em.run.sync() #sync bindings!
+          callback?.call callback
+    else
+      callback?.call callback

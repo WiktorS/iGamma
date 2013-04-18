@@ -40,13 +40,14 @@ public class IntegraServer {
     public static Integra createServer() {
         Logger.info("Using source: '%s'", integraSource);
         if (integraSource.equals("mock")) {
-            return new IntegraMock();
+            return new IntegraMockImplementation();
         }
         else if (integraSource.equals("jna")) {
             return new IntegraJnaImplementation();
         }
-        else {
-            return new IntegraImplementation();
+        else if (integraSource.equals("ws")) {
+            return new IntegraWSImplementation();
         }
+        return new IntegraMockImplementation();
     }
 }

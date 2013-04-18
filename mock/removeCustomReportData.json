@@ -1,0 +1,44 @@
+{
+  "attributes": [
+    {
+      "name": "a",
+      "label": "Test1",
+      "precision": 1,
+      "unit": 0,
+      "sumUp": true,
+      "dictionary": true,
+      "dictionaryLegend": false
+    },
+    {
+      "name": "b",
+      "label": "Test2",
+      "precision": 2,
+      "unit": 1,
+      "sumUp": false,
+      "dictionary": false,
+      "dictionaryLegend": false
+    },
+    {
+      "name": "c",
+      "label": "Test3",
+      "precision": 3,
+      "unit": 2,
+      "sumUp": true,
+      "dictionary": true,
+      "dictionaryLegend": true
+    },
+    {
+      "name": "d",
+      "label": "Test4",
+      "precision": 4,
+      "unit": 3,
+      "sumUp": false,
+      "dictionary": true,
+      "dictionaryLegend": true
+    }
+  ],
+  "configurations": [],
+  "attributeLegend": false,
+  "lineBreak": 0,
+  "fileFormat": "HTML"
+}

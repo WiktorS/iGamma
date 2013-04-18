@@ -1,0 +1,22 @@
+[
+  {
+    "id" : 1,
+    "name" : "0001",
+    "desc" : "Kamienna"
+  },
+  {
+    "id" : 2,
+    "name" : "0002",
+    "desc" : "Babi Mór"
+  },
+  {
+    "id" : 3,
+    "name" : "0003",
+    "desc" : "Za Lasem"
+  },
+  {
+    "id" : 4,
+    "name" : "0004",
+    "desc" : "Edwardowo"
+  }
+]

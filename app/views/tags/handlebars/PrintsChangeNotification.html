@@ -1,0 +1,13 @@
+<script type="text/x-handlebars" data-template-name="changeNotification">
+    <div class="span4">
+        <span class="clearfix">Zmiana:</span>
+        {{!view Em.TextField contentBinding="changeName"}}
+        <a class="btn" {{action "chooseChange"}}>{{changeChooserText}}</a>
+        <span class="clearfix">Jednostki rejestrowe objęte Zmianą:</span>
+        {{view App.ModelTableView contentBinding="registerUnitList" columnsBinding="registerUnitColumns"}}
+    </div>
+    <div class="span8">
+        Parametry dokumentu
+        {{outlet}}
+    </div>
+</script>

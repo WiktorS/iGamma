@@ -214,6 +214,7 @@ App.GammaListTableCellIsValueView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{#unless view.isEmptyValue}}<i class=\"icon-white icon-ok\"></i>{{/unless}}"
   isEmptyValue: (-> Ember.isEmpty(@get "column.data.value")).property("column.data.value")
 
+
 App.GammaListTableCellJRChangeView = App.ModelTableCellView.extend
   template: Em.Handlebars.compile "{{view.displayValue}}"
   displayValue: (->
@@ -223,3 +224,29 @@ App.GammaListTableCellJRChangeView = App.ModelTableCellView.extend
     valueItem = list?.findProperty("id", @get "content.id")
     valueItem?.get valueName
     ).property("controller.content", "content.id", "column.data.valueName", "column.data.value")
+
+
+App.GammaListTableCellEditButtonView = App.ModelTableCellView.extend
+  templateName: "gammaListTableCellEditButton"
+
+  disabledBinding: "content.disabled"
+  inEditBinding: "content.inEdit"
+
+  edit: ->
+    @set "inEdit", true
+    controller = @get "controller"
+    controller.edit @get("content") if "function" == typeof controller.edit
+
+  reset: ->
+    controller = @get "controller"
+    controller.reset @get("content") if "function" == typeof controller.reset
+
+  cancel: ->
+    @set "inEdit", false
+    controller = @get "controller"
+    controller.cancel @get("content") if "function" == typeof controller.cancel
+
+  save: ->
+    @set "inEdit", false
+    controller = @get "controller"
+    controller.save @get("content") if "function" == typeof controller.save

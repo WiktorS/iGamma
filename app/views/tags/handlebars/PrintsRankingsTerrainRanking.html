@@ -1,0 +1,17 @@
+<script type="text/x-handlebars" data-template-name="rankings/terrainRanking">
+    Parametry dokumentu
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                {{#view App.PrintRadioGroupView valueBinding="content.state"}}
+                    {{view App.PrintRadioView value="current" label="stan aktualny"}}
+                    {{view App.PrintRadioView value="forDay" label="stan na dzień"}}
+                    <span class="input-append">
+                        {{view Em.TextField valueBinding="content.stateDay"}}
+                        <a {{action "clearField"}} class="btn"><i class="icon-ban-circle"></i></a>
+                    </span>
+                {{/view}}
+            </div>
+        </div>
+    </fieldset>
+</script>

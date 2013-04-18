@@ -1,0 +1,58 @@
+<script type="text/x-handlebars" data-template-name="extracts">
+    <div class="span4">
+        {{#if canSelectObjects}}
+        <button class="btn btn-primary" {{action selectObjects}}>Wybierz &gt;&gt;</button>
+        {{/if}}
+        <div class="span">
+            <span>Obiekty:</span>
+            {{view App.ModelTableView contentBinding="selectedObjects" columnsBinding="extractsColumns"}}
+        </div>
+    </div>
+    <div class="span8">
+        Parametry dokumentu
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-target="#tab-general" data-toggle="tab">Ogólne</a></li>
+            <li><a data-target="#tab-clauses" data-toggle="tab">Klauzule</a></li>
+            {{#unless isSimpleExtract}}
+            {{#if isJrg}}
+            <li><a data-target="#tab-lots" data-toggle="tab">Wybrane działki</a></li>
+            {{/if}}
+            {{#if isJrb}}
+            <li><a data-target="#tab-buildings" data-toggle="tab">Wybrane budynki</a></li>
+            {{/if}}
+            {{#if isJrl}}
+            <li><a data-target="#tab-locals" data-toggle="tab">Wybrane lokale</a></li>
+            {{/if}}
+            <li><a data-target="#tab-shares" data-toggle="tab">Wybrane udziały</a></li>
+            {{/unless}}
+        </ul>
+        <div class="tab-content">
+            <div id="tab-general" class="tab-pane active">
+                {{render "extractsTabGeneral" content}}
+            </div>
+            <div id="tab-clauses" class="tab-pane">
+                {{render "extractsTabClauses" content.clauses}}
+            </div>
+            {{#unless isSimpleExtract}}
+            {{#if isJrg}}
+            <div id="tab-lots" class="tab-pane">
+                {{render "extractsTabSelected" content.lots type="lot"}}
+            </div>
+            {{/if}}
+            {{#if isJrb}}
+            <div id="tab-buildings" class="tab-pane">
+                {{render "extractsTabSelected" content.buildings type="building"}}
+            </div>
+            {{/if}}
+            {{#if isJrl}}
+            <div id="tab-locals" class="tab-pane">
+                {{render "extractsTabSelected" content.locals type="local"}}
+            </div>
+            {{/if}}
+            <div id="tab-shares" class="tab-pane">
+                {{render "extractsTabSelected" content.shares type="share"}}
+            </div>
+            {{/unless}}
+        </div>
+    </div>
+</script>

@@ -1,0 +1,7 @@
+<script type="text/x-handlebars" data-template-name="gammaListTableCellEditButton">
+    {{#if view.inEdit}}
+    <button {{bindAttr class=":btn :btn-mini :btn-primary disabled:disabled"}} {{action "cancel" target="view"}}><i class="icon-remove"></i></button><button class="btn btn-mini btn-primary" {{action "save" target="view"}}><i class="icon-ok"></i></button>
+    {{else}}
+    <button {{bindAttr class=":btn :btn-mini :btn-primary disabled:disabled"}} {{action "edit" target="view"}}><i class="icon-pencil"></i></button><button class="btn btn-mini btn-primary" {{action "reset" target="view"}}><i class="icon-refresh"></i></button>
+    {{/if}}
+</script>

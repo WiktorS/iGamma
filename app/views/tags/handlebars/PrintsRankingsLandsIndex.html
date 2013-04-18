@@ -1,0 +1,70 @@
+<script type="text/x-handlebars" data-template-name="rankings/landsIndex">
+    {{#view App.PrintRadioGroupView valueBinding="content.scope"}}
+        <fieldset>
+            {{view App.PrintRadioView value="full" label="Cała baza - wykaz roczny"}}
+            <div class="form-indent">
+                <div class="control-group">
+                    <label class="control-label" for="sheetModelFull">Arkusz wzorcowy</label>
+                    <div class="controls">
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <div class="input-append btn-group">
+                                <div {{bindAttr class=":uneditable-input :span3 disableFullScope:disabled"}}><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div>
+                                <span class="btn btn-file">
+                                    <span class="fileupload-new"><i class="icon-folder-open"></i></span>
+                                    <span class="fileupload-exists"><i class="icon-folder-open"></i></span>
+                                    <input type="file" id="sheetModelFull" name="sheetModel" {{bindAttr disabled="disableFullScope"}}/>
+                                </span>
+                                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload"><i class="icon-remove"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            {{view App.PrintRadioView value="selected" label="Wybrane obręby"}}
+            <div class="form-indent">
+                {{#view App.PrintRadioGroupView valueBinding="content.state" disabledBinding="disableSelectedScope"}}
+                    {{view App.PrintRadioView value="current" label="stan aktualny"}}
+                    {{view App.PrintRadioView value="forDay" label="stan na dzień"}}
+                    <span class="input-append">
+                        {{view Em.TextField valueBinding="content.stateDay" disabledBinding="disableStateDay"}}
+                        <a {{action "clearField"}} class="btn"><i class="icon-ban-circle"></i></a>
+                    </span>
+                {{/view}}
+                <div class="control-group">
+                    <label class="control-label" for="sheetModelSelected">Arkusz wzorcowy</label>
+                    <div class="controls">
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <div class="input-append btn-group">
+                                <div {{bindAttr class=":uneditable-input :span3 disableSelectedScope:disabled"}}><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div>
+                                <span class="btn btn-file">
+                                    <span class="fileupload-new"><i class="icon-folder-open"></i></span>
+                                    <span class="fileupload-exists"><i class="icon-folder-open"></i></span>
+                                    <input type="file" id="sheetModelSelected" name="sheetModel" {{bindAttr disabled="disableSelectedScope"}}/>
+                                </span>
+                                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload"><i class="icon-remove"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="exportFile">Plik eksportu</label>
+                    <div class="controls">
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <div class="input-append btn-group">
+                                <div {{bindAttr class=":uneditable-input :span3 disableSelectedScope:disabled"}}><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div>
+                                <span class="btn btn-file">
+                                    <span class="fileupload-new"><i class="icon-folder-open"></i></span>
+                                    <span class="fileupload-exists"><i class="icon-folder-open"></i></span>
+                                    <input type="file" id="exportFile" name="exportFile" {{bindAttr disabled="disableSelectedScope"}}/>
+                                </span>
+                                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload"><i class="icon-remove"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    {{/view}}
+</script>

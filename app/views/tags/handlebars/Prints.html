@@ -1,0 +1,19 @@
+<script type="text/x-handlebars" data-template-name="prints">
+  <div class="btn-primary">
+    Wydruki
+  </div>
+  <div class="container well">
+    <div class="row">
+      {{view App.DropDownView contentBinding="printTypes" valueBinding="selectedPrintType"}}
+    </div>
+    <form class="form" action="print" method="post" target="_blank" enctype="multipart/form-data">
+      <div class="row">
+        {{outlet}}
+      </div>
+      <div class="form-actions">
+        <button {{bindAttr class=":btn disableLoadParams:disabled"}} {{action "onLoadParams"}}>Wczytaj parametry</button>
+        <button {{bindAttr class=":btn :btn-primary disablePrint:disabled"}} {{action "onPrint"}}>Wydruk</button>
+      </div>
+    </form>
+  </div>
+</script>

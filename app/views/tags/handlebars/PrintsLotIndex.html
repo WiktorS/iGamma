@@ -1,0 +1,31 @@
+<script type="text/x-handlebars" data-template-name="prints/lotIndex">
+    <div class="span4">
+        <div class="span">
+            <span class="clearfix">Jednostka ewidencyjna:</span>
+            {{view Em.Select contentBinding="cadastralUnitList" valueBinding="selectedCadastralUnit" optionLabelPath="content._objectDescription"}}
+        </div>
+        <div class="span">
+            <span class="clearfix">Obręby:</span>
+            {{view Em.Select contentBinding="precinctList" valueBinding="selectedPrecinct" optionLabelPath="content._objectDescription"}}
+        </div>
+    </div>
+    <div class="span8">
+        Parametry dokumentu
+        <div class="row">
+            <div class="span8">
+                <div class="control-group">
+                    <div class="controls">
+                        {{#view App.PrintRadioGroupView valueBinding="content.state"}}
+                            {{view App.PrintRadioView value="current" label="stan aktualny"}}
+                            {{view App.PrintRadioView value="forDay" label="stan na dzień"}}
+                        {{/view}}
+                        <span class="input-append">
+                            {{view Em.TextField valueBinding="content.stateDay"}}
+                            <a {{action "clearField" target="view"}} class="btn"><i class="icon-ban-circle"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

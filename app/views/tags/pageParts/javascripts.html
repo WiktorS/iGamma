@@ -4,8 +4,9 @@
 <script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap-datepicker.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap-datepicker.pl.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap-combobox.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap-fileupload.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/thirdparty/handlebars-1.0.rc.3.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/ember-1.0.0-rc.1.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/thirdparty/ember-1.0.0-rc.2.js'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/App.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/Router.coffee'}"></script>
@@ -37,6 +38,19 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/models/ChangesSearchModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/SystematicModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/ShareSummaryModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintExtractsModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintClauseModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintLotIndexModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintEntityIndexesModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintRankingsModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintChangeNotificationModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintChangesApplicationReportModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintCustomReportModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/CadastralUnitModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrecinctModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintCustomReportModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintCustomReportAttributeModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintCustomReportConfigurationModel.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/AppColumns.coffee'}"></script>
 
@@ -82,6 +96,21 @@
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangesSearchController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangesListController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangesObjectChangeController.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsExtractsController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsExtractsTabGeneralController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsExtractsTabClausesController.coffee'}"></script>
+      <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsExtractsTabSelectedController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsLotIndexController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsEntityIndexesController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsRankingsController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsRankingsLandsIndexController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangeNotificationController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangeNotificationStandardNotificationController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangeNotificationTaxNotificationController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangeNotificationTabFrontPageController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangesApplicationReportController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsCustomReportController.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/TabItemView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTypesView.coffee'}"></script>
@@ -96,6 +125,10 @@
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/AccordionView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/SystematicNodeView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/SpinnerView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/DropDownView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/PrintCheckView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/PrintRadioView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/PrintRadioGroupView.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/modals/ModalView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/modals/SystematicModalView.coffee'}"></script>
@@ -144,7 +177,9 @@
   <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesSearchView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/ChangesObjectChangeView.coffee'}"></script>
-  <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsExtractsView.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsExtractsTabSelectedView.coffee'}"></script>
 
 #{get 'moreScripts' /}
 
@@ -156,6 +191,7 @@
     #{handlebars.GammaListTableCellButton /}
     #{handlebars.GammaListTableCellList /}
     #{handlebars.GammaListTableCellSubTable /}
+    #{handlebars.GammaListTableCellEditButton /}
   #{handlebars.GammaObject /}
   #{handlebars.Egbil /}
     #{handlebars.EgbilSearch /}
@@ -187,7 +223,26 @@
   #{handlebars.Changes /}
     #{handlebars.ChangesSearch /}
     #{handlebars.ChangesObjectChange /}
-  #{handlebars.Print /}
+  #{handlebars.Prints /}
+    #{handlebars.PrintsExtracts /}
+      #{handlebars.PrintsExtractsTabGeneral /}
+      #{handlebars.PrintsExtractsTabClauses /}
+      #{handlebars.PrintsExtractsTabSelected /}
+    #{handlebars.PrintsLotIndex /}
+    #{handlebars.PrintsEntityIndexes /}
+    #{handlebars.PrintsRankings /}
+      #{handlebars.PrintsRankingsBuildingsIndex /}
+      #{handlebars.PrintsRankingsLandsIndex /}
+      #{handlebars.PrintsRankingsLandsRanking /}
+      #{handlebars.PrintsRankingsLocalsIndex /}
+      #{handlebars.PrintsRankingsTerrainRanking /}
+    #{handlebars.PrintsChangeNotification /}
+      #{handlebars.PrintsChangeNotificationStandardNotification /}
+      #{handlebars.PrintsChangeNotificationTaxNotification /}
+      #{handlebars.PrintsChangeNotificationTaxClassification /}
+      #{handlebars.PrintsChangeNotificationTabFrontPage /}
+    #{handlebars.PrintsChangesApplicationReport /}
+    #{handlebars.PrintsCustomReport /}
 
 #{handlebars.widgets.FilterTextField /}
 #{handlebars.widgets.FilterSelect /}
@@ -201,6 +256,9 @@
 #{handlebars.widgets.Accordion /}
 #{handlebars.widgets.SystematicNode /}
 #{handlebars.widgets.Spinner /}
+#{handlebars.widgets.DropDown /}
+#{handlebars.widgets.PrintCheck /}
+#{handlebars.widgets.PrintRadio /}
 
 #{handlebars.modals.SystematicModal /}
 #{handlebars.modals.PrintModal /}
