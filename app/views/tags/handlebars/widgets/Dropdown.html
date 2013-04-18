@@ -1,0 +1,21 @@
+<script type="text/x-handlebars" data-template-name="dropDown">
+  <div class="btn-group span">
+    <a class="btn dropdown-toggle" data-toggle="dropdown">{{view.displayValue}} <span class="caret"></a>
+    <ul class="dropdown-menu">
+      {{#each view.content}}
+      {{#if this.children}}
+      <li class="dropdown-submenu">
+        <a tabindex="-1">{{this.name}}</a>
+        <ul class="dropdown-menu">
+          {{#each this.children}}
+          <li><a tabindex="-1" {{action "selectItem" this target="view"}}>{{this.name}}</a></li>
+          {{/each}}
+        </ul>
+      </li>
+      {{else}}
+      <li><a tabindex="-1" {{action "selectItem" this target="view"}}>{{this.name}}</a></li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</script>
