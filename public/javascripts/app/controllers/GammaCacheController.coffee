@@ -39,7 +39,7 @@ App.GammaCacheController = Em.Controller.extend
                 id: node.id
                 name: node.name
                 desc: node.desc
-              systematics.removeObject oldSystematic if (oldSystematic = systematics.findProperty "id", item.id)
+              systematics.removeObject oldSystematic if (oldSystematic = systematics.findProperty "id", node.id)
               systematics.addObject systematic
           if rootFetch
             systematics.findProperty("id", 0)?.set "_cacheDate", new Date()
