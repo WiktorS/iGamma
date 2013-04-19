@@ -7,18 +7,18 @@ App.ModalView = Em.View.extend
     @$().css
       'width': 'auto'
       'min-width': '560px'
-      'margin-left': -> -($(this).width() / 2)
+      'margin-left': => -(@$().width() / 2)
 
   hideModal: ->
     @$().modal "hide"
 
   didInsertElement: ->
     @_super()
-    @on "show", @, (e) -> @onShow(e)
-    @on "shown", @, (e) -> @onShown(e)
-    @on "hide", @, (e) -> @onHide(e)
-    @on "hidden", @, (e) ->
-      @onHidden(e)
+    @$().on "show", @, => @onShow.apply @, arguments
+    @$().on "shown", @, => @onShown.apply @, arguments
+    @$().on "hide", @, => @onHide.apply @, arguments
+    @$().on "hidden", @, =>
+      @onHidden.apply @, arguments
       @destroy() if @get "destroyAfterHide"
     @showModal()
 
@@ -29,5 +29,5 @@ App.ModalView = Em.View.extend
 
 App.ModalView.reopenClass
   modal: ->
-    result = @create.apply(this, arguments)
+    result = @create.apply(@, arguments)
     result.append()
