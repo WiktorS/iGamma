@@ -320,7 +320,7 @@ public class IntegraMockImplementation implements Integra {
     }
 
     @Override
-    public File printExtracts(String sort, String number, boolean shareInfo, boolean noPersonalData, boolean noPESEL,
+    public File printExtracts(String extractType, String sort, String number, boolean shareInfo, boolean noPersonalData, boolean noPESEL,
                               boolean chosenShares, boolean otherCadastralUnitForPersons, boolean accounted, boolean noPendingChanges,
                               boolean eachLotIndependent, boolean lotNotes, boolean chosenLots, boolean includeClauses,
                               String state, String stateDay, boolean extractAndSketch, boolean simpleExtractForNeighboringLots,

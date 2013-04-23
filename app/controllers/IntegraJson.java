@@ -150,8 +150,8 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
-    public static void printExtracts(String sort, String number, boolean  shareInfo, boolean noPersonalData, boolean noPESEL,
-                                     boolean chosenShares, boolean otherCadastralUnitForPersons, boolean accounted,
+    public static void printExtracts(String extractType, String sort, String number, boolean  shareInfo, boolean noPersonalData,
+                                     boolean noPESEL, boolean chosenShares, boolean otherCadastralUnitForPersons, boolean accounted,
                                      boolean noPendingChanges, boolean eachLotIndependent, boolean lotNotes, boolean chosenLots,
                                      boolean includeClauses, String state, String stateDay, boolean extractAndSketch,
                                      boolean simpleExtractForNeighboringLots, boolean buildingIndexExtract,
@@ -160,7 +160,7 @@ public class IntegraJson extends Controller {
                                      boolean buildingNotes, boolean chosenBuildings, boolean eachLocalIndependent,
                                      boolean localNotes, boolean chosenLocals, String fileFormat, Clause[] clauses,
                                      IntegraModel[] lots, IntegraModel[] buildings, IntegraModel[] locals, IntegraModel[] shares) throws Exception {
-        File file = integra.printExtracts(sort, number, shareInfo, noPersonalData, noPESEL, chosenShares, otherCadastralUnitForPersons,
+        File file = integra.printExtracts(extractType, sort, number, shareInfo, noPersonalData, noPESEL, chosenShares, otherCadastralUnitForPersons,
                 accounted, noPendingChanges, eachLotIndependent, lotNotes, chosenLots, includeClauses, state, stateDay,
                 extractAndSketch, simpleExtractForNeighboringLots, buildingIndexExtract, localIndexExtract, localIndex,
                 extractNote, extractNoteText, lotAddresses, terrainCategories, eachBuidingIndependent, buildingNotes,
