@@ -168,7 +168,7 @@ App.GammaController = Em.Controller.extend
       jsonMethod = @get "fetchMethod.#{objectType}"
       Em.assert "fetchMethod is undefinned for object type: '#{objectType}'", !!jsonMethod
       $.ajax
-        url: "/#{jsonMethod}.json"
+        url: "#{jsonMethod}.json"
         data:
           idList: [objectId]
         success: (data) =>
