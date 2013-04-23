@@ -106,9 +106,6 @@
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsRankingsController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsRankingsLandsIndexController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangeNotificationController.coffee'}"></script>
-    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangeNotificationStandardNotificationController.coffee'}"></script>
-    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangeNotificationTaxNotificationController.coffee'}"></script>
-    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangeNotificationTabFrontPageController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangesApplicationReportController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsCustomReportController.coffee'}"></script>
 
@@ -132,9 +129,10 @@
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/modals/ModalView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/modals/SystematicModalView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/PrintModalView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/PrintChangeNotificationModalView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/PrintCustomReportModalView.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/PrintExtractsModalView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/modals/ShareSummaryModalView.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/views/modals/CustomReportModalView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/modals/DifferenceReportModalView.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/ApplicationView.coffee'}"></script>
@@ -237,9 +235,6 @@
       #{handlebars.PrintsRankingsLocalsIndex /}
       #{handlebars.PrintsRankingsTerrainRanking /}
     #{handlebars.PrintsChangeNotification /}
-      #{handlebars.PrintsChangeNotificationStandardNotification /}
-      #{handlebars.PrintsChangeNotificationTaxNotification /}
-      #{handlebars.PrintsChangeNotificationTaxClassification /}
       #{handlebars.PrintsChangeNotificationTabFrontPage /}
     #{handlebars.PrintsChangesApplicationReport /}
     #{handlebars.PrintsCustomReport /}
@@ -261,7 +256,8 @@
 #{handlebars.widgets.PrintRadio /}
 
 #{handlebars.modals.SystematicModal /}
-#{handlebars.modals.PrintModal /}
+#{handlebars.modals.PrintChangeNotificationModal /}
+#{handlebars.modals.PrintCustomReportModal /}
+#{handlebars.modals.PrintExtractsModal /}
 #{handlebars.modals.ShareSummaryModal /}
 #{handlebars.modals.DifferenceReportModal /}
-#{handlebars.modals.CustomReportModal /}

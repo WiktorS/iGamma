@@ -8,6 +8,93 @@
     </div>
     <div class="span8">
         Parametry dokumentu
-        {{outlet}}
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-target="#tab-general" data-toggle="tab">Ogólne</a></li>
+            {{#if content.onlyChosen}}
+            <li><a data-target="#tab-chosen" data-toggle="tab">Wybrane JR</a></li>
+            {{/if}}
+            <li><a data-target="#tab-frontpage" data-toggle="tab">Strona tytułowa</a></li>
+        </ul>
+        <div class="tab-content">
+    *{general}*
+            <div id="tab-general" class="tab-pane active">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label">Numer sprawy</label>
+                        <div class="controls">
+                            {{view Em.TextField valueBinding="content.number"}}
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="row">
+                    <div class="span8">
+                        <div class="row">
+                            <div class="span4">
+                                {{view App.PrintCheckView valueBinding="content.printChanges" label="Drukuj wykaz zmian w rejestrze"}}
+                                <div class="form-indent">
+                                    {{view App.PrintCheckView valueBinding="content.shareInfo" label="Informacje o udziałach na dokumencie" disabledBinding="printChangesNotChecked"}}
+                                    <div class="form-indent">
+                                        {{#view App.PrintRadioGroupView valueBinding="content.shareType" disabledBinding="shareInfoNotChecked"}}
+                                            {{view App.PrintRadioView value="person" label="udziały osób, których Zmiana dotyczy"}}
+                                            {{view App.PrintRadioView value="changes" label="udziały dodawane/usuwane/zmieniane"}}
+                                            <div class="form-indent">
+                                                {{view App.PrintCheckView valueBinding="content.onlyShares" label="Tylko udziały SP, Gminy, Powiatu, Woj." disabledBinding="shareTypeChangesNotChecked"}}
+                                            </div>
+                                            {{view App.PrintRadioView value="all" label="udziały wszystkich osób w JR"}}
+                                        {{/view}}
+                                        {{view App.PrintCheckView valueBinding="content.noPESEL" label="Bez PESEL" disabledBinding="shareInfoNotChecked"}}
+                                        {{view App.PrintCheckView valueBinding="content.noNIP" label="Bez NIP" disabledBinding="shareInfoNotChecked"}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{#if isStandardNotification}}
+                            <div class="span4">
+                                <label class="checkbox">&nbsp;</label>
+                                {{view App.PrintCheckView valueBinding="content.infoHeader" label="Informacja o wykazie zmian w nagłówku" disabledBinding="printChangesNotChecked"}}
+                                <div class="form-indent">
+                                    <label>Informacje o danych przedmiotowych w JR</label>
+                                    {{#view App.PrintRadioGroupView valueBinding="content.dataType" disabledBinding="printChangesNotChecked"}}
+                                        {{view App.PrintRadioView value="changes" label="działki/budynki/lokale dodawane/usuwane/zmieniane"}}
+                                        {{view App.PrintRadioView value="all" label="wszystkie działki/budynki/lokale w JR"}}
+                                    {{/view}}
+                                    {{view App.PrintCheckView valueBinding="content.shareSummary" label="Rozliczenie użytków w JRG" disabledBinding="printChangesNotChecked"}}
+                                </div>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{#if isStandardNotification}}
+                    <div class="span4">
+                        {{view App.PrintCheckView valueBinding="content.buildingIndex" label="Drukuj wyciąg z kartoteki budynków dla JRG"}}
+                        <div class="form-indent">
+                            {{#view App.PrintRadioGroupView valueBinding="content.buildingIndexType" disabledBinding="buildingIndexNotChecked"}}
+                                {{view App.PrintRadioView value="changes" label="budynki dodawane/usuwane/zmieniane"}}
+                                {{view App.PrintRadioView value="all" label="wszystkie budynki w JRG"}}
+                            {{/view}}
+                            {{view App.PrintCheckView valueBinding="content.localIndex" label="Uwzględnij kartotekę lokali" disabledBinding="buildingIndexNotChecked"}}
+                            <div class="form-indent">
+                                {{#view App.PrintRadioGroupView valueBinding="content.localIndexType" disabledBinding="localIndexNotChecked"}}
+                                    {{view App.PrintRadioView value="changes" label="lokale dodawane/usuwane/zmieniane"}}
+                                    {{view App.PrintRadioView value="all" label="wszystkie lokale w budynku"}}
+                                {{/view}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                    <div class="span4">
+                        {{view App.PrintCheckView valueBinding="content.onlyChosen" label="Wybrane JR"}}
+                        {{view App.PrintCheckView valueBinding="content.frontPage" label="Drukuj stronę tytułową"}}
+                    </div>
+                </fieldset>
+            </div>
+    *{chosen}*
+            <div id="tab-chosen" class="tab-pane">
+                {{view App.ModelTableView contentBinding="content.chosenRegisterUnits" columnsBinding="chosenColumns"}}
+            </div>
+    *{frontPage}*
+            <div id="tab-frontpage" class="tab-pane">
+                {{render "changeNotificationTabFrontPage" content}}
+            </div>
+        </div>
     </div>
 </script>

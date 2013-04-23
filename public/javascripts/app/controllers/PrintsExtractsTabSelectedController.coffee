@@ -1,9 +1,8 @@
 App.ExtractsTabSelectedController = Em.Controller.extend
-  needs: ["extracts", "gamma"]
+  needs: ["gamma"]
 
   content: null
-  extractType: null
-  objectTypeBinding: "controllers.extracts.objectType"
+  objectTypeBinding: "target.objectType"
 
   getColumns: (type)->
     objectType = @get "objectType"

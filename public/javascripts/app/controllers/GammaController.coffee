@@ -245,28 +245,34 @@ App.GammaController = Em.Controller.extend
         @goToRelatedObject action, simpleList(objectList)
 
   showPrintExtractModal: (action, objectList) ->
-    printModal = App.PrintModalView.modal()
-    if (objectList.length == 1)
-      selectedShares = objectList[0].get "selectedShares"
-      selectedLots = objectList[0].get "selectedLots"
-    else
-      selectedShares = Em.A()
-      selectedLots = Em.A()
-    printModal.set "selectedObjects", objectList
-    printModal.set "selectedShares", selectedShares
-    printModal.set "selectedLots", selectedLots
+    #TODO: make sure objectList is filled with data!
+    #TODO: this should be moved to a function and get better approach!
+    if (action == "prg" || action == "urg")
+      idList = objectList.mapProperty "jrgID"
+      type =  "jrg"
+    else if (action == "rb" || action == "kb")
+      idList = objectList.mapProperty "jrbID"
+      type = "jrb"
+    else if (action == "kl")
+      idList = objectList.mapProperty "jrlID"
+      type = "jrl"
+    idList = idList.compact()
+    idList = idList.uniq()
+    selectedObjects = idList.map (x) ->
+      App.EgbilObjectRegisterUnitModel.create().setProperties
+        registerUnitID: x
+        registerUnitType: type
+    Em.run.sync()
+    printModal = App.PrintExtractsModalView.modal
+      controller: @container.lookup("router:main") #looks like we have to set controller otherwise {{render}} won't work
+      content: App.PrintExtractsModel.create().setProperties
+        extractType: action
+        registerUnits: selectedObjects
 
   showChangeNotificationModal: (objectList) ->
-    printModal = App.PrintModalView.modal()
-    if (objectList.length == 1)
-      selectedShares = objectList[0].get "selectedShares"
-      selectedLots = objectList[0].get "selectedLots"
-    else
-      selectedShares = Em.A()
-      selectedLots = Em.A()
-    printModal.set "selectedObjects", objectList
-    printModal.set "selectedShares", selectedShares
-    printModal.set "selectedLots", selectedLots
+    printModal = App.PrintChangeNotificationModalView.modal
+      controller: @container.lookup("router:main") #looks like we have to set controller otherwise {{render}} won't work
+      content: App.PrintChangeNotificationModel.create()
 
   showShareSummaryModal: (simpleList) ->
     shareSummaryModal = App.ShareSummaryModalView.modal()
@@ -282,7 +288,9 @@ App.GammaController = Em.Controller.extend
           alert "Nie znaleziono rekordu"  #TODO: Error handling
 
   showCustomReportModal: (simpleList) ->
-    customReportModal = App.CustomReportModalView.modal()
+    printModal = App.PrintCustomReportModalView.modal
+      controller: @container.lookup("router:main") #looks like we have to set controller otherwise render won't work
+      content: App.PrintCustomReportModel.create()
 
   showDifferenceReportModal: (objectList) ->
     differenceReportModal = App.DifferenceReportModalView.modal()

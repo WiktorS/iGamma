@@ -117,6 +117,29 @@ App.ApplicationRoute = Ember.Route.extend
     goToObject: (context) ->
       objectRoute = context.get("_objectRoute")
       @transitionTo objectRoute, context
+    printForm: (params, printForm, action) ->
+      printForm.attr "action", action
+      #append hidden fields with values to submit
+      hiddenInputs = []
+      for param in params
+        if param.value && printForm.find("input[name='#{param.name}']").length == 0
+          if Em.isArray(param.value)
+            #WARNING: not all combinations are covered here, enough for now
+            for item,i in param.value
+              if typeof item == "object"
+                for own key,value of item
+                  hiddenInputs.addObject $("<input/>", {type: "hidden", name: "#{param.name}[#{i}][#{key}]"}).val(value).appendTo(printForm)[0]
+              else
+                hiddenInputs.addObject $("<input/>", {type: "hidden", name: "#{param.name}[#{i}]"}).val(item).appendTo(printForm)[0]
+          else
+            hiddenInputs.addObject $("<input/>", {type: "hidden", name: param.name}).val(param.value).appendTo(printForm)[0]
+      # #generate unique popup window
+      # target = "print-popup-" + (new Date()).valueOf()
+      # printForm.attr "target", target
+      # printForm.one "submit", -> window.open "", target
+      printForm.submit()
+      #cleanup the mess
+      $(hiddenInputs).remove()
     openTerrainCategoryReport: (context) -> #TODO: Check is it ok after conversion
       args = decodeURIComponent($.param({object: context}))
       url = "/getTerrainCategorySummary?#{args}"
@@ -183,6 +206,10 @@ App.EgbilEgbilListRoute = RouteWithParentMemory.extend
   renderTemplate: ->
     @render "gammaList",
       controller: @controllerFor "egbilList"
+  events:
+    doRightPanelAction: (context) ->
+      checkedList = @controllerFor("egbilList").get("checkedList")
+      @controllerFor("gamma").rightPanelAction(context.get("type"), checkedList)
 
 App.ChangesRoute = RouteWithParentMemory.extend
   defaultRoute: "changes.changesSearch"
@@ -208,6 +235,10 @@ App.ChangesChangesListRoute = RouteWithParentMemory.extend
   renderTemplate: ->
     @render "gammaList",
       controller: @controllerFor "changesList"
+  events:
+    doRightPanelAction: (context) ->
+      checkedList = @controllerFor("changesList").get("checkedList")
+      @controllerFor("gamma").rightPanelAction(context.get("type"), checkedList)
 
 App.ChangesObjectRoute = App.EgbilObjectRoute = RouteWithParentMemory.extend
   renderTemplate: ->
@@ -286,7 +317,6 @@ App.ExtractsRoute = RouteWithParentMemory.extend
   model: -> App.PrintExtractsModel.create()
   setupController: (controller, context) ->
     @controllerFor("prints").set "content", context
-    controller.prepareModel?()
 App.ExtractsIndexRoute = RouteWithParentMemory.extend()
 App.ExtractsPrgRoute = RouteWithParentMemory.extend()
 App.ExtractsUrgRoute = RouteWithParentMemory.extend()
@@ -327,12 +357,9 @@ App.ChangeNotificationRoute = RouteWithParentMemory.extend
   model: -> App.PrintChangeNotificationModel.create()
   setupController: (controller, context) -> @controllerFor("prints").set "content", context
 App.ChangeNotificationIndexRoute = RouteWithParentMemory.extend()
-App.ChangeNotificationStandardNotificationRoute = RouteWithParentMemory.extend
-  model: -> @modelFor "changeNotification"
-App.ChangeNotificationTaxNotificationRoute = RouteWithParentMemory.extend
-  model: -> @modelFor "changeNotification"
-App.ChangeNotificationTaxClassificationRoute = RouteWithParentMemory.extend
-  model: -> @modelFor "changeNotification"
+App.ChangeNotificationStandardNotificationRoute = RouteWithParentMemory.extend()
+App.ChangeNotificationTaxNotificationRoute = RouteWithParentMemory.extend()
+App.ChangeNotificationTaxClassificationRoute = RouteWithParentMemory.extend()
 
 App.PrintsChangesApplicationReportRoute = RouteWithParentMemory.extend
   model: -> App.PrintChangesApplicationReportModel.create()

@@ -1,6 +1,4 @@
 App.ExtractsTabGeneralController = Em.Controller.extend
-  needs: ["extracts"]
-
   content: null
 
   fileFormatList: [
@@ -9,10 +7,10 @@ App.ExtractsTabGeneralController = Em.Controller.extend
       Em.Object.create {value: "txt", displayValue: "TXT"}
     ]
 
-  isPrg: (-> "prg" == @get "controllers.extracts.extractType").property("controllers.extracts.extractType")
-  isUrg: (-> "urg" == @get "controllers.extracts.extractType").property("controllers.extracts.extractType")
-  isJrb: (-> "jrb" == @get "controllers.extracts.objectType").property("controllers.extracts.objectType")
-  isJrl: (-> "jrl" == @get "controllers.extracts.objectType").property("controllers.extracts.objectType")
+  isPrg: (-> "prg" == @get "target.content.extractType").property("target.content.extractType")
+  isUrg: (-> "urg" == @get "target.content.extractType").property("target.content.extractType")
+  isJrb: (-> "jrb" == @get "target.objectType").property("target.objectType")
+  isJrl: (-> "jrl" == @get "target.objectType").property("target.objectType")
 
   disableNoPersonalData: (-> !@get "content.shareInfo").property("content.shareInfo")
   disableNoPESEL: (-> !(@get("content.shareInfo") && @get("content.noPersonalData"))).property("content.shareInfo", "content.noPersonalData")

@@ -1,26 +1,30 @@
 App.ExtractsController = Em.Controller.extend
+  needs: ["gamma"]
   #input params
   content: null
 
   #values determined with current route
+  _routeChanged: (->
+    if @get("inExtractsRoute")
+      router = @get("target")
+      @set "content.extractType",
+        if router.isActive "extracts.prg" then "prg"
+        else if router.isActive "extracts.urg" then "urg"
+        else if router.isActive "extracts.rb" then "rb"
+        else if router.isActive "extracts.kb" then "kb"
+        else if router.isActive "extracts.rl" then "rl"
+        else if router.isActive "extracts.kl" then "kl"
+    ).observes("target.url")
   objectType: (->
-    type = @get("extractType") ? ""
+    type = @get("content.extractType") ? ""
     if type.match ".*g$" then "jrg"
     else if type.match ".*b$" then "jrb"
     else if type.match ".*l$" then "jrl"
     else "jrg" #default to jrg to reduce checks in code
-    ).property("extractType")
-  extractType: (->
-    router = @get("target")
-    if router.isActive "extracts.prg" then "prg"
-    else if router.isActive "extracts.urg" then "urg"
-    else if router.isActive "extracts.rb" then "rb"
-    else if router.isActive "extracts.kb" then "kb"
-    else if router.isActive "extracts.rl" then "rl"
-    else if router.isActive "extracts.kl" then "kl"
-    ).property("target.url")
+    ).property("content.extractType")
 
-  canSelectObjects: true
+  inExtractsRoute: (-> @get("target").isActive "extracts").property("target.url")
+  canSelectObjectsBinding: "inExtractsRoute"
 
   #columns
   columnsOrder:
@@ -33,15 +37,16 @@ App.ExtractsController = Em.Controller.extend
       Em.assert "No columns defined for type: #{type}", !!columns
       App.Columns.getColumns(columns)
     ).property("objectType")
+  selectedObjectsBinding: "content.registerUnits"
 
-  isSimpleExtract: (-> "urg" == @get "extractType").property("extractType")
+  isSimpleExtract: (-> "urg" == @get "content.extractType").property("content.extractType")
   isJrg: (-> "jrg" == @get "objectType").property("objectType")
   isJrb: (-> "jrb" == @get "objectType").property("objectType")
   isJrl: (-> "jrl" == @get "objectType").property("objectType")
 
   _extractTypeChanged: (->
     @getClauses(@get "objectType")
-    ).observes("extractType")
+    ).observes("content.extractType")
 
   getClauses: (type)->
     clauses = @get "content.clauses"
@@ -56,3 +61,6 @@ App.ExtractsController = Em.Controller.extend
           #save default clause text for later use
           item.set "clauseDefaultText", item.get("clauseText") for item in clauses
         return
+
+  fetchDataCallback: (fetchQueue, type) ->
+    @get("controllers.gamma").fetchDataCallback(fetchQueue, type)

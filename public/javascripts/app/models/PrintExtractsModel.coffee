@@ -1,4 +1,5 @@
 App.PrintExtractsModel = Em.Object.extend
+  extractType: null
   sort: null
   number: null
   shareInfo: null
@@ -35,6 +36,7 @@ App.PrintExtractsModel = Em.Object.extend
   buildings: null
   locals: null
   shares: null
+  registerUnits: null
 
   init:->
     @_super()
@@ -44,24 +46,11 @@ App.PrintExtractsModel = Em.Object.extend
     @set "buildings", Em.A()
     @set "locals", Em.A()
     @set "shares", Em.A()
+    @set "registerUnits", Em.A()
     @set "sort", "byLot"
     @set "state", "current"
     @set "localIndex", "chosenPerson"
     @set "fileFormat", "html"
-
-  fetchClauses: (type) ->
-    $.ajax
-      url: "getPrintClauses.json"
-      data:
-        printType: type
-      success: (data) =>
-        if Em.isArray data
-          clauses = @get "clauses"
-          clauses.clear()
-          clauses.addObject App.Common.toModel.call(App.PrintClauseModel, item) for item in data
-          #save default clause text for allow value reset in UI
-          item.set "clauseDefaultText", item.get("clauseText") for item in clauses
-        return
 
   #function to provide model as data to send in form as params
   toParam: ->

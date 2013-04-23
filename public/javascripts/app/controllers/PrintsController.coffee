@@ -102,37 +102,14 @@ App.PrintsController = Em.Controller.extend
 
 
   onPrint: ->
-    printForm = @get("printForm")
     #assign action based on selected print type
-    printTypes = @get "printTypes"
-    for printType in printTypes
+    for printType in @get "printTypes"
       if @get("target").isActive(printType.get "route")
         action = printType.get "action"
+        break
     Em.assert "No action string defined for current route", action
-    printForm.attr "action", action
-    #append hidden fields with values to submit
-    hiddenInputs = []
     params = @get("content").toParam()
-    for param in params
-      if param.value && printForm.find("input[name='#{param.name}']").length == 0
-        if Em.isArray(param.value)
-          #WARNING: not all combinations are covered here, enough for now
-          for item,i in param.value
-            if typeof item == "object"
-              for own key,value of item
-                hiddenInputs.addObject $("<input/>", {type: "hidden", name: "#{param.name}[#{i}][#{key}]"}).val(value).appendTo(printForm)[0]
-            else
-              hiddenInputs.addObject $("<input/>", {type: "hidden", name: "#{param.name}[#{i}]"}).val(item).appendTo(printForm)[0]
-        else
-          hiddenInputs.addObject $("<input/>", {type: "hidden", name: param.name}).val(param.value).appendTo(printForm)[0]
-    # #generate unique popup window
-    # target = "print-popup-" + (new Date()).valueOf()
-    # printForm.attr "target", target
-    # printForm.one "submit", -> window.open "", target
-    printForm.submit()
-    #cleanup the mess
-    $(hiddenInputs).remove()
+    @get("target").send "printForm", params, @get("printForm"), action
 
   onLoadParams: ->
     debugger #TODO
-
