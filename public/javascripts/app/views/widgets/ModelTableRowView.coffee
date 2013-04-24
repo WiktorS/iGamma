@@ -8,8 +8,8 @@ App.ModelTableRowView = Em.View.extend
     columns = @get "columns"
     content = @get "content"
     result = ""
-    if content? 
-      Em.assert "Table content is '#{@get("controller.constructor").toString()}' not Ember Object - forgot to map model lists?", content instanceof Em.Object
+    if content?
+      Em.assert "Table content in '#{@get("controller.constructor").toString()}' is not Ember Object - forgot to map model lists?", content instanceof Em.Object
       result += "{{#if view.isIdle}}"
       result += "<td colspan=\"#{columns.length}\">&nbsp;</td>"
       result += "{{/if}}"
