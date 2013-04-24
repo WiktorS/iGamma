@@ -3,10 +3,11 @@ App.ExtractsController = Em.Controller.extend
   #input params
   content: null
 
+  router: (-> return @container.lookup("router:main")).property() #taken from ember.js LinkView
   #values determined with current route
   _routeChanged: (->
     if @get("inExtractsRoute")
-      router = @get("target")
+      router = @get("router")
       @set "content.extractType",
         if router.isActive "extracts.prg" then "prg"
         else if router.isActive "extracts.urg" then "urg"
@@ -14,7 +15,7 @@ App.ExtractsController = Em.Controller.extend
         else if router.isActive "extracts.kb" then "kb"
         else if router.isActive "extracts.rl" then "rl"
         else if router.isActive "extracts.kl" then "kl"
-    ).observes("target.url")
+    ).observes("router.url")
   objectType: (->
     type = @get("content.extractType") ? ""
     if type.match ".*g$" then "jrg"
@@ -23,7 +24,7 @@ App.ExtractsController = Em.Controller.extend
     else "jrg" #default to jrg to reduce checks in code
     ).property("content.extractType")
 
-  inExtractsRoute: (-> @get("target").isActive "extracts").property("target.url")
+  inExtractsRoute: (-> @get("router").isActive "extracts").property("router.url")
   canSelectObjectsBinding: "inExtractsRoute"
 
   #columns

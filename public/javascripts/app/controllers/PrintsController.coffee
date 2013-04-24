@@ -4,14 +4,19 @@ App.PrintsController = Em.Controller.extend
   #DOM form to perform submit - needed to send files
   printForm: null
 
+  disablePrint: false
+  disableLoadParams: false
+
+  router: (-> return @container.lookup("router:main")).property() #taken from ember.js LinkView
+
   #observers for print type dropdown combo
   _selectedPrintTypeChanged: (->
     selectedPrintType = @get "selectedPrintType"
-    if !!selectedPrintType && selectedPrintType.route != @get "target.router.currentHandlerInfos.lastObject.name"
+    if !!selectedPrintType && selectedPrintType.route != @get "router.router.currentHandlerInfos.lastObject.name"
       @transitionToRoute selectedPrintType.route
     ).observes("selectedPrintType")
   _routerUrlChanged: (->
-    activeRoute = @get "target.router.currentHandlerInfos.lastObject.name"
+    activeRoute = @get "router.router.currentHandlerInfos.lastObject.name"
     findPrintType = (printTypes, value) ->
       for printType in printTypes
         if value == printType.get "route"
@@ -20,7 +25,7 @@ App.PrintsController = Em.Controller.extend
           return childPrintType if (childPrintType = findPrintType children, value)
       return null
     @set "selectedPrintType", foundPrintType if (foundPrintType = findPrintType @get("printTypes"), activeRoute)
-    ).observes("target.url")
+    ).observes("router.url")
 
   printTypes: [
     Em.Object.create
@@ -79,37 +84,16 @@ App.PrintsController = Em.Controller.extend
       action: "print/customReport"
     ]
   selectedPrintType: null
-  #observers for print type dropdown combo
-  _selectedPrintTypeChanged: (->
-    selectedPrintType = @get "selectedPrintType"
-    if !!selectedPrintType && selectedPrintType.route != @get "target.router.currentHandlerInfos.lastObject.name"
-      @transitionToRoute selectedPrintType.route
-    ).observes("selectedPrintType")
-  _routerUrlChanged: (->
-    activeRoute = @get "target.router.currentHandlerInfos.lastObject.name"
-    findPrintType = (printTypes, value) ->
-      for printType in printTypes
-        if value == printType.get "route"
-          return printType
-        else if (children = printType.get "children")
-          return childPrintType if (childPrintType = findPrintType children, value)
-      return null
-    @set "selectedPrintType", foundPrintType if (foundPrintType = findPrintType @get("printTypes"), activeRoute)
-    ).observes("target.url")
-
-  disablePrint: false
-  disableLoadParams: false
-
 
   onPrint: ->
     #assign action based on selected print type
     for printType in @get "printTypes"
-      if @get("target").isActive(printType.get "route")
+      if @get("router").isActive(printType.get "route")
         action = printType.get "action"
         break
     Em.assert "No action string defined for current route", action
     params = @get("content").toParam()
-    @get("target").send "printForm", params, @get("printForm"), action
+    @get("router").send "printForm", params, @get("printForm"), action
 
   onLoadParams: ->
     debugger #TODO

@@ -14,16 +14,17 @@ App.ChangeNotificationController = Em.Controller.extend
 
   notificationType: null
 
- #values determined with current route
+  router: (-> return @container.lookup("router:main")).property() #taken from ember.js LinkView
+  #values determined with current route
   _routeChanged: (->
     if @get("inChangeNotificationRoute")
-      router = @get("target")
+      router = @get("router")
       @set "notificationType",
         if router.isActive "changeNotification.standardNotification" then "standard"
         else if router.isActive "changeNotification.taxNotification" then "taxNotification"
         else if router.isActive "changeNotification.taxClassification" then "taxClassification"
-    ).observes("target.url")
-  inChangeNotificationRoute: (-> @get("target").isActive "changeNotification").property("target.url")
+    ).observes("router.url")
+  inChangeNotificationRoute: (-> @get("router").isActive "changeNotification").property("router.url")
 
   isStandardNotification: (-> "standard" == @get "notificationType").property("notificationType")
 

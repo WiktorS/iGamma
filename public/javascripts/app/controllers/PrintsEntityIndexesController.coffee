@@ -12,13 +12,15 @@ App.EntityIndexesController = Em.Controller.extend
     @fillPrecinctList()
     ).observes("selectedCadastralUnit")
 
+  router: (-> return @container.lookup("router:main")).property() #taken from ember.js LinkView
+
   type: (->
-    router = @get "target"
+    router = @get "router"
     if router.isActive "entityIndexes.entitiesIndex" then "entities"
     else if router.isActive "entityIndexes.possesionsIndex" then "possesions"
     else if router.isActive "entityIndexes.leasesIndex" then "leases"
     else if router.isActive "entityIndexes.incorrectShares" then "incorrectShares"
-    ).property("target.url")
+    ).property("router.url")
   isEntities: (-> "entities" == @get "type").property("type")
   isManaging: (-> "possesions" == @get "type").property("type")
 
