@@ -122,19 +122,11 @@ public class IntegraJson extends Controller {
         renderJSON(result);
     }
 
-
-
-
     public static void getPrintClauses(String printType) throws Exception {
         List<Clause> result = integra.getPrintClauses(printType);
         renderJSON(result);
     }
 
-//    public static void getShareSummary() throws Exception {
-//       List<ShareSummary> result = integra.getShareSummary();
-//       renderJSON(result);
-//    }
-//
     public static void getCustomReportData(String objectType) throws Exception {
        CustomReportData result = integra.getCustomReportData(objectType);
        renderJSON(result);

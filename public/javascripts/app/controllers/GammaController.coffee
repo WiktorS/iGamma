@@ -1,6 +1,8 @@
 App.GammaController = Em.Controller.extend
   needs: ["changesList", "egbilList"]
 
+  router: (-> return @container.lookup("router:main")).property() #taken from ember.js LinkView
+
   objectList: Em.A()
   rightPanelData:
     jrg: [
@@ -142,7 +144,7 @@ App.GammaController = Em.Controller.extend
     idx = @get("objectList").indexOf object
     @get("objectList").removeObject object
     objectRoute = object.get "_objectRoute"
-    if @get("target").isActive objectRoute, object
+    if @get("router").isActive objectRoute, object
       if @get("objectList").length > 0
         idx-- while idx >= @get("objectList").length
         @get("target").send "goToObject", @get("objectList.#{idx}")
@@ -230,7 +232,7 @@ App.GammaController = Em.Controller.extend
       when "changeNotification"
         @showChangeNotificationModal objectList
       when "shareSummary"
-        @showShareSummaryModal simpleList(objectList)
+        @showShareSummaryModal objectList
       when "customReport"
         @showCustomReportModal simpleList(objectList)
       when "difference"
@@ -264,32 +266,26 @@ App.GammaController = Em.Controller.extend
         registerUnitType: type
     Em.run.sync()
     printModal = App.PrintExtractsModalView.modal
-      controller: @container.lookup("router:main") #looks like we have to set controller otherwise {{render}} won't work
+      controller: @ #looks like we have to set controller otherwise {{render}} won't work
       content: App.PrintExtractsModel.create().setProperties
         extractType: action
         registerUnits: selectedObjects
 
   showChangeNotificationModal: (objectList) ->
     printModal = App.PrintChangeNotificationModalView.modal
-      controller: @container.lookup("router:main") #looks like we have to set controller otherwise {{render}} won't work
+      controller: @ #looks like we have to set controller otherwise {{render}} won't work
       content: App.PrintChangeNotificationModel.create()
 
-  showShareSummaryModal: (simpleList) ->
-    shareSummaryModal = App.ShareSummaryModalView.modal()
-    $.ajax
-      url: "getShareSummary.json"
-      data:
-        object: simpleList
-      success: (data) ->
-        if !Em.isEmpty data
-          shareSummaryModal.set "columns", Em.A([ "group", "share" ])
-          shareSummaryModal.set "content", data.map(App.Common.toModel, App.ShareSummaryModel)
-        else
-          alert "Nie znaleziono rekordu"  #TODO: Error handling
+  showShareSummaryModal: (objectList) ->
+    Em.assert("Share summary can handle only one object", objectList.length != 0)
+    shareSummaryModal = App.ShareSummaryModalView.modal
+      controller: @ #looks like we have to set controller otherwise {{render}} won't work
+      content: objectList.get("0.shares")
+      objectType: objectList.get("0._objectType")
 
   showCustomReportModal: (simpleList) ->
     printModal = App.PrintCustomReportModalView.modal
-      controller: @container.lookup("router:main") #looks like we have to set controller otherwise render won't work
+      controller: @ #looks like we have to set controller otherwise render won't work
       content: App.PrintCustomReportModel.create()
 
   showDifferenceReportModal: (objectList) ->
