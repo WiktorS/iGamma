@@ -5,13 +5,19 @@ App.ModalView = Em.View.extend
   showModal: ->
     @$().modal()
     @$().css
-      'width': 'auto'
-      'min-width': '560px'
-      'margin-left': '-50%' #modal left is 50% by default, so to get right width we have to override this somehow
+      "width": "auto"
+      "min-width": "560px"
+      "margin-left": "-50%" #modal left is 50% by default, so to get right width we have to override this somehow
     Em.run.next @, ->
-      # calculate correct left margin
       @$().css
-        'margin-left': -(@$().width() / 2)
+        # calculate correct left margin
+        "margin-left": -(@$().width() / 2)
+        # set width to constant and add additional 20px for scrollbar. Fixes problem with wraping modal content when there is vertiacal scrollbar
+        "width": "#{(@$().width() + 20)}px"
+      #fix modal z-index when stacking modals (TODO: tricky fix)
+      highestModalZIndex = Math.max(parseInt($(item).css("z-index") for item in $("body .modal")))
+      @$().css("z-index", (highestModalZIndex || 1050)+10)
+      @$().next(".modal-backdrop").css("z-index", (highestModalZIndex || 1050))
 
   hideModal: ->
     @$().modal "hide"
