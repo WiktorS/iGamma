@@ -11,7 +11,7 @@ App.ModalView = Em.View.extend
     Em.run.next @, ->
       @$().css
         # calculate correct left margin
-        "margin-left": -(@$().width() / 2)
+        "margin-left": "-#{@$().width() / 2}px"
         # set width to constant and add additional 20px for scrollbar. Fixes problem with wraping modal content when there is vertiacal scrollbar
         "width": "#{(@$().width() + 20)}px"
       #fix modal z-index when stacking modals (TODO: tricky fix)
@@ -24,11 +24,14 @@ App.ModalView = Em.View.extend
 
   didInsertElement: ->
     @_super()
-    @$().on "show", @, => @onShow.apply @, arguments
+    @$().on "show", @, =>
+      $("body").addClass "modal-open"
+      @onShow.apply @, arguments
     @$().on "shown", @, => @onShown.apply @, arguments
     @$().on "hide", @, => @onHide.apply @, arguments
     @$().on "hidden", @, =>
       @onHidden.apply @, arguments
+      $("body").removeClass "modal-open"
       @destroy() if @get "destroyAfterHide"
     @showModal()
 
