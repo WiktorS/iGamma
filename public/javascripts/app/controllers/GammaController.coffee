@@ -187,7 +187,7 @@ App.GammaController = Em.Controller.extend
     else
       @showObject objectId, objectType
 
-  fetchDataCallback: (fetchQueue, type)->
+  fetchDataCallback: (fetchQueue, type, callback)->
     jsonMethod = @get "fetchMethod.#{type}"
     Em.assert "fetchMethod undefinned for type: #{type}", jsonMethod
     idList = fetchQueue.map( (x)-> x.get "id")
@@ -216,6 +216,7 @@ App.GammaController = Em.Controller.extend
           for contentItem in contentItems
             if App.GammaObjectStatus.READY != contentItem.get "_dataStatus"
               contentItem.set "_dataStatus", App.GammaObjectStatus.ERROR
+        callback?()
         return
 
   rightPanelAction: (action, objectList) ->
