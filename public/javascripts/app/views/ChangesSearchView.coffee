@@ -1,2 +1,2 @@
-App.ChangesSearchView = App.GammaSearchView.extend
+App.ChangesSearchView = Em.View.extend
   templateName: "changesSearch"
