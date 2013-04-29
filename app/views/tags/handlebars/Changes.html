@@ -1,7 +1,7 @@
 <script type="text/x-handlebars" data-template-name="changes">
 <ul class="nav nav-pills">
     {{view App.TabItemView routeName="changes.changesMap" displayName="Pokaż mapę"}}
-    {{view App.TabItemView routeName="changes.changesSearch" displayName="Wybór obiektów"}}
+    {{view App.TabItemView routeName="changesSearch" displayName="Wybór obiektów"}}
     {{#if controllers.changesList.content}}
         {{view App.TabItemView routeName="changes.changesList" displayName="Lista obiektów"}}
     {{/if}}

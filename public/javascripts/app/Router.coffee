@@ -30,7 +30,7 @@ App.Router.map ->
       @route "landCommunity", {path: "zarząd wspólnoty gruntowej/:name/:id"}
   @resource "changes", {path: "zmiany"}, ->
     @route "changesMap", {path: "mapa"}
-    @route "changesSearch", {path: "szukaj"}
+    @resource "changesSearch", {path: "szukaj"}
     @route "changesList", {path: "wyniki"}
     @resource "changesObject", {path: "obiekt"}, ->
       @route "change", {path: "zmiana/:name/:id"}
@@ -189,18 +189,30 @@ SearchObjectRoute = RouteWithParentMemory.extend
     doSearch: (context) ->
       @controllerFor(@get "lastRenderedTemplate")?.doSearch()
 
-App.EgbilSearchJrgRoute = SearchObjectRoute.extend()
-App.EgbilSearchJrbRoute = SearchObjectRoute.extend()
-App.EgbilSearchJrlRoute = SearchObjectRoute.extend()
-App.EgbilSearchOldJrgRoute = SearchObjectRoute.extend()
-App.EgbilSearchLotRoute = SearchObjectRoute.extend()
-App.EgbilSearchBuildingRoute = SearchObjectRoute.extend()
-App.EgbilSearchLocalRoute = SearchObjectRoute.extend()
-App.EgbilSearchPersonRoute = SearchObjectRoute.extend()
-App.EgbilSearchInstitutionRoute = SearchObjectRoute.extend()
-App.EgbilSearchGroupRoute = SearchObjectRoute.extend()
-App.EgbilSearchLandCommunityRoute = SearchObjectRoute.extend()
-App.EgbilSearchDocumentRoute = SearchObjectRoute.extend()
+App.EgbilSearchJrgRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchJrbRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchJrlRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchOldJrgRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchLotRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchBuildingRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchLocalRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchPersonRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchInstitutionRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchGroupRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchLandCommunityRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
+App.EgbilSearchDocumentRoute = SearchObjectRoute.extend
+  model: -> App.EgbilSearchModel.create()
 
 App.EgbilEgbilListRoute = RouteWithParentMemory.extend
   renderTemplate: ->
@@ -212,19 +224,17 @@ App.EgbilEgbilListRoute = RouteWithParentMemory.extend
       @controllerFor("gamma").rightPanelAction(context.get("type"), checkedList)
 
 App.ChangesRoute = RouteWithParentMemory.extend
-  defaultRoute: "changes.changesSearch"
+  defaultRoute: "changesSearch"
   renderTemplate: ->
     @render "changes",
       controller: @controllerFor "gamma"
 App.ChangesIndexRoute = RouteWithParentMemory.extend()
 
 App.ChangesChangesMapRoute = RouteWithParentMemory.extend
-  renderTemplate: ->
-    @render "gammaMap"
+  renderTemplate: -> @render "gammaMap"
 
-App.ChangesChangesSearchRoute = RouteWithParentMemory.extend
-  renderTemplate: ->
-    @render "changesSearch"
+App.ChangesSearchRoute = RouteWithParentMemory.extend
+  model: -> App.ChangesSearchModel.create()
   events:
     goToList: (context) ->
       @controllerFor("changesList").set "type", context.get("type")
