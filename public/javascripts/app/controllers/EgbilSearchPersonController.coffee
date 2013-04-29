@@ -1,1 +1,2 @@
-App.EgbilSearchPersonController = App.EgbilSearchCommonController.extend()
+App.EgbilSearchPersonController = App.EgbilSearchCommonController.extend
+  type: "person"

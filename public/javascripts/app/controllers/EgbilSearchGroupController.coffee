@@ -1,1 +1,2 @@
-App.EgbilSearchGroupController = App.EgbilSearchCommonController.extend()
+App.EgbilSearchGroupController = App.EgbilSearchCommonController.extend
+  type: "group"

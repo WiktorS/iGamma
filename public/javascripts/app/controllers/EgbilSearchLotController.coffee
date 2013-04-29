@@ -1,1 +1,2 @@
-App.EgbilSearchLotController = App.EgbilSearchCommonController.extend()
+App.EgbilSearchLotController = App.EgbilSearchCommonController.extend
+  type: "lot"

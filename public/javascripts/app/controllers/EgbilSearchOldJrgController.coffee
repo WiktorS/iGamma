@@ -1,1 +1,2 @@
-App.EgbilSearchOldJrgController = App.EgbilSearchCommonController.extend()
+App.EgbilSearchOldJrgController = App.EgbilSearchCommonController.extend
+  type: "oldJrg"

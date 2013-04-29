@@ -1,2 +1,2 @@
-App.EgbilSearchInstitutionController = App.EgbilSearchCommonController.extend()
-
+App.EgbilSearchInstitutionController = App.EgbilSearchCommonController.extend
+  type: "institution"

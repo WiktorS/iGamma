@@ -1,1 +1,2 @@
-App.EgbilSearchJrlController = App.EgbilSearchCommonController.extend()
+App.EgbilSearchJrlController = App.EgbilSearchCommonController.extend
+  type: "jrl"

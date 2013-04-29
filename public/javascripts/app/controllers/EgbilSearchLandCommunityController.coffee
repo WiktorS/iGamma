@@ -1,1 +1,2 @@
-App.EgbilSearchLandCommunityController = App.EgbilSearchCommonController.extend()
+App.EgbilSearchLandCommunityController = App.EgbilSearchCommonController.extend
+  type: "landCommunity"

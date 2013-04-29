@@ -1,1 +1,2 @@
-App.EgbilSearchDocumentController = App.EgbilSearchCommonController.extend()
+App.EgbilSearchDocumentController = App.EgbilSearchCommonController.extend
+  type: "document"

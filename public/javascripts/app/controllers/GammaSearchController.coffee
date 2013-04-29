@@ -22,7 +22,21 @@ App.GammaSearchController = Em.Controller.extend
     lot: "Działki"
     change: "Zmiany"
 
-  findObjects: (searchArgs) ->
+  findObjects: (options) ->
+    getContentValues = (model) ->
+      result = {}
+      for own property, item of model
+        if item instanceof App.StandardFilterElementModel
+          name = item.get "name"
+          value = item.get "value"
+          attrIndex = item.get "attrIndex"
+          if !Em.isEmpty(name) && !Em.isEmpty(value) && !Em.isEmpty(attrIndex)
+            result[attrIndex] = { name: name, value: value }
+        else if typeof item == "object"
+          $.extend(result, getContentValues(item))
+      return result
+    searchArgs = getContentValues(options.content)
+    #TODO: Check if searchArgs is not empty
     $.ajax
       type: "POST"
       url: "findObjects.json"
@@ -32,18 +46,16 @@ App.GammaSearchController = Em.Controller.extend
       success: (data) =>
         # data is array of ids
         if Em.isArray data
-          type = @get "type"
+          type = options.type
           objectModel = @get "controllers.gamma.objectModel.#{type}"
           Em.assert "Model for object '#{type}' not defined in GammaController", objectModel
-          list = data.map(((x)-> 
+          list = data.map(((x)->
             @create().setProperties
               _objectId: x
               _objectType: type
             ), objectModel)
           Em.run.sync()
-          @get("target").send "goToList", Em.Object.create
-            type: type
-            list: list
+          options.success?.call(@, list)
         else
           alert "Brak wyników" #TODO: error handling
       error: (jqXHR, textStatus, errorThrown) ->
