@@ -1,0 +1,52 @@
+<script type="text/x-handlebars" data-template-name="egbilSearchModal">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h3>Wybór obiektów</h3>
+    </div>
+    <div class="modal-body modal-body-big">
+        <div class="tabbable tabs-left">
+          <ul class="nav nav-tabs">
+            <li {{bindAttr class="view.disableJrg:disabled view.isActiveJrg:active"}}><a {{action "showJrg" target="view"}}>Jednostki Rejestrowe Gruntów i Budynków</a></li>
+            <li {{bindAttr class="view.disableJrb:disabled view.isActiveJrb:active"}}><a {{action "showJrb" target="view"}}>Jednostki Rejestrowe Budynków</a></li>
+            <li {{bindAttr class="view.disableJrl:disabled view.isActiveJrl:active"}}><a {{action "showJrl" target="view"}}>Jednostki Rejestrowe Lokali</a></li>
+            <li class="disabled"><a>Stare Jednostki Rejestrowe Gruntów</a></li>
+            <li {{bindAttr class="view.disableLot:disabled view.isActiveLot:active"}}><a {{action "showLot" target="view"}}>Działki</a></li>
+            <li {{bindAttr class="view.disableBuilding:disabled view.isActiveBuilding:active"}}><a {{action "showBuilding" target="view"}}>Budynki</a></li>
+            <li {{bindAttr class="view.disableLocal:disabled view.isActiveLocal:active"}}><a {{action "showLocal" target="view"}}>Lokale</a></li>
+            <li class="disabled"><a>Osoby fizyczne</a></li>
+            <li class="disabled"><a>Instytucje</a></li>
+            <li class="disabled"><a>Podmioty grupowe</a></li>
+            <li class="disabled"><a>Zarządy wspólnot gruntowych</a></li>
+            <li class="disabled"><a>Dokumenty</a></li>
+          </ul>
+          <div id="egbil-search" class="tab-content well">
+            {{#if view.isActiveJrg}}
+            {{render "egbilSearch/jrg" view.content}}
+            {{/if}}
+            {{#if view.isActiveJrb}}
+            {{render "egbilSearch/jrb" view.content}}
+            {{/if}}
+            {{#if view.isActiveJrl}}
+            {{render "egbilSearch/jrl" view.content}}
+            {{/if}}
+            {{#if view.isActiveLot}}
+            {{render "egbilSearch/lot" view.content}}
+            {{/if}}
+            {{#if view.isActiveBuilding}}
+            {{render "egbilSearch/building" view.content}}
+            {{/if}}
+            {{#if view.isActiveLocal}}
+            {{render "egbilSearch/local" view.content}}
+            {{/if}}
+            <div class="form-actions">
+              <label class="historicalEntries">{{view Ember.Checkbox}} <span>Uwzględnij wpisy historyczne</span></label>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn"><i class="icon-remove-sign"></i> Wyczyść</button>
+        <button class="btn btn-primary" {{action "doSearch" target="view"}}><i class="icon-ok-sign"></i> Wybierz</button>
+        <button class="btn" data-dismiss="modal">Zamknij</button>
+    </div>
+</script>

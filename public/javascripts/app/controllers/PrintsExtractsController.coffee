@@ -1,5 +1,5 @@
 App.ExtractsController = Em.Controller.extend
-  needs: ["gamma"]
+  needs: ["gamma", "egbilSearch"]
   #input params
   content: null
 
@@ -65,3 +65,86 @@ App.ExtractsController = Em.Controller.extend
 
   fetchDataCallback: (fetchQueue, type) ->
     @get("controllers.gamma").fetchDataCallback(fetchQueue, type)
+
+  selectObjects: ->
+    type = @get "content.extractType"
+    if "prg" == type || "urg" == type
+      enabledTabs = ["jrg", "lot"]
+    else if "rb" == type
+      enabledTabs = ["jrg", "jrb", "building"]
+    else if "kb" == type
+      enabledTabs = ["jrg", "building"]
+    else if "rl" == type
+      enabledTabs = ["jrl", "local"]
+    else if "kl" == type
+      enabledTabs = ["jrg", "jrb", "local"]
+    App.EgbilSearchModalView.modal
+      controller: @
+      activeTab: enabledTabs[0]
+      enabledTabs: enabledTabs
+
+  doSearch: (type, content)->
+    @get("controllers.egbilSearch").findObjects
+      type: type
+      content: content
+      success: (list) =>
+        if type == @get("objectType")
+          output = list
+        else
+          output = Em.A()
+          if "jrg" == @get("objectType")
+            if "lot" == type
+              @get("controllers.gamma").fetchDataCallback list, type, ->
+                for lot in list
+                  jrgID = lot.get("jrgID")
+                  jrgName = lot.get("jrgName")
+                  jrgType = lot.get("jrgType")
+                  if jrgID && jrgType && !output.find((x)-> x.get("_objectId") == jrgID && x.get("_objectType") == jrgType)
+                    output.addObject App.EgbilObjectRegisterUnitModel.create().setProperties
+                      _objectId: jrgID
+                      _objectName: jrgName
+                      _objectType: jrgType
+                Em.run.sync()
+          else if "jrb" == @get("objectType")
+            if "building" == type
+              @get("controllers.gamma").fetchDataCallback list, type, ->
+                for building in list
+                  jrbID = building.get("jrbID")
+                  jrbName = building.get("jrbName")
+                  if jrbID && !output.find((x)-> x.get("_objectId") == jrbID)
+                    output.addObject App.EgbilObjectRegisterUnitModel.create().setProperties
+                      _objectId: jrbID
+                      _objectName: jrbName
+                Em.run.sync()
+            else if "jrg" == type
+              @get("controllers.gamma").fetchDataCallback list, type, ->
+                for jrg in list
+                  jrbID = jrg.get("jrbID")
+                  jrbName = jrg.get("jrbName")
+                  if jrbID && !output.find((x)-> x.get("_objectId") == jrbID)
+                    output.addObject App.EgbilObjectRegisterUnitModel.create().setProperties
+                      _objectId: jrbID
+                      _objectName: jrbName
+                Em.run.sync()
+          else if "jrl" == @get("objectType")
+            if "local" == type
+              @get("controllers.gamma").fetchDataCallback list, type, ->
+                for local in list
+                  jrlID = local.get("jrlID")
+                  jrlName = local.get("jrlName")
+                  if jrlID && !output.find((x)-> x.get("_objectId") == jrlID)
+                    output.addObject App.EgbilObjectRegisterUnitModel.create().setProperties
+                      _objectId: jrlID
+                      _objectName: jrlName
+                Em.run.sync()
+            else if "jrg" == type || "jrb" == type
+              @get("controllers.gamma").fetchDataCallback list, type, ->
+                for jrg in list
+                  jrlID = jrg.get("jrlID")
+                  jrlName = jrg.get("jrlName")
+                  if jrlID && !output.find((x)-> x.get("_objectId") == jrlID)
+                    output.addObject App.EgbilObjectRegisterUnitModel.create().setProperties
+                      _objectId: jrlID
+                      _objectName: jrlName
+                Em.run.sync()
+        @set "content.registerUnits", output
