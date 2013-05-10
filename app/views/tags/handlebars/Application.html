@@ -1,6 +1,12 @@
 <script type="text/x-handlebars" data-template-name="application">
-<div id="app_header" class="navbar-fixed-top">#{pageParts.header /}</div>
-<div id="app_menu">{{view App.ApplicationMenuView}}</div>
-<div id="app_page">{{outlet}}</div>
-<div id="app_footer" class="navbar-fixed-bottom">#{pageParts.footer /}</div>
+    <div id="app_header" class="navbar-fixed-top">#{pageParts.header /}</div>
+    {{#if isAuthenticated }}
+    <div id="app_menu">{{view App.ApplicationMenuView}}</div>
+    <div id="app_page">{{outlet}}</div>
+    {{/if}}
+*{
+    <div id="app_menu" {{bindAttr class="isAuthenticated::hide"}}>{{view App.ApplicationMenuView}}</div>
+    <div id="app_page" {{bindAttr class="isAuthenticated::hide"}}>{{outlet}}</div>
+}*
+    <div id="app_footer" class="navbar-fixed-bottom">#{pageParts.footer /}</div>
 </script>

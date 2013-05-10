@@ -41,6 +41,7 @@ App.Route = Em.Route.extend
 App.ApplicationRoute = Ember.Route.extend
   defaultRoute: "egbil"
   events:
+    #Object events
     openObject: (context) ->
       @controllerFor("gamma").openObject context.get("_objectId"), context.get("_objectType")
     # closeObject: (context) ->
@@ -50,6 +51,8 @@ App.ApplicationRoute = Ember.Route.extend
     goToObject: (context) ->
       objectRoute = context.get("_objectRoute")
       @transitionTo objectRoute, context
+
+    # Print events
     printForm: (params, printForm, action) ->
       printForm.attr "action", action
       #append hidden fields with values to submit
@@ -93,3 +96,11 @@ App.ApplicationRoute = Ember.Route.extend
       args = decodeURIComponent($.param(context))
       url = "/getScan?#{args}"
       window.open(url)
+
+    # Authentication events
+    login: (context, callback) ->
+      xhr = App.GammaAuth.login(context.get("username"), context.get("password"))
+      xhr.always(callback)
+
+    logout: ->
+      App.GammaAuth.logout()

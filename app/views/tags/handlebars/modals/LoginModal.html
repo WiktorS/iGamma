@@ -1,0 +1,28 @@
+<script type="text/x-handlebars" data-template-name="loginModal">
+    <div class="modal-header">
+        <h3>Logowanie</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label">Login</label>
+                    <div class="controls">
+                        {{input value=view.content.username type="text" class="input-xlarge"}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Hasło</label>
+                    <div class="controls">
+                        {{input value=view.content.password type="password" class="input-xlarge"}}
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-right">
+            <button {{bindAttr class=":btn :btn-success :span2 disableLogin:disabled"}} {{action "login" target="view"}}>Zaloguj</button>
+        </div>
+    </div>
+</script>
