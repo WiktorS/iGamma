@@ -29,10 +29,11 @@ App.GammaController = Em.Controller.extend
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
     oldJrg: [
-      Em.Object.create { name: "Wypis z RG", type: "rg", multiselect: true }
-      Em.Object.create { name: "Wypis z KL", type: "kl", multiselect: true }
+      #TODO: Needs revision
+      Em.Object.create { name: "Wypis pełny z RG", type: "prg", multiselect: true }
+      Em.Object.create { name: "Wypis uproszczony z RG", type: "urg", multiselect: true }
+      Em.Object.create { name: "Zestawienie klasoużytków", type: "terrainCategoryReport", multiselect: true }
       Em.Object.create { name: "Rozliczenie udziałów", type: "shareSummary", multiselect: false }
-      Em.Object.create { name: "Lista zmian w JR", type: "change", multiselect: true }
       Em.Object.create { name: "Raport dowolny", type: "customReport", multiselect: true }
     ]
     lot: [
