@@ -1,10 +1,14 @@
 package controllers;
 
-import play.mvc.*;
+import models.UserSessionData;
+import play.cache.Cache;
+import play.mvc.Controller;
 
 public class Application extends Controller {
 
+    //@CacheFor("1h")
     public static void index() {
-        render();
+        UserSessionData userSessionData = Cache.get(session.getId(), UserSessionData.class);
+        render(userSessionData);
     }
 }

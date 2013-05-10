@@ -5,6 +5,16 @@
 # Home page
 GET     /                                         Application.index
 
+#Authentication
+POST    /login                                    Authentication.login
+POST    /logout                                   Authentication.logout
+
+##Authentication - development
+%{ if (play.mode.isDev()) { }%
+#For testing purposes allow to logout using GET
+GET     /logout                                   Authentication.logout
+%{ } }%
+
 #Integra json interface
 POST    /findObjects.json                         IntegraJson.findObjects
 
