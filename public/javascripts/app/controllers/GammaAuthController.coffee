@@ -1,4 +1,4 @@
-GammaAuth = Em.Object.extend
+App.GammaAuthController = Em.Controller.extend
   username: ""
   fullname: ""
   csrftoken: ""
@@ -27,7 +27,7 @@ GammaAuth = Em.Object.extend
   logout: ->
     $.ajax
       url: @getSecureUrl("logout")
-      type: "POST"
+      type: "DELETE"
       complete: =>
         #Clear user data even if logout is unsuccessful
         @clearUserData()
@@ -40,5 +40,3 @@ GammaAuth = Em.Object.extend
 
   clearUserData: ->
     @setUserData "", "", ""
-
-App.GammaAuth = GammaAuth.create()

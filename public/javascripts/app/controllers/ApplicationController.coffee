@@ -1,7 +1,9 @@
 App.ApplicationController = Em.Controller.extend
+  needs: ["gammaAuth"]
+
   router: (-> return @container.lookup("router:main")).property() #taken from ember.js LinkView
 
-  isAuthenticatedBinding: "App.GammaAuth.isDataValid"
+  isAuthenticatedBinding: "controllers.gammaAuth.isDataValid"
   isLoginModalShown: false
 
   _urlChanged: (->
@@ -32,7 +34,7 @@ App.ApplicationController = Em.Controller.extend
     #           xhr.setRequestHeader "X-CSRFToken", App.GammaAuth.getAuthToken()
         error: (jqXHR, status, errorThrown) ->
           if jqXHR.status == 403 #TODO: Additional check to force login only when calling backend
-            App.GammaAuth.clearUserData()
+            @get("controllers.gammaAuth").clearUserData()
 
   showLoginModal: ->
     #Navigating forward/bakward in browser will trigger _urlChanged observer and in result show several LoginModals

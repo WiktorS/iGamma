@@ -99,8 +99,8 @@ App.ApplicationRoute = Ember.Route.extend
 
     # Authentication events
     login: (context, callback) ->
-      xhr = App.GammaAuth.login(context.get("username"), context.get("password"))
+      xhr = @controllerFor("gammaAuth").login(context.get("username"), context.get("password"))
       xhr.always(callback)
 
     logout: ->
-      App.GammaAuth.logout()
+      @controllerFor("gammaAuth").logout()
