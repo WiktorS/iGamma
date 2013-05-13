@@ -1,18 +1,22 @@
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery-1.9.1.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery.inview.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/jquery.reject.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap-2.3.1.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap-datepicker.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap-datepicker.pl.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap-combobox.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/bootstrap-fileupload.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/handlebars-1.0.rc.3.js'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/thirdparty/ember-1.0.0-rc.3.js'}"></script>
+#{pageParts.javascripts-libs/}
+<script type="text/javascript">
+App = Em.Application.create({
+#{ if (play.mode.isDev()) }
+  LOG_TRANSITIONS: true,
+#{/if}
+  ready: function() {
+*{Authorization data}*
+    App.GammaAuthController.reopen({
+      username: "${_userSessionData?.userName}",
+      fullname: "${_userSessionData?.fullName}",
+      csrftoken: "${_userSessionData?.authToken}"
+    });
+  }
+});
+</script>
 
-<script type="text/javascript" src="@{'/public/javascripts/app/App.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/AppReject.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/AppCommon.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/AppGammaAuth.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/router/Router.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/router/ApplicationRoute.coffee'}"></script>
@@ -71,6 +75,7 @@
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaObjectController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaObjectCommonController.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaCacheController.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaAuthController.coffee'}"></script>
   *{ EGBiL controllers }*
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilMapController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/EgbilSearchController.coffee'}"></script>
