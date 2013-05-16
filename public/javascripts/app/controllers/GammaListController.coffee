@@ -4,7 +4,7 @@ App.GammaListController = Em.Controller.extend
   content: null
   type: null
 
-  columns: (-> 
+  columns: (->
     type = @get "type"
     columnsOrder = @get "columnsOrder.#{type}"
     Em.assert "Column order in #{@get("constructor").toString()} is not defined for type '#{type}'", columnsOrder
@@ -44,7 +44,7 @@ App.GammaListController = Em.Controller.extend
     lot: "Działki"
     change: "Zmiany"
 
-  fetchDataCallback: (fetchQueue, type) -> 
+  fetchDataCallback: (fetchQueue, type) ->
     @get("controllers.gamma").fetchDataCallback(fetchQueue, type)
 
   checkedList: (->
@@ -93,7 +93,7 @@ App.GammaListController = Em.Controller.extend
     type = objectList.get "0.objectType"
     jsonMethod = @get "target.egbilSearchController.searchMethodData.#{type}" #TODO
     Em.assert "SearchMethod undefinned for type: #{type}", jsonMethod
-    $.ajax
+    App.Common.ajax
       url: "#{jsonMethod}.json"
       data:
         objectList: objectList

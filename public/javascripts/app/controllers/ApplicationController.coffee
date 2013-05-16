@@ -23,23 +23,37 @@ App.ApplicationController = Em.Controller.extend
     @ajaxSetup()
 
   ajaxSetup: ->
-    #source: https://docs.djangoproject.com/en/dev/ref/contrib/csrf/
-    $.ajaxSetup
-        crossDomain: false
-    #     beforeSend: (xhr, settings) ->
-    #       csrfSafeMethod = (method) ->
-    #         # these HTTP methods do not require CSRF protection
-    #         (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method))
-    #       if !csrfSafeMethod(settings.type)
-    #           xhr.setRequestHeader "X-CSRFToken", App.GammaAuth.getAuthToken()
-        error: (jqXHR, status, errorThrown) ->
-          if jqXHR.status == 403 #TODO: Additional check to force login only when calling backend
-            @get("controllers.gammaAuth").clearUserData()
+    App.Common.setAjaxUnauthCallback (ajaxOptions, deferred) =>
+      @showLoginModal()
+      .done ->
+        $.ajax(ajaxOptions)
+        .done((data, status, xhr)-> deferred.resolveWith @, [data, status, xhr])
+        .fail((xhr, status, error)-> deferred.rejectWith @, [xhr, status, error])
+
+    #based on: https://docs.djangoproject.com/en/dev/ref/contrib/csrf/
+    # gammaAuth = @get("controllers.gammaAuth")
+    # $(document).ajaxSend (event, xhr, settings) ->
+    #   csrfSafeMethod = (method) ->
+    #     # these HTTP methods do not require CSRF protection
+    #     /^(GET|HEAD|OPTIONS|TRACE)$/.test(method)
+    #   if !csrfSafeMethod(settings.type)
+    #       xhr.setRequestHeader "X-CSRFToken", gammaAuth.getAuthToken()
+    # $(document).ajaxError (event, xhr, settings, errorThrown) ->
+    #   if xhr.status == 403 #TODO: Additional check to force login only when calling backend
+    #     gammaAuth.clearUserData()
 
   showLoginModal: ->
+    deferred = $.Deferred()
     #Navigating forward/bakward in browser will trigger _urlChanged observer and in result show several LoginModals
     if !@get "isLoginModalShown"
-      App.LoginModalView.modal
+      modal = App.LoginModalView.modal
         controller: @
         onShow: => @set "isLoginModalShown", true
+        onHide: =>
+          Em.run.sync() #TODO: Why!?
+          if @get "isAuthenticated"
+            deferred.resolve()
+          else
+            deferred.reject()
         onHidden: => @set "isLoginModalShown", false
+    deferred.promise(modal)

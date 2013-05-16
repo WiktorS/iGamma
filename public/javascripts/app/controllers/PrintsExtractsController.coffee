@@ -51,7 +51,7 @@ App.ExtractsController = Em.Controller.extend
 
   getClauses: (type)->
     clauses = @get "content.clauses"
-    $.ajax
+    App.Common.ajax
       url: "getPrintClauses.json"
       data:
         printType: type

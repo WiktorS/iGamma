@@ -165,7 +165,7 @@ App.PrintsCustomReportController = Em.Controller.extend
 
   getCustomReportData: ->
     #TODO: Cache this data
-    $.ajax
+    App.Common.ajax
       url: "getCustomReportData.json"
       data:
         objectType: @get "objectType"
@@ -242,7 +242,7 @@ App.PrintsCustomReportController = Em.Controller.extend
       lineBreak: @get "content.lineBreak"
       fileFormat: @get "content.fileFormat"
     }
-    $.ajax
+    App.Common.ajax
       url: "saveCustomReportConfig.json"
       data:
         config: config
@@ -254,7 +254,7 @@ App.PrintsCustomReportController = Em.Controller.extend
   onRemoveConfig: ->
     list = @get "selectedConfigurationList"
     removeList = list.map (x) -> x.get "name"
-    $.ajax
+    App.Common.ajax
       url: "removeCustomReportConfig.json"
       data:
         configList: removeList

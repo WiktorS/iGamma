@@ -37,7 +37,7 @@ App.GammaSearchController = Em.Controller.extend
       return result
     searchArgs = getContentValues(options.content)
     #TODO: Check if searchArgs is not empty
-    $.ajax
+    App.Common.ajax
       type: "POST"
       url: "findObjects.json"
       data:
