@@ -59,7 +59,7 @@ App.GammaCacheController = Em.Controller.extend
       for systematicObj in outdatedCadastralUnits
         cadastralUnits.removeObject systematicObj
     if !Em.isEmpty(outdatedCadastralUnits) || Em.isEmpty(cadastralUnits)
-      App.Commin.ajax
+      App.Common.ajax
         url: "getCadastralUnits.json"
         success: (data) ->
           for item in (data || [])
