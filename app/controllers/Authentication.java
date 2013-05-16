@@ -33,7 +33,7 @@ public class Authentication extends Controller {
             userSessionData.authToken = session.getAuthenticityToken();
             //make a change to session to force cookie
             session.put("username", request.user);
-            Cache.safeSet(session.getId(), userSessionData, "1h"); //TODO: How long?
+            Cache.safeSet(session.getId(), userSessionData, "1d");
             //
             renderJSON(userSessionData);
         }
