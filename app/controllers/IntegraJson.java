@@ -8,6 +8,7 @@ import play.Logger;
 import play.cache.Cache;
 import play.mvc.Before;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Util;
 
 import java.io.File;
@@ -39,19 +40,22 @@ public class IntegraJson extends Controller {
         UserSessionData userSessionData;
         //Check if there is already a session
         userSessionData = Cache.get(session.getId(), UserSessionData.class);
-//        Http.Header headerToken = request.headers.get("X-CSRFToken");
-//        if(headerToken == null) {
-//            forbidden("Missing token");
-//        }
-//        else if (!session.getAuthenticityToken.equals(headerToken.value())){
-//            forbidden("Invalid token");
-//        }
-        //TODO: DBG
         if (userSessionData == null) {
             forbidden();
         }
+        Http.Header headerToken = request.headers.get("x-csrftoken");
+        if(headerToken == null) {
+            Logger.warn("Missing token header detected!");
+            forbidden();
+        }
+        //check header token
+        else if (!session.getAuthenticityToken().equals(headerToken.value())){
+            Logger.warn("Invalid header token detected!");
+            forbidden();
+        }
+        //check cache token
         else if (!userSessionData.authToken.equals(session.getAuthenticityToken())) {
-            Logger.warn("Invalid token detected!");
+            Logger.warn("Invalid cache token detected!");
             forbidden();
         }
     }
