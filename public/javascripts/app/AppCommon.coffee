@@ -23,7 +23,7 @@ App.Common =
       error: null
       complete: null
     $.ajax(newOptions).then null, (xhr, status, error) ->
-      if xhr.status == 403 && @isApiCall @url
+      if xhr.status == 403 && App.Common.isApiCall @url
         deferred = $.Deferred()
         ajaxUnauthCallback?(@, deferred)
         deferred
