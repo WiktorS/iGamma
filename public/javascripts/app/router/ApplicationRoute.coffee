@@ -78,23 +78,23 @@ App.ApplicationRoute = Ember.Route.extend
       $(hiddenInputs).remove()
     openTerrainCategoryReport: (context) -> #TODO: Check is it ok after conversion
       args = decodeURIComponent($.param({object: context}))
-      url = "/getTerrainCategorySummary?#{args}"
+      url = "/api/getTerrainCategorySummary?#{args}"
       window.open(url)
     openReservation: (context) -> #TODO: Check is it ok after conversion
       args = decodeURIComponent($.param(context))
-      url = "/getReservation?#{args}"
+      url = "/api/getReservation?#{args}"
       window.open(url)
     openCustomReport: (context) -> #TODO: Check is it ok after conversion
       args = decodeURIComponent($.param(context))
-      url = "/getCustomReport?#{args}"
+      url = "/api/getCustomReport?#{args}"
       window.open(url)
     openDifferenceReport: (context) -> #TODO: Check is it ok after conversion
       args = decodeURIComponent($.param(context))
-      url = "/getDifferenceReport?#{args}"
+      url = "/api/getDifferenceReport?#{args}"
       window.open(url)
     showScan: (context) -> #TODO: Check is it ok after conversion
       args = decodeURIComponent($.param(context))
-      url = "/getScan?#{args}"
+      url = "/api/getScan?#{args}"
       window.open(url)
 
     # Authentication events

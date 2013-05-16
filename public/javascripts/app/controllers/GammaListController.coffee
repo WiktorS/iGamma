@@ -94,7 +94,7 @@ App.GammaListController = Em.Controller.extend
     jsonMethod = @get "target.egbilSearchController.searchMethodData.#{type}" #TODO
     Em.assert "SearchMethod undefinned for type: #{type}", jsonMethod
     App.Common.ajax
-      url: "#{jsonMethod}.json"
+      url: "api/#{jsonMethod}.json"
       data:
         objectList: objectList
       success: (data) =>

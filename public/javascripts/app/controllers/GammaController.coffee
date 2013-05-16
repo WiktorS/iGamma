@@ -171,7 +171,7 @@ App.GammaController = Em.Controller.extend
       jsonMethod = @get "fetchMethod.#{objectType}"
       Em.assert "fetchMethod is undefinned for object type: '#{objectType}'", !!jsonMethod
       App.Common.ajax
-        url: "#{jsonMethod}.json"
+        url: "api/#{jsonMethod}.json"
         data:
           idList: [objectId]
         success: (data) =>
@@ -193,7 +193,7 @@ App.GammaController = Em.Controller.extend
     Em.assert "fetchMethod undefinned for type: #{type}", jsonMethod
     idList = fetchQueue.map( (x)-> x.get "id")
     App.Common.ajax
-      url: "#{jsonMethod}.json"
+      url: "api/#{jsonMethod}.json"
       data:
         idList: idList
       success: (data) =>
@@ -306,7 +306,7 @@ App.GammaController = Em.Controller.extend
 
   goToRelatedObject: (action, simpleList) ->
     App.Common.ajax
-      url: "getRelatedObjects.json"
+      url: "api/getRelatedObjects.json"
       data:
         relation: action
         objectList: simpleList

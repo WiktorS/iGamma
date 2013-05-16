@@ -28,7 +28,7 @@ App.GammaCacheController = Em.Controller.extend
         systematics.removeObject systematicObj
     if !Em.isEmpty(outdatedCachedSystematics)
       App.Common.ajax
-        url: "getSystematics.json"
+        url: "api/getSystematics.json"
         data:
           parentIdList: fetchIdList
         success: (data) ->
@@ -60,7 +60,7 @@ App.GammaCacheController = Em.Controller.extend
         cadastralUnits.removeObject systematicObj
     if !Em.isEmpty(outdatedCadastralUnits) || Em.isEmpty(cadastralUnits)
       App.Common.ajax
-        url: "getCadastralUnits.json"
+        url: "api/getCadastralUnits.json"
         success: (data) ->
           for item in (data || [])
             if item
@@ -86,7 +86,7 @@ App.GammaCacheController = Em.Controller.extend
         precincts.removeObject outdated
     if !Em.isEmpty(fetchIdList)
       App.Common.ajax
-        url: "getPrecincts.json"
+        url: "api/getPrecincts.json"
         data:
           idList: fetchIdList
         success: (data) ->

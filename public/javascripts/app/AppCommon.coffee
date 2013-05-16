@@ -13,6 +13,8 @@ App.Common =
 
   setAjaxUnauthCallback: (callback) -> ajaxUnauthCallback = callback
 
+  isApiCall: (url) -> url.match /api\/[A-z]+\.json/
+
   ajax: (options) ->
     #Override jQuery ajax to handle unauthorizised API access
     origError = options.error
@@ -21,7 +23,7 @@ App.Common =
       error: null
       complete: null
     $.ajax(newOptions).then null, (xhr, status, error) ->
-      if xhr.status == 403
+      if xhr.status == 403 && @isApiCall @url
         deferred = $.Deferred()
         ajaxUnauthCallback?(@, deferred)
         deferred

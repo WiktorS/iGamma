@@ -39,7 +39,7 @@ App.GammaSearchController = Em.Controller.extend
     #TODO: Check if searchArgs is not empty
     App.Common.ajax
       type: "POST"
-      url: "findObjects.json"
+      url: "api/findObjects.json"
       data:
         queryName: @get "queryName"
         queryArgs: searchArgs
