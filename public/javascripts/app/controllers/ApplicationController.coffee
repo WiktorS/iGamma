@@ -4,7 +4,7 @@ App.ApplicationController = Em.Controller.extend
   router: (-> return @container.lookup("router:main")).property() #taken from ember.js LinkView
 
   isAuthenticatedBinding: "controllers.gammaAuth.isDataValid"
-  isLoginModalShown: false
+  loginModal: null
 
   _urlChanged: (->
     #since this observer get called several times on "one" route change
@@ -43,17 +43,18 @@ App.ApplicationController = Em.Controller.extend
     #     gammaAuth.clearUserData()
 
   showLoginModal: ->
-    deferred = $.Deferred()
-    #Navigating forward/bakward in browser will trigger _urlChanged observer and in result show several LoginModals
-    if !@get "isLoginModalShown"
+    #Navigating forward/bakward in browser will trigger _urlChanged observer and result in showing several LoginModals
+    if !(modal = @get "loginModal")
+      deferred = $.Deferred()
       modal = App.LoginModalView.modal
         controller: @
-        onShow: => @set "isLoginModalShown", true
         onHide: =>
           Em.run.sync() #TODO: Why!?
           if @get "isAuthenticated"
             deferred.resolve()
           else
             deferred.reject()
-        onHidden: => @set "isLoginModalShown", false
-    deferred.promise(modal)
+        onHidden: => @set "loginModal", null
+      deferred.promise(modal)
+      @set "loginModal", modal
+    modal
