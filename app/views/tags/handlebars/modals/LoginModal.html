@@ -17,12 +17,17 @@
                         {{input value=view.content.password type="password" class="input-xlarge"}}
                     </div>
                 </div>
+                <div {{bindAttr class=":alert :alert-error view.alertVisiable::hide"}}>
+                    <button type="button" class="close">&times;</button>
+                    <strong>{{view.alertTitle}}</strong>
+                    {{view.alertMessage}}
+                </div>
             </fieldset>
         </form>
     </div>
     <div class="modal-footer">
         <div class="pull-right">
-            <button {{bindAttr class=":btn :btn-success :span2 disableLogin:disabled"}} {{action "login" target="view"}}>Zaloguj</button>
+            <button {{bindAttr class=":btn :btn-success :span2 view.loginInProgress:disabled"}} {{action "login" target="view"}}>Zaloguj</button>
         </div>
     </div>
 </script>
