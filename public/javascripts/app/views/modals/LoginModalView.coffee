@@ -48,3 +48,10 @@ App.LoginModalView = App.ModalView.extend
     @_super()
     @$(".alert .close").on "click", =>
       @alertShow false
+    @$("form").on "keypress", (e) =>
+      if e.keyCode == 13
+        @login()
+        false
+
+  onShown: ->
+    @$("form input:first").focus()
