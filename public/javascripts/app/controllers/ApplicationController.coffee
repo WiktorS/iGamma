@@ -4,6 +4,8 @@ App.ApplicationController = Em.Controller.extend
   router: (-> return @container.lookup("router:main")).property() #taken from ember.js LinkView
 
   isAuthenticatedBinding: "controllers.gammaAuth.isDataValid"
+  loginBinding: "controllers.gammaAuth.username"
+  fullNameBinding: "controllers.gammaAuth.fullname"
   loginModal: null
 
   _urlChanged: (->

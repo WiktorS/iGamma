@@ -1,11 +1,25 @@
 <script type="text/x-handlebars" data-template-name="applicationMenu">
-<div class="navbar">
-  <div class="navbar-inner">
-      <ul class="nav">
-        {{view App.TabItemView routeName="egbil"   displayName="EGBiL"}}
-        {{view App.TabItemView routeName="changes" displayName="Zmiany"}}
-        {{view App.TabItemView routeName="prints"  displayName="Wydruki"}}
-      </ul>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                {{view App.TabItemView routeName="egbil"        displayName="EGBiL"}}
+                {{view App.TabItemView routeName="changes"      displayName="Zmiany"}}
+                {{view App.TabItemView routeName="prints"       displayName="Wydruki"}}
+                {{view App.TabItemView routeName="dictionaries" displayName="Słowniki"}}
+                {{view App.TabItemView routeName="users"        displayName="Użytkownicy"}}
+                {{view App.TabItemView routeName="settings"     displayName="Ustawienia"}}
+                {{view App.TabItemView routeName="help"         displayName="Pomoc"}}
+            </ul>
+            <ul class="nav pull-right">
+                <li><div class="nav-user">
+                    {{#if view.user}}
+                    Użytkownik: <strong>{{view.user}}</strong>
+                    {{else}}
+                    Nie zalogowany
+                    {{/if}}
+                </div></li>
+                <li><div class="btn" {{action "logout"}}>Wyloguj</div></li>
+            </ul>
+        </div>
     </div>
-</div>
 </script>
