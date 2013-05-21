@@ -60,3 +60,9 @@ App.Router.map ->
       @route "taxClassification" , {path: "klasyfikacja podatkowa użytków"}
     @route "changesApplicationReport", {path: "dziennik zgłoszeń zmian"}
     @route "customReport", {path: "raporty dowolne"}
+  @resource "dictionaries", {path: "słowniki"}
+  @resource "users", {path: "użytkownicy"}, ->
+    @route "list" , {path: "lista"}
+    @route "edit" , {path: "edycja/:login/"}
+  @resource "settings", {path: "ustawienia"}
+  @resource "help", {path: "pomoc"}
