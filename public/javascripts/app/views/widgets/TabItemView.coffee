@@ -4,21 +4,21 @@ App.TabItemView = Em.View.extend
   classNameBindings: ["active"]
   displayName: null
   routeName: null
+  object: null
   router: (-> return @get("controller").container.lookup("router:main")).property() #taken from ember.js LinkView
-  click: (e) -> @get("router").transitionTo this.get("routeName")
+  click: ->
+    args = Em.makeArray @get("routeName")
+    args.addObject @get "object" if @get "object"
+    @get("router").transitionTo.apply @get("router"), args
   active: (->
-    @get("router").isActive @get("routeName")
-    ).property("router.url", "routeName") #router.url (and not router) is intented, cause url changes and router does not!
+    args = Em.makeArray @get("routeName")
+    args.addObject @get "object" if @get "object"
+    @get("router").isActive.apply @get("router"), args
+    ).property("router.url", "routeName", "object") #router.url (and not router) is intented, cause url changes and router does not!
 
 
 App.ObjectTabItemView = App.TabItemView.extend
-  object: null
   templateName: "objectTabItem"
   routeNameBinding: "object._objectRoute"
   displayNameBinding: "object._objectName"
-  currentStateObjectNameBinding: "controller.target.currentState.objectName"
-  click: (e) ->
-    @get("router").send "showObject", @get("object")
-  active: (->
-    @get("router").isActive @get("routeName"), @get("object")
-    ).property("router.url", "routeName", "object")
+  click: -> @get("router").send "showObject", @get("object")
