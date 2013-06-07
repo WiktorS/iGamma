@@ -1,5 +1,6 @@
 package models;
 
+import com.google.gson.annotations.Expose;
 import org.mindrot.jbcrypt.BCrypt;
 import play.db.jpa.Model;
 
@@ -9,18 +10,23 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class User extends Model {
-    public static final long PERMISSION_ADMIN=1<<32;
+    public static final long PERMISSION_ADMIN=1<<31;
 
+    @Expose
     @Column(unique=true, nullable=false)
     public String login;
     @Column(nullable=false)
-    public String password;
+    private String password;
+    @Expose
     @Column(nullable=false)
     public String firstName;
+    @Expose
     @Column(nullable=false)
     public String lastName;
+    @Expose
     @Column(nullable=false)
     public boolean isActive;
+    @Expose
     @Column(nullable=false)
     public long permissions;
     @ManyToOne

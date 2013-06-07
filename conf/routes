@@ -50,6 +50,12 @@ POST    /api/print/rankings                       IntegraJson.printRankings
 POST    /api/print/changeNotification             IntegraJson.printChangeNotification
 POST    /api/print/changesApplicationReport       IntegraJson.printChangesApplicationReport
 POST    /api/print/customReport                   IntegraJson.printCustomReport
+#Users
+GET     /api/getUserList.json                     IntegraJson.getUserList
+POST    /api/updateUser.json                      IntegraJson.updateUser
+POST    /api/updateUserPassword.json              IntegraJson.updateUserPassword
+POST    /api/addUser.json                         IntegraJson.addUser
+DELETE  /api/deleteUser.json                      IntegraJson.deleteUser
 #Documents
 GET     /api/getTerrainCategorySummary            IntegraJson.getTerrainCategorySummary
 GET     /api/getReservation                       IntegraJson.getReservation

@@ -9,7 +9,8 @@ App = Em.Application.create({
     App.GammaAuthController.reopen({
       username: "${_userSessionData?.userName}",
       fullname: "${_userSessionData?.fullName}",
-      csrftoken: "${_userSessionData?.authToken}"
+      csrftoken: "${_userSessionData?.authToken}",
+      permissions: ${_userSessionData?.permissions ? _userSessionData?.permissions : 0}
     });
   }
 });
@@ -24,6 +25,7 @@ App = Em.Application.create({
 <script type="text/javascript" src="@{'/public/javascripts/app/router/ChangesRoute.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/router/ObjectRoute.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/router/PrintsRoute.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/router/UsersRoute.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/models/StandardFilterElementModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/StandardTableCellModel.coffee'}"></script>
@@ -63,12 +65,13 @@ App = Em.Application.create({
 <script type="text/javascript" src="@{'/public/javascripts/app/models/PrecinctModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/PrintCustomReportModel.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/models/PrintCustomReportAttributeModel.coffee'}"></script>
-<script type="text/javascript" src="@{'/public/javascripts/app/models/PrintCustomReportConfigurationModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/UserModel.coffee'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/app/models/LinkModel.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/AppColumns.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ApplicationController.coffee'}"></script>
-  *{ common controllers code}*
+  *{ common controllers code }*
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaController.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaSearchController.coffee'}"></script>
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/GammaListController.coffee'}"></script>
@@ -110,6 +113,7 @@ App = Em.Application.create({
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangesSearchController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangesListController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/ChangesObjectChangeController.coffee'}"></script>
+  *{ Prints controllers }*
   <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsExtractsController.coffee'}"></script>
       <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsExtractsTabGeneralController.coffee'}"></script>
@@ -122,6 +126,10 @@ App = Em.Application.create({
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangeNotificationController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsChangesApplicationReportController.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/controllers/PrintsCustomReportController.coffee'}"></script>
+  *{ Users controllers }*
+  <script type="text/javascript" src="@{'/public/javascripts/app/controllers/UsersController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/UsersAddController.coffee'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/app/controllers/UsersEditController.coffee'}"></script>
 
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/TabItemView.coffee'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/app/views/widgets/FilterTypesView.coffee'}"></script>
@@ -170,6 +178,8 @@ App = Em.Application.create({
   <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsExtractsView.coffee'}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/app/views/PrintsExtractsTabSelectedView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/UsersAddView.coffee'}"></script>
+  <script type="text/javascript" src="@{'/public/javascripts/app/views/UsersEditView.coffee'}"></script>
 
 #{get 'moreScripts' /}
 
@@ -232,6 +242,9 @@ App = Em.Application.create({
     #{handlebars.PrintsCustomReport /}
   #{handlebars.Dictionaries /}
   #{handlebars.Users /}
+    #{handlebars.UsersList /}
+    #{handlebars.UsersAdd /}
+    #{handlebars.UsersEdit /}
   #{handlebars.Settings /}
   #{handlebars.Help /}
 

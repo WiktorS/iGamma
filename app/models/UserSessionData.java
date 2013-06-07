@@ -6,4 +6,5 @@ public class UserSessionData extends Model {
     public String userName;
     public String fullName;
     public String authToken;
+    public long permissions;
 }

@@ -21,6 +21,10 @@ App.Route = Em.Route.extend
 
   activate: ->
     routeName = @get("routeName")
+    if (neededPermissions = @get "neededPermissions")
+      permited = (@controllerFor("gammaAuth").permissions & neededPermissions) == neededPermissions
+      if !permited
+        @transitionTo "egbil"
     if !@get "isIndexRoute"
       parent = @get "parent"
       if parent?
@@ -30,13 +34,14 @@ App.Route = Em.Route.extend
   redirect: ->
     if @get "isLeafRoute"
       parent = @get "parent"
-      defaultRoute = parent.get "defaultRoute"
-      defaultRouteModel = parent.get "defaultRouteModel"
-      if !Em.isEmpty(defaultRoute) && defaultRoute != @get("routeName")
-        if Em.isEmpty defaultRouteModel
-          @transitionTo defaultRoute
-        else
-          @transitionTo defaultRoute, defaultRouteModel
+      if parent
+        defaultRoute = parent.get "defaultRoute"
+        defaultRouteModel = parent.get "defaultRouteModel"
+        if !Em.isEmpty(defaultRoute) && defaultRoute != @get("routeName")
+          if Em.isEmpty defaultRouteModel
+            @transitionTo defaultRoute
+          else
+            @transitionTo defaultRoute, defaultRouteModel
 
 App.ApplicationRoute = Ember.Route.extend
   defaultRoute: "egbil"

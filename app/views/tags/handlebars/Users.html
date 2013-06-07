@@ -1,3 +1,38 @@
 <script type="text/x-handlebars" data-template-name="users">
-    UŻYTKOWNICY
+    {{#if controllers.gammaAuth.canAccessUsersTab}}
+    <div class="btn-primary">
+        Użytkownicy
+    </div>
+    <div class="container well">
+        <div class="tabbable tabs-left">
+            <ul class="nav nav-tabs span3">
+                <button class="btn btn-primary" {{action "addUser"}}>Dodaj użytkownika</button>
+                <li class="divider"></li>
+                <li class="nav-header">Użytkownicy</li>
+                {{#if content}}
+                {{#each item in controller.content}}
+                {{view App.TabItemView routeName="users.edit" displayNameBinding="item._objectName" objectBinding="item"}}
+                {{/each}}
+                {{#if addingUser}}
+                {{view App.TabItemView routeName="users.add" displayName="Nowy użytkownik"}}
+                {{/if}}
+                {{else}}
+                {{#if addingUser}}
+                {{view App.TabItemView routeName="users.add" displayName="Nowy użytkownik"}}
+                {{else}}
+                <li>Brak użytkowników</li>
+                {{/if}}
+                {{/if}}
+            </ul>
+            <div class="tab-content">
+                {{outlet}}
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="alert alert-block alert-error">
+        <h4>Dostęp zabroniony!</h4>
+        Nie masz uprawnień do oglądania ządanych zasobów
+    </div>
+    {{/if}}
 </script>

@@ -63,6 +63,7 @@ App.Router.map ->
   @resource "dictionaries", {path: "słowniki"}
   @resource "users", {path: "użytkownicy"}, ->
     @route "list" , {path: "lista"}
+    @route "add" , {path: "dodaj"}
     @route "edit" , {path: "edycja/:login/"}
   @resource "settings", {path: "ustawienia"}
   @resource "help", {path: "pomoc"}

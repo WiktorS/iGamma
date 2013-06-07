@@ -1,0 +1,39 @@
+<script type="text/x-handlebars" data-template-name="users/add">
+    <form class= "form-horizontal">
+        <legend>Nowy użytkownik</legend>
+        <div class="control-group">
+            <label class="control-label">Login</label>
+            <div class="controls">{{input class="input-xlarge" value=login}}</div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Nowe hasło</label>
+            <div class="controls">
+                {{input type="password" class="input-xlarge" value=password}}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Potwierdź hasło</label>
+            <div class="controls">
+                {{input type="password" class="input-xlarge" value=passwordValidation}}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Imię</label>
+            <div class="controls">{{input class="input-xlarge" value=firstName}}</div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Nazwisko</label>
+            <div class="controls">{{input class="input-xlarge" value=lastName}}</div>
+        </div>
+        <div {{bindAttr class=":alert userAlertSuccess:alert-success userAlertError:alert-error userAlert::hide"}}>
+            <button type="button" class="close">&times;</button>
+            <strong>{{userAlertTitle}}</strong>
+            {{userAlertMessage}}
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button {{bindAttr class=":btn :btn-success :input-xlarge disableUserAdd:disabled"}} {{action "addUser" content}}>Dodaj</button>
+            </div>
+        </div>
+    </form>
+</script>

@@ -9,19 +9,25 @@ import java.util.List;
 
 @Entity
 public class Link extends Model{
-    @Column(unique=true, nullable=false)
+    @Column(length=64)
     public String name;
-    @Column(nullable=false)
+    @Column(length=256)
+    public String fullName;
+    @Column(unique=true)
     public String cumLogin;
     @Column(nullable=false)
     public String cumPassword;
+    @Column(nullable=false)
+    public boolean isAdmin;
 
     @OneToMany(mappedBy = "link")
     public List<User> users;
 
-    public Link(String name, String cumLogin, String cumPassword) {
+    public Link(String name, String fullName, String cumLogin, String cumPassword) {
         this.name = name;
+        this.fullName = fullName;
         this.cumLogin = cumLogin;
         this.cumPassword = cumPassword;
+        this.isAdmin = false;
     }
 }

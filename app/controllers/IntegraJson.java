@@ -1,22 +1,25 @@
 package controllers;
 
+import com.google.gson.*;
+import controllers.helpers.Admin;
 import integra.Integra;
 import integra.IntegraServer;
 import integra.models.*;
+import models.User;
 import models.UserSessionData;
-import play.Logger;
 import play.cache.Cache;
-import play.mvc.Before;
 import play.mvc.Controller;
-import play.mvc.Http;
 import play.mvc.Util;
+import play.mvc.With;
 
 import java.io.File;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+@With(Authentication.class)
 public class IntegraJson extends Controller {
     private static Integra integra = IntegraServer.createServer();
 
@@ -32,32 +35,6 @@ public class IntegraJson extends Controller {
             }
         }
         return queryEntryList;
-    }
-
-    // Every call is checked for authentication
-    @Before
-    private static void checkAuthentication() throws Throwable {
-        UserSessionData userSessionData;
-        //Check if there is already a session
-        userSessionData = Cache.get(session.getId(), UserSessionData.class);
-        if (userSessionData == null) {
-            forbidden();
-        }
-        Http.Header headerToken = request.headers.get("x-csrftoken");
-        if(headerToken == null) {
-            Logger.warn("Missing token header detected!");
-            forbidden();
-        }
-        //check header token
-        else if (!session.getAuthenticityToken().equals(headerToken.value())){
-            Logger.warn("Invalid header token detected!");
-            forbidden();
-        }
-        //check cache token
-        else if (!userSessionData.authToken.equals(session.getAuthenticityToken())) {
-            Logger.warn("Invalid cache token detected!");
-            forbidden();
-        }
     }
 
     public static void findObjects(String queryName, QueryEntry[] queryArgs) throws Exception {
@@ -238,12 +215,65 @@ public class IntegraJson extends Controller {
         renderBinary(file);
     }
 
+    @Admin
+    public static void getUserList() throws Exception {
+        //Special serializer - we don't want to expose e.g. password
+        JsonSerializer<User> jsonSerializer = new JsonSerializer<User>() {
+            final private Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            @Override
+            public JsonElement serialize(User user, Type type, JsonSerializationContext jsonSerializationContext) {
+                return gson.toJsonTree(user, type);
+            }
+        };
+        List<User> list = User.all().fetch();
+        renderJSON(list, jsonSerializer);
+    }
 
+    @Admin
+    public static void updateUser(String login, String newLogin, String newPassword, String firstName, String lastName, boolean isActive, long permissions) throws Exception {
+        UserSessionData userSessionData = Cache.get(session.getId(), UserSessionData.class);
+        if (login.equals(userSessionData.userName) && isActive == false)
+            throw new Exception("Nie można deaktywować użytkownika na którego jestes zalogowany");
 
-    // public static void getRelatedObjects(String relation, EgbilObjectData[] objectList) throws Exception {
-    //    List<EgbilObjectData> result = integra.getRelatedObjects(relation, objectList);
-    //    renderJSON(result);
-    // }
+        User user = User.find("byLogin", login).first();
+        if (user == null)
+            throw new Exception("Nieprawidłowe dane");
+
+        if (newLogin != null)
+            user.login = newLogin;
+        if (newPassword != null)
+            user.setPassword(newPassword);
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.isActive = isActive;
+        //Admin permissions cant be changed by api
+        user.permissions = permissions | (user.permissions & User.PERMISSION_ADMIN);
+        user.save();
+        ok();
+    }
+
+    @Admin
+    public static void addUser(String login, String password, String firstName, String lastName, long permissions) throws Exception {
+        //Get link
+        UserSessionData userSessionData = Cache.get(session.getId(), UserSessionData.class);
+        User currentUser = User.find("byLogin", userSessionData.userName).first();
+        //Add user
+        User user = new User(login, password, firstName, lastName);
+        user.permissions = permissions & (~User.PERMISSION_ADMIN);
+        user.link = currentUser.link;
+        user.save();
+        ok();
+    }
+
+    @Admin
+    public static void deleteUser(String login) throws Exception {
+        UserSessionData userSessionData = Cache.get(session.getId(), UserSessionData.class);
+        if (login.equals(userSessionData.userName))
+            throw new Exception("Nie można usunąć użytkownika na którego jestes zalogowany");
+        User user = User.find("byLogin", login).first();
+        user.delete();
+        ok();
+    }
 
     public static void getTerrainCategorySummary(String objectType, String objectName) throws Exception {
         renderText("ZESTAWIENIE KLASOUŻYTKÓW");

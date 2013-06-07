@@ -14,6 +14,7 @@ App.Common =
   setAjaxUnauthCallback: (callback) -> ajaxUnauthCallback = callback
 
   isApiCall: (url) -> url.match /api\/[A-z]+\.json/
+  isBadAuthToken: (xhr) -> xhr.responseText == "Bad authenticity token"
 
   ajax: (options) ->
     #Override jQuery ajax to handle unauthorizised API access
@@ -23,7 +24,7 @@ App.Common =
       error: null
       complete: null
     $.ajax(newOptions).then null, (xhr, status, error) ->
-      if xhr.status == 403 && App.Common.isApiCall @url
+      if xhr.status == 403 && App.Common.isApiCall(@url) && App.Common.isBadAuthToken(xhr)
         deferred = $.Deferred()
         ajaxUnauthCallback?(@, deferred)
         deferred

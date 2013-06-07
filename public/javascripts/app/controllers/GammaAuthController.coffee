@@ -2,12 +2,15 @@ App.GammaAuthController = Em.Controller.extend
   username: ""
   fullname: ""
   csrftoken: ""
+  permissions: 0
 
   isDataValid: (->
     !Em.isEmpty(@get "username") &&
     !Em.isEmpty(@get "fullname") &&
     !Em.isEmpty(@get "csrftoken")
     ).property("username", "fullname", "csrftoken")
+
+  canAccessUsersTab: (-> (@get("permissions") & (1<<31)) == (1<<31)).property("permissions")
 
   getAuthToken: -> @get "csrftoken"
 
@@ -22,7 +25,7 @@ App.GammaAuthController = Em.Controller.extend
       username: username
       password: password
       success: (data) =>
-        @setUserData(data.userName, data.fullName, data.authToken)
+        @setUserData(data.userName, data.fullName, data.authToken, data.permissions)
 
   logout: ->
     $.ajax
@@ -32,11 +35,12 @@ App.GammaAuthController = Em.Controller.extend
         #Clear user data even if logout is unsuccessful
         @clearUserData()
 
-  setUserData: (username, fullname, csrftoken)->
+  setUserData: (username, fullname, csrftoken, permissions)->
     @setProperties
       username: username
       fullname: fullname
       csrftoken: csrftoken
+      permissions: permissions
 
   clearUserData: ->
-    @setUserData "", "", ""
+    @setUserData "", "", "", 0

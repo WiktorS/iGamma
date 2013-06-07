@@ -1,0 +1,59 @@
+<script type="text/x-handlebars" data-template-name="users/edit">
+    <form class="form-horizontal">
+        <legend>Edycja użytkownika: {{content.login}}</legend>
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">{{input type="checkbox" checked=isActive}} Aktywny</label>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Login</label>
+            <div class="controls">{{input class="input-xlarge" value=login disabled=isNotActive}}</div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Nowe hasło</label>
+            <div class="controls">
+                <div class="input-append">
+                    {{input type="password" class="input-xlarge" value=password disabled=isNotActive}}
+                    <span class="add-on has-tooltip"  data-toggle="tooltip" data-original-title="Pozostaw pole puste jeżeli nie chcesz zmieniać hasła">
+                        <i class="icon-question-sign"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Potwierdź hasło</label>
+            <div class="controls">
+                <div class="input-append">
+                    {{input type="password" class="input-xlarge" value=passwordValidation disabled=isNotActive}}
+                    <span class="add-on has-tooltip" data-toggle="tooltip" data-original-title="Pozostaw pole puste jeżeli nie chcesz zmieniać hasła">
+                        <i class="icon-question-sign"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Imię</label>
+            <div class="controls">{{input class="input-xlarge" value=firstName disabled=isNotActive}}</div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Nazwisko</label>
+            <div class="controls">{{input class="input-xlarge" value=lastName disabled=isNotActive}}</div>
+        </div>
+        <div {{bindAttr class=":alert userAlertSuccess:alert-success userAlertError:alert-error userAlert::hide"}}>
+            <button type="button" class="close">&times;</button>
+            <strong>{{userAlertTitle}}</strong>
+            {{userAlertMessage}}
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button {{bindAttr class=":btn :btn-primary :input-xlarge disableUserUpdate:disabled"}} {{action "updateUser" content}}>Aktualizuj</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button class="btn btn-danger input-xlarge" {{action "deleteUser" content}}>Usuń</button>
+            </div>
+        </div>
+    </form>
+</script>

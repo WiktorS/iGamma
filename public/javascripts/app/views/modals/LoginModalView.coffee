@@ -28,6 +28,7 @@ App.LoginModalView = App.ModalView.extend
       @set "loginInProgress", true
       @alertShow false
       #processed with login
+      #TODO: In some rare cases it is not possible to send event because no route is connected yet
       @get("controller.target").send "login", @get("content"), (xhr, status, thrown) =>
         if status == "success"
           @hideModal()
